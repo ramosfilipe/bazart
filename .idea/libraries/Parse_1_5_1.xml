@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="1_bolts">
+  <library name="Parse-1.5.1">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/facebook/libs/bolts.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ParseLoginUI/libs/Parse-1.5.1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
