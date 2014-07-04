@@ -11,7 +11,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+
+import com.parse.ParseUser;
+import com.parse.ui.ParseLoginActivity;
+import com.parse.ui.ParseLoginBuilder;
 
 import java.util.Locale;
 
@@ -33,12 +38,18 @@ public class Feed extends Activity {
      */
     ViewPager mViewPager;
 
+
+
+    private ParseUser currentUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //ParseLoginBuilder builder = new ParseLoginBuilder(Feed.this);
-        //startActivityForResult(builder.build(), 0);
+        ParseLoginBuilder builder = new ParseLoginBuilder(Feed.this);
+        startActivityForResult(builder.build(), 0);
+        ParseUser.getCurrentUser();
+
+
         setContentView(R.layout.activity_feed);
 
 
