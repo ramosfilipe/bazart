@@ -3,7 +3,11 @@ apply plugin: 'findbugs'
 apply plugin: 'pmd'
 
 check.dependsOn 'checkstyle', 'findbugs', 'pmd'
-
+configurations.all {
+    resolutionStrategy {
+        force 'xml-apis:xml-apis:1.4.01'
+    }
+}
 task checkstyle(type: Checkstyle) {
     configFile file("${project.rootDir}/config/quality/checkstyle/checkstyle.xml")
     source 'src'
