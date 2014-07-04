@@ -7,7 +7,7 @@ dependencies {
 
 android {
     compileSdkVersion Integer.parseInt('19')
-    buildToolsVersion '20.0'
+    buildToolsVersion '19.1'
 
     defaultConfig {
         minSdkVersion Integer.parseInt('14')
