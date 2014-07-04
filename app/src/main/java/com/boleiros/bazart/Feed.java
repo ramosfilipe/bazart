@@ -44,10 +44,10 @@ public class Feed extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(ParseUser.getCurrentUser()==null){
 
-        ParseLoginBuilder builder = new ParseLoginBuilder(Feed.this);
-        startActivityForResult(builder.build(), 0);
-        ParseUser.getCurrentUser();
+            ParseLoginBuilder builder = new ParseLoginBuilder(Feed.this);
+        startActivityForResult(builder.build(), 0);}
 
 
         setContentView(R.layout.activity_feed);
