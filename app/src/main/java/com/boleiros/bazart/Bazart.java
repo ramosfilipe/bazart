@@ -10,6 +10,7 @@ public class Bazart extends Application{
         @Override
         public void onCreate() {
             super.onCreate();
+
             // Required - Initialize the Parse SDK
             Parse.initialize(this, getString(R.string.parse_app_id),
                     getString(R.string.parse_client_key));

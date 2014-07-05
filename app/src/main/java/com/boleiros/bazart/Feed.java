@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.media.Image;
 import android.os.Bundle;
@@ -53,6 +54,7 @@ public class Feed extends Activity {
 
             ParseLoginBuilder builder = new ParseLoginBuilder(Feed.this);
         startActivityForResult(builder.build(), 0);}
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_feed);
 
 
@@ -75,19 +77,7 @@ public class Feed extends Activity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
-    
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -103,28 +93,15 @@ public class Feed extends Activity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            return PlaceholderFragment.newInstance(0);
         }
 
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 1;
         }
 
-        @Override
-        public CharSequence getPageTitle(int position) {
-            Locale l = Locale.getDefault();
-            switch (position) {
-                case 0:
-                    return getString(R.string.title_section1).toUpperCase(l);
-                case 1:
-                    return getString(R.string.title_section2).toUpperCase(l);
-                case 2:
-                    return getString(R.string.title_section3).toUpperCase(l);
-            }
-            return null;
-        }
     }
 
     /**
