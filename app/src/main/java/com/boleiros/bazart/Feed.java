@@ -3,7 +3,11 @@ package com.boleiros.bazart;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.media.Image;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -12,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 
 import com.parse.ParseUser;
@@ -39,7 +44,6 @@ public class Feed extends Activity {
     ViewPager mViewPager;
 
 
-
     private ParseUser currentUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +52,6 @@ public class Feed extends Activity {
 
             ParseLoginBuilder builder = new ParseLoginBuilder(Feed.this);
         startActivityForResult(builder.build(), 0);}
-
-
         setContentView(R.layout.activity_feed);
 
 
@@ -133,6 +135,7 @@ public class Feed extends Activity {
          * fragment.
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
+        private final int PICK_IMAGE = 0;
 
         /**
          * Returns a new instance of this fragment for the given section
@@ -153,7 +156,25 @@ public class Feed extends Activity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_feed, container, false);
+            Button camera = (Button) rootView.findViewById(R.id.cameraButton);
+            camera.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent,PICK_IMAGE);
+
+                }
+            });
             return rootView;
+        }
+        @Override
+        public void onActivityResult(int requestCode, int resultCode, Intent data) {
+            if (requestCode == PICK_IMAGE && resultCode == RESULT_OK) {
+                Bitmap photo = (Bitmap) data.getExtras().get("data");
+                ImageView imageView = (ImageView) this.getView().findViewById(R.id.imageView);
+                imageView.setImageBitmap(photo);
+            }
         }
     }
 
