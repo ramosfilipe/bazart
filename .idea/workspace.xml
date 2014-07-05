@@ -35,14 +35,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21b5f14d-a6f8-4583-923a-5ed9c3421666" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/boleiros/bazart/Feed.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/boleiros/bazart/Feed.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_feed.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_feed.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_v13_19_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_v13_19_0_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_13_0_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_13_0_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_19_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_19_0_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Bazart.iws" />
@@ -146,6 +138,7 @@
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
         <option value="diegocoelho" />
+        <option value="ramosfilipe" />
         <option value="Diego Coelho" />
       </list>
     </option>
@@ -2315,6 +2308,11 @@
       <created>1404419535735</created>
       <updated>1404419535735</updated>
     </task>
+    <task id="LOCAL-00001" summary="Criado botão pra abir a camera(funcionando)">
+      <created>1404532591464</created>
+      <updated>1404532591464</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
