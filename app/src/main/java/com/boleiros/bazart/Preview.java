@@ -26,6 +26,7 @@ class Preview extends SurfaceView implements SurfaceHolder.Callback {
 
         // Install a SurfaceHolder.Callback so we get notified when the
         // underlying surface is created and destroyed.
+        
         mHolder = getHolder();
         mHolder.addCallback(this);
         mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
@@ -34,7 +35,7 @@ class Preview extends SurfaceView implements SurfaceHolder.Callback {
     public void surfaceCreated(SurfaceHolder holder) {
         // The Surface has been created, acquire the camera and tell it where
         // to draw.
-        camera = Camera.open();
+       // camera = Camera.open();
         try {
             camera.setPreviewDisplay(holder);
 

@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 
@@ -156,7 +157,7 @@ public class Feed extends Activity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_feed, container, false);
-            Button camera = (Button) rootView.findViewById(R.id.cameraButton);
+            ImageButton camera = (ImageButton) rootView.findViewById(R.id.cameraButton);
             camera.setOnClickListener(new View.OnClickListener() {
 
                 @Override

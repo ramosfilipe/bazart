@@ -9,28 +9,25 @@
     tools:context=".Feed$PlaceholderFragment"
     android:id="@+id/relativeID">
 
-    <TextView
-        android:id="@+id/section_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
+
+    <!--<Button-->
+        <!--style="?android:attr/buttonStyleSmall"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Camera"-->
+        <!--android:id="@+id/cameraButton"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_centerHorizontal="true" />-->
+
+    <ImageButton
+        android:src="@drawable/cameramenor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Camera"
         android:id="@+id/cameraButton"
+        android:layout_gravity="bottom"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
-    <FrameLayout android:id="@+id/preview"
-        android:layout_weight="1" android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-    </FrameLayout>
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/imageView"
-        android:layout_above="@+id/cameraButton"
- />
+
 
 </RelativeLayout>
