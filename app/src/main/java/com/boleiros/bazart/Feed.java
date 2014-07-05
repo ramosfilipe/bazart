@@ -161,21 +161,22 @@ public class Feed extends Activity {
 
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(intent,PICK_IMAGE);
-
+                   // Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    //startActivityForResult(intent,PICK_IMAGE);
+                    Intent intent = new Intent(getActivity(),CameraDemo.class);
+                    getActivity().startActivity(intent);
                 }
             });
             return rootView;
         }
-        @Override
-        public void onActivityResult(int requestCode, int resultCode, Intent data) {
-            if (requestCode == PICK_IMAGE && resultCode == RESULT_OK) {
-                Bitmap photo = (Bitmap) data.getExtras().get("data");
-                ImageView imageView = (ImageView) this.getView().findViewById(R.id.imageView);
-                imageView.setImageBitmap(photo);
-            }
-        }
+//        @Override
+//        public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//            if (requestCode == PICK_IMAGE && resultCode == RESULT_OK) {
+//                Bitmap photo = (Bitmap) data.getExtras().get("data");
+//                ImageView imageView = (ImageView) this.getView().findViewById(R.id.imageView);
+//                imageView.setImageBitmap(photo);
+//            }
+//        }
     }
 
 }
