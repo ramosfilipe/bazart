@@ -1,8 +1,8 @@
 package com.boleiros.bazart;
 import android.app.Application;
-
 import com.parse.Parse;
 import com.parse.ParseFacebookUtils;
+import com.parse.ParseObject;
 /**
  * Created by Filipe on 03/07/14.
  */
@@ -10,7 +10,7 @@ public class Bazart extends Application{
         @Override
         public void onCreate() {
             super.onCreate();
-
+            ParseObject.registerSubclass(Produto.class);
             // Required - Initialize the Parse SDK
             Parse.initialize(this, getString(R.string.parse_app_id),
                     getString(R.string.parse_client_key));
