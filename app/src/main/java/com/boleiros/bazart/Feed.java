@@ -5,27 +5,24 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.Bitmap;
-import android.media.Image;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-
 
 import com.parse.ParseUser;
-import com.parse.ui.ParseLoginActivity;
 import com.parse.ui.ParseLoginBuilder;
 
-import java.util.Locale;
+import java.util.ArrayList;
+
+import it.gmariotti.cardslib.library.internal.Card;
+import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
+import it.gmariotti.cardslib.library.internal.CardHeader;
+import it.gmariotti.cardslib.library.view.CardListView;
 
 
 public class Feed extends Activity {
@@ -53,7 +50,7 @@ public class Feed extends Activity {
         if(ParseUser.getCurrentUser()==null){
 
             ParseLoginBuilder builder = new ParseLoginBuilder(Feed.this);
-        startActivityForResult(builder.build(), 0);}
+            startActivityForResult(builder.build(), 0);}
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_feed);
 
@@ -135,6 +132,19 @@ public class Feed extends Activity {
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_feed, container, false);
             ImageButton camera = (ImageButton) rootView.findViewById(R.id.cameraButton);
+            CardListView listaCards = (CardListView) rootView.findViewById(R.id.listaCards);
+            Card teste = new Card(this.getActivity());
+            CardHeader teste2 = new CardHeader(this.getActivity());
+            teste2.setTitle("testee");
+            teste.addCardHeader(teste2);
+
+            ArrayList<Card> listaTeste = new ArrayList<Card>();
+            listaTeste.add(teste);
+            CardArrayAdapter mCardArrayAdapter = new CardArrayAdapter(getActivity(), listaTeste);
+            if (listaCards != null) {
+                listaCards.removeAllViewsInLayout();
+                listaCards.setAdapter(mCardArrayAdapter);}
+
             camera.setOnClickListener(new View.OnClickListener() {
 
                 @Override

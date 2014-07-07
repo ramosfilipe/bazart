@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <!-- Base application theme. -->
@@ -5,21 +6,34 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="card_modificado">
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">300dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">right</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
 
+    <style name="card_thumbnail_outer_layout1">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 
-        <style name="card_modificado">
-            <item name="android:layout_width">300dp</item>
-            <item name="android:layout_height">300dp</item>
-            <item name="android:layout_gravity">center</item>
-            <item name="android:gravity">right</item>
-            <item name="android:scaleType">centerCrop</item>
-        </style>
+    <style name="FullscreenTheme" parent="android:Theme.NoTitleBar">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="metaButtonBarStyle">@style/ButtonBar</item>
+        <item name="metaButtonBarButtonStyle">@style/ButtonBarButton</item>
+    </style>
 
-        <style name="card_thumbnail_outer_layout1">
-            <item name="android:layout_width">wrap_content</item>
-            <item name="android:layout_height">wrap_content</item>
-        </style>
+    <style name="ButtonBar">
+        <item name="android:paddingLeft">2dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingRight">2dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:background">@android:drawable/bottom_bar</item>
+    </style>
 
-    </resources>
+    <style name="ButtonBarButton" />
 
-
+</resources>

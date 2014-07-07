@@ -100,7 +100,9 @@ public class ParseLoginActivity extends FragmentActivity implements
           ParseLoginFragment.newInstance(configOptions)).commit();
     }
   }
-
+    @Override
+    public void onBackPressed() {
+    }
   @Override
   protected void onDestroy() {
     super.onDestroy();

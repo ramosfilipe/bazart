@@ -23,9 +23,17 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     // You must install or update the Support Repository through the SDK manager to use this dependency.
-    compile 'com.android.support:support-v13:19.0.1'
-    compile 'com.github.gabrielemariotti.cards:library:1.7.3'
 
-    compile project(':ParseLoginUI')
+
+    compile project(
+            ':ParseLoginUI')
+    // You must install or update the Support Repository through the SDK manager to use this dependency.
+
+    
+    // You must install or update the Support Repository through the SDK manager to use this dependency.
+compile 'com.android.support:support-v13:19.0.1'
+    compile 'com.github.gabrielemariotti.cards:library:1.7.3'
+    // You must install or update the Support Repository through the SDK manager to use this dependency.
+    compile 'com.android.support:support-v4:19.+'
 }
 
