@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import it.gmariotti.cardslib.library.internal.Card;
 import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
 import it.gmariotti.cardslib.library.internal.CardHeader;
+import it.gmariotti.cardslib.library.internal.CardThumbnail;
 import it.gmariotti.cardslib.library.view.CardListView;
 
 
@@ -136,6 +137,10 @@ public class Feed extends Activity {
             Card teste = new Card(this.getActivity());
             CardHeader teste2 = new CardHeader(this.getActivity());
             teste2.setTitle("testee");
+            CardThumbnail teste3 = new CardThumbnail(this.getActivity());
+            teste3.setDrawableResource(R.drawable.cerveja);
+            
+            teste.addCardThumbnail(teste3);
             teste.addCardHeader(teste2);
 
             ArrayList<Card> listaTeste = new ArrayList<Card>();

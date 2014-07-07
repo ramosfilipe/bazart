@@ -7,10 +7,10 @@
     </style>
 
     <style name="card_modificado">
-        <item name="android:layout_width">300dp</item>
-        <item name="android:layout_height">300dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
         <item name="android:layout_gravity">center</item>
-        <item name="android:gravity">right</item>
+        <item name="android:gravity">center</item>
         <item name="android:scaleType">centerCrop</item>
     </style>
 

@@ -17,8 +17,11 @@
         android:layout_marginTop="80px"
         android:id="@+id/listaCards"
         card:list_card_layout_resourceID="@layout/lista_cards_feed"
-
-        android:layout_above="@+id/cameraButton"></it.gmariotti.cardslib.library.view.CardListView>
+        android:layout_above="@+id/cameraButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"></it.gmariotti.cardslib.library.view.CardListView>
     <!--<Button-->
         <!--style="?android:attr/buttonStyleSmall"-->
         <!--android:layout_width="wrap_content"-->
