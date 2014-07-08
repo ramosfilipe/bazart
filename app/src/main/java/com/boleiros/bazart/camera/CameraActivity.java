@@ -7,7 +7,6 @@ import android.view.WindowManager;
 import com.boleiros.bazart.R;
 import com.commonsware.cwac.camera.CameraHost;
 import com.commonsware.cwac.camera.CameraHostProvider;
-import com.commonsware.cwac.camera.SimpleCameraHost;
 
 public class CameraActivity extends Activity implements CameraHostProvider  {
     @Override
@@ -25,7 +24,7 @@ public class CameraActivity extends Activity implements CameraHostProvider  {
 
     @Override
     public CameraHost getCameraHost() {
-        return(new SimpleCameraHost(this));
+        return(new CameraHostMod(this));
     }
 
 }

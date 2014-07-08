@@ -16,7 +16,24 @@
 
             android:layout_height="57dp"
             android:background="#e50e0003"
-            android:id="@+id/framealto"></FrameLayout>
+            android:id="@+id/framealto">
+
+            <ImageButton
+                android:layout_width="57dp"
+                android:layout_height="match_parent"
+                android:id="@+id/buttonphotook"
+                android:src="@drawable/rightarrowsmall"
+                android:background="@null"
+                android:layout_gravity="right|center_vertical" />
+
+            <ImageButton
+                android:layout_width="29dp"
+                android:layout_height="58dp"
+                android:id="@+id/buttonphotorestart"
+                android:src="@drawable/restartarrowwhite"
+                android:background="@null"
+                android:layout_gravity="left|center_vertical" />
+        </FrameLayout>
 
 
         <com.commonsware.cwac.camera.CameraView
@@ -41,6 +58,7 @@
 
                 android:src="@drawable/lenssmall"
                 android:layout_gravity="center" />
+
         </FrameLayout>
 
     </LinearLayout>
