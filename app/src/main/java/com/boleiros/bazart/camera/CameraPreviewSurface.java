@@ -1,4 +1,4 @@
-package com.boleiros.bazart;
+package com.boleiros.bazart.camera;
 
 import android.content.Context;
 import android.hardware.Camera;
@@ -8,7 +8,7 @@ import android.view.SurfaceView;
 
 import java.util.List;
 
-public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
+public class CameraPreviewSurface extends SurfaceView implements SurfaceHolder.Callback {
 
     private static final String TAG = "CameraPreview";
 
@@ -18,7 +18,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     private List<Camera.Size> mSupportedPreviewSizes;
     private Camera.Size mPreviewSize;
 
-    public CameraPreview(Context context, Camera camera) {
+    public CameraPreviewSurface(Context context, Camera camera) {
         super(context);
         mContext = context;
         mCamera = camera;

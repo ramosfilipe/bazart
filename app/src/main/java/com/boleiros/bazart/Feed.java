@@ -13,7 +13,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-
+import com.boleiros.bazart.camera.*;
 import com.parse.ParseUser;
 import com.parse.ui.ParseLoginBuilder;
 
@@ -139,7 +139,7 @@ public class Feed extends Activity {
             teste2.setTitle("testee");
             CardThumbnail teste3 = new CardThumbnail(this.getActivity());
             teste3.setDrawableResource(R.drawable.cerveja);
-            
+
             teste.addCardThumbnail(teste3);
             teste.addCardHeader(teste2);
 
@@ -156,8 +156,8 @@ public class Feed extends Activity {
                 public void onClick(View v) {
                    // Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     //startActivityForResult(intent,PICK_IMAGE);
-                    Intent intent = new Intent(getActivity(),CameraDemo.class);
-                    getActivity().startActivity(intent);
+                    Intent intent = new Intent(getActivity(),CameraActivity.class);
+                    startActivity(intent);
                 }
             });
             return rootView;
