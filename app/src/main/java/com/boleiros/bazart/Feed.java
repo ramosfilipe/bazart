@@ -8,18 +8,21 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
-import com.boleiros.bazart.camera.*;
+import com.boleiros.bazart.camera.CameraActivity;
+import com.parse.FindCallback;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.ui.ParseLoginBuilder;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import it.gmariotti.cardslib.library.internal.Card;
 import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
@@ -134,6 +137,29 @@ public class Feed extends Activity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_feed, container, false);
+
+            ParseQuery<Produto> query  = ParseQuery.getQuery("Produto");
+
+            query.findInBackground(new FindCallback<Produto>() {
+                @Override
+                public void done(List<Produto> parseObjects, com.parse.ParseException e) {
+                    if (e==null){
+
+                        Log.d("THE OBJECT", "" +parseObjects.size());
+
+
+                        String name =  parseObjects.toString();
+                        Log.d("THE QUERY ", "" + name);
+
+                    } else {
+                        Log.d("ERROR:", "" + e.getMessage());
+                    }
+                }
+            });
+
+
+
+
             ImageButton camera = (ImageButton) rootView.findViewById(R.id.cameraButton);
             CardListView listaCards = (CardListView) rootView.findViewById(R.id.listaCards);
             Card teste = new Card(this.getActivity());
