@@ -22,6 +22,7 @@ import com.parse.ParseUser;
 import com.parse.ui.ParseLoginBuilder;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import it.gmariotti.cardslib.library.internal.Card;
@@ -117,6 +118,7 @@ public class Feed extends Activity {
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
         private final int PICK_IMAGE = 0;
+        ArrayList<Card> listaTeste;
 
         /**
          * Returns a new instance of this fragment for the given section
@@ -131,24 +133,33 @@ public class Feed extends Activity {
         }
 
         public PlaceholderFragment() {
+            listaTeste = new ArrayList<Card>();
         }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_feed, container, false);
-
             ParseQuery<Produto> query  = ParseQuery.getQuery("Produto");
-
             query.findInBackground(new FindCallback<Produto>() {
                 @Override
                 public void done(List<Produto> parseObjects, com.parse.ParseException e) {
-                    if (e==null){
+                    if (e == null) {
+                        Collections.reverse(parseObjects);
+                        for (Produto produto : parseObjects) {
+                            Card card = new CustomCard(getActivity(), produto.getPrice(), produto.getPhoneNumber(), produto.getPhotoFile());
+                            listaTeste.add(card);
+                        }
+                        CardListView listaCards = (CardListView) getActivity().findViewById(R.id.listaCards);
+                        CardArrayAdapter mCardArrayAdapter = new CardArrayAdapter(getActivity(), listaTeste);
+                        if (listaCards != null) {
+                            listaCards.removeAllViewsInLayout();
+                            listaCards.setAdapter(mCardArrayAdapter);
+                        }
+                        Log.d("THE OBJECT", "" + parseObjects.size());
 
-                        Log.d("THE OBJECT", "" +parseObjects.size());
 
-
-                        String name =  parseObjects.toString();
+                        String name = parseObjects.toString();
                         Log.d("THE QUERY ", "" + name);
 
                     } else {
@@ -157,30 +168,20 @@ public class Feed extends Activity {
                 }
             });
 
-
-
-
             ImageButton camera = (ImageButton) rootView.findViewById(R.id.cameraButton);
-            CardListView listaCards = (CardListView) rootView.findViewById(R.id.listaCards);
-            Card teste = new Card(this.getActivity());
-            CardHeader teste2 = new CardHeader(this.getActivity());
-            teste2.setTitle("testee");
-            CardThumbnail teste3 = new CardThumbnail(this.getActivity());
-            teste3.setDrawableResource(R.drawable.cerveja);
-
-            teste.addCardThumbnail(teste3);
-            teste.addCardHeader(teste2);
+//            Card teste = new Card(this.getActivity());
+//            CardHeader teste2 = new CardHeader(this.getActivity());
+//            teste2.setTitle("testee");
+//            CardThumbnail teste3 = new CardThumbnail(this.getActivity());
+//            teste3.setDrawableResource(R.drawable.cerveja);
+//
+//            teste.addCardThumbnail(teste3);
+//            teste.addCardHeader(teste2);
 
 
            // novoTeste.setInnerLayout(R.layout.inside_card);
-
-            ArrayList<Card> listaTeste = new ArrayList<Card>();
-            listaTeste.add(teste);
             //listaTeste.add(novoTeste);
-            CardArrayAdapter mCardArrayAdapter = new CardArrayAdapter(getActivity(), listaTeste);
-            if (listaCards != null) {
-                listaCards.removeAllViewsInLayout();
-                listaCards.setAdapter(mCardArrayAdapter);}
+
 
             camera.setOnClickListener(new View.OnClickListener() {
 

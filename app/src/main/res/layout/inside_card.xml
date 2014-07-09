@@ -7,9 +7,8 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:id="@+id/imageView"
-        android:src="@drawable/cerveja"/>
+        android:layout_height="360dp"
+        android:id="@+id/imageViewCard"/>
     <FrameLayout
         android:layout_width="match_parent"
 
@@ -18,7 +17,7 @@
         <TextView
             android:layout_width="190dp"
             android:layout_height="match_parent"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/preco"
             android:layout_gravity="left|center_vertical" />
 
@@ -39,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
+            android:text="Hashtags"
             android:id="@+id/textView3"
             android:layout_gravity="center" />
     </FrameLayout>
