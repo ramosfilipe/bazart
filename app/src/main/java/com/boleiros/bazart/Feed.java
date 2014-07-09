@@ -13,6 +13,8 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.TextView;
+
 import com.boleiros.bazart.camera.*;
 import com.parse.ParseUser;
 import com.parse.ui.ParseLoginBuilder;
@@ -143,8 +145,12 @@ public class Feed extends Activity {
             teste.addCardThumbnail(teste3);
             teste.addCardHeader(teste2);
 
+
+           // novoTeste.setInnerLayout(R.layout.inside_card);
+
             ArrayList<Card> listaTeste = new ArrayList<Card>();
             listaTeste.add(teste);
+            //listaTeste.add(novoTeste);
             CardArrayAdapter mCardArrayAdapter = new CardArrayAdapter(getActivity(), listaTeste);
             if (listaCards != null) {
                 listaCards.removeAllViewsInLayout();
