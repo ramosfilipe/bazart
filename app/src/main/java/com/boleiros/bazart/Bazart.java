@@ -10,6 +10,7 @@ public class Bazart extends Application{
         @Override
         public void onCreate() {
             super.onCreate();
+            Parse.enableLocalDatastore(this);
             ParseObject.registerSubclass(Produto.class);
             // Required - Initialize the Parse SDK
             Parse.initialize(this, getString(R.string.parse_app_id),

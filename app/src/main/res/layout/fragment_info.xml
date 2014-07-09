@@ -1,0 +1,111 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".camera.InfoFragment"
+    android:id="@+id/fragmentInfo"
+    android:weightSum="1">
+
+    <!-- TODO: Update blank fragment layout -->
+    <FrameLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="60dp"
+        android:id="@+id/frameemcima"
+        android:background="#e50e0003">
+
+        <ImageButton
+            android:layout_width="57dp"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:layout_gravity="right|center_vertical"
+            android:id="@+id/imageButtonUpload"
+            android:src="@drawable/rightarrowsmall"
+             />
+    </FrameLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.12">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="  Preço:"
+            android:textStyle="bold|italic"
+
+            android:id="@+id/textViewPreco"
+            android:layout_gravity="left|center_vertical" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/editText2"
+            android:layout_gravity="right|center_vertical" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.15">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="  Telefone:"
+            android:textStyle="bold|italic"
+
+            android:id="@+id/textViewTelefone"
+            android:layout_gravity="left|center_vertical" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+
+            android:ems="10"
+            android:id="@+id/editText3"
+            android:layout_gravity="right|center_vertical"
+            android:phoneNumber="true" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.13">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="  Hashtags:"
+            android:textStyle="bold|italic"
+            android:id="@+id/textViewHashTags"
+            android:layout_gravity="left|center_vertical" />
+
+        <EditText
+            android:layout_width="216dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText4"
+            android:layout_gravity="right|center_vertical" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="360dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="360dp"
+            android:id="@+id/previewAntesDeEnviar"
+            android:scaleType="fitXY" />
+    </FrameLayout>
+
+
+</LinearLayout>

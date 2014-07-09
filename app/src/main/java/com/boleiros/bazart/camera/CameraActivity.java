@@ -1,5 +1,6 @@
 package com.boleiros.bazart.camera;
 import android.app.Activity;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
@@ -7,8 +8,8 @@ import android.view.WindowManager;
 import com.boleiros.bazart.R;
 import com.commonsware.cwac.camera.CameraHost;
 import com.commonsware.cwac.camera.CameraHostProvider;
-
-public class CameraActivity extends Activity implements CameraHostProvider  {
+import com.boleiros.bazart.camera.InfoFragment.OnFragmentInteractionListener;
+public class CameraActivity extends Activity implements CameraHostProvider , OnFragmentInteractionListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,5 +28,9 @@ public class CameraActivity extends Activity implements CameraHostProvider  {
         return(new CameraHostMod(this));
     }
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
 }
 

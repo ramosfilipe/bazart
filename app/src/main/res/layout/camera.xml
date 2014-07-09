@@ -14,7 +14,7 @@
         <FrameLayout
             android:layout_width="match_parent"
 
-            android:layout_height="57dp"
+            android:layout_height="60dp"
             android:background="#e50e0003"
             android:id="@+id/framealto">
 
@@ -39,7 +39,7 @@
         <com.commonsware.cwac.camera.CameraView
             android:id="@+id/camera"
             android:layout_width="match_parent"
-            android:layout_height="354dp"/>
+            android:layout_height="360dp"/>
 
 
         <FrameLayout
@@ -47,7 +47,8 @@
 
             android:layout_height="match_parent"
             android:background="#e50e0003"
-            android:id="@+id/framebaixo">
+            android:id="@+id/framebaixo"
+            android:clickable="false">
 
 
             <ImageButton
