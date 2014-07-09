@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:ems="10"
-            android:id="@+id/editText2"
+            android:id="@+id/editTextPreco"
             android:layout_gravity="right|center_vertical" />
 
     </FrameLayout>
@@ -70,7 +70,7 @@
             android:inputType="phone"
 
             android:ems="10"
-            android:id="@+id/editText3"
+            android:id="@+id/editTextTelefone"
             android:layout_gravity="right|center_vertical"
             android:phoneNumber="true" />
     </FrameLayout>
@@ -92,7 +92,7 @@
         <EditText
             android:layout_width="216dp"
             android:layout_height="wrap_content"
-            android:id="@+id/editText4"
+            android:id="@+id/editTextHashtags"
             android:layout_gravity="right|center_vertical" />
     </FrameLayout>
 

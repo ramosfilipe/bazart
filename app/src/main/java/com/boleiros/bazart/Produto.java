@@ -14,6 +14,13 @@ public class Produto extends ParseObject {
 
     public Produto() {
     }
+    public String getPrice() {
+        return getString("price");
+    }
+
+    public void setPrice(String price) {
+        put("price",price);
+    }
 
     public String getPhoneNumber() {
         return getString("phone");

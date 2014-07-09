@@ -3,9 +3,7 @@ package com.boleiros.bazart;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import it.gmariotti.cardslib.library.internal.Card;
 
@@ -20,7 +18,7 @@ public class CustomCard extends Card {
      * Constructor with a custom inner layout
      * @param context
      */
-    public CustomCard(Context context,Produto produto) {
+    public CustomCard(Context context) {
         this(context, R.layout.inside_card);
         this.produto = produto;
     }
@@ -46,9 +44,9 @@ public class CustomCard extends Card {
     @Override
     public void setupInnerViewElements(ViewGroup parent, View view) {
 
-        //Retrieve elements
-        viewPreco = (TextView) parent.findViewById(R.id.preco);
-        //if (viewPreco!=null)
-         //   viewPreco.setText(produto.get);
+//        //Retrieve elements
+//        viewPreco = (TextView) parent.findViewById(R.id.preco);
+//        if (viewPreco!=null)
+//            viewPreco.setText(produto.get);
     }
 }

@@ -1,18 +1,27 @@
 package com.boleiros.bazart.camera;
 
 import android.app.Activity;
+import android.app.Fragment;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.boleiros.bazart.Feed;
+import com.boleiros.bazart.Produto;
 import com.boleiros.bazart.R;
 import com.boleiros.bazart.util.ActivityStore;
+import com.parse.ParseFile;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -51,6 +60,7 @@ public class InfoFragment extends Fragment {
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
+
     }
     public InfoFragment() {
         // Required empty public constructor
@@ -77,7 +87,43 @@ public class InfoFragment extends Fragment {
                 getImage()), 0, (ActivityStore.getInstance(this.getActivity()).
                 getImage().length));
         preview.setImageBitmap(bit);
-        System.out.println("BIT "+ bit.getWidth() + " "+ bit.getHeight() + " " + preview.getWidth() + " " + preview.getHeight());
+        ImageButton botaoEnvia = (ImageButton)v.findViewById(R.id.imageButtonUpload);
+        botaoEnvia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ParseFile photoFile = new ParseFile("fotoProduto.jpg", ActivityStore.getInstance(getActivity()).
+                        getImage());
+                EditText preco = (EditText) getActivity().findViewById(R.id.editTextPreco);
+                EditText telefone = (EditText)getActivity().findViewById(R.id.editTextTelefone);
+              //  EditText hashtags = (EditText)v.findViewById(R.id.editTextPreco);
+
+                Produto produto = new Produto();
+                produto.setAuthor(ParseUser.getCurrentUser());
+                produto.setPhotoFile(photoFile);
+                produto.setPhoneNumber(telefone.getText().toString());
+                produto.setPrice(preco.getText().toString());
+
+                produto.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(com.parse.ParseException e) {
+                        if (e != null) {
+                            Toast.makeText(getActivity(),
+                                    "Error saving: " + e.getMessage(),
+                                    Toast.LENGTH_LONG).show();
+                        }else{
+                            Toast.makeText(getActivity(),"Produto anunciado!",Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(getActivity(),Feed.class);
+                            startActivity(intent);                        }
+
+                    }
+
+
+
+                });
+            }
+
+
+            });
 
         //preview.setImageBitmap(Bitmap.createScaledBitmap(bit,120,120,false));
 
