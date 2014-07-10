@@ -5,6 +5,7 @@ import android.content.Context;
 public class ActivityStore {
     private static ActivityStore sActivityStore;
     private byte[] image ;
+    private boolean terminou= false;
     private Context mContext;
 
     private ActivityStore(Context ctx) {
@@ -17,11 +18,15 @@ public class ActivityStore {
         }
         return sActivityStore;
     }
-
+    public boolean getEstado(){
+        return terminou;
+    }
     public byte[] getImage() {
+        terminou = false;
         return image;
     }
     public void setImage(byte[] image) {
         this.image = image;
+        terminou= true;
     }
 }

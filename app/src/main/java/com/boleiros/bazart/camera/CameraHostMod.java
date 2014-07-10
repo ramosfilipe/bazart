@@ -7,16 +7,18 @@ import android.hardware.Camera;
 
 import com.boleiros.bazart.util.ActivityStore;
 import com.boleiros.bazart.util.ScalingUtilities;
-import com.commonsware.cwac.camera.CameraUtils;
 import com.commonsware.cwac.camera.PictureTransaction;
 import com.commonsware.cwac.camera.SimpleCameraHost;
 
 import java.io.ByteArrayOutputStream;
+import java.util.List;
+
 /**
  * Created by Filipe on 08/07/14.
  */
 public class CameraHostMod extends SimpleCameraHost {
     Context context;
+
     public CameraHostMod(Context _ctxt) {
 
         super(_ctxt);
@@ -35,9 +37,16 @@ public class CameraHostMod extends SimpleCameraHost {
     public void saveImage(PictureTransaction xact, byte[] image) {
        // ActivityStore.getInstance(context).setImage(cropImage(image));
         //ActivityStore.getInstance(context).setImage(image);
+
         ActivityStore.getInstance(context).setImage(cropButtonPressed(image));
+
     }
     protected byte[] cropButtonPressed(byte[] image) {
+//        Bitmap teste = BitmapFactory.decodeByteArray(image,0,image.length);
+      //  System.out.println("tamanho :" + image.length );
+//        System.out.println("crop width:"+teste.getWidth() );
+//        System.out.println("crop heitgh:"+teste.getHeight() );
+
         // Part 1: Decode image
         Bitmap unscaledBitmap = ScalingUtilities.decodeResource(context.getResources(), image,
                 650, 650, ScalingUtilities.ScalingLogic.CROP);
@@ -49,6 +58,8 @@ public class CameraHostMod extends SimpleCameraHost {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         scaledBitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
         byte[] scaledData = bos.toByteArray();
+        //System.out.println("tamanho 2 :" + scaledData.length );
+
         return scaledData;
     }
 
@@ -80,7 +91,30 @@ public class CameraHostMod extends SimpleCameraHost {
     public Camera.Size getPictureSize(PictureTransaction xact,
                                       Camera.Parameters parameters) {
 
-        return (CameraUtils.getLargestPictureSize(this,parameters));
+        //return (CameraUtils.getLargestPictureSize(this,parameters));
         //return(CameraUtils.getSmallestPictureSize(parameters));
+        List<Camera.Size> list = parameters.getSupportedPictureSizes();
+        int targetWidth = 1944;
+        int width;
+        Camera.Size optimalSize= null;
+        for (Camera.Size size : list) {
+            width = size.width;
+            if (width==targetWidth) {
+                //System.out.println("IF1 :"+width );
+                optimalSize = size;
+                return optimalSize;
+            } else if (width<targetWidth){
+                //System.out.println("IF2 :"+width );
+
+                optimalSize = size;
+                return optimalSize;
+            } else if (width>targetWidth) {
+              //  System.out.println("IF3 :"+width );
+
+                optimalSize = size;
+            }
+        }
+
+        return optimalSize;
     }
 }

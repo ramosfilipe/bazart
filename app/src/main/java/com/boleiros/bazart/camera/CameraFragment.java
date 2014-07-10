@@ -11,6 +11,7 @@ import com.commonsware.cwac.camera.CameraView;
 
 public class CameraFragment extends com.commonsware.cwac.camera.CameraFragment {
     private static final String TAG = "CameraFragment";
+
     private ImageButton takePictureButton;
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -19,6 +20,7 @@ public class CameraFragment extends com.commonsware.cwac.camera.CameraFragment {
         View content = inflater.inflate(R.layout.camera, container, false);
         CameraView cameraView = (CameraView) content.findViewById(R.id.camera);
         setCameraView(cameraView);
+
         ImageButton buttonphotook= (ImageButton) content.findViewById(R.id.buttonphotook);
         buttonphotook.setVisibility(View.GONE);
         ImageButton buttonphotorestart= (ImageButton) content.findViewById(R.id.buttonphotorestart);
@@ -33,6 +35,7 @@ public class CameraFragment extends com.commonsware.cwac.camera.CameraFragment {
                 buttonphotook.setVisibility(View.VISIBLE);
                 ImageButton buttonphotorestart= (ImageButton) getActivity().findViewById(R.id.buttonphotorestart);
                 buttonphotorestart.setVisibility(View.VISIBLE);
+
                 buttonphotorestart.setOnClickListener(new View.OnClickListener() {
 
                     @Override

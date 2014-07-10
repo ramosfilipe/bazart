@@ -39,8 +39,8 @@
             android:id="@+id/framebaixo"
             android:clickable="false">
             <ImageButton
-                android:layout_width="151dp"
-                android:layout_height="161dp"
+                android:layout_width="116dp"
+                android:layout_height="match_parent"
                 android:id="@+id/takePictureButton"
                 android:background="@null"
                 android:src="@drawable/lenssmall"
@@ -48,36 +48,3 @@
         </FrameLayout>
     </LinearLayout>
 </FrameLayout>
-
-
-
-
-
-
-
-
-    <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent">-->
-    <!--<FrameLayout-->
-        <!--android:layout_width="match_parent"-->
-
-        <!--android:layout_height="80dp"-->
-        <!--android:background="#94ffffff"></FrameLayout>-->
-    <!--<com.commonsware.cwac.camera.CameraView-->
-        <!--android:id="@+id/camera"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"/>-->
-
-    <!--<Button-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_marginBottom="16dip"-->
-        <!--android:layout_marginRight="16dip"-->
-        <!--android:text="Hi!">-->
-    <!--</Button>-->
-
-<!--</LinearLayout>-->
-
