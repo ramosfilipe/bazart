@@ -5,17 +5,13 @@
     android:orientation="vertical"
     tools:context=".camera.InfoFragment"
     android:id="@+id/fragmentInfo"
-    android:weightSum="1"
     android:showDividers="middle"
     android:divider="@drawable/list_divider">
-
     <FrameLayout
         android:layout_width="match_parent"
-
         android:layout_height="60dp"
         android:id="@+id/frameemcima"
         android:background="#e50e0003">
-
         <ImageButton
             android:layout_width="57dp"
             android:layout_height="match_parent"
@@ -24,97 +20,93 @@
             android:id="@+id/imageButtonUpload"
             android:src="@drawable/rightarrowsmall"
              />
+        <ImageButton
+            android:layout_width="37dp"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:layout_gravity="left|center_vertical"
+            android:id="@+id/imageButtonBack"
+            android:src="@drawable/leftarrowsmall"
+            />
     </FrameLayout>
-
     <FrameLayout
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:layout_weight="0.12">
-
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="  Preço:"
-            android:textStyle="bold|italic"
-
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Preço:"
+            android:textStyle="bold"
             android:id="@+id/textViewPreco"
             android:layout_gravity="left|center_vertical" />
-
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
-            android:ems="10"
+            android:ems="12"
             android:id="@+id/editTextPreco"
             android:layout_gravity="right|center_vertical" />
-
     </FrameLayout>
-
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.15">
-
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="  Telefone:"
-            android:textStyle="bold|italic"
-
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Telefone:"
+            android:textStyle="bold"
             android:id="@+id/textViewTelefone"
             android:layout_gravity="left|center_vertical" />
-
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="phone"
-
-            android:ems="10"
+            android:ems="12"
             android:id="@+id/editTextTelefone"
             android:layout_gravity="right|center_vertical"
             android:phoneNumber="true" />
     </FrameLayout>
-
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:layout_weight="0.13">
-
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="  Hashtags:"
-            android:textStyle="bold|italic"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Hashtags:"
+            android:textStyle="bold"
             android:id="@+id/textViewHashTags"
             android:layout_gravity="left|center_vertical" />
-
         <EditText
-            android:layout_width="214dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:ems="12"
             android:id="@+id/editTextHashtags"
             android:layout_gravity="right|center_vertical" />
     </FrameLayout>
-
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="360dp">
-
+        android:layout_height="match_parent"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        >
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="360dp"
+            android:layout_height="match_parent"
             android:id="@+id/previewAntesDeEnviar"
-            android:scaleType="fitXY" />
+            android:scaleType="fitXY"
+            android:layout_gravity="center" />
     </FrameLayout>
-
-
 </LinearLayout>

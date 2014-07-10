@@ -8,13 +8,10 @@ import android.widget.ImageButton;
 
 import com.boleiros.bazart.R;
 import com.commonsware.cwac.camera.CameraView;
-import com.parse.ParseFile;
 
 public class CameraFragment extends com.commonsware.cwac.camera.CameraFragment {
     private static final String TAG = "CameraFragment";
     private ImageButton takePictureButton;
-    private ParseFile photoFile;
-
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
@@ -42,7 +39,6 @@ public class CameraFragment extends com.commonsware.cwac.camera.CameraFragment {
                     public void onClick(View v) {
                         restartPreview();
                         takePictureButton.setVisibility(View.VISIBLE);
-
                         ImageButton buttonphotook= (ImageButton) getActivity().findViewById(R.id.buttonphotook);
                         buttonphotook.setVisibility(View.GONE);
                         ImageButton buttonphotorestart= (ImageButton) getActivity().findViewById(R.id.buttonphotorestart);

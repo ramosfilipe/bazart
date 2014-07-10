@@ -87,6 +87,18 @@ public class InfoFragment extends Fragment {
                 getImage()), 0, (ActivityStore.getInstance(this.getActivity()).
                 getImage().length));
         preview.setImageBitmap(bit);
+        ImageButton botaoVoltar = (ImageButton)v.findViewById(R.id.imageButtonBack);
+        botaoVoltar.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                com.commonsware.cwac.camera.CameraFragment current=new CameraFragment();
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.container, current).commit();
+            }
+        });
+
+
         ImageButton botaoEnvia = (ImageButton)v.findViewById(R.id.imageButtonUpload);
         botaoEnvia.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,13 +108,11 @@ public class InfoFragment extends Fragment {
                 EditText preco = (EditText) getActivity().findViewById(R.id.editTextPreco);
                 EditText telefone = (EditText)getActivity().findViewById(R.id.editTextTelefone);
               //  EditText hashtags = (EditText)v.findViewById(R.id.editTextPreco);
-
                 Produto produto = new Produto();
                 produto.setAuthor(ParseUser.getCurrentUser());
                 produto.setPhotoFile(photoFile);
                 produto.setPhoneNumber(telefone.getText().toString());
                 produto.setPrice(preco.getText().toString());
-
                 produto.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(com.parse.ParseException e) {
@@ -114,7 +124,6 @@ public class InfoFragment extends Fragment {
                             Toast.makeText(getActivity(),"Produto anunciado!",Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(getActivity(),Feed.class);
                             startActivity(intent);                        }
-
                     }
 
 
@@ -124,9 +133,6 @@ public class InfoFragment extends Fragment {
 
 
             });
-
-        //preview.setImageBitmap(Bitmap.createScaledBitmap(bit,120,120,false));
-
         return v;
     }
 

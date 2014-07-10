@@ -64,7 +64,8 @@ public class CustomCard extends Card {
         if(viewFoto!=null)
             try {
                 byte[] fotoByte = foto.getData();
-                Bitmap bitmap = BitmapFactory.decodeByteArray(fotoByte,0,fotoByte.length);
+               Bitmap bitmap = BitmapFactory.decodeByteArray(fotoByte,0,fotoByte.length);
+
                 viewFoto.setImageBitmap(bitmap);
             } catch (ParseException e) {
                 e.printStackTrace();

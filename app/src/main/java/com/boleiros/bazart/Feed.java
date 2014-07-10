@@ -22,13 +22,10 @@ import com.parse.ParseUser;
 import com.parse.ui.ParseLoginBuilder;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import it.gmariotti.cardslib.library.internal.Card;
 import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
-import it.gmariotti.cardslib.library.internal.CardHeader;
-import it.gmariotti.cardslib.library.internal.CardThumbnail;
 import it.gmariotti.cardslib.library.view.CardListView;
 
 
@@ -141,17 +138,19 @@ public class Feed extends Activity {
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_feed, container, false);
             ParseQuery<Produto> query  = ParseQuery.getQuery("Produto");
+            query.orderByDescending("createdAt");
             query.findInBackground(new FindCallback<Produto>() {
                 @Override
                 public void done(List<Produto> parseObjects, com.parse.ParseException e) {
                     if (e == null) {
-                        Collections.reverse(parseObjects);
+                        //Collections.reverse(parseObjects);
                         for (Produto produto : parseObjects) {
                             Card card = new CustomCard(getActivity(), produto.getPrice(), produto.getPhoneNumber(), produto.getPhotoFile());
                             listaTeste.add(card);
                         }
                         CardListView listaCards = (CardListView) getActivity().findViewById(R.id.listaCards);
                         CardArrayAdapter mCardArrayAdapter = new CardArrayAdapter(getActivity(), listaTeste);
+
                         if (listaCards != null) {
                             listaCards.removeAllViewsInLayout();
                             listaCards.setAdapter(mCardArrayAdapter);
@@ -169,40 +168,16 @@ public class Feed extends Activity {
             });
 
             ImageButton camera = (ImageButton) rootView.findViewById(R.id.cameraButton);
-//            Card teste = new Card(this.getActivity());
-//            CardHeader teste2 = new CardHeader(this.getActivity());
-//            teste2.setTitle("testee");
-//            CardThumbnail teste3 = new CardThumbnail(this.getActivity());
-//            teste3.setDrawableResource(R.drawable.cerveja);
-//
-//            teste.addCardThumbnail(teste3);
-//            teste.addCardHeader(teste2);
-
-
-           // novoTeste.setInnerLayout(R.layout.inside_card);
-            //listaTeste.add(novoTeste);
-
-
             camera.setOnClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
-                   // Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    //startActivityForResult(intent,PICK_IMAGE);
                     Intent intent = new Intent(getActivity(),CameraActivity.class);
                     startActivity(intent);
                 }
             });
             return rootView;
         }
-//        @Override
-//        public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//            if (requestCode == PICK_IMAGE && resultCode == RESULT_OK) {
-//                Bitmap photo = (Bitmap) data.getExtras().get("data");
-//                ImageView imageView = (ImageView) this.getView().findViewById(R.id.imageView);
-//                imageView.setImageBitmap(photo);
-//            }
-//        }
     }
 
 }

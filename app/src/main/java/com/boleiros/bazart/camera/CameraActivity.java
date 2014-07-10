@@ -16,9 +16,7 @@ public class CameraActivity extends Activity implements CameraHostProvider , OnF
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_camera);
-
         com.commonsware.cwac.camera.CameraFragment current=new CameraFragment();
-
         getFragmentManager().beginTransaction()
                 .replace(R.id.container, current).commit();
     }
