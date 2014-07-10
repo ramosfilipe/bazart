@@ -1,7 +1,7 @@
 apply plugin: 'checkstyle'
 apply plugin: 'pmd'
 
-check.dependsOn  'findbugs', 'pmd'
+check.dependsOn 'checkstyle', 'pmd'
 configurations.all {
     resolutionStrategy {
         force 'xml-apis:xml-apis:1.0.b2'
