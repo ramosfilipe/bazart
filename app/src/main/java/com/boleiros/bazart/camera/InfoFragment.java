@@ -99,10 +99,12 @@ public class InfoFragment extends Fragment {
         });
 
 
-        ImageButton botaoEnvia = (ImageButton)v.findViewById(R.id.imageButtonUpload);
+        final ImageButton botaoEnvia = (ImageButton)v.findViewById(R.id.imageButtonUpload);
+        botaoEnvia.setVisibility(View.VISIBLE);
         botaoEnvia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                botaoEnvia.setVisibility(View.GONE);
                 ParseFile photoFile = new ParseFile("fotoProduto.jpg", ActivityStore.getInstance(getActivity()).
                         getImage());
                 EditText preco = (EditText) getActivity().findViewById(R.id.editTextPreco);
