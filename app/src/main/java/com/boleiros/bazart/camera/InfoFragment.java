@@ -106,13 +106,26 @@ public class InfoFragment extends Fragment {
                 ParseFile photoFile = new ParseFile("fotoProduto.jpg", ActivityStore.getInstance(getActivity()).
                         getImage());
                 EditText preco = (EditText) getActivity().findViewById(R.id.editTextPreco);
-                EditText telefone = (EditText)getActivity().findViewById(R.id.editTextTelefone);
+                EditText telefoneDDD = (EditText)getActivity().findViewById(R.id.editTextTelefoneDDD);
+                EditText telefonePrefixo = (EditText)getActivity().findViewById(R.id.editTextTelefoneEsquerda);
+                EditText telefoneSufixo = (EditText)getActivity().findViewById(R.id.editTextTelefoneDireita);
+                String telefone = "("+telefoneDDD.getText().toString()+") "+telefonePrefixo.getText().toString()+" - "+ telefoneSufixo.getText().toString();
+
+
+                String precoStr = preco.getText().toString();
+                if(precoStr.contains(".")){
+                    precoStr.replace(".",",");
+                    precoStr = "R$ "+precoStr;
+                } else {
+                    precoStr = "R$ " + precoStr + ",00";
+                }
+
               //  EditText hashtags = (EditText)v.findViewById(R.id.editTextPreco);
                 Produto produto = new Produto();
                 produto.setAuthor(ParseUser.getCurrentUser());
                 produto.setPhotoFile(photoFile);
-                produto.setPhoneNumber(telefone.getText().toString());
-                produto.setPrice(preco.getText().toString());
+                produto.setPhoneNumber(telefone);
+                produto.setPrice(precoStr);
                 produto.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(com.parse.ParseException e) {

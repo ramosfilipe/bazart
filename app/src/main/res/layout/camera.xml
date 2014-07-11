@@ -41,7 +41,7 @@
             <ImageButton
                 android:layout_width="116dp"
                 android:layout_height="match_parent"
-                android:id="@+id/takePictureButton"
+                android:id="@+id/"
                 android:background="@null"
                 android:src="@drawable/lenssmall"
                 android:layout_gravity="center" />

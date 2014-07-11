@@ -14,20 +14,54 @@
 
         android:layout_height="57dp"
         android:id="@+id/framePrecoEContato">
-        <TextView
-            android:layout_width="190dp"
-            android:layout_height="match_parent"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/preco"
-            android:layout_gravity="left|center_vertical" />
 
-        <TextView
+        <FrameLayout
             android:layout_width="190dp"
-            android:layout_height="match_parent"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
-            android:id="@+id/contato"
-            android:layout_gravity="right|center_vertical" />
+            android:layout_height="fill_parent"
+            android:layout_gravity="left|center_vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text=" contato"
+                android:id="@+id/textView"
+                android:layout_gravity="left|top" />
+
+            <TextView
+                android:layout_width="170dp"
+                android:layout_height="35dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/contato"
+                android:layout_gravity="center_horizontal|bottom"
+                android:singleLine="false"
+                android:gravity="center" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="190dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="right|center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="    preço"
+                android:id="@+id/textView2"
+                android:layout_gravity="left|top" />
+
+            <TextView
+                android:layout_width="190dp"
+                android:layout_height="37dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/preco"
+                android:layout_gravity="center_horizontal|bottom"
+                android:textSize="20dp"
+                android:gravity="center" />
+        </FrameLayout>
+
     </FrameLayout>
 
     <FrameLayout
@@ -38,8 +72,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Hashtags"
             android:id="@+id/textView3"
             android:layout_gravity="center" />
     </FrameLayout>
+
 </LinearLayout>
