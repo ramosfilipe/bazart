@@ -3,8 +3,11 @@ package com.boleiros.bazart;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -16,7 +19,9 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.boleiros.bazart.camera.CameraActivity;
+import com.boleiros.bazart.util.LruCacheUtil;
 import com.parse.FindCallback;
+import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.ui.ParseLoginBuilder;
@@ -144,8 +149,17 @@ public class Feed extends Activity {
                 public void done(List<Produto> parseObjects, com.parse.ParseException e) {
                     if (e == null) {
                         //Collections.reverse(parseObjects);
+
+                        for(Produto produto: parseObjects){
+                            try {
+                                Bitmap bit = BitmapFactory.decodeByteArray(produto.getPhotoFile().getData(),0,produto.getPhotoFile().getData().length);
+                                LruCacheUtil.getInstance(getActivity()).addBitmap(parseObjects.indexOf(produto)+"",bit);
+                            } catch (ParseException e1) {
+                                e1.printStackTrace();
+                            }
+                        }
                         for (Produto produto : parseObjects) {
-                            Card card = new CustomCard(getActivity(), produto.getPrice(), produto.getPhoneNumber(), produto.getPhotoFile());
+                            Card card = new CustomCard(getActivity(), produto.getPrice(), produto.getPhoneNumber(), parseObjects.indexOf(produto)+"");
                             listaTeste.add(card);
                         }
                         CardListView listaCards = (CardListView) getActivity().findViewById(R.id.listaCards);

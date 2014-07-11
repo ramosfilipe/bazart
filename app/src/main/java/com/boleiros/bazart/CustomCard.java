@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.boleiros.bazart.util.LruCacheUtil;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 
@@ -20,17 +21,17 @@ public class CustomCard extends Card {
     protected ImageView viewFoto;
     protected TextView viewPreco, viewContato, viewHashtags;
     String preco, contato;
-    ParseFile foto;
+    String indexFoto;
 
     /**
      * Constructor with a custom inner layout
      * @param context
      */
-    public CustomCard(Context context, String preco, String contato, ParseFile foto) {
+    public CustomCard(Context context, String preco, String contato, String indexFoto) {
         this(context, R.layout.inside_card);
         this.preco = preco;
         this.contato = contato;
-        this.foto = foto;
+        this.indexFoto = indexFoto;
     }
 
     /**
@@ -62,13 +63,6 @@ public class CustomCard extends Card {
             viewContato.setText(contato);
         viewFoto = (ImageView)parent.findViewById(R.id.imageViewCard);
         if(viewFoto!=null)
-            try {
-                byte[] fotoByte = foto.getData();
-               Bitmap bitmap = BitmapFactory.decodeByteArray(fotoByte,0,fotoByte.length);
-
-                viewFoto.setImageBitmap(bitmap);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
+            viewFoto.setImageBitmap(LruCacheUtil.getInstance(getContext()).getBitmap(indexFoto));
     }
 }
