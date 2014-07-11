@@ -37,7 +37,7 @@
             android:layout_height="match_parent"
             android:background="#e50e0003"
             android:id="@+id/framebaixo"
-            android:clickable="false">
+            android:clickable="false" >
             <ImageButton
                 android:layout_width="116dp"
                 android:layout_height="match_parent"
