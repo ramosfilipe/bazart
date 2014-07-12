@@ -1,4 +1,4 @@
-package com.boleiros.bazart;
+package com.boleiros.bazart.modelo;
 import com.parse.ParseClassName;
 import com.parse.ParseFile;
 import com.parse.ParseObject;

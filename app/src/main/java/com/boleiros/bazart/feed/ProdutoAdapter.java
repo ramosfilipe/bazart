@@ -1,4 +1,4 @@
-package com.boleiros.bazart.camera.feed;
+package com.boleiros.bazart.feed;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -13,22 +13,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.boleiros.bazart.Produto;
+import com.boleiros.bazart.modelo.Produto;
 import com.boleiros.bazart.R;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
-
-public class ListAdapter extends BaseAdapter {
-    Context context;
-    List<Produto> items;
+/**
+ * Created by Filipe Ramos on 11/07/14.
+ *
+ */
+public class ProdutoAdapter extends BaseAdapter {
+    private Context context;
+    private List<Produto> items;
+    private Bitmap mPlaceHolderBitmap;
     private LruCache<String, Bitmap> mMemoryCache;
-    public ListAdapter(Context context, List<Produto> items) {
+    public ProdutoAdapter(Context context, List<Produto> items) {
         this.context = context;
         this.items = items;
+        mPlaceHolderBitmap = decodeSampledBitmapFromResource(context.getResources(), R.drawable.loadingamupletapreta, 120, 120);
         // Get memory class of this device, exceeding this amount will throw an
         // OutOfMemory exception.
         final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
@@ -65,35 +71,48 @@ public class ListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int arg0, View convertView, ViewGroup arg2) {
-        ImageView img;
+        ViewHolder holderPattern;
+        ImageView img = null;
         if(convertView==null) {
             LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.list_element_produto, null);
-             img = (ImageView) convertView.findViewById(R.id.imageView);
+            holderPattern = new ViewHolder();
+            holderPattern.textViewSetContato = (TextView)convertView.findViewById(R.id.textViewSetContato);
+            holderPattern.textViewSetPreco = (TextView)convertView.findViewById(R.id.textViewSetPreco);
+            holderPattern.textViewSetHashTags = (TextView)convertView.findViewById(R.id.textViewSetHashTags);
+            holderPattern.fotoProduto = (ImageView) convertView.findViewById(R.id.imageView);
+            convertView.setTag(holderPattern);
         }else {
-             img = (ImageView) convertView.findViewById(R.id.imageView);
+            holderPattern = (ViewHolder) convertView.getTag();
         }
-      // int resId = context.getResources().getIdentifier(items.get(arg0).,
+        holderPattern.textViewSetContato.setText(items.get(arg0).getPhoneNumber());
+        holderPattern.textViewSetPreco.setText(items.get(arg0).getPrice());
+        holderPattern.textViewSetHashTags.setText("");
+
+        // int resId = context.getResources().getIdentifier(items.get(arg0).,
                 //"drawable", context.getPackageName());
         ParseFile pf = items.get(arg0).getPhotoFile();
-        loadBitmap(pf, img);
+        loadBitmap(pf, holderPattern.fotoProduto);
         return convertView;
     }
-
+    static class ViewHolder {
+       // TextView textViewPreco;
+        TextView textViewSetPreco;
+       // TextView textViewContato;
+        TextView textViewSetContato;
+       // TextView textViewHashTags;
+        TextView textViewSetHashTags;
+        ImageView fotoProduto;
+    }
     public void loadBitmap(ParseFile pf, ImageView imageView) {
         if (cancelPotentialWork(pf.hashCode(), imageView)) {
             final BitmapWorkerTask task = new BitmapWorkerTask(imageView);
-            //imageView.setBackgroundResource(R.drawable.loading);
             final AsyncDrawable asyncDrawable =
-                    new AsyncDrawable(null, null, task);
+                    new AsyncDrawable(context.getResources(),mPlaceHolderBitmap , task);
             imageView.setImageDrawable(asyncDrawable);
             task.execute(pf);
         }
     }
-
-
-
-
     static class AsyncDrawable extends BitmapDrawable {
         private final WeakReference<BitmapWorkerTask> bitmapWorkerTaskReference;
         public AsyncDrawable(Resources res, Bitmap bitmap,
@@ -155,7 +174,8 @@ public class ListAdapter extends BaseAdapter {
                 return getBitmapFromMemCache(String.valueOf(params[0]));
             }
             try {
-                 bitmap  = BitmapFactory.decodeByteArray(params[0].getData(), 0, params[0].getData().length);
+                 //bitmap  = BitmapFactory.decodeByteArray(params[0].getData(), 0, params[0].getData().length);
+               bitmap = decodeSampledBitmapFromResource(params[0],650,650);
             } catch (ParseException e1) {
                 e1.printStackTrace();
             }
@@ -186,13 +206,13 @@ public class ListAdapter extends BaseAdapter {
     public Bitmap getBitmapFromMemCache(String key) {
         return (Bitmap) mMemoryCache.get(key);
     }
-    public static Bitmap decodeSampledBitmapFromResource(Resources res,
-                                                         int resId, int reqWidth, int reqHeight) {
+    public static Bitmap decodeSampledBitmapFromResource(ParseFile pf,
+                                                          int reqWidth, int reqHeight) throws ParseException {
 
         // First decode with inJustDecodeBounds=true to check dimensions
         final BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
-        BitmapFactory.decodeResource(res, resId, options);
+        BitmapFactory.decodeByteArray(pf.getData(), 0, pf.getData().length,options);
 
         // Calculate inSampleSize
         options.inSampleSize = calculateInSampleSize(options, reqWidth,
@@ -200,7 +220,7 @@ public class ListAdapter extends BaseAdapter {
 
         // Decode bitmap with inSampleSize set
         options.inJustDecodeBounds = false;
-        return BitmapFactory.decodeResource(res, resId, options);
+        return BitmapFactory.decodeByteArray(pf.getData(), 0, pf.getData().length,options);
     }
 
     public static int calculateInSampleSize(BitmapFactory.Options options,
@@ -227,5 +247,16 @@ public class ListAdapter extends BaseAdapter {
 
         return inSampleSize;
     }
-
+    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
+                                                         int reqWidth, int reqHeight) {
+        // First decode with inJustDecodeBounds=true to check dimensions
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(res, resId, options);
+        // Calculate inSampleSize
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+        // Decode bitmap with inSampleSize set
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeResource(res, resId, options);
+    }
 }

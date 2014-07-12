@@ -1,4 +1,4 @@
-package com.boleiros.bazart.camera.feed;
+package com.boleiros.bazart.feed;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -8,7 +8,6 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -16,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
-import com.boleiros.bazart.Produto;
+import com.boleiros.bazart.modelo.Produto;
 import com.boleiros.bazart.R;
 import com.boleiros.bazart.camera.CameraActivity;
 import com.parse.FindCallback;
@@ -24,11 +23,7 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.ui.ParseLoginBuilder;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import it.gmariotti.cardslib.library.internal.Card;
-
 
 public class Feed extends Activity {
 
@@ -116,7 +111,6 @@ public class Feed extends Activity {
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
         private final int PICK_IMAGE = 0;
-        ArrayList<Card> listaTeste;
 
         /**
          * Returns a new instance of this fragment for the given section
@@ -131,32 +125,38 @@ public class Feed extends Activity {
         }
 
         public PlaceholderFragment() {
-            listaTeste = new ArrayList<Card>();
+
         }
 
         @Override
-        public View onCreateView(LayoutInflater inflater, final ViewGroup container,
-                Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_feed, container, false);
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+
             ParseQuery<Produto> query  = ParseQuery.getQuery("Produto");
             query.orderByDescending("createdAt");
             query.findInBackground(new FindCallback<Produto>() {
                 @Override
                 public void done(List<Produto> parseObjects, com.parse.ParseException e) {
                     if (e == null) {
-                        ListAdapter testando = new ListAdapter(getActivity(),parseObjects);
-                        ListView lista = (ListView) getActivity().findViewById(R.id.listaCards);
-                        if(lista!=null){
-                            lista.setAdapter(testando);
+                        ProdutoAdapter produtoAdapter = new ProdutoAdapter(getActivity(),parseObjects);
+                        ListView listaDeExibicao = (ListView) getActivity().findViewById(R.id.listaCards);
+                        if(listaDeExibicao!=null){
+                            listaDeExibicao.setAdapter(produtoAdapter);
                         }
-                        Log.d("THE OBJECT", "" + parseObjects.size());
-                        String name = parseObjects.toString();
-                        Log.d("THE QUERY ", "" + name);
+//                        Log.d("THE OBJECT", "" + parseObjects.size());
+//                        String name = parseObjects.toString();
+//                        Log.d("THE QUERY ", "" + name);
                     } else {
-                        Log.d("ERROR:", "" + e.getMessage());
+//                        Log.d("ERROR:", "" + e.getMessage());
                     }
                 }
             });
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, final ViewGroup container,
+                Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_feed, container, false);
             ImageButton camera = (ImageButton) rootView.findViewById(R.id.cameraButton);
             camera.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -169,56 +169,3 @@ public class Feed extends Activity {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//            ParseQuery<Produto> query  = ParseQuery.getQuery("Produto");
-//            query.orderByDescending("createdAt");
-//            query.findInBackground(new FindCallback<Produto>() {
-//                @Override
-//                public void done(List<Produto> parseObjects, com.parse.ParseException e) {
-//                    if (e == null) {
-//                        //Collections.reverse(parseObjects);
-//
-//                        for(Produto produto: parseObjects){
-//                            try {
-//                                Bitmap bit = BitmapFactory.decodeByteArray(produto.getPhotoFile().getData(),0,produto.getPhotoFile().getData().length);
-//                                LruCacheUtil.getInstance(getActivity()).addBitmap(parseObjects.indexOf(produto)+"",bit);
-//                            } catch (ParseException e1) {
-//                                e1.printStackTrace();
-//                            }
-//                        }
-//                        for (Produto produto : parseObjects) {
-//                            Card card = new CustomCard(getActivity(), produto.getPrice(), produto.getPhoneNumber(), parseObjects.indexOf(produto)+"");
-//                            listaTeste.add(card);
-//                        }
-//                        CardListView listaCards = (CardListView) getActivity().findViewById(R.id.listaCards);
-//                        CardArrayAdapter mCardArrayAdapter = new CardArrayAdapter(getActivity(), listaTeste);
-//
-//                        if (listaCards != null) {
-//                            listaCards.removeAllViewsInLayout();
-//                            listaCards.setAdapter(mCardArrayAdapter);
-//                        }
-//                        Log.d("THE OBJECT", "" + parseObjects.size());
-//
-//
-//                        String name = parseObjects.toString();
-//                        Log.d("THE QUERY ", "" + name);
-//
-//                    } else {
-//                        Log.d("ERROR:", "" + e.getMessage());
-//                    }
-//                }
-//            });
-

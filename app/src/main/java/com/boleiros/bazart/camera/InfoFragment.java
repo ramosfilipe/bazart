@@ -7,6 +7,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.telephony.PhoneNumberFormattingTextWatcher;
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +17,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.boleiros.bazart.camera.feed.Feed;
-import com.boleiros.bazart.Produto;
 import com.boleiros.bazart.R;
+import com.boleiros.bazart.feed.Feed;
+import com.boleiros.bazart.modelo.Produto;
 import com.boleiros.bazart.util.ActivityStore;
+import com.boleiros.bazart.util.AmountOnFocusChangeListener;
+import com.boleiros.bazart.util.NumericRangeFilter;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
@@ -37,7 +41,8 @@ public class InfoFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    static final InputFilter[] FILTERS = new InputFilter[] {new NumericRangeFilter(0.00, 999999.99)};
+    static final View.OnFocusChangeListener ON_FOCUS = new AmountOnFocusChangeListener();
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -69,6 +74,8 @@ public class InfoFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         if (getArguments() != null) {
 
             mParam1 = getArguments().getString(ARG_PARAM1);
@@ -80,8 +87,15 @@ public class InfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         View v = inflater.inflate(R.layout.fragment_info, container, false);
         ImageView preview = (ImageView) v.findViewById(R.id.previewAntesDeEnviar);
+        EditText telefone = (EditText) v.findViewById(R.id.editTextPhoneNumber);
+        telefone.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
+
+        EditText preco = (EditText) v.findViewById(R.id.editTextPreco);
+        preco.setFilters(FILTERS);
+       // preco.setOnFocusChangeListener(ON_FOCUS);
 
         Bitmap bit = BitmapFactory.decodeByteArray((ActivityStore.getInstance(this.getActivity()).
                 getImage()), 0, (ActivityStore.getInstance(this.getActivity()).
@@ -107,27 +121,21 @@ public class InfoFragment extends Fragment {
                 botaoEnvia.setVisibility(View.GONE);
                 ParseFile photoFile = new ParseFile("fotoProduto.jpg", ActivityStore.getInstance(getActivity()).
                         getImage());
-                EditText preco = (EditText) getActivity().findViewById(R.id.editTextPreco);
-                EditText telefoneDDD = (EditText)getActivity().findViewById(R.id.editTextTelefoneDDD);
-                EditText telefonePrefixo = (EditText)getActivity().findViewById(R.id.editTextTelefoneEsquerda);
-                EditText telefoneSufixo = (EditText)getActivity().findViewById(R.id.editTextTelefoneDireita);
-                String telefone = "("+telefoneDDD.getText().toString()+") "+telefonePrefixo.getText().toString()+" - "+ telefoneSufixo.getText().toString();
-
-
-                String precoStr = preco.getText().toString();
-                if(precoStr.contains(".")){
-                    precoStr.replace(".",",");
-                    precoStr = "R$ "+precoStr;
-                } else {
-                    precoStr = "R$ " + precoStr + ",00";
-                }
-
+                EditText preco1 = (EditText) getActivity().findViewById(R.id.editTextPreco);
+                EditText telefone1 = (EditText) getActivity().findViewById(R.id.editTextPhoneNumber);
+//                String precoStr = preco.getText().toString();
+//                if(precoStr.contains(".")){
+//                    precoStr.replace(".",",");
+//                    precoStr = "R$ "+precoStr;
+//                } else {
+//                    precoStr = "R$ " + precoStr + ",00";
+//                }
               //  EditText hashtags = (EditText)v.findViewById(R.id.editTextPreco);
                 Produto produto = new Produto();
                 produto.setAuthor(ParseUser.getCurrentUser());
                 produto.setPhotoFile(photoFile);
-                produto.setPhoneNumber(telefone);
-                produto.setPrice(precoStr);
+                produto.setPhoneNumber(telefone1.getText().toString());
+                produto.setPrice(preco1.getText().toString());
                 produto.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(com.parse.ParseException e) {

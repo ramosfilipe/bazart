@@ -1,10 +1,13 @@
 package com.boleiros.bazart;
 import android.app.Application;
+
+import com.boleiros.bazart.modelo.Produto;
 import com.parse.Parse;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseObject;
 /**
- * Created by Filipe on 03/07/14.
+ * Created by Filipe Ramos on 03/07/14.
+ *
  */
 public class Bazart extends Application{
         @Override

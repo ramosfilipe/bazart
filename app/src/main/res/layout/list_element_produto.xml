@@ -25,7 +25,60 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_gravity="center_horizontal"></FrameLayout>
+        android:layout_gravity="center_horizontal"
+        android:background="#ffffffff">
+
+        <TextView
+            android:typeface="sans"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="  Contato:"
+            android:id="@+id/textViewContato"
+            android:layout_gravity="left|top" />
+
+        <TextView
+            android:typeface="sans"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="  Preço:"
+            android:id="@+id/textViewPreco"
+            android:layout_gravity="left|center_vertical" />
+
+        <TextView
+            android:typeface="sans"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="  HashTags:"
+            android:id="@+id/textViewHashTags"
+            android:layout_gravity="left|bottom" />
+
+        <TextView
+            android:layout_width="164dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/textViewSetContato"
+            android:layout_gravity="center_horizontal|top" />
+
+        <TextView
+            android:layout_width="164dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/textViewSetPreco"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:layout_width="164dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/textViewSetHashTags"
+            android:layout_gravity="center_horizontal|bottom" />
+    </FrameLayout>
 
 
 </LinearLayout>
