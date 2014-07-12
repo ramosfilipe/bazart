@@ -11,17 +11,16 @@
     android:id="@+id/relativeID">
 
 
-    <it.gmariotti.cardslib.library.view.CardListView
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="80px"
         android:id="@+id/listaCards"
-        card:list_card_layout_resourceID="@layout/lista_cards_feed"
         android:layout_above="@+id/framebaixofeed"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"></it.gmariotti.cardslib.library.view.CardListView>
+        android:layout_alignParentEnd="true"></ListView>
 
     <FrameLayout
         android:id="@+id/framebaixofeed"

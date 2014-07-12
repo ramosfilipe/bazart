@@ -1,13 +1,10 @@
-package com.boleiros.bazart;
+package com.boleiros.bazart.camera.feed;
 
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -17,11 +14,12 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ListView;
 
+import com.boleiros.bazart.Produto;
+import com.boleiros.bazart.R;
 import com.boleiros.bazart.camera.CameraActivity;
-import com.boleiros.bazart.util.LruCacheUtil;
 import com.parse.FindCallback;
-import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.ui.ParseLoginBuilder;
@@ -30,8 +28,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.gmariotti.cardslib.library.internal.Card;
-import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
-import it.gmariotti.cardslib.library.view.CardListView;
 
 
 public class Feed extends Activity {
@@ -139,7 +135,7 @@ public class Feed extends Activity {
         }
 
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+        public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_feed, container, false);
             ParseQuery<Produto> query  = ParseQuery.getQuery("Produto");
@@ -148,42 +144,21 @@ public class Feed extends Activity {
                 @Override
                 public void done(List<Produto> parseObjects, com.parse.ParseException e) {
                     if (e == null) {
-                        //Collections.reverse(parseObjects);
-
-                        for(Produto produto: parseObjects){
-                            try {
-                                Bitmap bit = BitmapFactory.decodeByteArray(produto.getPhotoFile().getData(),0,produto.getPhotoFile().getData().length);
-                                LruCacheUtil.getInstance(getActivity()).addBitmap(parseObjects.indexOf(produto)+"",bit);
-                            } catch (ParseException e1) {
-                                e1.printStackTrace();
-                            }
-                        }
-                        for (Produto produto : parseObjects) {
-                            Card card = new CustomCard(getActivity(), produto.getPrice(), produto.getPhoneNumber(), parseObjects.indexOf(produto)+"");
-                            listaTeste.add(card);
-                        }
-                        CardListView listaCards = (CardListView) getActivity().findViewById(R.id.listaCards);
-                        CardArrayAdapter mCardArrayAdapter = new CardArrayAdapter(getActivity(), listaTeste);
-
-                        if (listaCards != null) {
-                            listaCards.removeAllViewsInLayout();
-                            listaCards.setAdapter(mCardArrayAdapter);
+                        ListAdapter testando = new ListAdapter(getActivity(),parseObjects);
+                        ListView lista = (ListView) getActivity().findViewById(R.id.listaCards);
+                        if(lista!=null){
+                            lista.setAdapter(testando);
                         }
                         Log.d("THE OBJECT", "" + parseObjects.size());
-
-
                         String name = parseObjects.toString();
                         Log.d("THE QUERY ", "" + name);
-
                     } else {
                         Log.d("ERROR:", "" + e.getMessage());
                     }
                 }
             });
-
             ImageButton camera = (ImageButton) rootView.findViewById(R.id.cameraButton);
             camera.setOnClickListener(new View.OnClickListener() {
-
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getActivity(),CameraActivity.class);
@@ -193,5 +168,57 @@ public class Feed extends Activity {
             return rootView;
         }
     }
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//            ParseQuery<Produto> query  = ParseQuery.getQuery("Produto");
+//            query.orderByDescending("createdAt");
+//            query.findInBackground(new FindCallback<Produto>() {
+//                @Override
+//                public void done(List<Produto> parseObjects, com.parse.ParseException e) {
+//                    if (e == null) {
+//                        //Collections.reverse(parseObjects);
+//
+//                        for(Produto produto: parseObjects){
+//                            try {
+//                                Bitmap bit = BitmapFactory.decodeByteArray(produto.getPhotoFile().getData(),0,produto.getPhotoFile().getData().length);
+//                                LruCacheUtil.getInstance(getActivity()).addBitmap(parseObjects.indexOf(produto)+"",bit);
+//                            } catch (ParseException e1) {
+//                                e1.printStackTrace();
+//                            }
+//                        }
+//                        for (Produto produto : parseObjects) {
+//                            Card card = new CustomCard(getActivity(), produto.getPrice(), produto.getPhoneNumber(), parseObjects.indexOf(produto)+"");
+//                            listaTeste.add(card);
+//                        }
+//                        CardListView listaCards = (CardListView) getActivity().findViewById(R.id.listaCards);
+//                        CardArrayAdapter mCardArrayAdapter = new CardArrayAdapter(getActivity(), listaTeste);
+//
+//                        if (listaCards != null) {
+//                            listaCards.removeAllViewsInLayout();
+//                            listaCards.setAdapter(mCardArrayAdapter);
+//                        }
+//                        Log.d("THE OBJECT", "" + parseObjects.size());
+//
+//
+//                        String name = parseObjects.toString();
+//                        Log.d("THE QUERY ", "" + name);
+//
+//                    } else {
+//                        Log.d("ERROR:", "" + e.getMessage());
+//                    }
+//                }
+//            });
+

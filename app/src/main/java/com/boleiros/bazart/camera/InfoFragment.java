@@ -15,7 +15,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.boleiros.bazart.Feed;
+import com.boleiros.bazart.camera.feed.Feed;
 import com.boleiros.bazart.Produto;
 import com.boleiros.bazart.R;
 import com.boleiros.bazart.util.ActivityStore;

@@ -1,4 +1,4 @@
-package com.boleiros.bazart;
+package com.boleiros.bazart.util;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.boleiros.bazart.R;
 import com.boleiros.bazart.util.LruCacheUtil;
 import com.parse.ParseException;
 import com.parse.ParseFile;
