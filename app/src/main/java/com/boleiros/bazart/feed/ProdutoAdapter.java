@@ -87,7 +87,7 @@ public class ProdutoAdapter extends BaseAdapter {
             holderPattern = (ViewHolder) convertView.getTag();
         }
 
-        holderPattern.textViewSetNomeUsuario.setText(items.get(arg0).getAuthor().getUsername());
+//        holderPattern.textViewSetNomeUsuario.setText(items.get(arg0).getAuthor().getUsername());
         holderPattern.textViewSetContato.setText(items.get(arg0).getPhoneNumber());
         holderPattern.textViewSetPreco.setText(items.get(arg0).getPrice());
         holderPattern.textViewSetHashTags.setText("");
