@@ -7,6 +7,21 @@
     android:weightSum="1">
     <FrameLayout
         android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="  Anunciado por:"
+            android:id="@+id/textViewAnunciadoPor"
+            android:layout_gravity="left|center_vertical"
+            android:textStyle="italic" />
+
+
+    </FrameLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="375dp"
         android:layout_weight="0.17">
         <ImageView
@@ -60,14 +75,7 @@
             android:id="@+id/textViewSetContato"
             android:layout_gravity="center" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="  Anunciado por:"
-            android:id="@+id/textViewAnunciadoPor"
-            android:layout_gravity="left|top"
-            android:textStyle="italic" />
+
 
         <TextView
             android:layout_width="164dp"

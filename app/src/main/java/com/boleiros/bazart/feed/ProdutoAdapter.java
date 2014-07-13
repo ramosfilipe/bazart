@@ -34,7 +34,7 @@ public class ProdutoAdapter extends BaseAdapter {
     public ProdutoAdapter(Context context, List<Produto> items) {
         this.context = context;
         this.items = items;
-        mPlaceHolderBitmap = decodeSampledBitmapFromResource(context.getResources(), R.drawable.logoresol, 120, 120);
+        mPlaceHolderBitmap = decodeSampledBitmapFromResource(context.getResources(), R.drawable.placeholderpicture, 300, 300);
         // Get memory class of this device, exceeding this amount will throw an
         // OutOfMemory exception.
         final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
