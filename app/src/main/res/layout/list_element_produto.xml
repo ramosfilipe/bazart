@@ -9,8 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="375dp"
         android:layout_weight="0.17">
-
-
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -24,7 +22,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="96dp"
         android:layout_gravity="center_horizontal"
         android:background="#ffffffff">
 
@@ -34,9 +32,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="  Contato:"
-            android:id="@+id/textViewContato"
-            android:layout_gravity="left|top" />
+            android:text="  Preço:"
+            android:id="@+id/textViewPreco"
+            android:layout_gravity="left|bottom" />
+
+        <TextView
+            android:layout_width="166dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/textViewSetPreco"
+            android:layout_gravity="center_horizontal|bottom" />
 
         <TextView
             android:typeface="sans"
@@ -44,9 +49,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="  Preço:"
-            android:id="@+id/textViewPreco"
+            android:text="  Contato:"
+            android:id="@+id/textViewContato"
             android:layout_gravity="left|center_vertical" />
+
+        <TextView
+            android:layout_width="164dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/textViewSetContato"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="  Anunciado por:"
+            android:id="@+id/textViewAnunciadoPor"
+            android:layout_gravity="left|top"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="164dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewSetNomeUsuario"
+            android:layout_gravity="center_horizontal|top" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#ffffffff">
 
         <TextView
             android:typeface="sans"
@@ -56,29 +90,14 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="  HashTags:"
             android:id="@+id/textViewHashTags"
-            android:layout_gravity="left|bottom" />
-
-        <TextView
-            android:layout_width="164dp"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/textViewSetContato"
-            android:layout_gravity="center_horizontal|top" />
-
-        <TextView
-            android:layout_width="164dp"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/textViewSetPreco"
-            android:layout_gravity="center" />
+            android:layout_gravity="left|center_vertical" />
 
         <TextView
             android:layout_width="164dp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/textViewSetHashTags"
-            android:layout_gravity="center_horizontal|bottom" />
+            android:layout_gravity="center" />
     </FrameLayout>
-
 
 </LinearLayout>

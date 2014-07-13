@@ -15,9 +15,9 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
-import com.boleiros.bazart.modelo.Produto;
 import com.boleiros.bazart.R;
 import com.boleiros.bazart.camera.CameraActivity;
+import com.boleiros.bazart.modelo.Produto;
 import com.parse.FindCallback;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -53,8 +53,6 @@ public class Feed extends Activity {
             startActivityForResult(builder.build(), 0);}
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_feed);
-
-
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.

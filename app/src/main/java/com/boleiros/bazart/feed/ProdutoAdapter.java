@@ -15,8 +15,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.boleiros.bazart.modelo.Produto;
 import com.boleiros.bazart.R;
+import com.boleiros.bazart.modelo.Produto;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 
@@ -77,6 +77,7 @@ public class ProdutoAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.list_element_produto, null);
             holderPattern = new ViewHolder();
+            holderPattern.textViewSetNomeUsuario = (TextView)convertView.findViewById(R.id.textViewSetNomeUsuario);
             holderPattern.textViewSetContato = (TextView)convertView.findViewById(R.id.textViewSetContato);
             holderPattern.textViewSetPreco = (TextView)convertView.findViewById(R.id.textViewSetPreco);
             holderPattern.textViewSetHashTags = (TextView)convertView.findViewById(R.id.textViewSetHashTags);
@@ -85,6 +86,8 @@ public class ProdutoAdapter extends BaseAdapter {
         }else {
             holderPattern = (ViewHolder) convertView.getTag();
         }
+
+        holderPattern.textViewSetNomeUsuario.setText(items.get(arg0).getAuthor().getUsername());
         holderPattern.textViewSetContato.setText(items.get(arg0).getPhoneNumber());
         holderPattern.textViewSetPreco.setText(items.get(arg0).getPrice());
         holderPattern.textViewSetHashTags.setText("");
@@ -96,7 +99,7 @@ public class ProdutoAdapter extends BaseAdapter {
         return convertView;
     }
     static class ViewHolder {
-       // TextView textViewPreco;
+        TextView textViewSetNomeUsuario;
         TextView textViewSetPreco;
        // TextView textViewContato;
         TextView textViewSetContato;
