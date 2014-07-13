@@ -1,14 +1,13 @@
 package com.boleiros.bazart.camera;
 import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.boleiros.bazart.R;
+import com.boleiros.bazart.camera.InfoFragment.OnFragmentInteractionListener;
 import com.commonsware.cwac.camera.CameraHost;
 import com.commonsware.cwac.camera.CameraHostProvider;
-import com.boleiros.bazart.camera.InfoFragment.OnFragmentInteractionListener;
 public class CameraActivity extends Activity implements CameraHostProvider , OnFragmentInteractionListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +25,9 @@ public class CameraActivity extends Activity implements CameraHostProvider , OnF
         return(new CameraHostMod(this));
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
+//    @Override
+//    public void onFragmentInteraction(Uri uri) {
+//
+//    }
 }
 
