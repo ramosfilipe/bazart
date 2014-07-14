@@ -127,6 +127,7 @@ public class InfoFragment extends Fragment {
 //                }
               //  EditText hashtags = (EditText)v.findViewById(R.id.editTextPreco);
                 Produto produto = new Produto();
+
                 produto.setAuthor(ParseUser.getCurrentUser());
                 produto.setPhotoFile(photoFile);
                 produto.setPhoneNumber(telefone1.getText().toString());

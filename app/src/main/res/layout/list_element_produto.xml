@@ -10,13 +10,20 @@
         android:layout_height="50dp">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="103dp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="  Anunciado por:"
-            android:id="@+id/textViewAnunciadoPor"
+            android:id="@+id/textViewSetHoraPostagem"
+            android:textStyle="italic"
+            android:layout_gravity="right|center_vertical" />
+
+        <TextView
+            android:layout_width="248dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewSetNomeUsuario"
+            android:textStyle="bold"
             android:layout_gravity="left|center_vertical"
-            android:textStyle="italic" />
+            android:maxLines="1" />
 
 
     </FrameLayout>
@@ -75,13 +82,6 @@
             android:id="@+id/textViewSetContato"
             android:layout_gravity="center" />
 
-
-
-        <TextView
-            android:layout_width="164dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewSetNomeUsuario"
-            android:layout_gravity="center_horizontal|top" />
 
     </FrameLayout>
 

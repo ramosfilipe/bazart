@@ -21,6 +21,7 @@ import com.parse.ParseException;
 import com.parse.ParseFile;
 
 import java.lang.ref.WeakReference;
+import java.util.Date;
 import java.util.List;
 /**
  * Created by Filipe Ramos on 11/07/14.
@@ -77,6 +78,7 @@ public class ProdutoAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.list_element_produto, null);
             holderPattern = new ViewHolder();
+            holderPattern.textViewSetHoraPostagem = (TextView)convertView.findViewById(R.id.textViewSetHoraPostagem);
             holderPattern.textViewSetNomeUsuario = (TextView)convertView.findViewById(R.id.textViewSetNomeUsuario);
             holderPattern.textViewSetContato = (TextView)convertView.findViewById(R.id.textViewSetContato);
             holderPattern.textViewSetPreco = (TextView)convertView.findViewById(R.id.textViewSetPreco);
@@ -86,24 +88,25 @@ public class ProdutoAdapter extends BaseAdapter {
         }else {
             holderPattern = (ViewHolder) convertView.getTag();
         }
-
-//        holderPattern.textViewSetNomeUsuario.setText(items.get(arg0).getAuthor().getUsername());
+        holderPattern.textViewSetHoraPostagem.setText(formartaStringData(items.get(arg0).getCreatedAt()));
+        holderPattern.textViewSetNomeUsuario.setText(" Anunciante: "+items.get(arg0).getAuthor().getUsername());
         holderPattern.textViewSetContato.setText(items.get(arg0).getPhoneNumber());
         holderPattern.textViewSetPreco.setText(items.get(arg0).getPrice());
         holderPattern.textViewSetHashTags.setText("");
-
-        // int resId = context.getResources().getIdentifier(items.get(arg0).,
-                //"drawable", context.getPackageName());
         ParseFile pf = items.get(arg0).getPhotoFile();
         loadBitmap(pf, holderPattern.fotoProduto);
         return convertView;
     }
+
+    private String formartaStringData(Date data){
+        return ""+data.getDate()+"/"+data.getMonth()+" ás "+data.getHours()+":"+data.getMinutes()+"h";
+    }
+
     static class ViewHolder {
+        TextView textViewSetHoraPostagem;
         TextView textViewSetNomeUsuario;
         TextView textViewSetPreco;
-       // TextView textViewContato;
         TextView textViewSetContato;
-       // TextView textViewHashTags;
         TextView textViewSetHashTags;
         ImageView fotoProduto;
     }

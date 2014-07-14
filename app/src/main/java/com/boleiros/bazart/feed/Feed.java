@@ -18,7 +18,12 @@ import android.widget.ListView;
 import com.boleiros.bazart.R;
 import com.boleiros.bazart.camera.CameraActivity;
 import com.boleiros.bazart.modelo.Produto;
+import com.facebook.Request;
+import com.facebook.Response;
+import com.facebook.Session;
+import com.facebook.model.GraphUser;
 import com.parse.FindCallback;
+import com.parse.ParseFacebookUtils;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.ui.ParseLoginBuilder;
@@ -27,6 +32,7 @@ import java.util.List;
 
 public class Feed extends Activity {
 
+    private static final int MAX_CHAR = 30;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -61,10 +67,33 @@ public class Feed extends Activity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+        Session session = ParseFacebookUtils.getSession();
+        if (session != null && session.isOpened()) {
+            makeMeRequest();
+        }
 
     }
 
-
+    private void makeMeRequest() {
+        Request request = Request.newMeRequest(ParseFacebookUtils.getSession(),
+                new Request.GraphUserCallback() {
+                    @Override
+                    public void onCompleted(GraphUser user, Response response) {
+                        if (user != null) {
+                            // Create a JSON object to hold the profile info
+                                // Populate the JSON object
+                            String nome = user.getName();
+                            int maxLength = (nome.length() < MAX_CHAR)?nome.length():MAX_CHAR;
+                            ParseUser.getCurrentUser().setUsername(user.getName().substring(0,maxLength));
+                                ParseUser.getCurrentUser().saveEventually();
+                        } else if (response.getError() != null) {
+                            // handle error
+                        }
+                    }
+                }
+        );
+        request.executeAsync();
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -131,6 +160,7 @@ public class Feed extends Activity {
             super.onCreate(savedInstanceState);
 
             ParseQuery<Produto> query  = ParseQuery.getQuery("Produto");
+            query.include("author");
             query.orderByDescending("createdAt");
             query.findInBackground(new FindCallback<Produto>() {
                 @Override
