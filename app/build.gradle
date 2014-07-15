@@ -30,12 +30,13 @@ dependencies {
     // You must install or update the Support Repository through the SDK manager to use this dependency.
     compile project(
             ':ParseLoginUI')
+    compile project(':chipsLibrary')
+    compile 'com.android.support:support-v13:19.0.1'
     // You must install or update the Support Repository through the SDK manager to use this dependency.
     compile 'com.commonsware.cwac:camera:0.6.+'
     // You must install or update the Support Repository through the SDK manager to use this dependency.
-    compile 'com.android.support:support-v13:19.0.1'
     compile 'com.github.gabrielemariotti.cards:library:1.7.3'
     // You must install or update the Support Repository through the SDK manager to use this dependency.
-    compile 'com.android.support:support-v4:19.+'
+    compile 'com.android.support:support-v4:19+'
 }
 

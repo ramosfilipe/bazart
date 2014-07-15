@@ -51,8 +51,7 @@ public class Feed extends Activity {
      * The {@link ViewPager} that will host the section contents.
      */
     ViewPager mViewPager;
-
-
+    
     private ParseUser currentUser;
 
     @Override
