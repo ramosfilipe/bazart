@@ -102,9 +102,9 @@ public class InfoFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_info, container, false);
         ImageView preview = (ImageView) v.findViewById(R.id.previewAntesDeEnviar);
-        EditText telefone = (EditText) v.findViewById(R.id.editTextPhoneNumber);
+        final EditText telefone = (EditText) v.findViewById(R.id.editTextPhoneNumber);
         telefone.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
-        EditText preco = (EditText) v.findViewById(R.id.editTextPreco);
+        final EditText preco = (EditText) v.findViewById(R.id.editTextPreco);
 
         final CustomRecipients hashtags = (CustomRecipients)v.findViewById(R.id.editTextHashtags);
 
@@ -144,9 +144,17 @@ public class InfoFragment extends Fragment {
         botaoEnvia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (hashtags.getSize() > 3) {
+                if (preco.getText().length()<1) {
+                    Toast.makeText(getActivity(),"Insira o preço do produto",Toast.LENGTH_SHORT).show();
+                }
+                else if(telefone.getText().length()<1){
+                    Toast.makeText(getActivity(),"Insira o contato",Toast.LENGTH_SHORT).show();
+                }
+                else if(hashtags.getSize() > 3){
                     Toast.makeText(getActivity(),"Insira no máximo 3 hashtags",Toast.LENGTH_SHORT).show();
-                } else {
+
+                }
+                else {
                     botaoEnvia.setVisibility(View.GONE);
                     ParseFile photoFile = new ParseFile("fotoProduto.jpg", ActivityStore.getInstance(getActivity()).
                             getImage());
