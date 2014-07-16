@@ -156,7 +156,7 @@
             android:id="@+id/textViewHashTags"
             android:layout_gravity="left|center_vertical" />
 
-        <com.boleiros.bazart.util.CustomRecipients
+        <com.boleiros.bazart.hashtags.CustomRecipients
             android:layout_width="214dp"
             android:layout_height="wrap_content"
             android:id="@+id/editTextHashtags"

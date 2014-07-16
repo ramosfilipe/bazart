@@ -14,11 +14,12 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/linearLayoutFragmentFeed">
+
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="414dp"
-        android:layout_marginTop="80px"
+        android:layout_height="457dp"
         android:id="@+id/listaCards"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"

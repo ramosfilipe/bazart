@@ -12,28 +12,21 @@ import android.text.util.Rfc822Tokenizer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
-import android.widget.MultiAutoCompleteTextView;
 import android.widget.Toast;
 
 import com.android.ex.chips.BaseRecipientAdapter;
-import com.android.ex.chips.RecipientEditTextView;
 import com.boleiros.bazart.R;
 import com.boleiros.bazart.feed.Feed;
 import com.boleiros.bazart.modelo.Produto;
 import com.boleiros.bazart.util.ActivityStore;
-import com.boleiros.bazart.util.CustomRecipients;
+import com.boleiros.bazart.hashtags.CustomRecipients;
 import com.boleiros.bazart.util.NumericRangeFilter;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
-
-import org.json.JSONArray;
 
 
 public class InfoFragment extends Fragment {

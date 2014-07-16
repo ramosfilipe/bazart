@@ -1,5 +1,6 @@
 package com.boleiros.bazart.feed;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -21,6 +22,8 @@ import android.widget.ListView;
 
 import com.boleiros.bazart.R;
 import com.boleiros.bazart.camera.CameraActivity;
+import com.boleiros.bazart.hashtags.HashtagActivity;
+import com.boleiros.bazart.hashtags.HashtagFragment;
 import com.boleiros.bazart.modelo.Produto;
 import com.facebook.Request;
 import com.facebook.Response;
@@ -65,6 +68,14 @@ public class Feed extends Activity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_feed);
 
+
+        final ActionBar actionBar = getActionBar();
+        actionBar.setCustomView(R.layout.custom_actionbar);
+
+        actionBar.setDisplayShowCustomEnabled(true);
+
+
+
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
@@ -76,6 +87,7 @@ public class Feed extends Activity {
         if (session != null && session.isOpened()) {
             makeMeRequest();
         }
+
 
     }
 
@@ -195,12 +207,28 @@ public class Feed extends Activity {
             });
         }
 
+
         @Override
         public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                                  Bundle savedInstanceState) {
             swipeRefreshLayout = (SwipeRefreshLayout) inflater.inflate(R.layout.fragment_feed, container, false);
             ImageButton camera = (ImageButton) swipeRefreshLayout.findViewById(R.id.cameraButton);
             final ListView listaDeExibicao = (ListView) swipeRefreshLayout.findViewById(R.id.listaCards);
+
+            final ImageButton busca = (ImageButton) getActivity().findViewById(R.id.botaoBuscaActionBar);
+
+            busca.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //TODO
+                    Intent intent = new Intent(getActivity(), HashtagActivity.class);
+                    startActivity(intent);
+//                    HashtagFragment current = new HashtagFragment();
+//                    busca.setVisibility(View.GONE);
+//                    getFragmentManager().beginTransaction().replace(R.id.linearLayoutFragmentFeed, current).commit();
+                }
+            });
+
 
             camera.setOnClickListener(new View.OnClickListener() {
                 @Override

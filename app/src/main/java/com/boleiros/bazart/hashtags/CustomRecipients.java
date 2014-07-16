@@ -1,4 +1,4 @@
-package com.boleiros.bazart.util;
+package com.boleiros.bazart.hashtags;
 
 import android.content.Context;
 import android.graphics.Color;
