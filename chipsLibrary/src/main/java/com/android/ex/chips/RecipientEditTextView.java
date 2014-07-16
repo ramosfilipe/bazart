@@ -41,10 +41,12 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -98,6 +100,8 @@ import com.android.ex.chips.recipientchip.DrawableRecipientChip;
 import com.android.ex.chips.recipientchip.InvisibleRecipientChip;
 import com.android.ex.chips.recipientchip.VisibleRecipientChip;
 
+import org.json.JSONArray;
+
 /**
  * RecipientEditTextView is an auto complete text view for use with applications that use the new Chips UI for
  * addressing a message to recipients.
@@ -115,7 +119,7 @@ public class RecipientEditTextView extends MultiAutoCompleteTextView implements 
                                                                                         +"(1?[ ]*\\([0-9]+\\)[\\- \\.]*)?" // 1(<digits>)<sdd>*
                                                                                         +"([0-9][0-9\\- \\.][0-9\\- \\.]+[0-9])");                   // <digit><digit|sdd>+<digit>
   private static final char                COMMIT_CHAR_COMMA                    =',';
-  private static final char                COMMIT_CHAR_SEMICOLON                =';';
+  private static final char                COMMIT_CHAR_SEMICOLON                =' ';
   private static final char                COMMIT_CHAR_SPACE                    =' ';
   private static final String              SEPARATOR                            =String.valueOf(COMMIT_CHAR_COMMA)+String.valueOf(COMMIT_CHAR_SPACE);
   private static final String              TAG                                  ="RecipientEditTextView";
@@ -180,6 +184,7 @@ public class RecipientEditTextView extends MultiAutoCompleteTextView implements 
   /** used to store initial touch Y coordinate, in order to identify scrolling */
   private int                              mStartTouchY                         =-1;
   private boolean                          mIsScrolling                         =false;
+      private int contador = 0;
 
   public enum FocusBehavior
     {
@@ -592,11 +597,12 @@ public class RecipientEditTextView extends MultiAutoCompleteTextView implements 
     final CharSequence ellipsizedText=ellipsizeText(chipDisplayText,paint,availableWidth-iconWidth-widths[0]);
     // Make sure there is a minimum chip width so the user can ALWAYS
     // tap a chip without difficulty.
-    final int width=Math.max(iconWidth*2,(int)Math.floor(paint.measureText(ellipsizedText,0,ellipsizedText.length()))+mChipPadding*2+iconWidth);
+    final int width=(Math.max((iconWidth*2),(int)Math.floor(paint.measureText(ellipsizedText,0,ellipsizedText.length()))+mChipPadding*2+iconWidth))-70;
     // Create the background of the chip.
     final Bitmap tmpBitmap=Bitmap.createBitmap(width,height,Bitmap.Config.ARGB_8888);
     final Canvas canvas=new Canvas(tmpBitmap);
-    final Drawable background=getChipBackground(contact);
+        final Drawable background = new ColorDrawable(Color.LTGRAY);
+  //  final Drawable background=getChipBackground(contact);
     if(background!=null)
       {
       background.setBounds(0,0,width,height);
@@ -1157,7 +1163,7 @@ public class RecipientEditTextView extends MultiAutoCompleteTextView implements 
     setSelection(getText().length());
     }
 
-  private boolean commitChip(final int start,final int end,final Editable editable)
+  public boolean commitChip(final int start,final int end,final Editable editable)
     {
     final ListAdapter adapter=getAdapter();
     if(adapter!=null&&adapter.getCount()>0&&enoughToFilter()&&end==getSelectionEnd()&&!isPhoneQuery())
@@ -1173,7 +1179,7 @@ public class RecipientEditTextView extends MultiAutoCompleteTextView implements 
       if(editable.length()>tokenEnd+1)
         {
         final char charAt=editable.charAt(tokenEnd+1);
-        if(charAt==COMMIT_CHAR_COMMA||charAt==COMMIT_CHAR_SEMICOLON)
+        if(charAt==COMMIT_CHAR_COMMA||charAt==COMMIT_CHAR_SEMICOLON||charAt==' ')
           tokenEnd++;
         }
       final String text=editable.toString().substring(start,tokenEnd).trim();
@@ -1232,6 +1238,28 @@ public class RecipientEditTextView extends MultiAutoCompleteTextView implements 
       }
     }
 
+
+      public int getSize(){
+          return getText().toString().split(",").length -1;
+      }
+
+      public String[] getArrayOfText(){
+          String texto = getText().toString();
+          String[] array = texto.substring(0,length()-1).split(",");
+          for (int i = 0; i < getSize(); i++) {
+                array[i] =  array[i].replaceAll("<|>| ","");
+                if(!array[i].substring(0,1).equals("#")){
+                    array[i]  = "#" + array[i];
+                }
+          }
+          return array;
+      }
+
+
+      public JSONArray getJSONArray(){
+          String[] array = getArrayOfText();
+          return new JSONArray(Arrays.asList(array));
+      }
   private boolean shouldCreateChip(final int start,final int end)
     {
     return !mNoChips&&hasFocus()&&enoughToFilter()&&!alreadyHasChip(start,end);

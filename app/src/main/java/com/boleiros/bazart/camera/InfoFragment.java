@@ -8,22 +8,32 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.text.InputFilter;
+import android.text.util.Rfc822Tokenizer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.MultiAutoCompleteTextView;
 import android.widget.Toast;
 
+import com.android.ex.chips.BaseRecipientAdapter;
+import com.android.ex.chips.RecipientEditTextView;
 import com.boleiros.bazart.R;
 import com.boleiros.bazart.feed.Feed;
 import com.boleiros.bazart.modelo.Produto;
 import com.boleiros.bazart.util.ActivityStore;
+import com.boleiros.bazart.util.CustomRecipients;
 import com.boleiros.bazart.util.NumericRangeFilter;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+
+import org.json.JSONArray;
 
 
 public class InfoFragment extends Fragment {
@@ -95,6 +105,27 @@ public class InfoFragment extends Fragment {
         EditText telefone = (EditText) v.findViewById(R.id.editTextPhoneNumber);
         telefone.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
         EditText preco = (EditText) v.findViewById(R.id.editTextPreco);
+
+        final CustomRecipients hashtags = (CustomRecipients)v.findViewById(R.id.editTextHashtags);
+
+        hashtags.setTokenizer(new Rfc822Tokenizer());
+        BaseRecipientAdapter a = new BaseRecipientAdapter(BaseRecipientAdapter.QUERY_TYPE_PHONE, getActivity()) {
+        };
+
+        hashtags.setAdapter(new BaseRecipientAdapter(BaseRecipientAdapter.QUERY_TYPE_PHONE, getActivity()) {
+        });
+
+
+       /* hashtags.setChipListener(new RecipientEditTextView.IChipListener() {
+            @Override
+            public void onDataChanged() {
+
+            }
+        });*/
+
+        String[] teste = {"casa","carro"};
+
+
         preco.setFilters(FILTERS);
        // preco.setOnFocusChangeListener(ON_FOCUS);
         loadBitmap(ActivityStore.getInstance(this.getActivity()).getImage(),preview);
@@ -113,11 +144,14 @@ public class InfoFragment extends Fragment {
         botaoEnvia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                botaoEnvia.setVisibility(View.GONE);
-                ParseFile photoFile = new ParseFile("fotoProduto.jpg", ActivityStore.getInstance(getActivity()).
-                        getImage());
-                EditText preco1 = (EditText) getActivity().findViewById(R.id.editTextPreco);
-                EditText telefone1 = (EditText) getActivity().findViewById(R.id.editTextPhoneNumber);
+                if (hashtags.getSize() > 3) {
+                    Toast.makeText(getActivity(),"Insira no máximo 3 hashtags",Toast.LENGTH_SHORT).show();
+                } else {
+                    botaoEnvia.setVisibility(View.GONE);
+                    ParseFile photoFile = new ParseFile("fotoProduto.jpg", ActivityStore.getInstance(getActivity()).
+                            getImage());
+                    EditText preco1 = (EditText) getActivity().findViewById(R.id.editTextPreco);
+                    EditText telefone1 = (EditText) getActivity().findViewById(R.id.editTextPhoneNumber);
 //                String precoStr = preco.getText().toString();
 //                if(precoStr.contains(".")){
 //                    precoStr.replace(".",",");
@@ -125,32 +159,33 @@ public class InfoFragment extends Fragment {
 //                } else {
 //                    precoStr = "R$ " + precoStr + ",00";
 //                }
-              //  EditText hashtags = (EditText)v.findViewById(R.id.editTextPreco);
-                Produto produto = new Produto();
+                    //  EditText hashtags = (EditText)v.findViewById(R.id.editTextPreco);
+                    Produto produto = new Produto();
 
-                produto.setAuthor(ParseUser.getCurrentUser());
-                produto.setPhotoFile(photoFile);
-                produto.setPhoneNumber(telefone1.getText().toString());
-                produto.setPrice(preco1.getText().toString());
-                produto.saveInBackground(new SaveCallback() {
-                    @Override
-                    public void done(com.parse.ParseException e) {
-                        if (e != null) {
-                            Toast.makeText(getActivity(),
-                                    "Error saving: " + e.getMessage(),
-                                    Toast.LENGTH_LONG).show();
-                        }else{
-                            Toast.makeText(getActivity(),"Produto anunciado!",Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(getActivity(),Feed.class);
-                            startActivity(intent);                        }
-                    }
+                    produto.setAuthor(ParseUser.getCurrentUser());
+                    produto.setPhotoFile(photoFile);
+                    produto.setPhoneNumber(telefone1.getText().toString());
+                    produto.setPrice(preco1.getText().toString());
+                    produto.setHashTags(hashtags.getJSONArray());
+                    produto.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(com.parse.ParseException e) {
+                            if (e != null) {
+                                Toast.makeText(getActivity(),
+                                        "Error saving: " + e.getMessage(),
+                                        Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(getActivity(), "Produto anunciado!", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(getActivity(), Feed.class);
+                                startActivity(intent);
+                            }
+                        }
 
 
+                    });
+                }
 
-                });
             }
-
-
             });
         return v;
     }

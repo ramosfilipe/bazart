@@ -7,6 +7,10 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.util.LruCache;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,11 +18,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.boleiros.bazart.R;
 import com.boleiros.bazart.modelo.Produto;
 import com.parse.ParseException;
 import com.parse.ParseFile;
+
+import org.json.JSONArray;
 
 import java.lang.ref.WeakReference;
 import java.util.Date;
@@ -92,7 +99,51 @@ public class ProdutoAdapter extends BaseAdapter {
         holderPattern.textViewSetNomeUsuario.setText(" Anunciante: "+items.get(arg0).getAuthor().getUsername());
         holderPattern.textViewSetContato.setText(items.get(arg0).getPhoneNumber());
         holderPattern.textViewSetPreco.setText(items.get(arg0).getPrice());
-        holderPattern.textViewSetHashTags.setText("");
+        try {
+
+            JSONArray array = items.get(arg0).getHashTags();
+            if(array!= null) {
+                String primeiro = array.get(0).toString();
+                String segundo = array.get(1).toString();
+                String terceiro = array.get(2).toString();
+                String saida = primeiro + " " + segundo + " " + terceiro;
+
+                SpannableString ss = new SpannableString(saida);
+                ClickableSpan clickableSpan1 = new ClickableSpan() {
+                    @Override
+                    public void onClick(View widget) {
+                        Toast.makeText(context, "clique1", Toast.LENGTH_SHORT).show();
+                    }
+                };
+                ClickableSpan clickableSpan2 = new ClickableSpan() {
+                    @Override
+                    public void onClick(View widget) {
+                        Toast.makeText(context, "clique2", Toast.LENGTH_SHORT).show();
+
+                    }
+                };
+                ClickableSpan clickableSpan3 = new ClickableSpan() {
+                    @Override
+                    public void onClick(View widget) {
+                        Toast.makeText(context, "clique3", Toast.LENGTH_SHORT).show();
+
+                    }
+                };
+
+
+                ss.setSpan(clickableSpan1, 0, primeiro.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                ss.setSpan(clickableSpan2,primeiro.length()+1,primeiro.length()+segundo.length()+1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                ss.setSpan(clickableSpan3,primeiro.length()+segundo.length()+2,saida.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+                holderPattern.textViewSetHashTags.setText(ss);
+                holderPattern.textViewSetHashTags.setMovementMethod(LinkMovementMethod.getInstance());
+            }
+            else{
+                holderPattern.textViewSetHashTags.setText("");
+            }
+        }catch(Exception e){
+            System.err.println(e.toString());
+        }
         ParseFile pf = items.get(arg0).getPhotoFile();
         loadBitmap(pf, holderPattern.fotoProduto);
         return convertView;

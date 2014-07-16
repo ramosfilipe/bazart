@@ -56,6 +56,7 @@ public class Produto extends ParseObject {
     public JSONArray getHashTags(){
         return getJSONArray("hashtag");
     }
+
     public void setHashTags(JSONArray array){
         put("hashtag",array);
     }
