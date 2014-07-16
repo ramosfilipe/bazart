@@ -23,7 +23,6 @@ import android.widget.ListView;
 import com.boleiros.bazart.R;
 import com.boleiros.bazart.camera.CameraActivity;
 import com.boleiros.bazart.hashtags.HashtagActivity;
-import com.boleiros.bazart.hashtags.HashtagFragment;
 import com.boleiros.bazart.modelo.Produto;
 import com.facebook.Request;
 import com.facebook.Response;
@@ -157,7 +156,6 @@ public class Feed extends Activity {
         private Handler handler = new Handler();
         private static final String ARG_SECTION_NUMBER = "section_number";
         private final int PICK_IMAGE = 0;
-        private boolean terminouCarregar = false;
 
         /**
          * Returns a new instance of this fragment for the given section
@@ -196,10 +194,6 @@ public class Feed extends Activity {
                             listaDeExibicao.setAdapter(produtoAdapter);
                         }
                         swipeRefreshLayout.setRefreshing(false);
-
-//                        Log.d("THE OBJECT", "" + parseObjects.size());
-//                        String name = parseObjects.toString();
-//                        Log.d("THE QUERY ", "" + name);
                     } else {
 //                        Log.d("ERROR:", "" + e.getMessage());
                     }

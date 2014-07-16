@@ -5,20 +5,6 @@
     <style name="AppTheme" parent="CustomActionBarTheme">
         <!-- Customize your theme here. -->
     </style>
-
-    <style name="card_modificado">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_gravity">center</item>
-        <item name="android:gravity">center</item>
-        <item name="android:scaleType">centerCrop</item>
-    </style>
-
-    <style name="card_thumbnail_outer_layout1">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
-
     <style name="FullscreenTheme" parent="android:Theme.NoTitleBar">
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowBackground">@null</item>

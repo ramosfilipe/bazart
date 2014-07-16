@@ -145,7 +145,6 @@ public class InfoFragment extends Fragment {
                 }
                 else if(hashtags.getSize() > 3){
                     Toast.makeText(getActivity(),"Insira no máximo 3 hashtags",Toast.LENGTH_SHORT).show();
-
                 }
                 else {
                     botaoEnvia.setVisibility(View.GONE);
@@ -162,7 +161,6 @@ public class InfoFragment extends Fragment {
 //                }
                     //  EditText hashtags = (EditText)v.findViewById(R.id.editTextPreco);
                     Produto produto = new Produto();
-
                     produto.setAuthor(ParseUser.getCurrentUser());
                     produto.setPhotoFile(photoFile);
                     produto.setPhoneNumber(telefone1.getText().toString());
