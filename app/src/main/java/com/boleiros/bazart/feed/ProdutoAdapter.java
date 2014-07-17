@@ -150,7 +150,14 @@ public class ProdutoAdapter extends BaseAdapter {
     }
 
     private String formartaStringData(Date data){
-        return ""+data.getDate()+"/"+data.getMonth()+" ás "+data.getHours()+":"+data.getMinutes()+"h";
+        String minutoAdicionadoComZero="";
+        if(data.getMinutes()<10){
+            minutoAdicionadoComZero = "0"+data.getMinutes();
+        }else{
+            minutoAdicionadoComZero = ""+data.getMinutes();
+        }
+
+        return ""+data.getDate()+"/"+data.getMonth()+" ás "+data.getHours()+":"+minutoAdicionadoComZero+"h";
     }
 
     static class ViewHolder {

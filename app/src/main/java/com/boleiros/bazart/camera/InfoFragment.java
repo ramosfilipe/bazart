@@ -154,14 +154,8 @@ public class InfoFragment extends Fragment {
                             getImage());
                     EditText preco1 = (EditText) getActivity().findViewById(R.id.editTextPreco);
                     EditText telefone1 = (EditText) getActivity().findViewById(R.id.editTextPhoneNumber);
-//                String precoStr = preco.getText().toString();
-//                if(precoStr.contains(".")){
-//                    precoStr.replace(".",",");
-//                    precoStr = "R$ "+precoStr;
-//                } else {
-//                    precoStr = "R$ " + precoStr + ",00";
-//                }
-                    //  EditText hashtags = (EditText)v.findViewById(R.id.editTextPreco);
+                    String precoStr = preco.getText().toString();
+                    precoStr = "R$ " + precoStr;
                     Produto produto = new Produto();
 
 
@@ -172,7 +166,7 @@ public class InfoFragment extends Fragment {
                     produto.setAuthor(ParseUser.getCurrentUser());
                     produto.setPhotoFile(photoFile);
                     produto.setPhoneNumber(telefone1.getText().toString());
-                    produto.setPrice(preco1.getText().toString());
+                    produto.setPrice(precoStr);
                     produto.setHashTags(hashtags.getJSONArray());
                     produto.saveInBackground(new SaveCallback() {
                         @Override
