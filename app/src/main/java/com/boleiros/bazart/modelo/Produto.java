@@ -6,6 +6,9 @@ import com.parse.ParseUser;
 
 import org.json.JSONArray;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 /**
  * Created by Filipe on 06/07/14.
  */
@@ -37,6 +40,17 @@ public class Produto extends ParseObject {
 
     public void setAuthor(ParseUser user) {
         put("author", user);
+    }
+
+    public String[] getArrayHashtags(){
+        Object[] obj = getList("tags").toArray();
+        String[] array = Arrays.copyOf(obj,obj.length,String[].class);
+        System.out.println("tamanho" + array.length);
+        return array;
+    }
+
+    public void setArrayHashtags(String[] arrayHashtags){
+        addAllUnique("tags", Arrays.asList(arrayHashtags));
     }
 
     public int getRating() {

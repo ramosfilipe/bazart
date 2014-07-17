@@ -143,9 +143,12 @@ public class InfoFragment extends Fragment {
                     Toast.makeText(getActivity(),"Insira o preço do produto",Toast.LENGTH_SHORT).show();
                 }
                 else if(telefone.getText().length()<1){
-                    Toast.makeText(getActivity(),"Insira o contato",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"Insira o número para contato",Toast.LENGTH_SHORT).show();
                 }
-                else if(hashtags.getSize() > 3){
+                else if(hashtags.getSize() == 0){
+                    Toast.makeText(getActivity(),"Insira alguma hashtag",Toast.LENGTH_SHORT).show();
+                }
+                else if(hashtags.getSize() > 3 ){
                     Toast.makeText(getActivity(),"Insira no máximo 3 hashtags",Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -159,15 +162,12 @@ public class InfoFragment extends Fragment {
                     Produto produto = new Produto();
 
 
-                    produto.addAllUnique("tags", Arrays.asList("diega","diega2","diega3"));
-
-
 
                     produto.setAuthor(ParseUser.getCurrentUser());
                     produto.setPhotoFile(photoFile);
                     produto.setPhoneNumber(telefone1.getText().toString());
                     produto.setPrice(precoStr);
-                    produto.setHashTags(hashtags.getJSONArray());
+                    produto.setArrayHashtags(hashtags.getArrayOfText());
                     produto.saveInBackground(new SaveCallback() {
                         @Override
                         public void done(com.parse.ParseException e) {

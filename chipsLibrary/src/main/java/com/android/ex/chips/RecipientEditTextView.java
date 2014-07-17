@@ -1244,7 +1244,7 @@ public class RecipientEditTextView extends MultiAutoCompleteTextView implements 
       }
 
       public String[] getArrayOfText(){
-          String texto = getText().toString();
+          String texto = getText().toString().toLowerCase();
           String[] array = texto.substring(0,length()-1).split(",");
           for (int i = 0; i < getSize(); i++) {
                 array[i] =  array[i].replaceAll("<|>| ","");
