@@ -28,6 +28,8 @@ import com.parse.ParseFile;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
+import java.util.Arrays;
+
 
 public class InfoFragment extends Fragment {
 // --Commented out by Inspection START (13/07/14 02:24):
@@ -161,6 +163,12 @@ public class InfoFragment extends Fragment {
 //                }
                     //  EditText hashtags = (EditText)v.findViewById(R.id.editTextPreco);
                     Produto produto = new Produto();
+
+
+                    produto.addAllUnique("tags", Arrays.asList("diega","diega2","diega3"));
+
+
+
                     produto.setAuthor(ParseUser.getCurrentUser());
                     produto.setPhotoFile(photoFile);
                     produto.setPhoneNumber(telefone1.getText().toString());

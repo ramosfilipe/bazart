@@ -7,7 +7,6 @@ import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -153,9 +152,7 @@ public class Feed extends Activity {
          * fragment.
          */
         private SwipeRefreshLayout swipeRefreshLayout;
-        private Handler handler = new Handler();
         private static final String ARG_SECTION_NUMBER = "section_number";
-        private final int PICK_IMAGE = 0;
 
         /**
          * Returns a new instance of this fragment for the given section
@@ -195,7 +192,6 @@ public class Feed extends Activity {
                         }
                         swipeRefreshLayout.setRefreshing(false);
                     } else {
-//                        Log.d("ERROR:", "" + e.getMessage());
                     }
                 }
             });
@@ -214,12 +210,8 @@ public class Feed extends Activity {
             busca.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //TODO
                     Intent intent = new Intent(getActivity(), HashtagActivity.class);
                     startActivity(intent);
-//                    HashtagFragment current = new HashtagFragment();
-//                    busca.setVisibility(View.GONE);
-//                    getFragmentManager().beginTransaction().replace(R.id.linearLayoutFragmentFeed, current).commit();
                 }
             });
 

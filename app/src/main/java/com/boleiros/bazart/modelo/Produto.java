@@ -14,6 +14,7 @@ public class Produto extends ParseObject {
 
     public Produto() {
     }
+
     public String getPrice() {
         return getString("price");
     }

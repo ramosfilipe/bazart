@@ -17,10 +17,12 @@ public class HashtagActivity extends Activity implements OnFragmentInteractionLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_busca);
-//        HashtagFragment current=new HashtagFragment();
-//        getFragmentManager().beginTransaction()
-//                .replace(R.id.container, current).commit();
+
+        setContentView(R.layout.activity_busca);
+        HashtagFragment current=new HashtagFragment();
+        getFragmentManager().beginTransaction()
+                .replace(R.id.containerbusca, current).commit();
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -32,5 +34,7 @@ public class HashtagActivity extends Activity implements OnFragmentInteractionLi
 
         return true;
     }
+
+
 }
 
