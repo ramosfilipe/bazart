@@ -1,7 +1,6 @@
 package com.boleiros.bazart.feed;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -19,15 +18,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.boleiros.bazart.R;
-import com.boleiros.bazart.hashtags.HashtagActivity;
 import com.boleiros.bazart.modelo.Produto;
 import com.parse.ParseException;
 import com.parse.ParseFile;
-
-import org.json.JSONArray;
 
 import java.lang.ref.WeakReference;
 import java.util.Date;
@@ -87,6 +82,7 @@ public class ProdutoAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.list_element_produto, null);
             holderPattern = new ViewHolder();
+            holderPattern.textViewSetCidade = (TextView)convertView.findViewById(R.id.textViewSetCidade);
             holderPattern.textViewSetHoraPostagem = (TextView)convertView.findViewById(R.id.textViewSetHoraPostagem);
             holderPattern.textViewSetNomeUsuario = (TextView)convertView.findViewById(R.id.textViewSetNomeUsuario);
             holderPattern.textViewSetContato = (TextView)convertView.findViewById(R.id.textViewSetContato);
@@ -97,6 +93,7 @@ public class ProdutoAdapter extends BaseAdapter {
         }else {
             holderPattern = (ViewHolder) convertView.getTag();
         }
+        holderPattern.textViewSetCidade.setText("  em "+items.get(arg0).getCidade());
         holderPattern.textViewSetHoraPostagem.setText(formartaStringData(items.get(arg0).getCreatedAt()));
         holderPattern.textViewSetNomeUsuario.setText(" Anunciante: "+items.get(arg0).getAuthor().getUsername());
         holderPattern.textViewSetContato.setText(items.get(arg0).getPhoneNumber());
@@ -206,6 +203,7 @@ public class ProdutoAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
+        TextView textViewSetCidade;
         TextView textViewSetHoraPostagem;
         TextView textViewSetNomeUsuario;
         TextView textViewSetPreco;

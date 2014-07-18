@@ -65,7 +65,7 @@ public class Produto extends ParseObject {
     public void setCity(String cidade){
         put("city",cidade);
     }
-    public String getCidade(String cidade){
+    public String getCidade(){
         return getString("city");
     }
 
