@@ -3,22 +3,27 @@ package com.boleiros.bazart.camera;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.text.InputFilter;
 import android.text.util.Rfc822Tokenizer;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.ex.chips.BaseRecipientAdapter;
@@ -40,14 +45,17 @@ import com.parse.ParseGeoPoint;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+
+;
+
 
 public class InfoFragment extends Fragment implements LocationListener,GooglePlayServicesClient.ConnectionCallbacks,
         GooglePlayServicesClient.OnConnectionFailedListener {
 
-    // Fields for helping process map and location changes
-    private int mostRecentMapUpdate = 0;
-    private boolean hasSetUpInitialLocation = false;
-    private String selectedObjectId;
+
     private Location lastLocation = null;
     private Location currentLocation = null;
     private LocationRequest locationRequest;
@@ -80,6 +88,7 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
     private static final long FAST_INTERVAL_CEILING_IN_MILLISECONDS = MILLISECONDS_PER_SECOND
             * FAST_CEILING_IN_SECONDS;
 
+    private TextView localizacao;
 
 
     public InfoFragment() {
@@ -89,7 +98,6 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         locationRequest = LocationRequest.create();
         locationRequest.setInterval(UPDATE_INTERVAL_IN_MILLISECONDS);
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
@@ -118,6 +126,7 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
         final EditText telefone = (EditText) v.findViewById(R.id.editTextPhoneNumber);
         telefone.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
         final EditText preco = (EditText) v.findViewById(R.id.editTextPreco);
+        localizacao = (TextView) v.findViewById(R.id.textViewLocalizacao);
 
         final CustomRecipients hashtags = (CustomRecipients)v.findViewById(R.id.editTextHashtags);
 
@@ -136,9 +145,6 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
             }
         });*/
 
-        String[] teste = {"casa","carro"};
-
-
         preco.setFilters(FILTERS);
        // preco.setOnFocusChangeListener(ON_FOCUS);
         loadBitmap(ActivityStore.getInstance(this.getActivity()).getImage(),preview);
@@ -152,6 +158,9 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
                         .replace(R.id.container, current).commit();
             }
         });
+
+
+
         final ImageButton botaoEnvia = (ImageButton)v.findViewById(R.id.imageButtonUpload);
         botaoEnvia.setVisibility(View.VISIBLE);
         botaoEnvia.setOnClickListener(new View.OnClickListener() {
@@ -170,6 +179,7 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
                     Toast.makeText(getActivity(),"Insira no máximo 3 hashtags",Toast.LENGTH_SHORT).show();
                 }
                 else {
+
                     Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
                     if (myLoc == null) {
                         Toast.makeText(getActivity(),
@@ -177,7 +187,6 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
                         return;
                     }
                     final ParseGeoPoint myPoint = geoPointFromLocation(myLoc);
-                    // 3
 
                     botaoEnvia.setVisibility(View.GONE);
                     ParseFile photoFile = new ParseFile("fotoProduto.jpg", ActivityStore.getInstance(getActivity()).
@@ -188,13 +197,13 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
                     precoStr = "R$ " + precoStr;
                     Produto produto = new Produto();
                     produto.setLocation(myPoint);
-
-
                     produto.setAuthor(ParseUser.getCurrentUser());
                     produto.setPhotoFile(photoFile);
                     produto.setPhoneNumber(telefone1.getText().toString());
                     produto.setPrice(precoStr);
                     produto.setArrayHashtags(hashtags.getArrayOfText());
+                    System.out.println();
+                    produto.setCity(localizacao.getText().toString());
                     produto.saveInBackground(new SaveCallback() {
                         @Override
                         public void done(com.parse.ParseException e) {
@@ -204,6 +213,7 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
                                         Toast.LENGTH_LONG).show();
                             } else {
                                 Toast.makeText(getActivity(), "Produto anunciado!", Toast.LENGTH_LONG).show();
+                                locationClient.disconnect();
                                 Intent intent = new Intent(getActivity(), Feed.class);
                                 startActivity(intent);
                             }
@@ -309,6 +319,8 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
     public void onConnected(Bundle bundle) {
         currentLocation = getLocation();
         startPeriodicUpdates();
+        new GetAddressTask(this.getActivity(),localizacao).execute(currentLocation);
+
     }
 
     @Override
@@ -391,23 +403,117 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
         }
     }
 
+    class GetAddressTask extends AsyncTask<Location, Void, String> {
+        Context mContext;
+        TextView label;
+        public GetAddressTask(Context context,TextView tx) {
+            super();
+            label= tx;
+            mContext = context;
+        }
+        /**
+         * Get a Geocoder instance, get the latitude and longitude
+         * look up the address, and return it
+         *
+         * @params params One or more Location objects
+         * @return A string containing the address of the current
+         * location, or an empty string if no address can be found,
+         * or an error message
+         */
+        @Override
+        protected String doInBackground(Location... params) {
+            Geocoder geocoder =
+                    new Geocoder(mContext, Locale.getDefault());
+            // Get the current location from the input parameter list
+            Location loc = params[0];
+            // Create a list to contain the result address
+            List<android.location.Address> addresses = null;
+            try {
+                /*
+                 * Return 1 address.
+                 */
+                if(loc!=null){
+                addresses = geocoder.getFromLocation(loc.getLatitude(),
+                        loc.getLongitude(), 1);}
+            } catch (IOException e1) {
+                Log.e("LocationSampleActivity",
+                        "IO Exception in getFromLocation()");
+                e1.printStackTrace();
+                return ("IO Exception trying to get address");
+            } catch (IllegalArgumentException e2) {
+                // Error message to post in the log
+                String errorString = "Illegal arguments " +
+                        Double.toString(loc.getLatitude()) +
+                        " , " +
+                        Double.toString(loc.getLongitude()) +
+                        " passed to address service";
+                Log.e("LocationSampleActivity", errorString);
+                e2.printStackTrace();
+                return errorString;
+            }
+            // If the reverse geocode returned an address
+            if (addresses != null && addresses.size() > 0) {
+                // Get the first address
+                Address address = addresses.get(0);
+                /*
+                 * Format the first line of address (if available),
+                 * city, and country name.
+                 */
+                String addressText = String.format(
+                        "%s",
+
+                        // Locality is usually a city
+                        address.getAddressLine(1)
+                        // The country of the address
+                        );
+                // Return the text
+                return addressText;
+            } else {
+                return "No address found";
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String address) {
+            label.setText(address);
+
+            // Set the address in the UI
+        }
+
 }
 class BitmapWorker extends AsyncTask<byte[], Void, Bitmap> {
-    private  ImageView imageViewReference;
+    private ImageView imageViewReference;
 
     public BitmapWorker(ImageView imageView) {
         imageViewReference = imageView;
     }
+
     // Decode image in background.
     @Override
     protected Bitmap doInBackground(byte[]... params) {
-        return BitmapFactory.decodeByteArray(params[0], 0,params[0].length );
+        return BitmapFactory.decodeByteArray(params[0], 0, params[0].length);
     }
+
     // Once complete, see if ImageView is still around and set bitmap.
     @Override
     protected void onPostExecute(Bitmap bitmap) {
         if (imageViewReference != null && bitmap != null) {
-                imageViewReference.setImageBitmap(bitmap);
-            }
+            imageViewReference.setImageBitmap(bitmap);
+        }
     }
 }
+}
+    /**
+     * A subclass of AsyncTask that calls getFromLocation() in the
+     * background. The class definition has these generic types:
+     * Location - A Location object containing
+     * the current location.
+     * Void     - indicates that progress units are not used
+     * String   - An address passed to onPostExecute()
+     */
+
+
+
+
+
+
