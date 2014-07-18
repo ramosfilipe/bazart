@@ -10,9 +10,13 @@ import com.parse.ParseObject;
  *
  */
 public class Bazart extends Application{
+    // Debugging tag for the application
+    public static final String APPTAG = "AnyWall";
+
         @Override
         public void onCreate() {
             super.onCreate();
+
             Parse.enableLocalDatastore(this);
             ParseObject.registerSubclass(Produto.class);
             // Required - Initialize the Parse SDK

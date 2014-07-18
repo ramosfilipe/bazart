@@ -1,9 +1,13 @@
 package com.boleiros.bazart.camera;
 
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.telephony.PhoneNumberFormattingTextWatcher;
@@ -18,60 +22,66 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.ex.chips.BaseRecipientAdapter;
+import com.boleiros.bazart.Bazart;
 import com.boleiros.bazart.R;
 import com.boleiros.bazart.feed.Feed;
+import com.boleiros.bazart.hashtags.CustomRecipients;
 import com.boleiros.bazart.modelo.Produto;
 import com.boleiros.bazart.util.ActivityStore;
-import com.boleiros.bazart.hashtags.CustomRecipients;
 import com.boleiros.bazart.util.NumericRangeFilter;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesClient;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.location.LocationClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
 import com.parse.ParseFile;
+import com.parse.ParseGeoPoint;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-import java.util.Arrays;
 
+public class InfoFragment extends Fragment implements LocationListener,GooglePlayServicesClient.ConnectionCallbacks,
+        GooglePlayServicesClient.OnConnectionFailedListener {
 
-public class InfoFragment extends Fragment {
-// --Commented out by Inspection START (13/07/14 02:24):
-// --Commented out by Inspection START (13/07/14 02:24):
-////    // TODO: Rename parameter arguments, choose names that match
-////    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-////    private static final String ARG_PARAM1 = "param1";
-//// --Commented out by Inspection STOP (13/07/14 02:24)
-//    private static final String ARG_PARAM2 = "param2";
-// --Commented out by Inspection STOP (13/07/14 02:24)
+    // Fields for helping process map and location changes
+    private int mostRecentMapUpdate = 0;
+    private boolean hasSetUpInitialLocation = false;
+    private String selectedObjectId;
+    private Location lastLocation = null;
+    private Location currentLocation = null;
+    private LocationRequest locationRequest;
+    private LocationClient locationClient;
     private static final InputFilter[] FILTERS = new InputFilter[] {new NumericRangeFilter(0.00, 999999.99)};
-    // --Commented out by Inspection (13/07/14 02:21):private static final View.OnFocusChangeListener ON_FOCUS = new AmountOnFocusChangeListener();
-// --Commented out by Inspection START (13/07/14 02:22):
-// --Commented out by Inspection START (13/07/14 02:22):
-////    // TODO: Rename and change types of parameters
-////    private String mParam1;
-//// --Commented out by Inspection STOP (13/07/14 02:22)
-//    private String mParam2;
-// --Commented out by Inspection STOP (13/07/14 02:22)
 
-    // --Commented out by Inspection (13/07/14 02:24):private OnFragmentInteractionListener mListener;
+    /*
+      * Define a request code to send to Google Play services This code is returned in
+      * Activity.onActivityResult
+      */
+    private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
 
-// --Commented out by Inspection START (13/07/14 02:22):
-//    /**
-//     * Use this factory method to create a new instance of
-//     * this fragment using the provided parameters.
-//     *
-//     * @param param1 Parameter 1.
-//     * @param param2 Parameter 2.
-//     * @return A new instance of fragment InfoFragment.
-//     */
-//    // TODO: Rename and change types and number of parameters
-//    public static InfoFragment newInstance(String param1, String param2) {
-//        InfoFragment fragment = new InfoFragment();
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
-//        return fragment;
-//
-//    }
-// --Commented out by Inspection STOP (13/07/14 02:22)
+    /*
+     * Constants for location update parameters
+     */
+    // Milliseconds per second
+    private static final int MILLISECONDS_PER_SECOND = 1000;
+
+    // The update interval
+    private static final int UPDATE_INTERVAL_IN_SECONDS = 5;
+
+    // A fast interval ceiling
+    private static final int FAST_CEILING_IN_SECONDS = 1;
+
+    // Update interval in milliseconds
+    private static final long UPDATE_INTERVAL_IN_MILLISECONDS = MILLISECONDS_PER_SECOND
+            * UPDATE_INTERVAL_IN_SECONDS;
+
+    // A fast ceiling of update intervals, used when the app is visible
+    private static final long FAST_INTERVAL_CEILING_IN_MILLISECONDS = MILLISECONDS_PER_SECOND
+            * FAST_CEILING_IN_SECONDS;
+
+
+
     public InfoFragment() {
         // Required empty public constructor
     }
@@ -80,6 +90,14 @@ public class InfoFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        locationRequest = LocationRequest.create();
+        locationRequest.setInterval(UPDATE_INTERVAL_IN_MILLISECONDS);
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        locationRequest.setFastestInterval(FAST_INTERVAL_CEILING_IN_MILLISECONDS);
+
+        // Create a new location client, using the enclosing class to handle callbacks.
+        locationClient = new LocationClient(this.getActivity(), this, this);
+        locationClient.connect();
 
 //        if (getArguments() != null) {
 //
@@ -152,6 +170,15 @@ public class InfoFragment extends Fragment {
                     Toast.makeText(getActivity(),"Insira no máximo 3 hashtags",Toast.LENGTH_SHORT).show();
                 }
                 else {
+                    Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
+                    if (myLoc == null) {
+                        Toast.makeText(getActivity(),
+                                "Please try again after your location appears on the map.", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    final ParseGeoPoint myPoint = geoPointFromLocation(myLoc);
+                    // 3
+
                     botaoEnvia.setVisibility(View.GONE);
                     ParseFile photoFile = new ParseFile("fotoProduto.jpg", ActivityStore.getInstance(getActivity()).
                             getImage());
@@ -160,7 +187,7 @@ public class InfoFragment extends Fragment {
                     String precoStr = preco.getText().toString();
                     precoStr = "R$ " + precoStr;
                     Produto produto = new Produto();
-
+                    produto.setLocation(myPoint);
 
 
                     produto.setAuthor(ParseUser.getCurrentUser());
@@ -190,52 +217,178 @@ public class InfoFragment extends Fragment {
             });
         return v;
     }
+    private void startPeriodicUpdates() {
+        locationClient.requestLocationUpdates(locationRequest, this);
+    }
 
-// --Commented out by Inspection START (13/07/14 02:22):
-//    // TODO: Rename method, update argument and hook method into UI event
-//    public void onButtonPressed(Uri uri) {
-//        if (mListener != null) {
-//            mListener.onFragmentInteraction(uri);
-//        }
-//    }
-// --Commented out by Inspection STOP (13/07/14 02:22)
+    private void stopPeriodicUpdates() {
+        locationClient.removeLocationUpdates(this);
+    }
 
-//    @Override
-//    public void onAttach(Activity activity) {
-//        super.onAttach(activity);
-//        try {
-//            mListener = (OnFragmentInteractionListener) activity;
-//        } catch (ClassCastException e) {
-//            throw new ClassCastException(activity.toString()
-//                    + " must implement OnFragmentInteractionListener");
-//        }
-//    }
-//
-//    @Override
-//    public void onDetach() {
-//        super.onDetach();
-//        mListener = null;
-//    }
+    private Location getLocation() {
+        if (servicesConnected()) {
+            return locationClient.getLastLocation();
+        } else {
+            return null;
+        }
+    }
+    private boolean servicesConnected() {
+        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this.getActivity());
+
+        if (ConnectionResult.SUCCESS == resultCode) {
+
+            return true;
+        } else {
+            System.out.println("testeeee");
+            Dialog dialog = GooglePlayServicesUtil.getErrorDialog(resultCode, this.getActivity(), 0);
+            if (dialog != null) {
+                ErrorDialogFragment errorFragment = new ErrorDialogFragment();
+                errorFragment.setDialog(dialog);
+                errorFragment.show(getFragmentManager(), Bazart.APPTAG);
+            }
+            return false;
+        }
+    }
+
+
+
 
     /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
+     * Called when the location has changed.
+     * <p/>
+     * <p> There are no restrictions on the use of the supplied Location object.
+     *
+     * @param location The new location, as a Location object.
      */
+    @Override
+    public void onLocationChanged(Location location) {
+        currentLocation = location;
+        if (lastLocation != null
+                && geoPointFromLocation(location)
+                .distanceInKilometersTo(geoPointFromLocation(lastLocation)) < 0.01) {
+            return;
+        }
+        lastLocation = location;
+    }
+
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    /**
+     * Called when the provider is enabled by the user.
+     *
+     * @param provider the name of the location provider associated with this
+     *                 update.
+     */
+    public void onProviderEnabled(String provider) {
+
+    }
+
+    /**
+     * Called when the provider is disabled by the user. If requestLocationUpdates
+     * is called on an already disabled provider, this method is called
+     * immediately.
+     *
+     * @param provider the name of the location provider associated with this
+     *                 update.
+     */
+
+    public void onProviderDisabled(String provider) {
+
+    }
+
+    /*
+      * Helper method to get the Parse GEO point representation of a location
+      */
+    private ParseGeoPoint geoPointFromLocation(Location loc) {
+        return new ParseGeoPoint(loc.getLatitude(), loc.getLongitude());
+    }
+
+    @Override
+    public void onConnected(Bundle bundle) {
+        currentLocation = getLocation();
+        startPeriodicUpdates();
+    }
+
+    @Override
+    public void onDisconnected() {
+
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+        if (connectionResult.hasResolution()) {
+            try {
+                connectionResult.startResolutionForResult(this.getActivity(), CONNECTION_FAILURE_RESOLUTION_REQUEST);
+            } catch (IntentSender.SendIntentException e) {
+            }
+        } else {
+//            showErrorDialog(connectionResult.getErrorCode());
+        }
+    }
+
+
     public interface OnFragmentInteractionListener {
-// --Commented out by Inspection START (13/07/14 02:25):
-//        // TODO: Update argument type and name
-//        public void onFragmentInteraction(Uri uri);
-// --Commented out by Inspection STOP (13/07/14 02:25)
     }
     void loadBitmap(byte[] foto, ImageView imageView) {
             final BitmapWorker task = new BitmapWorker(imageView);
             task.execute(foto);
+    }
+    /*
+     * Show a dialog returned by Google Play services for the connection error code
+     */
+    private void showErrorDialog(int errorCode) {
+        // Get the error dialog from Google Play services
+        Dialog errorDialog =
+                GooglePlayServicesUtil.getErrorDialog(errorCode, this.getActivity(),
+                        CONNECTION_FAILURE_RESOLUTION_REQUEST);
+
+        // If Google Play services can provide an error dialog
+        if (errorDialog != null) {
+
+            // Create a new DialogFragment in which to show the error dialog
+            ErrorDialogFragment errorFragment = new ErrorDialogFragment();
+
+            // Set the dialog in the DialogFragment
+            errorFragment.setDialog(errorDialog);
+
+            // Show the error dialog in the DialogFragment
+            errorFragment.show(this.getFragmentManager(), Bazart.APPTAG);
+        }
+    }
+
+    /*
+     * Define a DialogFragment to display the error dialog generated in showErrorDialog.
+     */
+    public static class ErrorDialogFragment extends DialogFragment {
+        // Global field to contain the error dialog
+        private Dialog mDialog;
+
+        /**
+         * Default constructor. Sets the dialog field to null
+         */
+        public ErrorDialogFragment() {
+            super();
+            mDialog = null;
+        }
+
+        /*
+         * Set the dialog to display
+         *
+         * @param dialog An error dialog
+         */
+        public void setDialog(Dialog dialog) {
+            mDialog = dialog;
+        }
+
+        /*
+         * This method must return a Dialog to the DialogFragment.
+         */
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            return mDialog;
+        }
     }
 
 }

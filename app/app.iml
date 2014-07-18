@@ -65,6 +65,7 @@
     <orderEntry type="library" exported="" name="support-v13-19.0.1" level="project" />
     <orderEntry type="library" exported="" name="camera-0.6.9" level="project" />
     <orderEntry type="library" exported="" name="support-v4-19.1.0" level="project" />
+    <orderEntry type="library" exported="" name="play-services-5.0.77" level="project" />
     <orderEntry type="module" module-name="ParseLoginUI" exported="" />
     <orderEntry type="module" module-name="chipsLibrary" exported="" />
   </component>

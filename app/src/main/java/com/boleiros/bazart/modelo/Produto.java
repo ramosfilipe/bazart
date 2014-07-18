@@ -1,13 +1,14 @@
 package com.boleiros.bazart.modelo;
+
 import com.parse.ParseClassName;
 import com.parse.ParseFile;
+import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 import org.json.JSONArray;
 
 import java.util.Arrays;
-import java.util.Collections;
 
 /**
  * Created by Filipe on 06/07/14.
@@ -52,6 +53,14 @@ public class Produto extends ParseObject {
     public void setArrayHashtags(String[] arrayHashtags){
         addAllUnique("tags", Arrays.asList(arrayHashtags));
     }
+    public ParseGeoPoint getLocation() {
+        return getParseGeoPoint("location");
+    }
+
+    public void setLocation(ParseGeoPoint value) {
+        put("location", value);
+    }
+
 
     public int getRating() {
         return getInt("rating");
