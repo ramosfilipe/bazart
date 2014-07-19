@@ -1,5 +1,4 @@
 package com.boleiros.bazart.camera;
-
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
@@ -25,7 +24,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.ex.chips.BaseRecipientAdapter;
 import com.boleiros.bazart.Bazart;
 import com.boleiros.bazart.R;
@@ -44,18 +42,12 @@ import com.parse.ParseFile;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-;
-
-
 public class InfoFragment extends Fragment implements LocationListener,GooglePlayServicesClient.ConnectionCallbacks,
         GooglePlayServicesClient.OnConnectionFailedListener {
-
-
     private Location lastLocation = null;
     private Location currentLocation = null;
     private LocationRequest locationRequest;
@@ -87,10 +79,7 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
     // A fast ceiling of update intervals, used when the app is visible
     private static final long FAST_INTERVAL_CEILING_IN_MILLISECONDS = MILLISECONDS_PER_SECOND
             * FAST_CEILING_IN_SECONDS;
-
     private TextView localizacao;
-
-
     public InfoFragment() {
         // Required empty public constructor
     }
@@ -102,16 +91,9 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
         locationRequest.setInterval(UPDATE_INTERVAL_IN_MILLISECONDS);
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         locationRequest.setFastestInterval(FAST_INTERVAL_CEILING_IN_MILLISECONDS);
-
         // Create a new location client, using the enclosing class to handle callbacks.
         locationClient = new LocationClient(this.getActivity(), this, this);
         locationClient.connect();
-
-//        if (getArguments() != null) {
-//
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
     }
 
 
@@ -119,8 +101,6 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
         View v = inflater.inflate(R.layout.fragment_info, container, false);
         ImageView preview = (ImageView) v.findViewById(R.id.previewAntesDeEnviar);
         final EditText telefone = (EditText) v.findViewById(R.id.editTextPhoneNumber);
@@ -259,10 +239,6 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
             return false;
         }
     }
-
-
-
-
     /**
      * Called when the location has changed.
      * <p/>

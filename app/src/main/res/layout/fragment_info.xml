@@ -8,14 +8,11 @@
     android:weightSum="1"
     android:showDividers="middle"
     android:divider="@drawable/list_divider">
-
     <FrameLayout
         android:layout_width="match_parent"
-
         android:layout_height="60dp"
         android:id="@+id/frameemcima"
         android:background="#e50e0003">
-
         <ImageButton
             android:layout_width="57dp"
             android:layout_height="match_parent"
@@ -43,25 +40,20 @@
             android:textStyle="italic"
             android:textColor="#FFFFFF" />
     </FrameLayout>
-
     <FrameLayout
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:layout_weight="0.12">
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="  Preço:"
             android:textStyle="bold|italic"
-
             android:id="@+id/textViewPreco"
             android:layout_gravity="left|center_vertical" />
-
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -69,67 +61,11 @@
             android:ems="10"
             android:id="@+id/editTextPreco"
             android:layout_gravity="right|center_vertical" />
-
     </FrameLayout>
-
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.15">
-
-
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-                <!--android:text="("-->
-                <!--android:id="@+id/textView2" />-->
-
-            <!--<EditText-->
-                <!--android:layout_width="21dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:inputType="numberDecimal"-->
-                <!--android:ems="10"-->
-                <!--android:id="@+id/editTextTelefoneDDD"-->
-
-                <!--android:layout_weight="0.81"-->
-                <!--android:maxLength="2"/>-->
-
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-                <!--android:text=")"-->
-                <!--android:id="@+id/textView3" />-->
-
-            <!--<EditText-->
-                <!--android:layout_width="70dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:inputType="numberDecimal"-->
-                <!--android:ems="10"-->
-                <!--android:maxLength="5"-->
-                <!--android:id="@+id/editTextTelefoneEsquerda"-->
-                <!--android:layout_weight="0.15" />-->
-
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-                <!--android:text=" - "-->
-                <!--android:id="@+id/textView"-->
-                <!--android:singleLine="false" />-->
-
-            <!--<EditText-->
-                <!--android:layout_width="65dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:inputType="numberDecimal"-->
-                <!--android:maxLength="4"-->
-                <!--android:ems="10"-->
-                <!--android:id="@+id/editTextTelefoneDireita"-->
-                <!--android:layout_gravity="right"-->
-                <!--android:phoneNumber="true" />-->
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -138,25 +74,21 @@
             android:textStyle="bold|italic"
             android:id="@+id/textViewTelefone"
             android:layout_gravity="left|center_vertical" />
-
         <EditText
             android:layout_width="214dp"
             android:layout_height="wrap_content"
             android:inputType="phone"
+            android:maxLength="13"
             android:id="@+id/editTextPhoneNumber"
             android:layout_weight="1"
             android:layout_gravity="right|center_vertical" />
-
     </FrameLayout>
-
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:layout_weight="0.13">
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -165,24 +97,19 @@
             android:textStyle="bold|italic"
             android:id="@+id/textViewHashTags"
             android:layout_gravity="left|center_vertical" />
-
         <com.boleiros.bazart.hashtags.CustomRecipients
             android:layout_width="214dp"
             android:layout_height="wrap_content"
             android:id="@+id/editTextHashtags"
             android:layout_gravity="right|center_vertical" />
     </FrameLayout>
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="360dp">
-
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="360dp"
             android:id="@+id/previewAntesDeEnviar"
             android:scaleType="fitXY" />
     </FrameLayout>
-
-
 </LinearLayout>
