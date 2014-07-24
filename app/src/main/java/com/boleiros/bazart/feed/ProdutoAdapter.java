@@ -108,33 +108,34 @@ public class ProdutoAdapter extends BaseAdapter {
                     String terceiro = array[2];
                     String saida = primeiro + " " + segundo + " " + terceiro;
 
-                    SpannableString ss = new SpannableString(saida);
-                    ClickableSpan clickableSpan1 = new ClickableSpan() {
-                        @Override
-                        public void onClick(View widget) {
-       //                     Toast.makeText(context, "clique1", Toast.LENGTH_SHORT).show();
-                        }
-                    };
-                    ClickableSpan clickableSpan2 = new ClickableSpan() {
-                        @Override
-                        public void onClick(View widget) {
-      //                      Toast.makeText(context, "clique2", Toast.LENGTH_SHORT).show();
-
-                        }
-                    };
-                    final ClickableSpan clickableSpan3 = new ClickableSpan() {
-                        @Override
-                        public void onClick(View widget) {
-     //                       Toast.makeText(context, "clique3", Toast.LENGTH_SHORT).show();
-
-                        }
-                    };
-
-                    ss.setSpan(clickableSpan1, 0, primeiro.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    ss.setSpan(clickableSpan2, primeiro.length() + 1, primeiro.length() + segundo.length() + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    ss.setSpan(clickableSpan3, primeiro.length() + segundo.length() + 2, saida.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-                    holderPattern.textViewSetHashTags.setText(ss);
+//                    SpannableString ss = new SpannableString(saida);
+//                    ClickableSpan clickableSpan1 = new ClickableSpan() {
+//                        @Override
+//                        public void onClick(View widget) {
+//       //                     Toast.makeText(context, "clique1", Toast.LENGTH_SHORT).show();
+//                        }
+//                    };
+//                    ClickableSpan clickableSpan2 = new ClickableSpan() {
+//                        @Override
+//                        public void onClick(View widget) {
+//      //                      Toast.makeText(context, "clique2", Toast.LENGTH_SHORT).show();
+//
+//                        }
+//                    };
+//                    final ClickableSpan clickableSpan3 = new ClickableSpan() {
+//                        @Override
+//                        public void onClick(View widget) {
+//     //                       Toast.makeText(context, "clique3", Toast.LENGTH_SHORT).show();
+//
+//                        }
+//                    };
+//
+//                    ss.setSpan(clickableSpan1, 0, primeiro.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+//                    ss.setSpan(clickableSpan2, primeiro.length() + 1, primeiro.length() + segundo.length() + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+//                    ss.setSpan(clickableSpan3, primeiro.length() + segundo.length() + 2, saida.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+//
+//                    holderPattern.textViewSetHashTags.setText(ss);
+                    holderPattern.textViewSetHashTags.setText(saida );
                     holderPattern.textViewSetHashTags.setMovementMethod(LinkMovementMethod.getInstance());
                 }
                 else if(array.length == 2){
@@ -142,41 +143,43 @@ public class ProdutoAdapter extends BaseAdapter {
                     String segundo = array[1];
                     String saida = primeiro + " " + segundo;
 
-                    SpannableString ss = new SpannableString(saida);
-                    ClickableSpan clickableSpan1 = new ClickableSpan() {
-                        @Override
-                        public void onClick(View widget) {
-          //                  Toast.makeText(context, "clique1", Toast.LENGTH_SHORT).show();
-                        }
-                    };
-                    ClickableSpan clickableSpan2 = new ClickableSpan() {
-                        @Override
-                        public void onClick(View widget) {
-          //                  Toast.makeText(context, "clique2", Toast.LENGTH_SHORT).show();
-
-                        }
-                    };
-
-                    ss.setSpan(clickableSpan1, 0, primeiro.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    ss.setSpan(clickableSpan2, primeiro.length() + 1, primeiro.length() + segundo.length() + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-                    holderPattern.textViewSetHashTags.setText(ss);
+//                    SpannableString ss = new SpannableString(saida);
+//                    ClickableSpan clickableSpan1 = new ClickableSpan() {
+//                        @Override
+//                        public void onClick(View widget) {
+//          //                  Toast.makeText(context, "clique1", Toast.LENGTH_SHORT).show();
+//                        }
+//                    };
+//                    ClickableSpan clickableSpan2 = new ClickableSpan() {
+//                        @Override
+//                        public void onClick(View widget) {
+//          //                  Toast.makeText(context, "clique2", Toast.LENGTH_SHORT).show();
+//
+//                        }
+//                    };
+//
+//                    ss.setSpan(clickableSpan1, 0, primeiro.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+//                    ss.setSpan(clickableSpan2, primeiro.length() + 1, primeiro.length() + segundo.length() + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+//
+//                    holderPattern.textViewSetHashTags.setText(ss);
+                    holderPattern.textViewSetHashTags.setText(saida);
                     holderPattern.textViewSetHashTags.setMovementMethod(LinkMovementMethod.getInstance());
                 }
                 else if(array.length == 1){
                     String saida = array[0];
-
-                    SpannableString ss = new SpannableString(saida);
-                    ClickableSpan clickableSpan1 = new ClickableSpan() {
-                        @Override
-                        public void onClick(View widget) {
-        //                    Toast.makeText(context, "clique1", Toast.LENGTH_SHORT).show();
-                        }
-                    };
-
-                    ss.setSpan(clickableSpan1, 0, saida.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-                    holderPattern.textViewSetHashTags.setText(ss);
+//
+//                    SpannableString ss = new SpannableString(saida);
+//                    ClickableSpan clickableSpan1 = new ClickableSpan() {
+//                        @Override
+//                        public void onClick(View widget) {
+//        //                    Toast.makeText(context, "clique1", Toast.LENGTH_SHORT).show();
+//                        }
+//                    };
+//
+//                    ss.setSpan(clickableSpan1, 0, saida.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+//
+//                    holderPattern.textViewSetHashTags.setText(ss);
+                    holderPattern.textViewSetHashTags.setText(saida);
                     holderPattern.textViewSetHashTags.setMovementMethod(LinkMovementMethod.getInstance());
                 }
             }
