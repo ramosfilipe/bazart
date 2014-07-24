@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.boleiros.bazart.R;
+import com.boleiros.bazart.hashtags.HashtagActivity;
 import com.boleiros.bazart.modelo.Produto;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -101,91 +102,112 @@ public class ProdutoAdapter extends BaseAdapter {
         try {
 
             String[] array = items.get(arg0).getArrayHashtags();
-            if(array!= null) {
+            if(array!= null && context instanceof Feed) {
                 if(array.length == 3) {
-                    String primeiro = array[0];
-                    String segundo = array[1];
-                    String terceiro = array[2];
+                    final String primeiro = array[0];
+                    final String segundo = array[1];
+                    final String terceiro = array[2];
                     String saida = primeiro + " " + segundo + " " + terceiro;
 
-//                    SpannableString ss = new SpannableString(saida);
-//                    ClickableSpan clickableSpan1 = new ClickableSpan() {
-//                        @Override
-//                        public void onClick(View widget) {
-//       //                     Toast.makeText(context, "clique1", Toast.LENGTH_SHORT).show();
-//                        }
-//                    };
-//                    ClickableSpan clickableSpan2 = new ClickableSpan() {
-//                        @Override
-//                        public void onClick(View widget) {
-//      //                      Toast.makeText(context, "clique2", Toast.LENGTH_SHORT).show();
-//
-//                        }
-//                    };
-//                    final ClickableSpan clickableSpan3 = new ClickableSpan() {
-//                        @Override
-//                        public void onClick(View widget) {
-//     //                       Toast.makeText(context, "clique3", Toast.LENGTH_SHORT).show();
-//
-//                        }
-//                    };
-//
-//                    ss.setSpan(clickableSpan1, 0, primeiro.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-//                    ss.setSpan(clickableSpan2, primeiro.length() + 1, primeiro.length() + segundo.length() + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-//                    ss.setSpan(clickableSpan3, primeiro.length() + segundo.length() + 2, saida.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-//
-//                    holderPattern.textViewSetHashTags.setText(ss);
-                    holderPattern.textViewSetHashTags.setText(saida );
+                    SpannableString ss = new SpannableString(saida);
+                    ClickableSpan clickableSpan1 = new ClickableSpan() {
+                        @Override
+                        public void onClick(View widget) {
+                            ((Feed)context).changeAct(primeiro);
+                        }
+                    };
+                    ClickableSpan clickableSpan2 = new ClickableSpan() {
+                        @Override
+                        public void onClick(View widget) {
+                            ((Feed)context).changeAct(segundo);
+
+                        }
+                    };
+                    final ClickableSpan clickableSpan3 = new ClickableSpan() {
+                        @Override
+                        public void onClick(View widget) {
+                            ((Feed)context).changeAct(terceiro);
+                        }
+                    };
+
+                    ss.setSpan(clickableSpan1, 0, primeiro.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    ss.setSpan(clickableSpan2, primeiro.length() + 1, primeiro.length() + segundo.length() + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    ss.setSpan(clickableSpan3, primeiro.length() + segundo.length() + 2, saida.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+                    holderPattern.textViewSetHashTags.setText(ss);
                     holderPattern.textViewSetHashTags.setMovementMethod(LinkMovementMethod.getInstance());
                 }
                 else if(array.length == 2){
-                    String primeiro = array[0];
-                    String segundo = array[1];
-                    String saida = primeiro + " " + segundo;
+                    final String primeiro = array[0];
+                    final String segundo = array[1];
+                    final String saida = primeiro + " " + segundo;
 
-//                    SpannableString ss = new SpannableString(saida);
-//                    ClickableSpan clickableSpan1 = new ClickableSpan() {
-//                        @Override
-//                        public void onClick(View widget) {
-//          //                  Toast.makeText(context, "clique1", Toast.LENGTH_SHORT).show();
-//                        }
-//                    };
-//                    ClickableSpan clickableSpan2 = new ClickableSpan() {
-//                        @Override
-//                        public void onClick(View widget) {
-//          //                  Toast.makeText(context, "clique2", Toast.LENGTH_SHORT).show();
-//
-//                        }
-//                    };
-//
-//                    ss.setSpan(clickableSpan1, 0, primeiro.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-//                    ss.setSpan(clickableSpan2, primeiro.length() + 1, primeiro.length() + segundo.length() + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-//
-//                    holderPattern.textViewSetHashTags.setText(ss);
-                    holderPattern.textViewSetHashTags.setText(saida);
+                    SpannableString ss = new SpannableString(saida);
+                    ClickableSpan clickableSpan1 = new ClickableSpan() {
+                        @Override
+                        public void onClick(View widget) {
+                            ((Feed)context).changeAct(primeiro);
+                        }
+                    };
+                    ClickableSpan clickableSpan2 = new ClickableSpan() {
+                        @Override
+                        public void onClick(View widget) {
+                            ((Feed)context).changeAct(segundo);
+
+                        }
+                    };
+
+                    ss.setSpan(clickableSpan1, 0, primeiro.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    ss.setSpan(clickableSpan2, primeiro.length() + 1, primeiro.length() + segundo.length() + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+                    holderPattern.textViewSetHashTags.setText(ss);
                     holderPattern.textViewSetHashTags.setMovementMethod(LinkMovementMethod.getInstance());
                 }
                 else if(array.length == 1){
-                    String saida = array[0];
-//
-//                    SpannableString ss = new SpannableString(saida);
-//                    ClickableSpan clickableSpan1 = new ClickableSpan() {
-//                        @Override
-//                        public void onClick(View widget) {
-//        //                    Toast.makeText(context, "clique1", Toast.LENGTH_SHORT).show();
-//                        }
-//                    };
-//
-//                    ss.setSpan(clickableSpan1, 0, saida.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-//
-//                    holderPattern.textViewSetHashTags.setText(ss);
-                    holderPattern.textViewSetHashTags.setText(saida);
+                    final String saida = array[0];
+
+
+
+
+                    SpannableString ss = new SpannableString(saida);
+                    ClickableSpan clickableSpan1 = new ClickableSpan() {
+                        @Override
+                        public void onClick(View widget) {
+                            ((Feed)context).changeAct(saida);
+                        }
+                    };
+
+                    ss.setSpan(clickableSpan1, 0, saida.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+                    holderPattern.textViewSetHashTags.setText(ss);
                     holderPattern.textViewSetHashTags.setMovementMethod(LinkMovementMethod.getInstance());
                 }
             }
             else{
-                holderPattern.textViewSetHashTags.setText("");
-            }
+                if(array.length == 3) {
+                    final String primeiro = array[0];
+                    final String segundo = array[1];
+                    final String terceiro = array[2];
+                    String saida = primeiro + " " + segundo + " " + terceiro;
+
+                    holderPattern.textViewSetHashTags.setText(saida);
+                    holderPattern.textViewSetHashTags.setMovementMethod(LinkMovementMethod.getInstance());
+                }
+                else if(array.length == 2){
+                    final String primeiro = array[0];
+                    final String segundo = array[1];
+                    final String saida = primeiro + " " + segundo;
+
+                    holderPattern.textViewSetHashTags.setText(saida);
+                    holderPattern.textViewSetHashTags.setMovementMethod(LinkMovementMethod.getInstance());
+                }
+                else if(array.length == 1){
+                    final String saida = array[0];
+
+
+                    holderPattern.textViewSetHashTags.setText(saida);
+                    holderPattern.textViewSetHashTags.setMovementMethod(LinkMovementMethod.getInstance());
+                }            }
         }catch(Exception e){
             System.err.println(e.toString());
         }

@@ -7,6 +7,7 @@ package com.boleiros.bazart.hashtags;
 import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,13 +32,23 @@ public class HashtagActivity extends Activity implements OnFragmentInteractionLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busca);
 
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.buscahashtag, menu);
+
+
         MenuItem searchViewItem = menu.findItem(R.id.menu_search);
         final SearchView searchView = (SearchView) searchViewItem.getActionView();
         searchView.setIconifiedByDefault(false);
+        Intent intent = getIntent();
+        if (intent.hasExtra("busca")){
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+            String str = intent.getExtras().getString("busca");
+            consultaAoParse(str);
+            searchView.setQuery(str,false);
+        }
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {

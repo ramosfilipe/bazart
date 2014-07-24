@@ -69,9 +69,7 @@ public class Feed extends Activity {
 
         final ActionBar actionBar = getActionBar();
         actionBar.setCustomView(R.layout.custom_actionbar);
-
         actionBar.setDisplayShowCustomEnabled(true);
-
 
 
         // Create the adapter that will return a fragment for each of the three
@@ -88,6 +86,15 @@ public class Feed extends Activity {
 
 
     }
+
+    public void changeAct(String str){
+        System.out.println(str);
+        Intent intent = new Intent(this, HashtagActivity.class);
+        intent.putExtra("busca",str);
+        startActivity(intent);
+
+    }
+
 
     private void makeMeRequest() {
         Request request = Request.newMeRequest(ParseFacebookUtils.getSession(),
@@ -196,6 +203,7 @@ public class Feed extends Activity {
                 }
             });
         }
+
 
 
         @Override
