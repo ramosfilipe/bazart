@@ -44,6 +44,14 @@
 
             android:layout_gravity="center"
              />
+
+        <ImageButton
+            android:layout_width="98dp"
+            android:layout_height="match_parent"
+            android:id="@+id/gpsButton"
+            android:background="@null"
+            android:src="@drawable/gps"
+            android:layout_gravity="left|center_vertical" />
     </FrameLayout>
 </LinearLayout>
 </android.support.v4.widget.SwipeRefreshLayout>

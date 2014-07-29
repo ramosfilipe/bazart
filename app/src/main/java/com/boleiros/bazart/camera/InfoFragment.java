@@ -116,15 +116,6 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
 
         hashtags.setAdapter(new BaseRecipientAdapter(BaseRecipientAdapter.QUERY_TYPE_PHONE, getActivity()) {
         });
-
-
-       /* hashtags.setChipListener(new RecipientEditTextView.IChipListener() {
-            @Override
-            public void onDataChanged() {
-
-            }
-        });*/
-
         preco.setFilters(FILTERS);
        // preco.setOnFocusChangeListener(ON_FOCUS);
         loadBitmap(ActivityStore.getInstance(this.getActivity()).getImage(),preview);

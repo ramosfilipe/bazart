@@ -2,10 +2,13 @@ package com.boleiros.bazart.feed;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.pm.ActivityInfo;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -18,17 +21,27 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.boleiros.bazart.Bazart;
 import com.boleiros.bazart.R;
 import com.boleiros.bazart.camera.CameraActivity;
+import com.boleiros.bazart.camera.InfoFragment;
 import com.boleiros.bazart.hashtags.HashtagActivity;
 import com.boleiros.bazart.modelo.Produto;
 import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.model.GraphUser;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesClient;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.location.LocationClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
 import com.parse.FindCallback;
 import com.parse.ParseFacebookUtils;
+import com.parse.ParseGeoPoint;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.ui.ParseLoginBuilder;
@@ -153,11 +166,41 @@ public class Feed extends Activity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class PlaceholderFragment extends Fragment implements LocationListener,GooglePlayServicesClient.ConnectionCallbacks,
+            GooglePlayServicesClient.OnConnectionFailedListener {
         /**
          * The fragment argument representing the section number for this
          * fragment.
          */
+        private Location lastLocation = null;
+        private Location currentLocation = null;
+        private LocationRequest locationRequest;
+        private LocationClient locationClient;
+        /*
+     * Define a request code to send to Google Play services This code is returned in
+     * Activity.onActivityResult
+     */
+        private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
+
+        /*
+         * Constants for location update parameters
+         */
+        // Milliseconds per second
+        private static final int MILLISECONDS_PER_SECOND = 1000;
+
+        // The update interval
+        private static final int UPDATE_INTERVAL_IN_SECONDS = 5;
+
+        // A fast interval ceiling
+        private static final int FAST_CEILING_IN_SECONDS = 1;
+
+        // Update interval in milliseconds
+        private static final long UPDATE_INTERVAL_IN_MILLISECONDS = MILLISECONDS_PER_SECOND
+                * UPDATE_INTERVAL_IN_SECONDS;
+
+        // A fast ceiling of update intervals, used when the app is visible
+        private static final long FAST_INTERVAL_CEILING_IN_MILLISECONDS = MILLISECONDS_PER_SECOND
+                * FAST_CEILING_IN_SECONDS;
         private SwipeRefreshLayout swipeRefreshLayout;
         private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -165,6 +208,8 @@ public class Feed extends Activity {
          * Returns a new instance of this fragment for the given section
          * number.
          */
+
+
         public static PlaceholderFragment newInstance(int sectionNumber) {
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
@@ -180,6 +225,13 @@ public class Feed extends Activity {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
+            locationRequest = LocationRequest.create();
+            locationRequest.setInterval(UPDATE_INTERVAL_IN_MILLISECONDS);
+            locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+            locationRequest.setFastestInterval(FAST_INTERVAL_CEILING_IN_MILLISECONDS);
+            // Create a new location client, using the enclosing class to handle callbacks.
+            locationClient = new LocationClient(this.getActivity(), this, this);
+            locationClient.connect();
             consultaAoParse();
 
         }
@@ -188,6 +240,7 @@ public class Feed extends Activity {
             ParseQuery<Produto> query = ParseQuery.getQuery("Produto");
             query.include("author");
             query.orderByDescending("createdAt");
+            //query.setLimit(10);
             query.findInBackground(new FindCallback<Produto>() {
                 @Override
                 public void done(List<Produto> parseObjects, com.parse.ParseException e) {
@@ -204,16 +257,54 @@ public class Feed extends Activity {
             });
         }
 
-
+        public void consultaAoParseComLocalizacao(ParseGeoPoint ponto) {
+            ParseQuery<Produto> query = ParseQuery.getQuery("Produto");
+            query.include("author");
+            query.whereNear("location",ponto);
+            query.setLimit(10);
+            // query.orderByDescending("createdAt");
+            query.findInBackground(new FindCallback<Produto>() {
+                @Override
+                public void done(List<Produto> parseObjects, com.parse.ParseException e) {
+                    if (e == null) {
+                        ProdutoAdapter produtoAdapter = new ProdutoAdapter(getActivity(), parseObjects);
+                        final ListView listaDeExibicao = (ListView) getActivity().findViewById(R.id.listaCards);
+                        if (listaDeExibicao != null) {
+                            listaDeExibicao.setAdapter(produtoAdapter);
+                        }
+                        swipeRefreshLayout.setRefreshing(false);
+                    } else {
+                    }
+                }
+            });
+        }
 
         @Override
         public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                                  Bundle savedInstanceState) {
             swipeRefreshLayout = (SwipeRefreshLayout) inflater.inflate(R.layout.fragment_feed, container, false);
             ImageButton camera = (ImageButton) swipeRefreshLayout.findViewById(R.id.cameraButton);
+            ImageButton gps = (ImageButton) swipeRefreshLayout.findViewById(R.id.gpsButton);
+
             final ListView listaDeExibicao = (ListView) swipeRefreshLayout.findViewById(R.id.listaCards);
 
             final ImageButton busca = (ImageButton) getActivity().findViewById(R.id.botaoBuscaActionBar);
+
+            gps.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
+                    if (myLoc == null) {
+                        Toast.makeText(getActivity(),
+                                "Please try again after your location appears on the map.", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    final ParseGeoPoint myPoint = geoPointFromLocation(myLoc);
+                    consultaAoParseComLocalizacao(myPoint);
+                }
+            });
+
+
 
             busca.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -239,7 +330,9 @@ public class Feed extends Activity {
                 @Override
                 public void onRefresh() {
                     Log.e(getClass().getSimpleName(), "refresh");
+                    //if(gps==false){
                     consultaAoParse();
+                    //consultaAoParseComLocalizacao(currentLocation);
                 }
             });
 
@@ -266,6 +359,114 @@ public class Feed extends Activity {
             });
             return swipeRefreshLayout;
         }
+
+        private void startPeriodicUpdates() {
+            locationClient.requestLocationUpdates(locationRequest, this);
+        }
+
+        private void stopPeriodicUpdates() {
+            locationClient.removeLocationUpdates(this);
+        }
+
+        private Location getLocation() {
+            if (servicesConnected()) {
+                return locationClient.getLastLocation();
+            } else {
+                return null;
+            }
+        }
+        private boolean servicesConnected() {
+            int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this.getActivity());
+
+            if (ConnectionResult.SUCCESS == resultCode) {
+
+                return true;
+            } else {
+                System.out.println("testeeee");
+                Dialog dialog = GooglePlayServicesUtil.getErrorDialog(resultCode, this.getActivity(), 0);
+                if (dialog != null) {
+                    InfoFragment.ErrorDialogFragment errorFragment = new InfoFragment.ErrorDialogFragment();
+                    errorFragment.setDialog(dialog);
+                    errorFragment.show(getFragmentManager(), Bazart.APPTAG);
+                }
+                return false;
+            }
+        }
+        /**
+         * Called when the location has changed.
+         * <p/>
+         * <p> There are no restrictions on the use of the supplied Location object.
+         *
+         * @param location The new location, as a Location object.
+         */
+        @Override
+        public void onLocationChanged(Location location) {
+            currentLocation = location;
+            if (lastLocation != null
+                    && geoPointFromLocation(location)
+                    .distanceInKilometersTo(geoPointFromLocation(lastLocation)) < 0.01) {
+                return;
+            }
+            lastLocation = location;
+        }
+
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+
+        }
+
+        /**
+         * Called when the provider is enabled by the user.
+         *
+         * @param provider the name of the location provider associated with this
+         *                 update.
+         */
+        public void onProviderEnabled(String provider) {
+
+        }
+
+        /**
+         * Called when the provider is disabled by the user. If requestLocationUpdates
+         * is called on an already disabled provider, this method is called
+         * immediately.
+         *
+         * @param provider the name of the location provider associated with this
+         *                 update.
+         */
+
+        public void onProviderDisabled(String provider) {
+
+        }
+
+        /*
+          * Helper method to get the Parse GEO point representation of a location
+          */
+        private ParseGeoPoint geoPointFromLocation(Location loc) {
+            return new ParseGeoPoint(loc.getLatitude(), loc.getLongitude());
+        }
+
+        @Override
+        public void onConnected(Bundle bundle) {
+            currentLocation = getLocation();
+            startPeriodicUpdates();
+        }
+
+        @Override
+        public void onDisconnected() {
+
+        }
+
+        @Override
+        public void onConnectionFailed(ConnectionResult connectionResult) {
+            if (connectionResult.hasResolution()) {
+                try {
+                    connectionResult.startResolutionForResult(this.getActivity(), CONNECTION_FAILURE_RESOLUTION_REQUEST);
+                } catch (IntentSender.SendIntentException e) {
+                }
+            } else {
+//            showErrorDialog(connectionResult.getErrorCode());
+            }
+        }
+
     }
 }
 
