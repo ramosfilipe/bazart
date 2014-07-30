@@ -1,9 +1,6 @@
 package com.boleiros.bazart.hashtags;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -17,29 +14,28 @@ import com.android.ex.chips.RecipientEditTextView;
  */
 public class CustomRecipients extends RecipientEditTextView {
 
+    private char mLastSeparator = ',';
+
+
     public CustomRecipients(Context context, AttributeSet attrs) {
         super(context, attrs);
         RecipientsEditorTokenizer tokenizer = new RecipientsEditorTokenizer();
         setTokenizer(tokenizer);
     }
 
-
-
-
-    private char mLastSeparator = ',';
-
     @Override
     public void onTextChanged(CharSequence s, int start,
                               int before, int after) {
         if (before == 0 && after == 1) {    // inserting a character
             char c = s.charAt(start);
-            if (c == ',' || c == ';'|| c == ' ') {
+            if (c == ',' || c == ';' || c == ' ') {
                 // Remember the delimiter the user typed to end this recipient. We'll
                 // need it shortly in terminateToken().
                 mLastSeparator = c;
             }
         }
     }
+
     private class RecipientsEditorTokenizer
             implements MultiAutoCompleteTextView.Tokenizer {
         @Override
@@ -48,11 +44,11 @@ public class CustomRecipients extends RecipientEditTextView {
             int i = cursor;
             char c;
             // If we're sitting at a delimiter, back up so we find the previous token
-            if (i > 0 && ((c = text.charAt(i - 1)) == ',' || c == ';'|| c == ' ')) {
+            if (i > 0 && ((c = text.charAt(i - 1)) == ',' || c == ';' || c == ' ')) {
                 --i;
             }
             // Now back up until the start or until we find the separator of the previous token
-            while (i > 0 && (c = text.charAt(i - 1)) != ',' && c != ';' && c != ' ' ) {
+            while (i > 0 && (c = text.charAt(i - 1)) != ',' && c != ';' && c != ' ') {
                 i--;
             }
             while (i < cursor) {
@@ -67,7 +63,7 @@ public class CustomRecipients extends RecipientEditTextView {
             int len = text.length();
             char c;
             while (i < len) {
-                if ((c = text.charAt(i)) == ',' || c == ';'|| c == ' ') {
+                if ((c = text.charAt(i)) == ',' || c == ';' || c == ' ') {
                     return i;
                 } else {
                     i++;
@@ -84,7 +80,7 @@ public class CustomRecipients extends RecipientEditTextView {
                 i--;
             }
             char c;
-            if (i > 0 && ((c = text.charAt(i - 1)) == ',' || c == ';'|| c == '!')) {
+            if (i > 0 && ((c = text.charAt(i - 1)) == ',' || c == ';' || c == '!')) {
                 return text;
             } else {
                 // Use the same delimiter the user just typed.
@@ -100,5 +96,7 @@ public class CustomRecipients extends RecipientEditTextView {
                 }
             }
         }
-    };
+    }
+
+    ;
 }

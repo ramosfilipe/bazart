@@ -10,7 +10,10 @@ import java.text.ParseException;
 public class Utils {
 
     private static final NumberFormat FORMAT_CURRENCY = NumberFormat.getCurrencyInstance();
-    /** Parses an amount into cents.
+
+    /**
+     * Parses an amount into cents.
+     *
      * @param p_value Amount formatted using the default currency.
      * @return Value as cents.
      */
@@ -31,7 +34,10 @@ public class Utils {
             }
         }
     }
-    /** Formats cents into a valid amount using the default currency.
+
+    /**
+     * Formats cents into a valid amount using the default currency.
+     *
      * @param p_value Value as cents
      * @return Amount formatted using a currency.
      */
@@ -42,7 +48,10 @@ public class Utils {
         String v_currency = FORMAT_CURRENCY.format(v_bigDec.doubleValue());
         return v_currency.replace(FORMAT_CURRENCY.getCurrency().getSymbol(), "").replace(",", "");
     }
-    /** Formats cents into a valid amount using the default currency.
+
+    /**
+     * Formats cents into a valid amount using the default currency.
+     *
      * @param p_value Value as cents
      * @return Amount formatted using a currency.
      */

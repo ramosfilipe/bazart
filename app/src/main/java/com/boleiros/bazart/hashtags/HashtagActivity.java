@@ -5,14 +5,11 @@ package com.boleiros.bazart.hashtags;
  */
 
 import android.app.Activity;
-import android.app.FragmentTransaction;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -34,6 +31,7 @@ public class HashtagActivity extends Activity implements OnFragmentInteractionLi
 
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.buscahashtag, menu);
@@ -43,20 +41,20 @@ public class HashtagActivity extends Activity implements OnFragmentInteractionLi
         final SearchView searchView = (SearchView) searchViewItem.getActionView();
         searchView.setIconifiedByDefault(false);
         Intent intent = getIntent();
-        if (intent.hasExtra("busca")){
+        if (intent.hasExtra("busca")) {
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
             String str = intent.getExtras().getString("busca");
             consultaAoParse(str);
-            searchView.setQuery(str,false);
+            searchView.setQuery(str, false);
         }
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 searchView.clearFocus();
-                if(!query.contains("#")){
-                    query = "#"+ query;
+                if (!query.contains("#")) {
+                    query = "#" + query;
                 }
-                consultaAoParse(query.toLowerCase().replace(" ",""));
+                consultaAoParse(query.toLowerCase().replace(" ", ""));
                 return true;
             }
 
@@ -70,6 +68,7 @@ public class HashtagActivity extends Activity implements OnFragmentInteractionLi
 
         return true;
     }
+
     public void consultaAoParse(String termo) {
         ParseQuery<Produto> query = ParseQuery.getQuery("Produto");
         query.include("author");
@@ -86,8 +85,8 @@ public class HashtagActivity extends Activity implements OnFragmentInteractionLi
                     if (listaDeExibicao != null) {
                         listaDeExibicao.setAdapter(produtoAdapter);
                     }
-                    if(parseObjects.size() == 0){
-                        Toast.makeText(getBaseContext(),"Não foi encontrado nenhum produto",Toast.LENGTH_SHORT).show();
+                    if (parseObjects.size() == 0) {
+                        Toast.makeText(getBaseContext(), "Não foi encontrado nenhum produto", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                 }

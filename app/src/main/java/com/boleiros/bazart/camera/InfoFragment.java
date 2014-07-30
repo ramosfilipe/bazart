@@ -1,4 +1,5 @@
 package com.boleiros.bazart.camera;
+
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
@@ -24,6 +25,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.android.ex.chips.BaseRecipientAdapter;
 import com.boleiros.bazart.Bazart;
 import com.boleiros.bazart.R;
@@ -42,44 +44,40 @@ import com.parse.ParseFile;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class InfoFragment extends Fragment implements LocationListener,GooglePlayServicesClient.ConnectionCallbacks,
+public class InfoFragment extends Fragment implements LocationListener, GooglePlayServicesClient.ConnectionCallbacks,
         GooglePlayServicesClient.OnConnectionFailedListener {
-    private Location lastLocation = null;
-    private Location currentLocation = null;
-    private LocationRequest locationRequest;
-    private LocationClient locationClient;
-    private static final InputFilter[] FILTERS = new InputFilter[] {new NumericRangeFilter(0.00, 999999.99)};
-
+    private static final InputFilter[] FILTERS = new InputFilter[]{new NumericRangeFilter(0.00, 999999.99)};
     /*
       * Define a request code to send to Google Play services This code is returned in
       * Activity.onActivityResult
       */
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
-
     /*
      * Constants for location update parameters
      */
     // Milliseconds per second
     private static final int MILLISECONDS_PER_SECOND = 1000;
-
     // The update interval
     private static final int UPDATE_INTERVAL_IN_SECONDS = 5;
-
-    // A fast interval ceiling
-    private static final int FAST_CEILING_IN_SECONDS = 1;
-
     // Update interval in milliseconds
     private static final long UPDATE_INTERVAL_IN_MILLISECONDS = MILLISECONDS_PER_SECOND
             * UPDATE_INTERVAL_IN_SECONDS;
-
+    // A fast interval ceiling
+    private static final int FAST_CEILING_IN_SECONDS = 1;
     // A fast ceiling of update intervals, used when the app is visible
     private static final long FAST_INTERVAL_CEILING_IN_MILLISECONDS = MILLISECONDS_PER_SECOND
             * FAST_CEILING_IN_SECONDS;
+    private Location lastLocation = null;
+    private Location currentLocation = null;
+    private LocationRequest locationRequest;
+    private LocationClient locationClient;
     private TextView localizacao;
+
     public InfoFragment() {
         // Required empty public constructor
     }
@@ -97,7 +95,6 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -108,7 +105,7 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
         final EditText preco = (EditText) v.findViewById(R.id.editTextPreco);
         localizacao = (TextView) v.findViewById(R.id.textViewLocalizacao);
 
-        final CustomRecipients hashtags = (CustomRecipients)v.findViewById(R.id.editTextHashtags);
+        final CustomRecipients hashtags = (CustomRecipients) v.findViewById(R.id.editTextHashtags);
 
         hashtags.setTokenizer(new Rfc822Tokenizer());
         BaseRecipientAdapter a = new BaseRecipientAdapter(BaseRecipientAdapter.QUERY_TYPE_PHONE, getActivity()) {
@@ -117,39 +114,34 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
         hashtags.setAdapter(new BaseRecipientAdapter(BaseRecipientAdapter.QUERY_TYPE_PHONE, getActivity()) {
         });
         preco.setFilters(FILTERS);
-       // preco.setOnFocusChangeListener(ON_FOCUS);
-        loadBitmap(ActivityStore.getInstance(this.getActivity()).getImage(),preview);
-        ImageButton botaoVoltar = (ImageButton)v.findViewById(R.id.imageButtonBack);
+        // preco.setOnFocusChangeListener(ON_FOCUS);
+        loadBitmap(ActivityStore.getInstance(this.getActivity()).getImage(), preview);
+        ImageButton botaoVoltar = (ImageButton) v.findViewById(R.id.imageButtonBack);
         botaoVoltar.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                com.commonsware.cwac.camera.CameraFragment current=new CameraFragment();
+                com.commonsware.cwac.camera.CameraFragment current = new CameraFragment();
                 getFragmentManager().beginTransaction()
                         .replace(R.id.container, current).commit();
             }
         });
 
 
-
-        final ImageButton botaoEnvia = (ImageButton)v.findViewById(R.id.imageButtonUpload);
+        final ImageButton botaoEnvia = (ImageButton) v.findViewById(R.id.imageButtonUpload);
         botaoEnvia.setVisibility(View.VISIBLE);
         botaoEnvia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (preco.getText().length()<1) {
-                    Toast.makeText(getActivity(),"Insira o preço do produto",Toast.LENGTH_SHORT).show();
-                }
-                else if(telefone.getText().length()<1){
-                    Toast.makeText(getActivity(),"Insira o número para contato",Toast.LENGTH_SHORT).show();
-                }
-                else if(hashtags.getSize() == 0){
-                    Toast.makeText(getActivity(),"Insira alguma hashtag",Toast.LENGTH_SHORT).show();
-                }
-                else if(hashtags.getSize() > 3 ){
-                    Toast.makeText(getActivity(),"Insira no máximo 3 hashtags",Toast.LENGTH_SHORT).show();
-                }
-                else {
+                if (preco.getText().length() < 1) {
+                    Toast.makeText(getActivity(), "Insira o preço do produto", Toast.LENGTH_SHORT).show();
+                } else if (telefone.getText().length() < 1) {
+                    Toast.makeText(getActivity(), "Insira o número para contato", Toast.LENGTH_SHORT).show();
+                } else if (hashtags.getSize() == 0) {
+                    Toast.makeText(getActivity(), "Insira alguma hashtag", Toast.LENGTH_SHORT).show();
+                } else if (hashtags.getSize() > 3) {
+                    Toast.makeText(getActivity(), "Insira no máximo 3 hashtags", Toast.LENGTH_SHORT).show();
+                } else {
 
                     Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
                     if (myLoc == null) {
@@ -195,9 +187,10 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
                 }
 
             }
-            });
+        });
         return v;
     }
+
     private void startPeriodicUpdates() {
         locationClient.requestLocationUpdates(locationRequest, this);
     }
@@ -213,6 +206,7 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
             return null;
         }
     }
+
     private boolean servicesConnected() {
         int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this.getActivity());
 
@@ -230,6 +224,7 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
             return false;
         }
     }
+
     /**
      * Called when the location has changed.
      * <p/>
@@ -286,7 +281,7 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
     public void onConnected(Bundle bundle) {
         currentLocation = getLocation();
         startPeriodicUpdates();
-        new GetAddressTask(this.getActivity(),localizacao).execute(currentLocation);
+        new GetAddressTask(this.getActivity(), localizacao).execute(currentLocation);
 
     }
 
@@ -307,13 +302,11 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
         }
     }
 
-
-    public interface OnFragmentInteractionListener {
-    }
     void loadBitmap(byte[] foto, ImageView imageView) {
-            final BitmapWorker task = new BitmapWorker(imageView);
-            task.execute(foto);
+        final BitmapWorker task = new BitmapWorker(imageView);
+        task.execute(foto);
     }
+
     /*
      * Show a dialog returned by Google Play services for the connection error code
      */
@@ -335,6 +328,9 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
             // Show the error dialog in the DialogFragment
             errorFragment.show(this.getFragmentManager(), Bazart.APPTAG);
         }
+    }
+
+    public interface OnFragmentInteractionListener {
     }
 
     /*
@@ -373,19 +369,21 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
     class GetAddressTask extends AsyncTask<Location, Void, String> {
         Context mContext;
         TextView label;
-        public GetAddressTask(Context context,TextView tx) {
+
+        public GetAddressTask(Context context, TextView tx) {
             super();
-            label= tx;
+            label = tx;
             mContext = context;
         }
+
         /**
          * Get a Geocoder instance, get the latitude and longitude
          * look up the address, and return it
          *
-         * @params params One or more Location objects
          * @return A string containing the address of the current
          * location, or an empty string if no address can be found,
          * or an error message
+         * @params params One or more Location objects
          */
         @Override
         protected String doInBackground(Location... params) {
@@ -399,9 +397,10 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
                 /*
                  * Return 1 address.
                  */
-                if(loc!=null){
-                addresses = geocoder.getFromLocation(loc.getLatitude(),
-                        loc.getLongitude(), 1);}
+                if (loc != null) {
+                    addresses = geocoder.getFromLocation(loc.getLatitude(),
+                            loc.getLongitude(), 1);
+                }
             } catch (IOException e1) {
                 Log.e("LocationSampleActivity",
                         "IO Exception in getFromLocation()");
@@ -432,7 +431,7 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
                         // Locality is usually a city
                         address.getAddressLine(1)
                         // The country of the address
-                        );
+                );
                 // Return the text
                 return addressText;
             } else {
@@ -447,37 +446,38 @@ public class InfoFragment extends Fragment implements LocationListener,GooglePla
             // Set the address in the UI
         }
 
-}
-class BitmapWorker extends AsyncTask<byte[], Void, Bitmap> {
-    private ImageView imageViewReference;
-
-    public BitmapWorker(ImageView imageView) {
-        imageViewReference = imageView;
     }
 
-    // Decode image in background.
-    @Override
-    protected Bitmap doInBackground(byte[]... params) {
-        return BitmapFactory.decodeByteArray(params[0], 0, params[0].length);
-    }
+    class BitmapWorker extends AsyncTask<byte[], Void, Bitmap> {
+        private ImageView imageViewReference;
 
-    // Once complete, see if ImageView is still around and set bitmap.
-    @Override
-    protected void onPostExecute(Bitmap bitmap) {
-        if (imageViewReference != null && bitmap != null) {
-            imageViewReference.setImageBitmap(bitmap);
+        public BitmapWorker(ImageView imageView) {
+            imageViewReference = imageView;
+        }
+
+        // Decode image in background.
+        @Override
+        protected Bitmap doInBackground(byte[]... params) {
+            return BitmapFactory.decodeByteArray(params[0], 0, params[0].length);
+        }
+
+        // Once complete, see if ImageView is still around and set bitmap.
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            if (imageViewReference != null && bitmap != null) {
+                imageViewReference.setImageBitmap(bitmap);
+            }
         }
     }
 }
-}
-    /**
-     * A subclass of AsyncTask that calls getFromLocation() in the
-     * background. The class definition has these generic types:
-     * Location - A Location object containing
-     * the current location.
-     * Void     - indicates that progress units are not used
-     * String   - An address passed to onPostExecute()
-     */
+/**
+ * A subclass of AsyncTask that calls getFromLocation() in the
+ * background. The class definition has these generic types:
+ * Location - A Location object containing
+ * the current location.
+ * Void     - indicates that progress units are not used
+ * String   - An address passed to onPostExecute()
+ */
 
 
 

@@ -22,28 +22,31 @@ public class CameraHostMod extends SimpleCameraHost {
     public CameraHostMod(Context _ctxt) {
 
         super(_ctxt);
-        context =_ctxt;
+        context = _ctxt;
     }
+
     @Override
-    public boolean useSingleShotMode(){
+    public boolean useSingleShotMode() {
         return true;
     }
+
     @Override
-    public boolean useFullBleedPreview(){
+    public boolean useFullBleedPreview() {
         return true;
     }
 
     @Override
     public void saveImage(PictureTransaction xact, byte[] image) {
-       // ActivityStore.getInstance(context).setImage(cropImage(image));
+        // ActivityStore.getInstance(context).setImage(cropImage(image));
         //ActivityStore.getInstance(context).setImage(image);
 
         ActivityStore.getInstance(context).setImage(cropButtonPressed(image));
 
     }
+
     protected byte[] cropButtonPressed(byte[] image) {
 //        Bitmap teste = BitmapFactory.decodeByteArray(image,0,image.length);
-      //  System.out.println("tamanho :" + image.length );
+        //  System.out.println("tamanho :" + image.length );
 //        System.out.println("crop width:"+teste.getWidth() );
 //        System.out.println("crop heitgh:"+teste.getHeight() );
 
@@ -63,28 +66,28 @@ public class CameraHostMod extends SimpleCameraHost {
         return scaledData;
     }
 
-    public byte[] cropImage(byte[] image){
+    public byte[] cropImage(byte[] image) {
 
         Bitmap bit = BitmapFactory.decodeByteArray(image, 0, image.length);
 
 
-        int initHeight = (int)(0.20833333*bit.getHeight());
-        int endHeight = (int)(0.555555556*bit.getHeight());
-        int endWidth = (int)(0.76388889*bit.getHeight())-initHeight;
+        int initHeight = (int) (0.20833333 * bit.getHeight());
+        int endHeight = (int) (0.555555556 * bit.getHeight());
+        int endWidth = (int) (0.76388889 * bit.getHeight()) - initHeight;
 
-        if(endWidth>bit.getWidth()){
+        if (endWidth > bit.getWidth()) {
             endWidth = bit.getWidth();
         }
-        System.out.println("aqui"+initHeight+" "+endHeight);
+        System.out.println("aqui" + initHeight + " " + endHeight);
 
-        Bitmap cropped = Bitmap.createBitmap(bit,0,initHeight,endWidth,endHeight);
-        Bitmap bit1 = Bitmap.createScaledBitmap(cropped,650,650,false);
+        Bitmap cropped = Bitmap.createBitmap(bit, 0, initHeight, endWidth, endHeight);
+        Bitmap bit1 = Bitmap.createScaledBitmap(cropped, 650, 650, false);
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         bit1.compress(Bitmap.CompressFormat.JPEG, 0, bos);
 
 
         byte[] scaledData = bos.toByteArray();
-        return  scaledData;
+        return scaledData;
     }
 
     @Override
@@ -96,20 +99,20 @@ public class CameraHostMod extends SimpleCameraHost {
         List<Camera.Size> list = parameters.getSupportedPictureSizes();
         int targetWidth = 1944;
         int width;
-        Camera.Size optimalSize= null;
+        Camera.Size optimalSize = null;
         for (Camera.Size size : list) {
             width = size.width;
-            if (width==targetWidth) {
+            if (width == targetWidth) {
                 //System.out.println("IF1 :"+width );
                 optimalSize = size;
                 return optimalSize;
-            } else if (width<targetWidth){
+            } else if (width < targetWidth) {
                 //System.out.println("IF2 :"+width );
 
                 optimalSize = size;
                 return optimalSize;
-            } else if (width>targetWidth) {
-              //  System.out.println("IF3 :"+width );
+            } else if (width > targetWidth) {
+                //  System.out.println("IF3 :"+width );
 
                 optimalSize = size;
             }

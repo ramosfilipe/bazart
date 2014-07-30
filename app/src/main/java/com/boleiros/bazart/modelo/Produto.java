@@ -24,7 +24,7 @@ public class Produto extends ParseObject {
     }
 
     public void setPrice(String price) {
-        put("price",price);
+        put("price", price);
     }
 
     public String getPhoneNumber() {
@@ -43,16 +43,17 @@ public class Produto extends ParseObject {
         put("author", user);
     }
 
-    public String[] getArrayHashtags(){
+    public String[] getArrayHashtags() {
         Object[] obj = getList("tags").toArray();
-        String[] array = Arrays.copyOf(obj,obj.length,String[].class);
+        String[] array = Arrays.copyOf(obj, obj.length, String[].class);
         System.out.println("tamanho" + array.length);
         return array;
     }
 
-    public void setArrayHashtags(String[] arrayHashtags){
+    public void setArrayHashtags(String[] arrayHashtags) {
         addAllUnique("tags", Arrays.asList(arrayHashtags));
     }
+
     public ParseGeoPoint getLocation() {
         return getParseGeoPoint("location");
     }
@@ -62,10 +63,11 @@ public class Produto extends ParseObject {
     }
 
 
-    public void setCity(String cidade){
-        put("city",cidade);
+    public void setCity(String cidade) {
+        put("city", cidade);
     }
-    public String getCidade(){
+
+    public String getCidade() {
         return getString("city");
     }
 
@@ -85,12 +87,13 @@ public class Produto extends ParseObject {
     public void setPhotoFile(ParseFile file) {
         put("photo", file);
     }
-    public JSONArray getHashTags(){
+
+    public JSONArray getHashTags() {
         return getJSONArray("hashtag");
     }
 
-    public void setHashTags(JSONArray array){
-        put("hashtag",array);
+    public void setHashTags(JSONArray array) {
+        put("hashtag", array);
     }
 
 }

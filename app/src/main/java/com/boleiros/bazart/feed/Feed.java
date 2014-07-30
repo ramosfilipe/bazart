@@ -100,10 +100,10 @@ public class Feed extends Activity {
 
     }
 
-    public void changeAct(String str){
+    public void changeAct(String str) {
         System.out.println(str);
         Intent intent = new Intent(this, HashtagActivity.class);
-        intent.putExtra("busca",str);
+        intent.putExtra("busca", str);
         startActivity(intent);
 
     }
@@ -137,37 +137,32 @@ public class Feed extends Activity {
         return true;
     }
 
-
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
-
-        public SectionsPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(0);
-        }
-
-        @Override
-        public int getCount() {
-            // Show 3 total pages.
-            return 1;
-        }
-
-    }
-
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment implements LocationListener,GooglePlayServicesClient.ConnectionCallbacks,
+    public static class PlaceholderFragment extends Fragment implements LocationListener, GooglePlayServicesClient.ConnectionCallbacks,
             GooglePlayServicesClient.OnConnectionFailedListener {
+        /*
+     * Define a request code to send to Google Play services This code is returned in
+     * Activity.onActivityResult
+     */
+        private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
+        /*
+         * Constants for location update parameters
+         */
+        // Milliseconds per second
+        private static final int MILLISECONDS_PER_SECOND = 1000;
+        // The update interval
+        private static final int UPDATE_INTERVAL_IN_SECONDS = 5;
+        // A fast interval ceiling
+        private static final int FAST_CEILING_IN_SECONDS = 1;
+        // Update interval in milliseconds
+        private static final long UPDATE_INTERVAL_IN_MILLISECONDS = MILLISECONDS_PER_SECOND
+                * UPDATE_INTERVAL_IN_SECONDS;
+        // A fast ceiling of update intervals, used when the app is visible
+        private static final long FAST_INTERVAL_CEILING_IN_MILLISECONDS = MILLISECONDS_PER_SECOND
+                * FAST_CEILING_IN_SECONDS;
+        private static final String ARG_SECTION_NUMBER = "section_number";
         /**
          * The fragment argument representing the section number for this
          * fragment.
@@ -177,33 +172,11 @@ public class Feed extends Activity {
         private Location currentLocation = null;
         private LocationRequest locationRequest;
         private LocationClient locationClient;
-        /*
-     * Define a request code to send to Google Play services This code is returned in
-     * Activity.onActivityResult
-     */
-        private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
-
-        /*
-         * Constants for location update parameters
-         */
-        // Milliseconds per second
-        private static final int MILLISECONDS_PER_SECOND = 1000;
-
-        // The update interval
-        private static final int UPDATE_INTERVAL_IN_SECONDS = 5;
-
-        // A fast interval ceiling
-        private static final int FAST_CEILING_IN_SECONDS = 1;
-
-        // Update interval in milliseconds
-        private static final long UPDATE_INTERVAL_IN_MILLISECONDS = MILLISECONDS_PER_SECOND
-                * UPDATE_INTERVAL_IN_SECONDS;
-
-        // A fast ceiling of update intervals, used when the app is visible
-        private static final long FAST_INTERVAL_CEILING_IN_MILLISECONDS = MILLISECONDS_PER_SECOND
-                * FAST_CEILING_IN_SECONDS;
         private SwipeRefreshLayout swipeRefreshLayout;
-        private static final String ARG_SECTION_NUMBER = "section_number";
+
+        public PlaceholderFragment() {
+
+        }
 
         /**
          * Returns a new instance of this fragment for the given section
@@ -219,11 +192,8 @@ public class Feed extends Activity {
             return fragment;
         }
 
-        public PlaceholderFragment() {
-
-        }
         @Override
-        public void onStop(){
+        public void onStop() {
             super.onStop();
             locationClient.disconnect();
         }
@@ -266,7 +236,7 @@ public class Feed extends Activity {
         public void consultaAoParseComLocalizacao(ParseGeoPoint ponto) {
             ParseQuery<Produto> query = ParseQuery.getQuery("Produto");
             query.include("author");
-            query.whereNear("location",ponto);
+            query.whereNear("location", ponto);
             query.setLimit(7);
             // query.orderByDescending("createdAt");
             query.findInBackground(new FindCallback<Produto>() {
@@ -356,9 +326,10 @@ public class Feed extends Activity {
                 public void onRefresh() {
                     Log.e(getClass().getSimpleName(), "refresh");
                     //if(gps==false){
-                    if(botaoGpsSelecionado==false){
-                    consultaAoParse();}
-                    if(botaoGpsSelecionado== true){
+                    if (botaoGpsSelecionado == false) {
+                        consultaAoParse();
+                    }
+                    if (botaoGpsSelecionado == true) {
                         consultaAoParseComLocalizacao(geoPointFromLocation(currentLocation));
                     }
                     //consultaAoParseComLocalizacao(currentLocation);
@@ -375,7 +346,7 @@ public class Feed extends Activity {
                 public void onScroll(AbsListView view, int firstVisibleItem,
                                      int visibleItemCount, int totalItemCount) {
                     boolean enable = false;
-                    if(listaDeExibicao != null && listaDeExibicao.getChildCount() > 0){
+                    if (listaDeExibicao != null && listaDeExibicao.getChildCount() > 0) {
                         // check if the first item of the list is visible
                         boolean firstItemVisible = listaDeExibicao.getFirstVisiblePosition() == 0;
                         // check if the top of the first item is visible
@@ -404,6 +375,7 @@ public class Feed extends Activity {
                 return null;
             }
         }
+
         private boolean servicesConnected() {
             int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this.getActivity());
 
@@ -420,6 +392,7 @@ public class Feed extends Activity {
                 return false;
             }
         }
+
         /**
          * Called when the location has changed.
          * <p/>
@@ -493,6 +466,31 @@ public class Feed extends Activity {
             } else {
 //            showErrorDialog(connectionResult.getErrorCode());
             }
+        }
+
+    }
+
+    /**
+     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
+     * one of the sections/tabs/pages.
+     */
+    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+
+        public SectionsPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            // getItem is called to instantiate the fragment for the given page.
+            // Return a PlaceholderFragment (defined as a static inner class below).
+            return PlaceholderFragment.newInstance(0);
+        }
+
+        @Override
+        public int getCount() {
+            // Show 3 total pages.
+            return 1;
         }
 
     }
