@@ -172,6 +172,7 @@ public class Feed extends Activity {
          * The fragment argument representing the section number for this
          * fragment.
          */
+        private boolean botaoGpsSelecionado = false;
         private Location lastLocation = null;
         private Location currentLocation = null;
         private LocationRequest locationRequest;
@@ -221,6 +222,11 @@ public class Feed extends Activity {
         public PlaceholderFragment() {
 
         }
+        @Override
+        public void onStop(){
+            super.onStop();
+            locationClient.disconnect();
+        }
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
@@ -261,7 +267,7 @@ public class Feed extends Activity {
             ParseQuery<Produto> query = ParseQuery.getQuery("Produto");
             query.include("author");
             query.whereNear("location",ponto);
-            query.setLimit(10);
+            query.setLimit(7);
             // query.orderByDescending("createdAt");
             query.findInBackground(new FindCallback<Produto>() {
                 @Override
@@ -284,7 +290,9 @@ public class Feed extends Activity {
                                  Bundle savedInstanceState) {
             swipeRefreshLayout = (SwipeRefreshLayout) inflater.inflate(R.layout.fragment_feed, container, false);
             ImageButton camera = (ImageButton) swipeRefreshLayout.findViewById(R.id.cameraButton);
-            ImageButton gps = (ImageButton) swipeRefreshLayout.findViewById(R.id.gpsButton);
+            final ImageButton gps = (ImageButton) swipeRefreshLayout.findViewById(R.id.gpsButton);
+            final ImageButton home = (ImageButton) swipeRefreshLayout.findViewById(R.id.homeButton);
+            locationClient.connect();
 
             final ListView listaDeExibicao = (ListView) swipeRefreshLayout.findViewById(R.id.listaCards);
 
@@ -293,6 +301,10 @@ public class Feed extends Activity {
             gps.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    botaoGpsSelecionado = true;
+                    gps.setImageResource(R.drawable.gpspressed);
+                    home.setImageResource(R.drawable.homefeed);
+
                     Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
                     if (myLoc == null) {
                         Toast.makeText(getActivity(),
@@ -301,9 +313,22 @@ public class Feed extends Activity {
                     }
                     final ParseGeoPoint myPoint = geoPointFromLocation(myLoc);
                     consultaAoParseComLocalizacao(myPoint);
+                    listaDeExibicao.smoothScrollToPosition(0);
+
                 }
             });
 
+            home.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    botaoGpsSelecionado = false;
+                    gps.setImageResource(R.drawable.gps);
+                    home.setImageResource(R.drawable.homefeedpressed);
+                    consultaAoParse();
+                    listaDeExibicao.smoothScrollToPosition(0);
+
+                }
+            });
 
 
             busca.setOnClickListener(new View.OnClickListener() {
@@ -331,7 +356,11 @@ public class Feed extends Activity {
                 public void onRefresh() {
                     Log.e(getClass().getSimpleName(), "refresh");
                     //if(gps==false){
-                    consultaAoParse();
+                    if(botaoGpsSelecionado==false){
+                    consultaAoParse();}
+                    if(botaoGpsSelecionado== true){
+                        consultaAoParseComLocalizacao(geoPointFromLocation(currentLocation));
+                    }
                     //consultaAoParseComLocalizacao(currentLocation);
                 }
             });
@@ -382,7 +411,6 @@ public class Feed extends Activity {
 
                 return true;
             } else {
-                System.out.println("testeeee");
                 Dialog dialog = GooglePlayServicesUtil.getErrorDialog(resultCode, this.getActivity(), 0);
                 if (dialog != null) {
                     InfoFragment.ErrorDialogFragment errorFragment = new InfoFragment.ErrorDialogFragment();
