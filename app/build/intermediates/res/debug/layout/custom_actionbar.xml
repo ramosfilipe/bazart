@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@null"
+    android:baselineAligned="false">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal">
+
+        <ImageButton
+            android:id="@+id/botaoBuscaActionBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:focusable="false"
+            android:longClickable="false"
+            android:background="@null"
+            android:src="@drawable/searchicon"
+            android:layout_gravity="right|center_vertical" />
+
+
+    </FrameLayout>
+
+</LinearLayout><!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/layout/custom_actionbar.xml -->

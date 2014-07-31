@@ -48,6 +48,14 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="63dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Like"
+            android:id="@+id/viewLike"
+            android:layout_gravity="right|bottom" />
         />
         </FrameLayout>
 

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:layout_width="103dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/textViewSetHoraPostagem"
+            android:textStyle="italic"
+            android:layout_gravity="right|center_vertical" />
+
+        <TextView
+            android:layout_width="248dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewSetNomeUsuario"
+            android:textStyle="bold"
+            android:layout_gravity="left|center_vertical"
+            android:maxLines="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/textViewSetCidade"
+            android:textStyle="italic"
+
+            android:layout_gravity="right|bottom" />
+
+
+    </FrameLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="375dp"
+        android:layout_weight="0.17">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView"
+            android:layout_gravity="center"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="63dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Like"
+            android:id="@+id/viewLike"
+            android:layout_gravity="right|bottom" />
+        />
+        </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#ffffffff">
+
+        <TextView
+            android:typeface="sans"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="  Preço:"
+            android:id="@+id/textViewPreco"
+            android:layout_gravity="left|bottom" />
+
+        <TextView
+            android:layout_width="166dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/textViewSetPreco"
+            android:layout_gravity="center_horizontal|bottom" />
+
+        <TextView
+            android:typeface="sans"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="  Contato:"
+            android:id="@+id/textViewContato"
+            android:layout_gravity="left|center_vertical" />
+
+        <TextView
+            android:layout_width="164dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/textViewSetContato"
+            android:layout_gravity="center" />
+
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#ffffffff">
+
+        <TextView
+            android:typeface="sans"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="  HashTags:"
+            android:id="@+id/textViewHashTags"
+            android:layout_gravity="left|center_vertical" />
+
+        <TextView
+            android:layout_width="164dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/textViewSetHashTags"
+            android:layout_gravity="center" />
+    </FrameLayout>
+
+</LinearLayout>
+<!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/layout/list_element_produto.xml -->

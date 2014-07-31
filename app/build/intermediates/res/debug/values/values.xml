@@ -1,0 +1,966 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/values/strings.xml -->
+    <eat-comment />
+
+    <string-array name="my_facebook_permissions">
+        <item>public_profile</item>
+    </string-array>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/values/colors.xml -->
+    <eat-comment />
+
+    <color name="black_overlay">#66000000</color>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
+    <eat-comment />
+
+    <color name="card_activated">#CFE9F3</color>
+    <color name="card_activated_kitkat">#ADE1F4</color>
+    <color name="card_background">#FFF</color>
+    <color name="card_backgroundExpand">#515254</color>
+    <color name="card_background_header">#FFF</color>
+    <color name="card_base_cardwithlist_background_list_color">#10000000</color>
+    <color name="card_base_cardwithlist_divider_color">#E5E5E5</color>
+    <color name="card_expand_title_color">#B3B2B2</color>
+    <color name="card_pressed">#7E0099CC</color>
+    <color name="card_pressed_kitkat">#10000000</color>
+    <color name="card_text_color_header">#000</color>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart.facebook-sdk/facebook/unspecified/res/values/values.xml -->
+    <eat-comment />
+
+    <color name="com_facebook_blue">#3B5998</color>
+    <color name="com_facebook_loginview_text_color">#FFFFFF</color>
+    <color name="com_facebook_picker_search_bar_background">#f5f5f7</color>
+    <color name="com_facebook_picker_search_bar_text">#bcbdc2</color>
+    <color name="com_facebook_usersettingsfragment_connected_shadow_color">#000000</color>
+    <color name="com_facebook_usersettingsfragment_connected_text_color">#FFFFFF</color>
+    <color name="com_facebook_usersettingsfragment_not_connected_text_color">#A6AED7</color>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart/ParseLoginUI/unspecified/res/values/values.xml -->
+    <eat-comment />
+
+    <color name="com_parse_ui_facebook_login_button">#3B5998</color>
+    <color name="com_parse_ui_facebook_login_button_focus">#304F8B</color>
+    <color name="com_parse_ui_facebook_login_button_push">#2E4677</color>
+    <color name="com_parse_ui_parse_login_button">#40CCCCCC</color>
+    <color name="com_parse_ui_parse_login_button_focus">#35CCCCCC</color>
+    <color name="com_parse_ui_parse_login_button_push">#30CCCCCC</color>
+    <color name="com_parse_ui_parse_login_display_text">@android:color/white</color>
+    <color name="com_parse_ui_parse_login_help_button_label">#E0E0E0</color>
+    <color name="com_parse_ui_parse_login_help_button_label_focus">#CCCCCC</color>
+    <color name="com_parse_ui_parse_login_help_button_label_push">#AAAAAA</color>
+    <color name="com_parse_ui_parse_login_text_hint">#AAAAAA</color>
+    <color name="com_parse_ui_twitter_login_button">#2DAAE2</color>
+    <color name="com_parse_ui_twitter_login_button_focus">#2788BE</color>
+    <color name="com_parse_ui_twitter_login_button_push">#2588B5</color>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.4.52/res/values/common_colors.xml -->
+    <eat-comment />
+
+    <color name="common_action_bar_splitter">#d2d2d2</color>
+    <color name="common_signin_btn_dark_text_default">@android:color/white</color>
+    <color name="common_signin_btn_dark_text_disabled">#FFAAAAAA</color>
+    <color name="common_signin_btn_dark_text_focused">@android:color/white</color>
+    <color name="common_signin_btn_dark_text_pressed">@android:color/white</color>
+    <color name="common_signin_btn_default_background">#FFDD4B39</color>
+    <color name="common_signin_btn_light_text_default">#FF737373</color>
+    <color name="common_signin_btn_light_text_disabled">#FFAAAAAA</color>
+    <color name="common_signin_btn_light_text_focused">#FF737373</color>
+    <color name="common_signin_btn_light_text_pressed">@android:color/white</color>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.4.52/res/values/wallet_colors.xml -->
+    <eat-comment />
+
+    <color name="wallet_bright_foreground_disabled_holo_light">#ffb2b2b2</color>
+    <color name="wallet_bright_foreground_holo_dark">#fff3f3f3</color>
+    <color name="wallet_bright_foreground_holo_light">#ff000000</color>
+    <color name="wallet_dim_foreground_disabled_holo_dark">#80bebebe</color>
+    <color name="wallet_dim_foreground_holo_dark">#bebebe</color>
+    <color name="wallet_dim_foreground_inverse_disabled_holo_dark">#80323232</color>
+    <color name="wallet_dim_foreground_inverse_holo_dark">#323232</color>
+    <color name="wallet_highlighted_text_holo_dark">#6633b5e5</color>
+    <color name="wallet_highlighted_text_holo_light">#6633b5e5</color>
+    <color name="wallet_hint_foreground_holo_dark">#808080</color>
+    <color name="wallet_hint_foreground_holo_light">#808080</color>
+    <color name="wallet_holo_blue_light">#ff33b5e5</color>
+    <color name="wallet_link_text_light">#0000ee</color>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.4.52/res/values/admob_ads_attrs.xml -->
+    <eat-comment />
+
+    <declare-styleable name="AdsAttrs">
+
+        <!--
+    The size of the ad. It must be one of BANNER, FULL_BANNER, LEADERBOARD,
+    MEDIUM_RECTANGLE, SMART_BANNER, WIDE_SKYSCRAPER, or
+    &lt;width&gt;x&lt;height&gt;.
+        -->
+        <attr name="adSize" format="string" />
+
+        <!--
+    A comma-separated list of the supported ad sizes. The sizes must be one of
+    BANNER, FULL_BANNER, LEADERBOARD, MEDIUM_RECTANGLE, SMART_BANNER,
+    WIDE_SKYSCRAPER, or &lt;width&gt;x&lt;height&gt;.
+        -->
+        <attr name="adSizes" format="string" />
+
+        <!-- The ad unit ID. -->
+        <attr name="adUnitId" format="string" />
+    </declare-styleable>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/values/attrs.xml -->
+    <eat-comment />
+
+    <declare-styleable name="ButtonBarContainerTheme">
+        <attr name="metaButtonBarStyle" format="reference" />
+        <attr name="metaButtonBarButtonStyle" format="reference" />
+    </declare-styleable>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
+    <eat-comment />
+
+    <declare-styleable name="ForegroundLinearLayout">
+        <attr name="android:foreground" />
+        <attr name="android:foregroundInsidePadding" />
+        <attr name="android:foregroundGravity" />
+    </declare-styleable>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.4.52/res/values/maps_attrs.xml -->
+    <eat-comment />
+
+    <declare-styleable name="MapAttrs">
+        <attr name="mapType" format="enum">
+            <enum name="none" value="0" />
+            <enum name="normal" value="1" />
+            <enum name="satellite" value="2" />
+            <enum name="terrain" value="3" />
+            <enum name="hybrid" value="4" />
+        </attr>
+        <attr name="cameraBearing" format="float" />
+        <attr name="cameraTargetLat" format="float" />
+        <attr name="cameraTargetLng" format="float" />
+        <attr name="cameraTilt" format="float" />
+        <attr name="cameraZoom" format="float" />
+        <attr name="uiCompass" format="boolean" />
+        <attr name="uiRotateGestures" format="boolean" />
+        <attr name="uiScrollGestures" format="boolean" />
+        <attr name="uiTiltGestures" format="boolean" />
+        <attr name="uiZoomControls" format="boolean" />
+        <attr name="uiZoomGestures" format="boolean" />
+        <attr name="useViewLifecycle" format="boolean" />
+        <attr name="zOrderOnTop" format="boolean" />
+    </declare-styleable>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart/chipsLibrary/unspecified/res/values/values.xml -->
+    <eat-comment />
+
+    <declare-styleable name="RecipientEditTextView">
+        <attr name="invalidChipBackground" format="reference" />
+        <attr name="chipBackground" format="reference" />
+        <attr name="chipBackgroundPressed" format="reference" />
+        <attr name="chipDelete" format="reference" />
+        <attr name="chipAlternatesLayout" format="reference" />
+        <attr name="chipPadding" format="reference" />
+        <attr name="chipHeight" format="reference" />
+        <attr name="chipFontSize" format="reference" />
+    </declare-styleable>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.4.52/res/values/wallet_attrs.xml -->
+    <eat-comment />
+
+    <declare-styleable name="WalletFragmentOptions">
+
+        <!-- Theme to be used for the Wallet selector -->
+        <attr name="theme" format="enum">
+            <enum name="holo_dark" value="0" />
+            <enum name="holo_light" value="1" />
+        </attr>
+        <!-- Google Wallet environment to use -->
+        <attr name="environment" format="enum">
+            <enum name="production" value="1" />
+            <enum name="sandbox" value="0" />
+            <enum name="strict_sandbox" value="2" />
+        </attr>
+        <!-- A style resource specifing attributes to customize the look and feel of WalletFragment -->
+        <attr name="fragmentStyle" format="reference" />
+        <!-- Fragment mode -->
+        <attr name="fragmentMode" format="enum">
+            <enum name="buyButton" value="1" />
+            <enum name="selectionDetails" value="2" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="WalletFragmentStyle">
+
+        <!--
+             Height of the buy button. This includes an 8dp padding (4dp on each side) used for
+             pressed and focused states of the button. The value can be a specific height, e.g.
+             "48dp", or special values "match_parent" and "wrap_content".
+        -->
+        <attr name="buyButtonHeight" format="dimension">
+            <enum name="match_parent" value="-1" />
+            <enum name="wrap_content" value="-2" />
+        </attr>
+        <!--
+             Width of the buy button. This includes an 8dp padding (4dp on each side) used for
+             pressed and focused states of the button. The value can be a specific width, e.g.
+             "300dp", or special values "match_parent" and "wrap_content".
+        -->
+        <attr name="buyButtonWidth" format="dimension">
+            <enum name="match_parent" value="-1" />
+            <enum name="wrap_content" value="-2" />
+        </attr>
+        <!-- Text on the buy button. Must be one of "buy_with_google", "buy_now" and "book_now" -->
+        <attr name="buyButtonText" format="enum">
+            <enum name="buy_with_google" value="1" />
+            <enum name="buy_now" value="2" />
+            <enum name="book_now" value="3" />
+        </attr>
+        <!-- Appearance of the buy button. Must be one of "classic", "grayscale" and "monochrome" -->
+        <attr name="buyButtonAppearance" format="enum">
+            <enum name="classic" value="1" />
+            <enum name="grayscale" value="2" />
+            <enum name="monochrome" value="3" />
+        </attr>
+        <!-- TextAppearance for masked wallet details -->
+        <attr name="maskedWalletDetailsTextAppearance" format="reference" />
+        <!-- TextAppearance for headers describing masked wallet details -->
+        <attr name="maskedWalletDetailsHeaderTextAppearance" format="reference" />
+        <!-- Masked wallet details background -->
+        <attr name="maskedWalletDetailsBackground" format="reference|color" />
+        <!-- TextAppearance for the "Change" button in masked wallet details view -->
+        <attr name="maskedWalletDetailsButtonTextAppearance" format="reference" />
+        <!-- "Change" button background in masked wallet details view -->
+        <attr name="maskedWalletDetailsButtonBackground" format="reference|color" />
+        <!-- Color of the Google Wallet logo text in masked wallet details view -->
+        <attr name="maskedWalletDetailsLogoTextColor" format="color" />
+        <!-- Type of the wallet logo image in masked wallet details view -->
+        <attr name="maskedWalletDetailsLogoImageType" format="enum">
+            <enum name="classic" value="1" />
+            <enum name="monochrome" value="2" />
+        </attr>
+    </declare-styleable>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
+    <eat-comment />
+
+    <declare-styleable name="card_listItem">
+
+        <!-- Height of divider used in the list -->
+        <attr name="card_list_item_dividerHeight" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="card_options">
+
+        <!-- Layout to build a card. Default value is  @layout/card_base_layout -->
+        <attr name="card_layout_resourceID" format="reference" />
+
+        <!-- Layout to build a shadow. Default value is @layout/base_shadow_layout -->
+        <attr name="card_shadow_layout_resourceID" format="reference" />
+
+        <!-- Layout to build a Header. Default value is @layout/base_header_layout -->
+        <attr name="card_header_layout_resourceID" format="reference" />
+
+        <!-- Layout to build a Thumbnail. Default value is @layout/base_thumbnail_layout -->
+        <attr name="card_thumbnail_layout_resourceID" format="reference" />
+
+        <!-- Layout used by card in a ListView. Default value is  @layout/list_card_layout -->
+        <attr name="list_card_layout_resourceID" format="reference" />
+    </declare-styleable>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart.facebook-sdk/facebook/unspecified/res/values/values.xml -->
+    <eat-comment />
+
+    <declare-styleable name="com_facebook_friend_picker_fragment">
+        <attr name="multi_select" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="com_facebook_login_view">
+        <attr name="confirm_logout" format="boolean" />
+        <attr name="fetch_user_info" format="boolean" />
+        <attr name="login_text" format="string" />
+        <attr name="logout_text" format="string" />
+    </declare-styleable>
+    <declare-styleable name="com_facebook_picker_fragment">
+        <attr name="show_pictures" format="boolean" />
+        <attr name="extra_fields" format="string" />
+        <attr name="show_title_bar" format="boolean" />
+        <attr name="title_text" format="string" />
+        <attr name="done_button_text" format="string" />
+        <attr name="title_bar_background" format="reference" />
+        <attr name="done_button_background" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="com_facebook_place_picker_fragment">
+        <attr name="radius_in_meters" format="integer" />
+        <attr name="results_limit" format="integer" />
+        <attr name="search_text" format="string" />
+        <attr name="show_search_box" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="com_facebook_profile_picture_view">
+        <attr name="preset_size">
+
+            <!-- Keep in sync with constants in ProfilePictureView -->
+            <enum name="small" value="-2" />
+            <enum name="normal" value="-3" />
+            <enum name="large" value="-4" />
+        </attr>
+        <attr name="is_cropped" format="boolean" />
+    </declare-styleable>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/values/dimens.xml -->
+    <eat-comment />
+
+    <dimen name="activity_horizontal_margin">1dp</dimen>
+    <dimen name="activity_vertical_margin">1dp</dimen>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
+    <eat-comment />
+
+    <dimen name="card_background_default_radius">2dip</dimen>
+    <dimen name="card_base_cardwithlist_dividerHeight">1dp</dimen>
+    <dimen name="card_base_cardwithlist_layout_leftmargin">0dp</dimen>
+    <dimen name="card_base_cardwithlist_layout_rightmargin">0dp</dimen>
+    <dimen name="card_base_cardwithlist_list_margin_left">0dp</dimen>
+    <dimen name="card_base_cardwithlist_list_margin_top">10dp</dimen>
+    <dimen name="card_base_empty_height">96dp</dimen>
+    <dimen name="card_content_outer_view_margin_bottom">0dp</dimen>
+    <dimen name="card_content_outer_view_margin_left">0dp</dimen>
+    <dimen name="card_content_outer_view_margin_right">0dp</dimen>
+    <dimen name="card_content_outer_view_margin_top">0dp</dimen>
+    <dimen name="card_expand_layout_padding">2dp</dimen>
+    <dimen name="card_expand_simple_title_paddingLeft">10dp</dimen>
+    <dimen name="card_expand_simple_title_paddingRight">10dp</dimen>
+    <dimen name="card_expand_simple_title_text_size">14sp</dimen>
+    <dimen name="card_header_button_margin_right">2dp</dimen>
+    <dimen name="card_header_button_overflow_margin_right">3dp</dimen>
+    <dimen name="card_header_button_padding_bottom">0dp</dimen>
+    <dimen name="card_header_button_padding_left">10dp</dimen>
+    <dimen name="card_header_button_padding_right">0dp</dimen>
+    <dimen name="card_header_button_padding_top">0dp</dimen>
+    <dimen name="card_header_outer_view_margin_bottom">0dp</dimen>
+    <dimen name="card_header_outer_view_margin_left">0dp</dimen>
+    <dimen name="card_header_outer_view_margin_right">0dp</dimen>
+    <dimen name="card_header_outer_view_margin_top">0dp</dimen>
+    <dimen name="card_header_simple_title_margin_bottom">0dp</dimen>
+    <dimen name="card_header_simple_title_margin_left">10dp</dimen>
+    <dimen name="card_header_simple_title_margin_right">20dp</dimen>
+    <dimen name="card_header_simple_title_margin_top">5dp</dimen>
+    <dimen name="card_header_simple_title_text_size">20sp</dimen>
+    <dimen name="card_main_layout_view_margin_bottom">0dp</dimen>
+    <dimen name="card_main_layout_view_margin_left">0dp</dimen>
+    <dimen name="card_main_layout_view_margin_right">0dp</dimen>
+    <dimen name="card_main_layout_view_margin_top">0dp</dimen>
+    <dimen name="card_main_simple_title_margin_left">5dp</dimen>
+    <dimen name="card_main_simple_title_margin_top">0dp</dimen>
+    <dimen name="card_shadow_height">3dp</dimen>
+    <dimen name="card_shadow_view_margin_bottom">0dp</dimen>
+    <dimen name="card_shadow_view_margin_left">@dimen/card_background_default_radius</dimen>
+    <dimen name="card_shadow_view_margin_right">@dimen/card_background_default_radius</dimen>
+    <dimen name="card_shadow_view_margin_top">0dp</dimen>
+    <dimen name="card_thumbnail_height">72dp</dimen>
+    <dimen name="card_thumbnail_width">72dp</dimen>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart/chipsLibrary/unspecified/res/values/values.xml -->
+    <eat-comment />
+
+    <dimen name="chip_height">32dip</dimen>
+    <dimen name="chip_padding">8dip</dimen>
+    <dimen name="chip_text_size">14sp</dimen>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart.facebook-sdk/facebook/unspecified/res/values/values.xml -->
+    <eat-comment />
+
+    <dimen name="com_facebook_loginview_compound_drawable_padding">12dp</dimen>
+    <dimen name="com_facebook_loginview_padding_bottom">12dp</dimen>
+    <dimen name="com_facebook_loginview_padding_left">12dip</dimen>
+    <dimen name="com_facebook_loginview_padding_right">16dp</dimen>
+    <dimen name="com_facebook_loginview_padding_top">12dp</dimen>
+    <dimen name="com_facebook_loginview_text_size">16.0sp</dimen>
+    <dimen name="com_facebook_picker_place_image_size">64dp</dimen>
+    <dimen name="com_facebook_profilepictureview_preset_size_large">180dp</dimen>
+    <dimen name="com_facebook_profilepictureview_preset_size_normal">100dp</dimen>
+    <dimen name="com_facebook_profilepictureview_preset_size_small">50dp</dimen>
+    <dimen name="com_facebook_tooltip_horizontal_padding">10dp</dimen>
+    <dimen name="com_facebook_usersettingsfragment_profile_picture_height">64dp</dimen>
+    <dimen name="com_facebook_usersettingsfragment_profile_picture_width">64dp</dimen>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart/ParseLoginUI/unspecified/res/values/values.xml -->
+    <eat-comment />
+
+    <dimen name="com_parse_ui_horizontal_margin">16dp</dimen>
+    <dimen name="com_parse_ui_large_vertical_spacing">24dp</dimen>
+    <dimen name="com_parse_ui_small_horizontal_spacing">8dp</dimen>
+    <dimen name="com_parse_ui_small_vertical_spacing">8dp</dimen>
+    <dimen name="com_parse_ui_vertical_margin">16dp</dimen>
+    <dimen name="com_parse_ui_vertical_spacing">16dp</dimen>
+    <dimen name="com_parse_ui_xlarge_vertical_spacing">36dp</dimen>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
+    <eat-comment />
+
+    <dimen name="grid_card_padding_bottom">2dp</dimen>
+    <dimen name="grid_card_padding_left">2dp</dimen>
+    <dimen name="grid_card_padding_right">2dp</dimen>
+    <dimen name="grid_card_padding_top">2dp</dimen>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart/chipsLibrary/unspecified/res/values/values.xml -->
+    <eat-comment />
+
+    <dimen name="line_spacing_extra">4dip</dimen>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
+    <eat-comment />
+
+    <dimen name="list_card_padding_bottom">6dp</dimen>
+    <dimen name="list_card_padding_left">8dp</dimen>
+    <dimen name="list_card_padding_right">8dp</dimen>
+    <dimen name="list_card_padding_top">2dp</dimen>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart.facebook-sdk/facebook/unspecified/res/values/values.xml -->
+    <eat-comment />
+
+    <drawable name="com_facebook_picker_default_separator_color">#33464c59</drawable>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart/chipsLibrary/unspecified/res/values/values.xml -->
+    <eat-comment />
+
+    <integer name="chips_max_lines">-1</integer>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.4.52/res/values/version.xml -->
+    <eat-comment />
+
+    <integer name="google_play_services_version">4452000</integer>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
+    <eat-comment />
+
+    <integer name="list_card_undobar_hide_delay">5000</integer>
+
+    <plurals name="card_selected_items">
+        <item quantity="one">1 item selected</item>
+        <item quantity="other">%d items selected</item>
+    </plurals>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart/ParseLoginUI/unspecified/res/values/values.xml -->
+    <eat-comment />
+
+    <plurals name="com_parse_ui_password_too_short_toast">
+        <item quantity="one">Password must be at least %d character long</item>
+        <item quantity="other">Password must be at least %d characters long</item>
+    </plurals>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
+    <eat-comment />
+
+    <plurals name="list_card_undo_items">
+        <item quantity="one">1 card removed</item>
+        <item quantity="other">%d cards removed</item>
+    </plurals>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/values/strings.xml -->
+    <eat-comment />
+
+    <string name="action_settings">Settings</string>
+    <string name="app_name">Bazar+</string>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
+    <eat-comment />
+
+    <string name="card_empty_cardwithlist_text">No data....</string>
+    <string name="card_progressbar_cardwithlist_text">Loading data...</string>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart.facebook-sdk/facebook/unspecified/res/values/values.xml -->
+    <eat-comment />
+
+    <string name="com_facebook_choose_friends">Choose Friends</string>
+    <string name="com_facebook_dialogloginactivity_ok_button">OK</string>
+    <string name="com_facebook_internet_permission_error_message">WebView login requires INTERNET permission</string>
+    <string name="com_facebook_internet_permission_error_title">AndroidManifest Error</string>
+    <string name="com_facebook_loading">Loading...</string>
+    <string name="com_facebook_loginview_cancel_action">Cancel</string>
+    <string name="com_facebook_loginview_log_in_button">Log in with Facebook</string>
+    <string name="com_facebook_loginview_log_out_action">Log out</string>
+    <string name="com_facebook_loginview_log_out_button">Log out</string>
+    <string name="com_facebook_loginview_logged_in_as">Logged in as: %1$s</string>
+    <string name="com_facebook_loginview_logged_in_using_facebook">Logged in using Facebook</string>
+    <string name="com_facebook_logo_content_description">Facebook Logo</string>
+    <string name="com_facebook_nearby">Nearby</string>
+    <string name="com_facebook_picker_done_button_text">Done</string>
+    <string name="com_facebook_placepicker_subtitle_catetory_only_format">%1$s</string>
+    <string name="com_facebook_placepicker_subtitle_format">%1$s • %2$,d were here</string>
+    <string name="com_facebook_placepicker_subtitle_were_here_only_format">%1$,d were here</string>
+    <string name="com_facebook_requesterror_password_changed">Your Facebook password has changed. Please log into this app again to reconnect your Facebook account.</string>
+    <string name="com_facebook_requesterror_permissions">This app doesn’t have permission to do this. To change permissions, try logging into the app again.</string>
+    <string name="com_facebook_requesterror_reconnect">Please log into this app again to reconnect your Facebook account.</string>
+    <string name="com_facebook_requesterror_relogin">Please log into this app again to reconnect your Facebook account.</string>
+    <string name="com_facebook_requesterror_web_login">Your Facebook account is locked. Please log into www.facebook.com to continue.</string>
+    <string name="com_facebook_tooltip_default">New! You\'re in control - choose what info you want to share with apps.</string>
+    <string name="com_facebook_usersettingsfragment_log_in_button">Log in…</string>
+    <string name="com_facebook_usersettingsfragment_logged_in">Logged in</string>
+    <string name="com_facebook_usersettingsfragment_not_logged_in">Not logged in</string>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart/ParseLoginUI/unspecified/res/values/values.xml -->
+    <eat-comment />
+
+    <string name="com_parse_ui_confirm_password_input_hint">Re-enter password</string>
+    <string name="com_parse_ui_create_account_button_label">Create account</string>
+    <string name="com_parse_ui_email_input_hint">Email</string>
+    <string name="com_parse_ui_email_taken_toast">Email is already taken, please reset your password instead</string>
+    <string name="com_parse_ui_facebook_login_button_label">Log in with Facebook</string>
+    <string name="com_parse_ui_facebook_login_failed_toast">Facebook login failed</string>
+    <string name="com_parse_ui_forgot_password_button_label"><u>Forgot password</u></string>
+    <string name="com_parse_ui_invalid_email_toast">Email is invalid, please correct it and try again</string>
+    <string name="com_parse_ui_login_dispatch_user_logged_in">"User logged in, starting: "</string>
+    <string name="com_parse_ui_login_dispatch_user_not_logged_in">User not logged in, starting ParseLoginActivity</string>
+    <string name="com_parse_ui_login_help_email_input_hint">Email</string>
+    <string name="com_parse_ui_login_help_email_sent">Please check your email for instructions on how to access your account</string>
+    <string name="com_parse_ui_login_help_instructions">Enter your email to recover your password</string>
+    <string name="com_parse_ui_login_help_login_again_button_label">Back to Login</string>
+    <string name="com_parse_ui_login_help_submit_button_label">Submit</string>
+    <string name="com_parse_ui_login_help_submit_failed_unknown">Failed to request password reset, please try again</string>
+    <string name="com_parse_ui_login_warning_disabled_facebook_login">Layout missing Facebook login button, disabled Facebook login</string>
+    <string name="com_parse_ui_login_warning_disabled_twitter_login">Layout missing Twitter login button, disabled Twitter login</string>
+    <string name="com_parse_ui_login_warning_disabled_username_password_login">Disabled username/password login and signup because of missing layout elements</string>
+    <string name="com_parse_ui_login_warning_facebook_login_failed">"Facebook login failed, exception: "</string>
+    <string name="com_parse_ui_login_warning_facebook_login_user_update_failed">"Updating user object after Facebook login failed, exception: "</string>
+    <string name="com_parse_ui_login_warning_layout_missing_login_button">Layout missing login button</string>
+    <string name="com_parse_ui_login_warning_layout_missing_login_help_button">Layout missing login help button</string>
+    <string name="com_parse_ui_login_warning_layout_missing_password_field">Layout missing password field</string>
+    <string name="com_parse_ui_login_warning_layout_missing_signup_button">Layout missing signup button</string>
+    <string name="com_parse_ui_login_warning_layout_missing_username_field">Layout missing username field</string>
+    <string name="com_parse_ui_login_warning_parse_login_failed">"Parse username/password login failed, exception: "</string>
+    <string name="com_parse_ui_login_warning_parse_signup_failed">"Parse signup failed, exception: "</string>
+    <string name="com_parse_ui_login_warning_password_reset_failed">"Parse password reset failed, exception: "</string>
+    <string name="com_parse_ui_login_warning_twitter_login_failed">"Twitter login failed, exception: "</string>
+    <string name="com_parse_ui_login_warning_twitter_login_user_update_failed">"Updating user object after Twitter login failed, exception: "</string>
+    <string name="com_parse_ui_logo_content_description">Logo</string>
+    <string name="com_parse_ui_mismatch_confirm_password_toast">Passwords don\'t match, please try again</string>
+    <string name="com_parse_ui_name_input_hint">Name</string>
+    <string name="com_parse_ui_no_email_toast">Please enter your email</string>
+    <string name="com_parse_ui_no_name_toast">Please enter your name</string>
+    <string name="com_parse_ui_no_password_toast">Please enter your password</string>
+    <string name="com_parse_ui_no_username_toast">Please enter your username</string>
+    <string name="com_parse_ui_parse_login_button_label">Log in</string>
+    <string name="com_parse_ui_parse_login_failed_unknown_toast">Could not log in, please try again later</string>
+    <string name="com_parse_ui_parse_login_invalid_credentials_toast">The username and password you entered don\'t match</string>
+    <string name="com_parse_ui_parse_signup_button_label">Sign up</string>
+    <string name="com_parse_ui_password_input_hint">Password</string>
+    <string name="com_parse_ui_progress_dialog_text">Loading...</string>
+    <string name="com_parse_ui_reenter_password_toast">Please re-enter your password</string>
+    <string name="com_parse_ui_signup_failed_unknown_toast">Could not sign up, please try again later</string>
+    <string name="com_parse_ui_twitter_login_button_label">Log in with Twitter</string>
+    <string name="com_parse_ui_twitter_login_failed_toast">Twitter login failed</string>
+    <string name="com_parse_ui_username_input_hint">Username</string>
+    <string name="com_parse_ui_username_taken_toast">Username is already taken, please choose a different one</string>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.4.52/res/values/common_strings.xml -->
+    <eat-comment />
+
+    <string name="common_google_play_services_enable_button" msgid="2523291102206661146">Enable Google Play services</string>
+    <string name="common_google_play_services_enable_text" msgid="227660514972886228">This app won\'t work unless you enable Google Play services.</string>
+    <string name="common_google_play_services_enable_title" msgid="5122002158466380389">Enable Google Play services</string>
+    <string name="common_google_play_services_error_notification_requested_by_msg">Requested by <ns1:g id="app_name">%1$s</ns1:g></string>
+    <string name="common_google_play_services_install_button" msgid="7153882981874058840">Get Google Play services</string>
+    <string name="common_google_play_services_install_text_phone" msgid="2122112764540849864">This app won\'t run without Google Play services, which are missing from your phone.</string>
+    <string name="common_google_play_services_install_text_tablet" msgid="7351599665250191022">This app won\'t run without Google Play services, which are missing from your tablet.</string>
+    <string name="common_google_play_services_install_title" msgid="7215213145546190223">Get Google Play services</string>
+    <string name="common_google_play_services_invalid_account_text">The specified account does not exist on this device. Please choose a different account.</string>
+    <string name="common_google_play_services_invalid_account_title">Invalid Account</string>
+    <string name="common_google_play_services_needs_enabling_title">An application requires Google Play services to be enabled.</string>
+    <string name="common_google_play_services_network_error_text">A data connection is required to connect to Google Play services.</string>
+    <string name="common_google_play_services_network_error_title">Network Error</string>
+    <string name="common_google_play_services_notification_needs_installation_title">An application requires installation of Google Play services.</string>
+    <string name="common_google_play_services_notification_needs_update_title">An application requires an update for Google Play services.</string>
+    <string name="common_google_play_services_notification_ticker">Google Play services error</string>
+    <string name="common_google_play_services_unknown_issue">Unknown issue with Google Play services.</string>
+    <string name="common_google_play_services_unsupported_date_text">The date on the device appears to be incorrect. Please check the date on the device.</string>
+    <string name="common_google_play_services_unsupported_text">Google Play services, which some of your applications rely on, is not supported by your device. Please contact the manufacturer for assistance.</string>
+    <string name="common_google_play_services_unsupported_title">Google Play services</string>
+    <string name="common_google_play_services_update_button" msgid="6556509956452265614">Update</string>
+    <string name="common_google_play_services_update_text" msgid="9053896323427875356">This app won\'t run unless you update Google Play services.</string>
+    <string name="common_google_play_services_update_title" msgid="1788179980625863495">Update Google Play services</string>
+    <string name="common_signin_button_text">Sign in</string>
+    <string name="common_signin_button_text_long">Sign in with Google</string>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart/chipsLibrary/unspecified/res/values/values.xml -->
+    <eat-comment />
+
+    <string name="copy_email">Copy email address</string>
+    <string name="copy_number">Copy phone number</string>
+    <string name="done">Return</string>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/values/strings.xml -->
+    <eat-comment />
+
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="facebook_app_id">694582477277699</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_world">Hello world!</string>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
+    <eat-comment />
+
+    <string name="list_card_undo_title">Undo</string>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart/chipsLibrary/unspecified/res/values/values.xml -->
+    <eat-comment />
+
+    <string name="more_string">\u002B<ns1:g id="count">%1$s</ns1:g></string>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/values/strings.xml -->
+    <eat-comment />
+
+    <string name="parse_app_id">DrWO1B4EeifVi4YOMqm80VResVR8KYJLNyojje2Q</string>
+    <string name="parse_client_key">j1GuzdyHFwxkg6yb946pYO4RMq5b0tpNQ1EmfTXP</string>
+    <string name="title_activity_camera_demo">CameraDemo</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_my">MyActivity</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.4.52/res/values/wallet_strings.xml -->
+    <eat-comment />
+
+    <string name="wallet_buy_button_place_holder" translation_description="Text on a button that allows a user to make a payment with Google Wallet [CHAR LIMIT=30]">Buy with Google</string>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/values/styles.xml -->
+    <eat-comment />
+
+    <style name="AppTheme" parent="CustomActionBarTheme">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="ButtonBar">
+        <item name="android:paddingLeft">2dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingRight">2dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:background">@android:drawable/bottom_bar</item>
+    </style>
+
+    <style name="ButtonBarButton" />
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/values/themes.xml -->
+    <eat-comment />
+
+    <style name="CustomActionBarTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+    </style>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/values/styles.xml -->
+    <eat-comment />
+
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
+    </style>
+
+    <style name="DividerCropped">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:paddingRight">30dp</item>
+        <item name="android:paddingLeft">30dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
+    </style>
+
+    <style name="FullscreenTheme" parent="android:Theme.NoTitleBar">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="metaButtonBarStyle">@style/ButtonBar</item>
+        <item name="metaButtonBarButtonStyle">@style/ButtonBarButton</item>
+    </style>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/values/themes.xml -->
+    <eat-comment />
+
+    <style name="MyActionBar" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">#ff0000</item>
+    </style>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart/ParseLoginUI/unspecified/res/values/values.xml -->
+    <eat-comment />
+
+    <style name="ParseLoginUI" />
+
+    <style name="ParseLoginUI.Button" parent="@android:style/Widget.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:background">            @drawable/com_parse_ui_parse_login_button_background_selector</item>
+        <item name="android:textColor">@color/com_parse_ui_parse_login_display_text</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="ParseLoginUI.Button.ThirdPartyLogin" parent="ParseLoginUI.Button">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">24dp</item>
+    </style>
+
+    <style name="ParseLoginUI.EditText" parent="@android:style/Widget.EditText">
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="ParseLoginUI.HelpButton" parent="@android:style/Widget.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">@color/com_parse_ui_parse_login_help_button_label_selector</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="ParseLoginUI.TextView" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@color/com_parse_ui_parse_login_display_text</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart/chipsLibrary/unspecified/res/values/values.xml -->
+    <eat-comment />
+
+    <style name="RecipientEditTextView" parent="@android:attr/autoCompleteTextViewStyle">
+        <item name="android:inputType">textEmailAddress|textMultiLine</item>
+        <item name="android:imeOptions">actionNext|flagNoFullscreen</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:background">@null</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:dropDownVerticalOffset">-6dip</item>
+        <item name="android:dropDownHorizontalOffset">-16dip</item>
+        <item name="android:minHeight">48dip</item>
+        <item name="android:lineSpacingExtra">@dimen/line_spacing_extra</item>
+    </style>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.4.52/res/values/wallet_styles.xml -->
+    <eat-comment />
+
+    <style name="WalletFragmentDefaultButtonTextAppearance">
+        <item name="android:textColor">@color/wallet_primary_text_holo_light</item>
+        <item name="android:textColorHighlight">@color/wallet_highlighted_text_holo_light</item>
+        <item name="android:textColorHint">@color/wallet_hint_foreground_holo_light</item>
+        <item name="android:textColorLink">@color/wallet_link_text_light</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="WalletFragmentDefaultDetailsHeaderTextAppearance" parent="WalletFragmentDefaultDetailsTextAppearance">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="WalletFragmentDefaultDetailsTextAppearance">
+        <item name="android:textColor">@color/wallet_secondary_text_holo_dark</item>
+        <item name="android:textColorHighlight">@color/wallet_highlighted_text_holo_dark</item>
+        <item name="android:textColorHint">@color/wallet_hint_foreground_holo_dark</item>
+        <item name="android:textColorLink">@color/wallet_holo_blue_light</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="WalletFragmentDefaultStyle">
+        <item name="buyButtonHeight">48dp</item>
+        <item name="buyButtonWidth">match_parent</item>
+        <item name="buyButtonText">buy_with_google</item>
+        <item name="buyButtonAppearance">classic</item>
+        <item name="maskedWalletDetailsTextAppearance">@style/WalletFragmentDefaultDetailsTextAppearance</item>
+        <item name="maskedWalletDetailsHeaderTextAppearance">@style/WalletFragmentDefaultDetailsHeaderTextAppearance</item>
+        <item name="maskedWalletDetailsBackground">@color/wallet_bright_foreground_holo_light</item>
+        <item name="maskedWalletDetailsButtonBackground">@android:drawable/btn_default</item>
+        <item name="maskedWalletDetailsButtonTextAppearance">@style/WalletFragmentDefaultButtonTextAppearance</item>
+        <item name="maskedWalletDetailsLogoTextColor">@color/wallet_bright_foreground_holo_dark</item>
+        <item name="maskedWalletDetailsLogoImageType">classic</item>
+    </style>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
+    <eat-comment />
+
+    <style name="card" />
+
+    <style name="card.base_simple_title">
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_gravity">left|center_vertical</item>
+        <item name="android:layout_marginLeft">@dimen/card_main_simple_title_margin_left</item>
+        <item name="android:layout_marginTop">@dimen/card_main_simple_title_margin_top</item>
+    </style>
+
+    <style name="card.content_outer_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:minHeight">@dimen/card_base_empty_height</item>
+        <item name="android:layout_marginTop">@dimen/card_content_outer_view_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/card_content_outer_view_margin_bottom</item>
+        <item name="android:layout_marginLeft">@dimen/card_content_outer_view_margin_left</item>
+        <item name="android:layout_marginRight">@dimen/card_content_outer_view_margin_right</item>
+    </style>
+
+    <style name="card.expand_simple_title">
+        <item name="android:layout_gravity">left|center_vertical</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/card_expand_simple_title_text_size</item>
+        <item name="android:paddingLeft">@dimen/card_expand_simple_title_paddingLeft</item>
+        <item name="android:paddingRight">@dimen/card_expand_simple_title_paddingRight</item>
+        <item name="android:textColor">@color/card_expand_title_color</item>
+    </style>
+
+    <style name="card.header_button_base">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:paddingLeft">@dimen/card_header_button_padding_left</item>
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">false</item>
+        <item name="android:clickable">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginRight">@dimen/card_header_button_margin_right</item>
+    </style>
+
+    <style name="card.header_button_base.expand">
+        <item name="android:background">@drawable/card_menu_button_expand</item>
+    </style>
+
+    <style name="card.header_button_base.other" />
+
+    <style name="card.header_button_base.overflow">
+        <item name="android:background">@drawable/card_menu_button_rounded_overflow</item>
+        <item name="android:layout_marginRight">@dimen/card_header_button_overflow_margin_right</item>
+    </style>
+
+    <style name="card.header_button_frame" />
+
+    <style name="card.header_compound_view" />
+
+    <style name="card.header_outer_layout">
+        <item name="android:layout_marginTop">@dimen/card_header_outer_view_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/card_header_outer_view_margin_bottom</item>
+        <item name="android:layout_marginLeft">@dimen/card_header_outer_view_margin_left</item>
+        <item name="android:layout_marginRight">@dimen/card_header_outer_view_margin_right</item>
+    </style>
+
+    <style name="card.header_simple_title">
+        <item name="android:textSize">@dimen/card_header_simple_title_text_size</item>
+        <item name="android:textColor">@color/card_text_color_header</item>
+        <item name="android:layout_gravity">left|center_vertical</item>
+        <item name="android:layout_marginLeft">@dimen/card_header_simple_title_margin_left</item>
+        <item name="android:layout_marginTop">@dimen/card_header_simple_title_margin_top</item>
+        <item name="android:layout_marginRight">@dimen/card_header_simple_title_margin_right</item>
+        <item name="android:layout_marginBottom">@dimen/card_header_simple_title_margin_bottom</item>
+    </style>
+
+    <style name="card.main_contentExpand">
+        <item name="android:background">@color/card_backgroundExpand</item>
+        <item name="android:padding">@dimen/card_expand_layout_padding</item>
+    </style>
+
+    <style name="card.main_layout">
+        <item name="android:background">@drawable/card_selector</item>
+        <item name="android:layout_marginTop">@dimen/card_main_layout_view_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/card_main_layout_view_margin_bottom</item>
+        <item name="android:layout_marginLeft">@dimen/card_main_layout_view_margin_left</item>
+        <item name="android:layout_marginRight">@dimen/card_main_layout_view_margin_right</item>
+    </style>
+
+    <style name="card.main_layout.kitkat">
+        <item name="android:background">@drawable/card_kitkat_selector</item>
+    </style>
+
+    <style name="card.main_layout_foreground">
+        <item name="android:background">@drawable/card_background</item>
+        <item name="android:foreground">@drawable/card_foreground_selector</item>
+        <item name="android:layout_marginTop">@dimen/card_main_layout_view_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/card_main_layout_view_margin_bottom</item>
+        <item name="android:layout_marginLeft">@dimen/card_main_layout_view_margin_left</item>
+        <item name="android:layout_marginRight">@dimen/card_main_layout_view_margin_right</item>
+    </style>
+
+    <style name="card.main_layout_foreground.kitkat">
+        <item name="android:foreground">@drawable/card_foreground_kitkat_selector</item>
+    </style>
+
+    <style name="card.shadow_image">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/card_shadow_height</item>
+        <item name="android:src">@drawable/card_shadow</item>
+        <item name="android:layout_below">@+id/card_main_content_layout</item>
+    </style>
+
+    <style name="card.shadow_outer_layout">
+        <item name="android:layout_marginTop">@dimen/card_shadow_view_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/card_shadow_view_margin_bottom</item>
+        <item name="android:layout_marginLeft">@dimen/card_shadow_view_margin_left</item>
+        <item name="android:layout_marginRight">@dimen/card_shadow_view_margin_right</item>
+    </style>
+
+    <style name="card.thumbnail_compound_view" />
+
+    <style name="card_thumbnail_image">
+        <item name="android:layout_width">@dimen/card_thumbnail_width</item>
+        <item name="android:layout_height">@dimen/card_thumbnail_height</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <style name="card_thumbnail_outer_layout">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="cardwithlist">
+        <item name="android:layout_marginTop">@dimen/card_base_cardwithlist_list_margin_top</item>
+        <item name="android:layout_marginLeft">@dimen/card_base_cardwithlist_list_margin_left</item>
+        <item name="android:divider">@color/card_base_cardwithlist_divider_color</item>
+        <item name="android:showDividers">middle|beginning</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/card_base_cardwithlist_background_list_color</item>
+    </style>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart.facebook-sdk/facebook/unspecified/res/values/values.xml -->
+    <eat-comment />
+
+    <style name="com_facebook_loginview_default_style" parent="@android:style/Widget.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/com_facebook_button_blue</item>
+        <item name="android:textColor">@color/com_facebook_loginview_text_color</item>
+        <item name="android:textSize">@dimen/com_facebook_loginview_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingLeft">@dimen/com_facebook_loginview_padding_left</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="com_facebook_loginview_silver_style" parent="@android:style/Widget.Button">
+        <item name="android:width">205dp</item>
+        <item name="android:height">44dp</item>
+        <item name="android:background">@drawable/com_facebook_loginbutton_silver</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#4B5164</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
+    <eat-comment />
+
+    <style name="grid_card">
+        <item name="android:paddingLeft">@dimen/grid_card_padding_left</item>
+        <item name="android:paddingRight">@dimen/grid_card_padding_right</item>
+        <item name="android:paddingBottom">@dimen/grid_card_padding_bottom</item>
+        <item name="android:paddingTop">@dimen/grid_card_padding_top</item>
+    </style>
+
+    <style name="list_card">
+        <item name="android:paddingLeft">@dimen/list_card_padding_left</item>
+        <item name="android:paddingRight">@dimen/list_card_padding_right</item>
+        <item name="android:paddingBottom">@dimen/list_card_padding_bottom</item>
+        <item name="android:paddingTop">@dimen/list_card_padding_top</item>
+    </style>
+
+    <style name="list_card.base" />
+
+    <style name="list_card.thumbnail" />
+
+    <style name="list_card_UndoBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_marginRight">8dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:background">@drawable/undobar</item>
+        <item name="android:clickable">true</item>
+        <item name="android:showDividers">middle</item>
+        <item name="android:divider">@drawable/undobar_divider</item>
+        <item name="android:dividerPadding">10dp</item>
+    </style>
+
+    <style name="list_card_UndoBarButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:background">@drawable/card_undo</item>
+        <item name="android:drawableLeft">@drawable/ic_undobar_undo</item>
+        <item name="android:drawablePadding">12dp</item>
+        <item name="android:textAppearance">?android:textAppearanceSmall</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:text">@string/list_card_undo_title</item>
+    </style>
+
+    <style name="list_card_UndoBarMessage">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:textAppearance">?android:textAppearanceSmall</item>
+        <item name="android:textColor">#fff</item>
+    </style>
+    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart.facebook-sdk/facebook/unspecified/res/values/values.xml -->
+    <eat-comment />
+
+    <style name="tooltip_bubble_text">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:gravity">left</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:shadowDy">-1</item>
+        <item name="android:shadowRadius">0.25</item>
+        <item name="android:shadowColor">#40000000</item>
+    </style>
+
+</resources>

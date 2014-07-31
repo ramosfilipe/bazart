@@ -10,4 +10,11 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
     public ApplicationTest() {
         super(Application.class);
     }
+
+    Application mApplication;
+
+    protected void setUp() throws Exception {
+        createApplication();
+        mApplication = getApplication();
+    }
 }

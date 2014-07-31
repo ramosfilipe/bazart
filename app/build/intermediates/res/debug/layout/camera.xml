@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout android:id="@+id/camerafinal"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#e50e0003"
+            android:id="@+id/framealto">
+            <ImageButton
+                android:layout_width="57dp"
+                android:layout_height="match_parent"
+                android:id="@+id/buttonphotook"
+                android:src="@drawable/rightarrowsmall"
+                android:background="@null"
+                android:layout_gravity="right|center_vertical" />
+            <ImageButton
+                android:layout_width="37dp"
+                android:layout_height="match_parent"
+                android:id="@+id/buttonphotorestart"
+                android:src="@drawable/restartarrowgrey"
+                android:background="@null"
+                android:layout_gravity="left|center_vertical" />
+        </FrameLayout>
+        <com.commonsware.cwac.camera.CameraView
+            android:id="@+id/camera"
+            android:layout_width="match_parent"
+            android:layout_height="360dp"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#e50e0003"
+            android:id="@+id/framebaixo"
+            android:clickable="false" >
+            <ImageButton
+                android:layout_width="116dp"
+                android:layout_height="match_parent"
+                android:id="@+id/takePictureButton"
+                android:background="@null"
+                android:src="@drawable/lenssmall"
+                android:layout_gravity="center" />
+        </FrameLayout>
+    </LinearLayout>
+</FrameLayout>
+<!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/layout/camera.xml -->

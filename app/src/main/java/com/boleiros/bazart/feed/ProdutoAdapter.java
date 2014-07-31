@@ -23,6 +23,7 @@ import com.boleiros.bazart.R;
 import com.boleiros.bazart.modelo.Produto;
 import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseUser;
 
 import java.lang.ref.WeakReference;
 import java.util.Date;
@@ -36,7 +37,7 @@ public class ProdutoAdapter extends BaseAdapter {
     private List<Produto> items;
     private Bitmap mPlaceHolderBitmap;
     private LruCache<String, Bitmap> mMemoryCache;
-
+    private int testCount = 0;
     public ProdutoAdapter(Context context, List<Produto> items) {
         this.context = context;
         this.items = items;
@@ -172,16 +173,26 @@ public class ProdutoAdapter extends BaseAdapter {
             holderPattern.textViewSetContato = (TextView) convertView.findViewById(R.id.textViewSetContato);
             holderPattern.textViewSetPreco = (TextView) convertView.findViewById(R.id.textViewSetPreco);
             holderPattern.textViewSetHashTags = (TextView) convertView.findViewById(R.id.textViewSetHashTags);
+            holderPattern.textViewSetLikes = (TextView) convertView.findViewById(R.id.viewLike);
             holderPattern.fotoProduto = (ImageView) convertView.findViewById(R.id.imageView);
+
             convertView.setTag(holderPattern);
         } else {
             holderPattern = (ViewHolder) convertView.getTag();
+        }
+
+        if(testCount < 1){
+            items.get(1).likeProduto(ParseUser.getCurrentUser());
+            testCount++;
         }
         holderPattern.textViewSetCidade.setText("  em " + items.get(arg0).getCidade());
         holderPattern.textViewSetHoraPostagem.setText(formartaStringData(items.get(arg0).getCreatedAt()));
         holderPattern.textViewSetNomeUsuario.setText(" Anunciante: " + items.get(arg0).getAuthor().getUsername());
         holderPattern.textViewSetContato.setText(items.get(arg0).getPhoneNumber());
         holderPattern.textViewSetPreco.setText(items.get(arg0).getPrice());
+        holderPattern.textViewSetLikes.setText(items.get(arg0).getAmoutOfLikes() + " likes");
+
+
         try {
 
             String[] array = items.get(arg0).getArrayHashtags();
@@ -331,6 +342,7 @@ public class ProdutoAdapter extends BaseAdapter {
         TextView textViewSetPreco;
         TextView textViewSetContato;
         TextView textViewSetHashTags;
+        TextView textViewSetLikes;
         ImageView fotoProduto;
     }
 

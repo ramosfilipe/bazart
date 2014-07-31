@@ -1,6 +1,9 @@
 package com.boleiros.bazart.modelo;
 
+import android.util.Log;
+
 import com.parse.ParseClassName;
+import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
@@ -8,8 +11,9 @@ import com.parse.ParseUser;
 
 import org.json.JSONArray;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-
+import java.util.List;
 /**
  * Created by Filipe on 06/07/14.
  */
@@ -95,5 +99,37 @@ public class Produto extends ParseObject {
     public void setHashTags(JSONArray array) {
         put("hashtag", array);
     }
+
+    public void likeProduto(ParseUser user){
+
+        Object[] obj = getList("likes").toArray();
+
+        if(obj == null || obj.length != 0){
+            Object[] tempArray = new Object[obj.length + 1];
+            tempArray[tempArray.length - 1] = user.getObjectId();
+            obj = tempArray;
+            Log.d("Debug: ", "Não vem null, apenas vazio.");
+        }else{
+            obj = new Object[1];
+            obj[0] = user.getObjectId();
+        }
+
+
+        String[] array = Arrays.copyOf(obj, obj.length, String[].class);
+        System.out.println("Size of obj: " + obj.length);
+        addAllUnique("likes", Arrays.asList(array));
+        try {
+            save();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int getAmoutOfLikes(){
+        List<Object> obj = getList("likes");
+        int result = (obj == null)? 0 : obj.size();
+        return result;
+    }
+
 
 }
