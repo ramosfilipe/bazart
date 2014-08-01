@@ -1,6 +1,7 @@
 package com.boleiros.bazart.feed;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,21 +12,25 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.util.LruCache;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.boleiros.bazart.R;
 import com.boleiros.bazart.modelo.Produto;
+import com.boleiros.bazart.util.DoubleClickListener;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -37,7 +42,7 @@ public class ProdutoAdapter extends BaseAdapter {
     private List<Produto> items;
     private Bitmap mPlaceHolderBitmap;
     private LruCache<String, Bitmap> mMemoryCache;
-    private int testCount = 0;
+
     public ProdutoAdapter(Context context, List<Produto> items) {
         this.context = context;
         this.items = items;
@@ -161,7 +166,7 @@ public class ProdutoAdapter extends BaseAdapter {
 
     @Override
     public View getView(int arg0, View convertView, ViewGroup arg2) {
-        ViewHolder holderPattern;
+        final ViewHolder holderPattern;
         ImageView img = null;
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -175,22 +180,60 @@ public class ProdutoAdapter extends BaseAdapter {
             holderPattern.textViewSetHashTags = (TextView) convertView.findViewById(R.id.textViewSetHashTags);
             holderPattern.textViewSetLikes = (TextView) convertView.findViewById(R.id.viewLike);
             holderPattern.fotoProduto = (ImageView) convertView.findViewById(R.id.imageView);
+            holderPattern.likeButton = (ImageButton) convertView.findViewById(R.id.likeButton);
 
             convertView.setTag(holderPattern);
         } else {
             holderPattern = (ViewHolder) convertView.getTag();
         }
 
-        if(testCount < 1){
-            items.get(1).likeProduto(ParseUser.getCurrentUser());
-            testCount++;
-        }
+
+
         holderPattern.textViewSetCidade.setText("  em " + items.get(arg0).getCidade());
         holderPattern.textViewSetHoraPostagem.setText(formartaStringData(items.get(arg0).getCreatedAt()));
         holderPattern.textViewSetNomeUsuario.setText(" Anunciante: " + items.get(arg0).getAuthor().getUsername());
         holderPattern.textViewSetContato.setText(items.get(arg0).getPhoneNumber());
         holderPattern.textViewSetPreco.setText(items.get(arg0).getPrice());
-        holderPattern.textViewSetLikes.setText(items.get(arg0).getAmoutOfLikes() + " likes");
+
+
+
+        final Flag like = new Flag();
+        like.quantidadeLikes = items.get(arg0).getAmoutOfLikes();
+        holderPattern.textViewSetLikes.setText(like.quantidadeLikes + ((like.quantidadeLikes > 1)?" recomendações":" recomendação"));
+        like.isLiked =  items.get(arg0).isLikedByUser(ParseUser.getCurrentUser());
+
+            final int arg = arg0;
+            holderPattern.likeButton.setImageResource( like.isLiked? R.drawable.like_disable : R.drawable.like_enable);
+
+            holderPattern.likeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    items.get(arg).likeProduto(ParseUser.getCurrentUser(), like.isLiked);
+                    holderPattern.likeButton.setImageResource(like.isLiked ? R.drawable.like_enable : R.drawable.like_disable);
+
+                    like.quantidadeLikes = like.isLiked? --like.quantidadeLikes :  ++like.quantidadeLikes;
+                    Log.d("Quantidade likes: ",""+like.quantidadeLikes);
+                    holderPattern.textViewSetLikes.setText(like.quantidadeLikes + ((like.quantidadeLikes > 1)?" recomendações":" recomendação"));
+                    like.isLiked = !like.isLiked;
+                }
+
+
+            });
+
+        holderPattern.fotoProduto.setOnClickListener(new DoubleClickListener() {
+            @Override
+            public void onDoubleClick(View v) {
+                items.get(arg).likeProduto(ParseUser.getCurrentUser(), like.isLiked);
+                holderPattern.likeButton.setImageResource(like.isLiked ? R.drawable.like_enable : R.drawable.like_disable);
+
+                like.quantidadeLikes = like.isLiked? --like.quantidadeLikes :  ++like.quantidadeLikes;
+                Log.d("Quantidade likes: ",""+like.quantidadeLikes);
+                holderPattern.textViewSetLikes.setText(like.quantidadeLikes + ((like.quantidadeLikes > 1)?" recomendações":" recomendação"));
+                like.isLiked = !like.isLiked;
+            }
+        });
+
 
 
         try {
@@ -304,6 +347,11 @@ public class ProdutoAdapter extends BaseAdapter {
         return convertView;
     }
 
+    static class Flag{
+        public boolean isLiked;
+        public int quantidadeLikes = 0;
+    }
+
     private String formartaStringData(Date data) {
         String minutoAdicionadoComZero = "";
         if (data.getMinutes() < 10) {
@@ -344,6 +392,7 @@ public class ProdutoAdapter extends BaseAdapter {
         TextView textViewSetHashTags;
         TextView textViewSetLikes;
         ImageView fotoProduto;
+        ImageButton likeButton;
     }
 
     static class AsyncDrawable extends BitmapDrawable {
