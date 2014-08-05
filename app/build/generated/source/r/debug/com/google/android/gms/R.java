@@ -99,8 +99,8 @@ public final class R {
 		public static final int ic_plusone_small_off_client = 0x7f02006a;
 		public static final int ic_plusone_standard_off_client = 0x7f02006b;
 		public static final int ic_plusone_tall_off_client = 0x7f02006c;
-		public static final int powered_by_google_dark = 0x7f020080;
-		public static final int powered_by_google_light = 0x7f020081;
+		public static final int powered_by_google_dark = 0x7f020082;
+		public static final int powered_by_google_light = 0x7f020083;
 	}
 	public static final class id {
 		public static final int book_now = 0x7f070010;
@@ -122,7 +122,7 @@ public final class R {
 		public static final int selectionDetails = 0x7f07000b;
 		public static final int strict_sandbox = 0x7f070009;
 		public static final int terrain = 0x7f070003;
-		public static final int text1 = 0x7f07008a;
+		public static final int text1 = 0x7f070093;
 		public static final int wrap_content = 0x7f07000d;
 	}
 	public static final class integer {

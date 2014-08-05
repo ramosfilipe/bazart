@@ -54,6 +54,14 @@ public class Produto extends ParseObject {
         return array;
     }
 
+    public void setVendido(Boolean bool){
+        put("isSold",bool);
+    }
+
+    public Boolean getVendido(){
+        return getBoolean("isSold");
+    }
+
     public void setArrayHashtags(String[] arrayHashtags) {
         addAllUnique("tags", Arrays.asList(arrayHashtags));
     }

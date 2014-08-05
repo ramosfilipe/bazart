@@ -29,6 +29,7 @@ import com.boleiros.bazart.camera.CameraActivity;
 import com.boleiros.bazart.camera.InfoFragment;
 import com.boleiros.bazart.hashtags.HashtagActivity;
 import com.boleiros.bazart.modelo.Produto;
+import com.boleiros.bazart.profile.ProfileActivity;
 import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.Session;
@@ -216,6 +217,7 @@ public class Feed extends Activity {
             ParseQuery<Produto> query = ParseQuery.getQuery("Produto");
             query.include("author");
             query.orderByDescending("createdAt");
+            query.whereEqualTo("isSold",false);
             //query.setLimit(10);
             query.findInBackground(new FindCallback<Produto>() {
                 @Override
@@ -236,6 +238,7 @@ public class Feed extends Activity {
         public void consultaAoParseComLocalizacao(ParseGeoPoint ponto) {
             ParseQuery<Produto> query = ParseQuery.getQuery("Produto");
             query.include("author");
+            query.whereEqualTo("isSold",false);
             query.whereNear("location", ponto);
             query.setLimit(7);
             // query.orderByDescending("createdAt");
@@ -262,6 +265,7 @@ public class Feed extends Activity {
             ImageButton camera = (ImageButton) swipeRefreshLayout.findViewById(R.id.cameraButton);
             final ImageButton gps = (ImageButton) swipeRefreshLayout.findViewById(R.id.gpsButton);
             final ImageButton home = (ImageButton) swipeRefreshLayout.findViewById(R.id.homeButton);
+            final ImageButton profile = (ImageButton) swipeRefreshLayout.findViewById(R.id.profileImageButton);
             locationClient.connect();
 
             final ListView listaDeExibicao = (ListView) swipeRefreshLayout.findViewById(R.id.listaCards);
@@ -287,6 +291,15 @@ public class Feed extends Activity {
 
                 }
             });
+
+            profile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), ProfileActivity.class);
+                    startActivity(intent);
+                }
+            });
+
 
             home.setOnClickListener(new View.OnClickListener() {
                 @Override
