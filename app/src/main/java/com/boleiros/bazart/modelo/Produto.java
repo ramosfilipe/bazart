@@ -183,4 +183,9 @@ public class Produto extends ParseObject {
         return isLiked;
     }
 
+    public void initLikeArray(){
+        String[]  empty = new String[0];
+
+        addAllUnique("likes", Arrays.asList(empty));
+    }
 }

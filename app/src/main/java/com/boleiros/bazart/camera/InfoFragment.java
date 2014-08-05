@@ -165,6 +165,7 @@ public class InfoFragment extends Fragment implements LocationListener, GooglePl
                     produto.setPhoneNumber(telefone1.getText().toString());
                     produto.setPrice(precoStr);
                     produto.setArrayHashtags(hashtags.getArrayOfText());
+                    produto.initLikeArray();
                     System.out.println();
                     produto.setCity(localizacao.getText().toString());
                     produto.saveInBackground(new SaveCallback() {
