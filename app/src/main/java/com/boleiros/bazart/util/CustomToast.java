@@ -1,5 +1,6 @@
 package com.boleiros.bazart.util;
 
+import android.view.ViewGroup;
 import android.widget.Toast;
 import android.content.Context;
 import android.content.res.Resources;

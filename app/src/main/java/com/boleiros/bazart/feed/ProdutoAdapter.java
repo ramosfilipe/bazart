@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ import com.boleiros.bazart.R;
 import com.boleiros.bazart.modelo.Produto;
 import com.boleiros.bazart.util.CustomToast;
 import com.boleiros.bazart.util.DoubleClickListener;
+import com.boleiros.bazart.util.FrameAnimated;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
@@ -35,7 +37,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+import android.os.Handler;
 /**
  * Created by Filipe Ramos on 11/07/14.
  */
@@ -169,6 +171,9 @@ public class ProdutoAdapter extends BaseAdapter {
     @Override
     public View getView(int arg0, View convertView, ViewGroup arg2) {
         final ViewHolder holderPattern;
+
+        LayoutInflater inflaterTemp = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View viewContent = inflaterTemp.inflate(R.layout.list_element_produto, null);;
         ImageView img = null;
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -183,14 +188,14 @@ public class ProdutoAdapter extends BaseAdapter {
             holderPattern.textViewSetLikes = (TextView) convertView.findViewById(R.id.viewLike);
             holderPattern.fotoProduto = (ImageView) convertView.findViewById(R.id.imageView);
             holderPattern.likeButton = (ImageButton) convertView.findViewById(R.id.likeButton);
-
+            //holderPattern.likeFrame = (FrameAnimated) convertView.findViewById(R.id.layout_toast);
             convertView.setTag(holderPattern);
         } else {
             holderPattern = (ViewHolder) convertView.getTag();
         }
 
 
-
+        //holderPattern.likeFrame.setVisibility(View.INVISIBLE);
         holderPattern.textViewSetCidade.setText("  em " + items.get(arg0).getCidade());
         holderPattern.textViewSetHoraPostagem.setText(formartaStringData(items.get(arg0).getCreatedAt()));
         holderPattern.textViewSetNomeUsuario.setText(" Anunciante: " + items.get(arg0).getAuthor().getUsername());
@@ -217,6 +222,7 @@ public class ProdutoAdapter extends BaseAdapter {
                     like.quantidadeLikes = like.isLiked? --like.quantidadeLikes :  ++like.quantidadeLikes;
                     Log.d("Quantidade likes: ",""+like.quantidadeLikes);
                     holderPattern.textViewSetLikes.setText(like.quantidadeLikes + ((like.quantidadeLikes > 1)?" recomendações":" recomendação"));
+
                     if(!like.isLiked)
                         CustomToast.makeText(holderPattern.fotoProduto.getContext(),"", Toast.LENGTH_SHORT).show();
                     like.isLiked = !like.isLiked;
@@ -236,8 +242,22 @@ public class ProdutoAdapter extends BaseAdapter {
                 Log.d("Quantidade likes: ",""+like.quantidadeLikes);
                 holderPattern.textViewSetLikes.setText(like.quantidadeLikes + ((like.quantidadeLikes > 1)?" recomendações":" recomendação"));
                 if(!like.isLiked) {
-
+                    //ViewGroup viewGroup = (ViewGroup) viewContent.findViewById(R.id.layout_toast);
                     CustomToast.makeText(holderPattern.fotoProduto.getContext(), "", Toast.LENGTH_SHORT).show();
+                   /* holderPattern.likeFrame.setVisibility(View.VISIBLE);
+                    Runnable mRunnable;
+                    Handler mHandler=new Handler();
+
+                    mRunnable=new Runnable() {
+
+                        @Override
+                        public void run() {
+                            // TODO Auto-generated method stub
+                            holderPattern.likeFrame.setVisibility(View.INVISIBLE); //If you want just hide the View. But it will retain space occupied by the View.
+                            holderPattern.likeFrame.setVisibility(View.GONE); //This will remove the View. and free s the space occupied by the View
+                        }
+                    };
+                    mHandler.postDelayed(mRunnable,2*1000);*/
                 }
                 like.isLiked = !like.isLiked;
 
@@ -403,6 +423,7 @@ public class ProdutoAdapter extends BaseAdapter {
         TextView textViewSetLikes;
         ImageView fotoProduto;
         ImageButton likeButton;
+        LinearLayout likeFrame;
     }
 
     static class AsyncDrawable extends BitmapDrawable {
