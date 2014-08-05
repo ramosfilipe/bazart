@@ -203,14 +203,14 @@ public class ProdutoAdapter extends BaseAdapter {
         like.isLiked =  items.get(arg0).isLikedByUser(ParseUser.getCurrentUser());
 
             final int arg = arg0;
-            holderPattern.likeButton.setImageResource( like.isLiked? R.drawable.like_disable : R.drawable.like_enable);
+            holderPattern.likeButton.setImageResource( like.isLiked? R.drawable.like_enable : R.drawable.like_disable);
 
             holderPattern.likeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
                     items.get(arg).likeProduto(ParseUser.getCurrentUser(), like.isLiked);
-                    holderPattern.likeButton.setImageResource(like.isLiked ? R.drawable.like_enable : R.drawable.like_disable);
+                    holderPattern.likeButton.setImageResource(like.isLiked ? R.drawable.like_disable : R.drawable.like_enable);
 
                     like.quantidadeLikes = like.isLiked? --like.quantidadeLikes :  ++like.quantidadeLikes;
                     Log.d("Quantidade likes: ",""+like.quantidadeLikes);
@@ -225,7 +225,7 @@ public class ProdutoAdapter extends BaseAdapter {
             @Override
             public void onDoubleClick(View v) {
                 items.get(arg).likeProduto(ParseUser.getCurrentUser(), like.isLiked);
-                holderPattern.likeButton.setImageResource(like.isLiked ? R.drawable.like_enable : R.drawable.like_disable);
+                holderPattern.likeButton.setImageResource(like.isLiked ? R.drawable.like_disable : R.drawable.like_enable);
 
                 like.quantidadeLikes = like.isLiked? --like.quantidadeLikes :  ++like.quantidadeLikes;
                 Log.d("Quantidade likes: ",""+like.quantidadeLikes);

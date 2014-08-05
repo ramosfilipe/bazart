@@ -933,7 +933,7 @@ containing a value of this type.
         public static final int imageButtonUpload=0x7f070072;
         public static final int imageView=0x7f07008b;
         public static final int large=0x7f070015;
-        public static final int likeButton=0x7f070090;
+        public static final int likeButton=0x7f070091;
         public static final int linearLayoutFragmentFeed=0x7f070066;
         public static final int list_cardId=0x7f070084;
         public static final int list_card_undobar=0x7f070085;
@@ -975,7 +975,7 @@ containing a value of this type.
         public static final int takePictureButton=0x7f07002b;
         public static final int terrain=0x7f070003;
         public static final int text1=0x7f070093;
-        public static final int textViewContato=0x7f07008f;
+        public static final int textViewContato=0x7f070090;
         public static final int textViewHashTags=0x7f070079;
         public static final int textViewLocalizacao=0x7f070074;
         public static final int textViewPreco=0x7f070075;
@@ -991,7 +991,7 @@ containing a value of this type.
         public static final int undobar_button=0x7f070036;
         public static final int undobar_message=0x7f070035;
         public static final int usernameProfileTextView=0x7f07007c;
-        public static final int viewLike=0x7f070091;
+        public static final int viewLike=0x7f07008f;
         public static final int wrap_content=0x7f07000d;
     }
     public static final class integer {
