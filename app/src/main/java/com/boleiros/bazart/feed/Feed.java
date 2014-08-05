@@ -162,11 +162,13 @@ public class Feed extends Activity {
         private static final long FAST_INTERVAL_CEILING_IN_MILLISECONDS = MILLISECONDS_PER_SECOND
                 * FAST_CEILING_IN_SECONDS;
         private static final String ARG_SECTION_NUMBER = "section_number";
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private boolean botaoGpsSelecionado = false;
+
+        private static final int    BOTAO_GPS_ATIVADO = 1;
+        private static final int    BOTAO_HOME_ATIVADO = 2;
+        private static final int    BOTAO_RECOMENDACAO_ATIVADO = 3;
+
+
+        private int botaoSelecionado = BOTAO_HOME_ATIVADO;
         private Location lastLocation = null;
         private Location currentLocation = null;
         private LocationRequest locationRequest;
@@ -253,6 +255,27 @@ public class Feed extends Activity {
                 }
             });
         }
+        public void consultaAoParseComRecomendacao() {
+            ParseQuery<Produto> query = ParseQuery.getQuery("Produto");
+            query.include("author");
+            query.whereEqualTo("isSold", false);
+            query.orderByDescending("numLikes");
+            query.setLimit(7);
+            query.findInBackground(new FindCallback<Produto>() {
+                @Override
+                public void done(List<Produto> parseObjects, com.parse.ParseException e) {
+                    if (e == null) {
+                        ProdutoAdapter produtoAdapter = new ProdutoAdapter(getActivity(), parseObjects);
+                        final ListView listaDeExibicao = (ListView) getActivity().findViewById(R.id.listaCards);
+                        if (listaDeExibicao != null) {
+                            listaDeExibicao.setAdapter(produtoAdapter);
+                        }
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                }
+            });
+        }
+
 
         @Override
         public View onCreateView(LayoutInflater inflater, final ViewGroup container,
@@ -262,6 +285,7 @@ public class Feed extends Activity {
             final ImageButton gps = (ImageButton) swipeRefreshLayout.findViewById(R.id.gpsButton);
             final ImageButton home = (ImageButton) swipeRefreshLayout.findViewById(R.id.homeButton);
             final ImageButton profile = (ImageButton) swipeRefreshLayout.findViewById(R.id.profileImageButton);
+            final ImageButton recomendacao = (ImageButton) swipeRefreshLayout.findViewById(R.id.recomendacaoImageButton);
             locationClient.connect();
 
             final ListView listaDeExibicao = (ListView) swipeRefreshLayout.findViewById(R.id.listaCards);
@@ -271,23 +295,27 @@ public class Feed extends Activity {
             gps.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    botaoGpsSelecionado = true;
-                    gps.setImageResource(R.drawable.gpspressed);
-                    home.setImageResource(R.drawable.homefeed);
+                    if(botaoSelecionado != BOTAO_GPS_ATIVADO){
+                        botaoSelecionado = BOTAO_GPS_ATIVADO;
+                        gps.setImageResource(R.drawable.gpspressed);
+                        home.setImageResource(R.drawable.homefeed);
+                        recomendacao.setImageResource(R.drawable.recom);
 
-                    Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
-                    if (myLoc == null) {
-                        Toast.makeText(getActivity(),
-                                "Please try again after your location appears on the map.", Toast.LENGTH_LONG).show();
-                        return;
+
+                        Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
+                        if (myLoc == null) {
+                            Toast.makeText(getActivity(),
+                                    "Please try again after your location appears on the map.", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        final ParseGeoPoint myPoint = geoPointFromLocation(myLoc);
+                        consultaAoParseComLocalizacao(myPoint);
+                        listaDeExibicao.smoothScrollToPosition(0);
+
                     }
-                    final ParseGeoPoint myPoint = geoPointFromLocation(myLoc);
-                    consultaAoParseComLocalizacao(myPoint);
-                    listaDeExibicao.smoothScrollToPosition(0);
-
                 }
-            });
 
+            });
             profile.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -296,16 +324,33 @@ public class Feed extends Activity {
                 }
             });
 
+            recomendacao.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (botaoSelecionado != BOTAO_RECOMENDACAO_ATIVADO) {
+                        botaoSelecionado = BOTAO_RECOMENDACAO_ATIVADO;
+                        gps.setImageResource(R.drawable.gps);
+                        home.setImageResource(R.drawable.homefeed);
+                        recomendacao.setImageResource(R.drawable.recompressed);
+                        consultaAoParseComRecomendacao();
+                        listaDeExibicao.smoothScrollToPosition(0);
+                    }
+                }
+            });
+
 
             home.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    botaoGpsSelecionado = false;
-                    gps.setImageResource(R.drawable.gps);
-                    home.setImageResource(R.drawable.homefeedpressed);
-                    consultaAoParse();
-                    listaDeExibicao.smoothScrollToPosition(0);
+                    if (botaoSelecionado != BOTAO_HOME_ATIVADO) {
+                        botaoSelecionado = BOTAO_HOME_ATIVADO;
+                        gps.setImageResource(R.drawable.gps);
+                        home.setImageResource(R.drawable.homefeedpressed);
+                        recomendacao.setImageResource(R.drawable.recom);
+                        consultaAoParse();
+                        listaDeExibicao.smoothScrollToPosition(0);
 
+                    }
                 }
             });
 
@@ -335,12 +380,16 @@ public class Feed extends Activity {
                 public void onRefresh() {
                     Log.e(getClass().getSimpleName(), "refresh");
                     //if(gps==false){
-                    if (botaoGpsSelecionado == false) {
+                    if (botaoSelecionado == BOTAO_HOME_ATIVADO) {
                         consultaAoParse();
                     }
-                    if (botaoGpsSelecionado == true) {
+                    if (botaoSelecionado == BOTAO_GPS_ATIVADO) {
                         consultaAoParseComLocalizacao(geoPointFromLocation(currentLocation));
                     }
+                    if (botaoSelecionado == BOTAO_RECOMENDACAO_ATIVADO){
+                        consultaAoParseComRecomendacao();
+                    }
+
                     //consultaAoParseComLocalizacao(currentLocation);
                 }
             });

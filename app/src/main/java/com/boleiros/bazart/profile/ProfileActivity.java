@@ -1,5 +1,6 @@
 package com.boleiros.bazart.profile;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -17,6 +18,8 @@ public class ProfileActivity extends Activity implements Profile.OnFragmentInter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         Profile current = new Profile();
+        ActionBar actionBar = getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
         getFragmentManager().beginTransaction()
                 .replace(R.id.profileActivityLayout, current).commit();
     }
@@ -37,6 +40,10 @@ public class ProfileActivity extends Activity implements Profile.OnFragmentInter
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
+        }
+        if (id == android.R.id.home){
+            Intent intent = new Intent(this,Feed.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

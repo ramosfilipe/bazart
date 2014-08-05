@@ -12,7 +12,6 @@ import com.parse.ParseUser;
 import org.json.JSONArray;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by Filipe on 06/07/14.
@@ -110,6 +109,17 @@ public class Produto extends ParseObject {
         put("hashtag", array);
     }
 
+    public void addLike(){
+        put("numLikes",getLikes()+ 1 );
+    }
+    public void removeLike(){
+        put("numLikes",getLikes()-1);
+    }
+    public int getLikes(){
+        return getInt("numLikes");
+    }
+
+
     public void likeProduto(ParseUser user, boolean isLiked) {
 
         Object[] obj = getList(LIKES).toArray();
@@ -139,7 +149,7 @@ public class Produto extends ParseObject {
                 }
 
             }
-
+            removeLike();
             removeAll(LIKES, Arrays.asList(toDelete));
 
         }
@@ -159,6 +169,7 @@ public class Produto extends ParseObject {
 
             String[] array = Arrays.copyOf(obj, obj.length, String[].class);
             System.out.println("Size of obj: " + obj.length);
+            addLike();
             addAllUnique(LIKES, Arrays.asList(array));
         }
 
@@ -171,17 +182,18 @@ public class Produto extends ParseObject {
     }
 
     public int getAmoutOfLikes() {
-        List<Object> obj = getList(LIKES);
-        if (obj == null){
-            return 0;}
-        int result = 0;
-        for (int i = 0; i < obj.size(); i++) {
-            if (obj.get(i) != null){
-                result++;}
-        }
-
-
-        return result;
+//        List<Object> obj = getList(LIKES);
+//        if (obj == null){
+//            return 0;}
+//        int result = 0;
+//        for (int i = 0; i < obj.size(); i++) {
+//            if (obj.get(i) != null){
+//                result++;}
+//        }
+//
+//
+//        return result;
+         return getLikes();
     }
 
 

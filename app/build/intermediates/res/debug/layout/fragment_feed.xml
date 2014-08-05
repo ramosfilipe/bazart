@@ -50,32 +50,41 @@
                 android:id="@+id/gpsButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_alignParentTop="true"
                 android:layout_gravity="left|center_vertical"
-                android:layout_toLeftOf="@+id/cameraButton"
                 android:background="@null"
-                android:src="@drawable/gps" />
+                android:src="@drawable/gps"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/homeButton" />
 
             <ImageButton
                 android:id="@+id/homeButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/profileImageButton"
 
-                android:layout_marginRight="31dp"
-                android:layout_toLeftOf="@+id/gpsButton"
                 android:background="@null"
-                android:src="@drawable/homefeedpressed" />
+                android:src="@drawable/homefeedpressed"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
             <ImageButton
                 android:id="@+id/profileImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="24dp"
-                android:layout_toRightOf="@+id/cameraButton"
                 android:background="@null"
-                android:src="@drawable/profile_icon_white" />
+                android:src="@drawable/profile_icon_white"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/recomendacaoImageButton"
+                android:src="@drawable/recom"
+                android:background="@null"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/profileImageButton" />
         </RelativeLayout>
     </LinearLayout>
 </android.support.v4.widget.SwipeRefreshLayout>

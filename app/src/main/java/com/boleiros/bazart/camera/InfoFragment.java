@@ -167,7 +167,6 @@ public class InfoFragment extends Fragment implements LocationListener, GooglePl
                     produto.setPrice(precoStr);
                     produto.setArrayHashtags(hashtags.getArrayOfText());
                     produto.initLikeArray();
-                    System.out.println();
                     produto.setCity(localizacao.getText().toString());
                     produto.saveInBackground(new SaveCallback() {
                         @Override
@@ -449,6 +448,7 @@ public class InfoFragment extends Fragment implements LocationListener, GooglePl
         }
 
     }
+
 
     class BitmapWorker extends AsyncTask<byte[], Void, Bitmap> {
         private ImageView imageViewReference;

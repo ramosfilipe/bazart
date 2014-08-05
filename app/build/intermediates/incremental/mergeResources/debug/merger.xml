@@ -12818,6 +12818,16 @@ Password must be at least %d characters long
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
+                name="profile_icon__pressed"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/profile_icon__pressed.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="profile_icon_pressed"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/profile_icon_pressed.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
                 name="profile_icon_white"
                 path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/profile_icon_white.png"
                 qualifiers="hdpi-v4"
@@ -13259,6 +13269,16 @@ true
                 <dimen name="activity_horizontal_margin" >64dp
                 </dimen>
             </file>
+            <file
+                name="recom"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/recom.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="recompressed"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/recompressed.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
         </source>
         <source path="/Users/Filipe/Desktop/bazart/app/build/generated/res/rs/debug" />
         <source path="/Users/Filipe/Desktop/bazart/app/build/generated/res/generated/debug" />

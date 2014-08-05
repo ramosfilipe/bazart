@@ -104,28 +104,35 @@ public final class R {
 		public static final int ic_undobar_undo = 0x7f02006d;
 		public static final int pressed_background_card = 0x7f020085;
 		public static final int pressed_background_kitkat_card = 0x7f020086;
+<<<<<<< HEAD
+		public static final int undobar = 0x7f020094;
+		public static final int undobar_button_focused = 0x7f020095;
+		public static final int undobar_button_pressed = 0x7f020096;
+		public static final int undobar_divider = 0x7f020097;
+=======
 		public static final int undobar = 0x7f020092;
 		public static final int undobar_button_focused = 0x7f020093;
 		public static final int undobar_button_pressed = 0x7f020094;
 		public static final int undobar_divider = 0x7f020095;
+>>>>>>> FETCH_HEAD
 	}
 	public static final class id {
 		public static final int card_base_empty_cardwithlist_text = 0x7f070024;
 		public static final int card_children_simple_title = 0x7f070021;
 		public static final int card_content_expand_layout = 0x7f070030;
-		public static final int card_expand_inner_simple_title = 0x7f07007e;
+		public static final int card_expand_inner_simple_title = 0x7f070080;
 		public static final int card_header_button_expand = 0x7f07001f;
 		public static final int card_header_button_frame = 0x7f07001d;
 		public static final int card_header_button_other = 0x7f070020;
 		public static final int card_header_button_overflow = 0x7f07001e;
 		public static final int card_header_inner_frame = 0x7f07001c;
-		public static final int card_header_inner_simple_title = 0x7f07007f;
+		public static final int card_header_inner_simple_title = 0x7f070081;
 		public static final int card_header_layout = 0x7f07002f;
-		public static final int card_inner_base_empty_cardwithlist = 0x7f070082;
-		public static final int card_inner_base_main_cardwithlist = 0x7f070081;
-		public static final int card_inner_base_progressbar_cardwithlist = 0x7f070083;
+		public static final int card_inner_base_empty_cardwithlist = 0x7f070084;
+		public static final int card_inner_base_main_cardwithlist = 0x7f070083;
+		public static final int card_inner_base_progressbar_cardwithlist = 0x7f070085;
 		public static final int card_main_content_layout = 0x7f07002c;
-		public static final int card_main_inner_simple_title = 0x7f070080;
+		public static final int card_main_inner_simple_title = 0x7f070082;
 		public static final int card_main_layout = 0x7f07002e;
 		public static final int card_overlap = 0x7f070031;
 		public static final int card_shadow_layout = 0x7f07002d;
@@ -133,10 +140,10 @@ public final class R {
 		public static final int card_thumb_and_content_layout = 0x7f070032;
 		public static final int card_thumbnail_image = 0x7f070023;
 		public static final int card_thumbnail_layout = 0x7f070033;
-		public static final int list_cardId = 0x7f070084;
-		public static final int list_card_undobar = 0x7f070085;
-		public static final int list_card_undobar_button = 0x7f070087;
-		public static final int list_card_undobar_message = 0x7f070086;
+		public static final int list_cardId = 0x7f070086;
+		public static final int list_card_undobar = 0x7f070087;
+		public static final int list_card_undobar_button = 0x7f070089;
+		public static final int list_card_undobar_message = 0x7f070088;
 		public static final int undobar = 0x7f070034;
 		public static final int undobar_button = 0x7f070036;
 		public static final int undobar_message = 0x7f070035;
