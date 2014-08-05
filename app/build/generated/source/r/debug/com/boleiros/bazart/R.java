@@ -732,7 +732,7 @@ containing a value of this type.
         public static final int com_facebook_list_section_header_background=0x7f020024;
         public static final int com_facebook_loginbutton_silver=0x7f020025;
         public static final int com_facebook_logo=0x7f020026;
-        public static final int com_facebook_picker_default_separator_color=0x7f020094;
+        public static final int com_facebook_picker_default_separator_color=0x7f020095;
         public static final int com_facebook_picker_item_background=0x7f020027;
         public static final int com_facebook_picker_list_focused=0x7f020028;
         public static final int com_facebook_picker_list_longpressed=0x7f020029;
@@ -829,19 +829,20 @@ containing a value of this type.
         public static final int powered_by_google_light=0x7f020084;
         public static final int pressed_background_card=0x7f020085;
         public static final int pressed_background_kitkat_card=0x7f020086;
-        public static final int profile_icon_white=0x7f020087;
-        public static final int restartarrow=0x7f020088;
-        public static final int restartarrowgrey=0x7f020089;
-        public static final int restartarrowsmall=0x7f02008a;
-        public static final int restartarrowwhite=0x7f02008b;
-        public static final int rightarrow=0x7f02008c;
-        public static final int rightarrowsmall=0x7f02008d;
-        public static final int searchicon=0x7f02008e;
-        public static final int searchiconred=0x7f02008f;
-        public static final int undobar=0x7f020090;
-        public static final int undobar_button_focused=0x7f020091;
-        public static final int undobar_button_pressed=0x7f020092;
-        public static final int undobar_divider=0x7f020093;
+        public static final int profile_icon_pressed=0x7f020087;
+        public static final int profile_icon_white=0x7f020088;
+        public static final int restartarrow=0x7f020089;
+        public static final int restartarrowgrey=0x7f02008a;
+        public static final int restartarrowsmall=0x7f02008b;
+        public static final int restartarrowwhite=0x7f02008c;
+        public static final int rightarrow=0x7f02008d;
+        public static final int rightarrowsmall=0x7f02008e;
+        public static final int searchicon=0x7f02008f;
+        public static final int searchiconred=0x7f020090;
+        public static final int undobar=0x7f020091;
+        public static final int undobar_button_focused=0x7f020092;
+        public static final int undobar_button_pressed=0x7f020093;
+        public static final int undobar_divider=0x7f020094;
     }
     public static final class id {
         public static final int action_settings=0x7f070096;
@@ -935,7 +936,7 @@ containing a value of this type.
         public static final int imageView=0x7f07008b;
         public static final int ivLogo=0x7f070094;
         public static final int large=0x7f070015;
-        public static final int likeButton=0x7f070091;
+        public static final int likeButton=0x7f07008d;
         public static final int linearLayoutFragmentFeed=0x7f070066;
         public static final int list_cardId=0x7f070084;
         public static final int list_card_undobar=0x7f070085;
@@ -977,23 +978,23 @@ containing a value of this type.
         public static final int takePictureButton=0x7f07002b;
         public static final int terrain=0x7f070003;
         public static final int text1=0x7f070093;
-        public static final int textViewContato=0x7f070090;
+        public static final int textViewContato=0x7f07008f;
         public static final int textViewHashTags=0x7f070079;
         public static final int textViewLocalizacao=0x7f070074;
         public static final int textViewPreco=0x7f070075;
         public static final int textViewSetCidade=0x7f07008a;
-        public static final int textViewSetContato=0x7f07008e;
+        public static final int textViewSetContato=0x7f070091;
         public static final int textViewSetHashTags=0x7f070092;
         public static final int textViewSetHoraPostagem=0x7f070088;
         public static final int textViewSetNomeUsuario=0x7f070089;
-        public static final int textViewSetPreco=0x7f07008d;
+        public static final int textViewSetPreco=0x7f070090;
         public static final int textViewTelefone=0x7f070077;
         public static final int twitter_login=0x7f07005d;
         public static final int undobar=0x7f070034;
         public static final int undobar_button=0x7f070036;
         public static final int undobar_message=0x7f070035;
         public static final int usernameProfileTextView=0x7f07007c;
-        public static final int viewLike=0x7f07008f;
+        public static final int viewLike=0x7f07008e;
         public static final int wrap_content=0x7f07000d;
     }
     public static final class integer {

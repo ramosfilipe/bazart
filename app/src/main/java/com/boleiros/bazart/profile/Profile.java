@@ -94,7 +94,13 @@ public class Profile extends Fragment {
                 FragmentManager fm = getFragmentManager();
                 DialogGrid dialogGrid = new DialogGrid();
                 Bundle bundle = new Bundle();
-                bundle.putString("id", ((Produto) adapt.getItem(position)).getObjectId());
+                Produto produto = ((Produto) adapt.getItem(position));
+                if(produto.getVendido()){
+                    bundle.putBoolean("vendido",true);
+                } else{
+                    bundle.putBoolean("vendido",false);
+                }
+                bundle.putString("id", produto.getObjectId());
                 dialogGrid.setArguments(bundle);
                 dialogGrid.show(fm, "fragment_grid_item");
             }
