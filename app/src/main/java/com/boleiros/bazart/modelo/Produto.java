@@ -160,6 +160,8 @@ public class Produto extends ParseObject {
 
     public int getAmoutOfLikes(){
         List<Object> obj = getList("likes");
+        if(obj == null)
+            return 0;
         int result = 0;
         for(int i = 0; i < obj.size(); i++){
             if(obj.get(i) != null)

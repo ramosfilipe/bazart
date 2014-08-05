@@ -21,9 +21,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.boleiros.bazart.R;
 import com.boleiros.bazart.modelo.Produto;
+import com.boleiros.bazart.util.CustomToast;
 import com.boleiros.bazart.util.DoubleClickListener;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -215,7 +217,10 @@ public class ProdutoAdapter extends BaseAdapter {
                     like.quantidadeLikes = like.isLiked? --like.quantidadeLikes :  ++like.quantidadeLikes;
                     Log.d("Quantidade likes: ",""+like.quantidadeLikes);
                     holderPattern.textViewSetLikes.setText(like.quantidadeLikes + ((like.quantidadeLikes > 1)?" recomendações":" recomendação"));
+                    if(!like.isLiked)
+                        CustomToast.makeText(holderPattern.fotoProduto.getContext(),"", Toast.LENGTH_SHORT).show();
                     like.isLiked = !like.isLiked;
+
                 }
 
 
@@ -230,7 +235,12 @@ public class ProdutoAdapter extends BaseAdapter {
                 like.quantidadeLikes = like.isLiked? --like.quantidadeLikes :  ++like.quantidadeLikes;
                 Log.d("Quantidade likes: ",""+like.quantidadeLikes);
                 holderPattern.textViewSetLikes.setText(like.quantidadeLikes + ((like.quantidadeLikes > 1)?" recomendações":" recomendação"));
+                if(!like.isLiked) {
+
+                    CustomToast.makeText(holderPattern.fotoProduto.getContext(), "", Toast.LENGTH_SHORT).show();
+                }
                 like.isLiked = !like.isLiked;
+
             }
         });
 
