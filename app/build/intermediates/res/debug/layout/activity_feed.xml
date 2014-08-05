@@ -3,7 +3,6 @@
     android:id="@+id/pager"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Feed"
-    />
+    tools:context=".Feed" />
 
 <!-- From: file:/Users/Filipe/Desktop/bazart/app/src/main/res/layout/activity_feed.xml -->

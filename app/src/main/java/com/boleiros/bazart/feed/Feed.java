@@ -122,8 +122,6 @@ public class Feed extends Activity {
                             int maxLength = (nome.length() < MAX_CHAR) ? nome.length() : MAX_CHAR;
                             ParseUser.getCurrentUser().setUsername(user.getName().substring(0, maxLength));
                             ParseUser.getCurrentUser().saveEventually();
-                        } else if (response.getError() != null) {
-                            // handle error
                         }
                     }
                 }
@@ -229,7 +227,6 @@ public class Feed extends Activity {
                             listaDeExibicao.setAdapter(produtoAdapter);
                         }
                         swipeRefreshLayout.setRefreshing(false);
-                    } else {
                     }
                 }
             });
@@ -252,7 +249,6 @@ public class Feed extends Activity {
                             listaDeExibicao.setAdapter(produtoAdapter);
                         }
                         swipeRefreshLayout.setRefreshing(false);
-                    } else {
                     }
                 }
             });
@@ -476,8 +472,6 @@ public class Feed extends Activity {
                     connectionResult.startResolutionForResult(this.getActivity(), CONNECTION_FAILURE_RESOLUTION_REQUEST);
                 } catch (IntentSender.SendIntentException e) {
                 }
-            } else {
-//            showErrorDialog(connectionResult.getErrorCode());
             }
         }
 

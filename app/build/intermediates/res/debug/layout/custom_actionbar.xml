@@ -2,10 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
-    android:orientation="vertical"
     android:background="@null"
-    android:baselineAligned="false">
+    android:baselineAligned="false"
+    android:gravity="center"
+    android:orientation="vertical">
 
 
     <FrameLayout
@@ -17,12 +17,12 @@
             android:id="@+id/botaoBuscaActionBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:background="@null"
             android:clickable="false"
             android:focusable="false"
             android:longClickable="false"
-            android:background="@null"
-            android:src="@drawable/searchicon"
-            android:layout_gravity="right|center_vertical" />
+            android:src="@drawable/searchicon" />
 
 
     </FrameLayout>

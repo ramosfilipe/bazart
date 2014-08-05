@@ -300,7 +300,7 @@ public class InfoFragment extends Fragment implements LocationListener, GooglePl
             } catch (IntentSender.SendIntentException e) {
             }
         } else {
-//            showErrorDialog(connectionResult.getErrorCode());
+            showErrorDialog(connectionResult.getErrorCode());
         }
     }
 

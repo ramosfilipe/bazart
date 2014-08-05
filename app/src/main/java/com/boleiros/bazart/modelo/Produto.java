@@ -20,6 +20,8 @@ import java.util.List;
 @ParseClassName("Produto")
 public class Produto extends ParseObject {
 
+    public static final String LIKES = "likes";
+
     public Produto() {
     }
 
@@ -110,15 +112,16 @@ public class Produto extends ParseObject {
 
     public void likeProduto(ParseUser user, boolean isLiked) {
 
-        Object[] obj = getList("likes").toArray();
+        Object[] obj = getList(LIKES).toArray();
         int newSize = 0;
         for (int i = 0; i < obj.length; i++) {
-            if (obj[i] != null)
-                newSize++;
+            if (obj[i] != null){
+                newSize++;}
         }
 
         Object[] objNoNull = new Object[newSize];
         int cont = 0;
+
         for (int i = 0; i < obj.length; i++) {
             if (obj[i] != null) {
                 objNoNull[cont] = obj[i];
@@ -131,18 +134,19 @@ public class Produto extends ParseObject {
         if (isLiked) {
             Object[] toDelete = new Object[1];
             for (int i = 0; i < obj.length; i++) {
-                if (obj[i] != null) {
-                    if (obj[i].toString().equals(user.getObjectId())) {
+                if (obj[i] != null && obj[i].toString().equals(user.getObjectId())) {
                         toDelete[0] = obj[i];
-                    }
                 }
 
             }
 
-            removeAll("likes", Arrays.asList(toDelete));
+            removeAll(LIKES, Arrays.asList(toDelete));
 
-        } else {
-            if (obj != null || obj.length != 0) {
+        }
+
+        else {
+            //obj != null ||
+            if ( obj.length != 0) {
                 Object[] tempArray = new Object[obj.length + 1];
                 tempArray[tempArray.length - 1] = user.getObjectId();
                 obj = tempArray;
@@ -155,7 +159,7 @@ public class Produto extends ParseObject {
 
             String[] array = Arrays.copyOf(obj, obj.length, String[].class);
             System.out.println("Size of obj: " + obj.length);
-            addAllUnique("likes", Arrays.asList(array));
+            addAllUnique(LIKES, Arrays.asList(array));
         }
 
 
@@ -167,13 +171,13 @@ public class Produto extends ParseObject {
     }
 
     public int getAmoutOfLikes() {
-        List<Object> obj = getList("likes");
-        if (obj == null)
-            return 0;
+        List<Object> obj = getList(LIKES);
+        if (obj == null){
+            return 0;}
         int result = 0;
         for (int i = 0; i < obj.size(); i++) {
-            if (obj.get(i) != null)
-                result++;
+            if (obj.get(i) != null){
+                result++;}
         }
 
 
@@ -182,7 +186,7 @@ public class Produto extends ParseObject {
 
 
     public boolean isLikedByUser(ParseUser user) {
-        Object[] obj = getList("likes").toArray();
+        Object[] obj = getList(LIKES).toArray();
         boolean isLiked = false;
         for (int i = 0; i < obj.length; i++) {
             if (obj[i].toString().equals(user.getObjectId())) {
@@ -196,6 +200,6 @@ public class Produto extends ParseObject {
     public void initLikeArray() {
         String[] empty = new String[0];
 
-        addAllUnique("likes", Arrays.asList(empty));
+        addAllUnique(LIKES, Arrays.asList(empty));
     }
 }

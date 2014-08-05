@@ -88,7 +88,6 @@ public class HashtagActivity extends Activity implements OnFragmentInteractionLi
                     if (parseObjects.size() == 0) {
                         Toast.makeText(getBaseContext(), "Não foi encontrado nenhum produto", Toast.LENGTH_SHORT).show();
                     }
-                } else {
                 }
             }
         });

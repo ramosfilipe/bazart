@@ -51,8 +51,8 @@ public class CustomToast extends Toast {
         return dp;
     }
 
-    @Override
-    public void show() {
-        super.show();
-    }
+//    @Override
+//    public void show() {
+//        super.show();
+//    }
 }

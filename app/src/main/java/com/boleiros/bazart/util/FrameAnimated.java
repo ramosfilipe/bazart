@@ -27,10 +27,10 @@ public class FrameAnimated extends LinearLayout {
     @Override
     public void setVisibility(int visibility) {
         if (getVisibility() != visibility) {
-            if (visibility == VISIBLE) {
-                if (inAnimation != null) startAnimation(inAnimation);
-            } else if ((visibility == INVISIBLE) || (visibility == GONE)) {
-                if (outAnimation != null) startAnimation(outAnimation);
+            if (visibility == VISIBLE && inAnimation != null) {
+                startAnimation(inAnimation);
+            } else if ( ( ((visibility == INVISIBLE) || (visibility == GONE)) && outAnimation != null) ) {
+                startAnimation(outAnimation);
             }
         }
 
