@@ -29,20 +29,20 @@ public final class R {
 		public static final int chip_background_selected = 0x7f020015;
 		public static final int chip_delete = 0x7f020016;
 		public static final int ic_contact_picture = 0x7f020061;
-		public static final int list_item_font_primary = 0x7f020076;
-		public static final int list_item_font_secondary = 0x7f020077;
+		public static final int list_item_font_primary = 0x7f020078;
+		public static final int list_item_font_secondary = 0x7f020079;
 	}
 	public static final class id {
-		public static final int text1 = 0x7f07008a;
+		public static final int text1 = 0x7f070093;
 	}
 	public static final class integer {
 		public static final int chips_max_lines = 0x7f090000;
 	}
 	public static final class layout {
-		public static final int chips_alternate_item = 0x7f030011;
-		public static final int chips_recipient_dropdown_item = 0x7f030012;
-		public static final int copy_chip_dialog_layout = 0x7f03002a;
-		public static final int more_item = 0x7f030036;
+		public static final int chips_alternate_item = 0x7f030012;
+		public static final int chips_recipient_dropdown_item = 0x7f030013;
+		public static final int copy_chip_dialog_layout = 0x7f03002b;
+		public static final int more_item = 0x7f030039;
 	}
 	public static final class string {
 		public static final int copy_email = 0x7f0b0069;
