@@ -2,4 +2,4 @@
     <item android:state_focused="true" android:drawable="@drawable/gpspressed"/>
     <item android:state_pressed="true" android:drawable="@drawable/gpspressed" />
     <item android:drawable="@drawable/gps" />  //means normal
-</selector><!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/drawable-hdpi/button_gps_behaviour.xml -->
+</selector><!-- From: file:/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/button_gps_behaviour.xml -->

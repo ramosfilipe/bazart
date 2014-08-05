@@ -11,9 +11,9 @@ import com.parse.ParseUser;
 
 import org.json.JSONArray;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 /**
  * Created by Filipe on 06/07/14.
  */
@@ -54,16 +54,16 @@ public class Produto extends ParseObject {
         return array;
     }
 
-    public void setVendido(Boolean bool){
-        put("isSold",bool);
+    public void setArrayHashtags(String[] arrayHashtags) {
+        addAllUnique("tags", Arrays.asList(arrayHashtags));
     }
 
-    public Boolean getVendido(){
+    public Boolean getVendido() {
         return getBoolean("isSold");
     }
 
-    public void setArrayHashtags(String[] arrayHashtags) {
-        addAllUnique("tags", Arrays.asList(arrayHashtags));
+    public void setVendido(Boolean bool) {
+        put("isSold", bool);
     }
 
     public ParseGeoPoint getLocation() {
@@ -108,19 +108,19 @@ public class Produto extends ParseObject {
         put("hashtag", array);
     }
 
-    public void likeProduto(ParseUser user, boolean isLiked){
+    public void likeProduto(ParseUser user, boolean isLiked) {
 
         Object[] obj = getList("likes").toArray();
         int newSize = 0;
-        for(int i = 0; i < obj.length; i++){
-            if(obj[i] != null)
+        for (int i = 0; i < obj.length; i++) {
+            if (obj[i] != null)
                 newSize++;
         }
 
         Object[] objNoNull = new Object[newSize];
         int cont = 0;
-        for(int i = 0; i < obj.length; i++){
-            if(obj[i] != null){
+        for (int i = 0; i < obj.length; i++) {
+            if (obj[i] != null) {
                 objNoNull[cont] = obj[i];
                 cont++;
             }
@@ -128,26 +128,26 @@ public class Produto extends ParseObject {
         }
 
 
-        if(isLiked){
+        if (isLiked) {
             Object[] toDelete = new Object[1];
-            for(int i = 0; i < obj.length; i++){
-                if(obj[i] != null){
-                    if(obj[i].toString().equals(user.getObjectId())){
+            for (int i = 0; i < obj.length; i++) {
+                if (obj[i] != null) {
+                    if (obj[i].toString().equals(user.getObjectId())) {
                         toDelete[0] = obj[i];
                     }
                 }
 
             }
 
-            removeAll("likes",Arrays.asList(toDelete));
+            removeAll("likes", Arrays.asList(toDelete));
 
-        }else{
-            if(obj != null || obj.length != 0){
+        } else {
+            if (obj != null || obj.length != 0) {
                 Object[] tempArray = new Object[obj.length + 1];
                 tempArray[tempArray.length - 1] = user.getObjectId();
                 obj = tempArray;
                 Log.d("Debug: ", "Não vem null, apenas vazio.");
-            }else{
+            } else {
                 obj = new Object[1];
                 obj[0] = user.getObjectId();
             }
@@ -166,13 +166,13 @@ public class Produto extends ParseObject {
         }
     }
 
-    public int getAmoutOfLikes(){
+    public int getAmoutOfLikes() {
         List<Object> obj = getList("likes");
-        if(obj == null)
+        if (obj == null)
             return 0;
         int result = 0;
-        for(int i = 0; i < obj.size(); i++){
-            if(obj.get(i) != null)
+        for (int i = 0; i < obj.size(); i++) {
+            if (obj.get(i) != null)
                 result++;
         }
 
@@ -181,11 +181,11 @@ public class Produto extends ParseObject {
     }
 
 
-    public boolean isLikedByUser(ParseUser user){
+    public boolean isLikedByUser(ParseUser user) {
         Object[] obj = getList("likes").toArray();
         boolean isLiked = false;
-        for(int i = 0; i < obj.length; i++){
-            if(obj[i].toString().equals(user.getObjectId())){
+        for (int i = 0; i < obj.length; i++) {
+            if (obj[i].toString().equals(user.getObjectId())) {
                 isLiked = true;
                 break;
             }
@@ -193,8 +193,8 @@ public class Produto extends ParseObject {
         return isLiked;
     }
 
-    public void initLikeArray(){
-        String[]  empty = new String[0];
+    public void initLikeArray() {
+        String[] empty = new String[0];
 
         addAllUnique("likes", Arrays.asList(empty));
     }

@@ -1,115 +1,127 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragmentInfo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:divider="@drawable/list_divider"
     android:orientation="vertical"
-    tools:context=".camera.InfoFragment"
-    android:id="@+id/fragmentInfo"
-    android:weightSum="1"
     android:showDividers="middle"
-    android:divider="@drawable/list_divider">
+    android:weightSum="1"
+    tools:context=".camera.InfoFragment">
+
     <FrameLayout
+        android:id="@+id/frameemcima"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:id="@+id/frameemcima"
         android:background="#e50e0003">
+
         <ImageButton
+            android:id="@+id/imageButtonUpload"
             android:layout_width="57dp"
             android:layout_height="match_parent"
-            android:background="@null"
             android:layout_gravity="right|center_vertical"
-            android:id="@+id/imageButtonUpload"
-            android:src="@drawable/rightarrowsmall"
-            />
+            android:background="@null"
+            android:src="@drawable/rightarrowsmall" />
+
         <ImageButton
+            android:id="@+id/imageButtonBack"
             android:layout_width="37dp"
             android:layout_height="match_parent"
-            android:background="@null"
             android:layout_gravity="left|center_vertical"
-            android:id="@+id/imageButtonBack"
-            android:src="@drawable/leftarrowsmall"
-            />
+            android:background="@null"
+            android:src="@drawable/leftarrowsmall" />
 
         <TextView
+            android:id="@+id/textViewLocalizacao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Localizando..."
-            android:id="@+id/textViewLocalizacao"
             android:layout_gravity="center"
-            android:textStyle="italic"
-            android:textColor="#FFFFFF" />
+            android:text="Localizando..."
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#FFFFFF"
+            android:textStyle="italic" />
     </FrameLayout>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="0.12"
         android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:layout_weight="0.12">
+        android:paddingRight="@dimen/activity_horizontal_margin">
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="  Preço:"
-            android:textStyle="bold|italic"
             android:id="@+id/textViewPreco"
-            android:layout_gravity="left|center_vertical" />
-        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:ems="10"
+            android:layout_gravity="left|center_vertical"
+            android:text="  Preço:"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold|italic" />
+
+        <EditText
             android:id="@+id/editTextPreco"
-            android:layout_gravity="right|center_vertical" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:ems="10"
+            android:inputType="numberDecimal" />
     </FrameLayout>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.15">
+
         <TextView
+            android:id="@+id/textViewTelefone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_gravity="left|center_vertical"
             android:text="  Telefone:"
-            android:textStyle="bold|italic"
-            android:id="@+id/textViewTelefone"
-            android:layout_gravity="left|center_vertical" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold|italic" />
+
         <EditText
+            android:id="@+id/editTextPhoneNumber"
             android:layout_width="214dp"
             android:layout_height="wrap_content"
-            android:inputType="phone"
-            android:maxLength="13"
-            android:id="@+id/editTextPhoneNumber"
+            android:layout_gravity="right|center_vertical"
             android:layout_weight="1"
-            android:layout_gravity="right|center_vertical" />
+            android:inputType="phone"
+            android:maxLength="13" />
     </FrameLayout>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="0.13"
         android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:layout_weight="0.13">
+        android:paddingRight="@dimen/activity_horizontal_margin">
+
         <TextView
+            android:id="@+id/textViewHashTags"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_gravity="left|center_vertical"
             android:text="  Hashtags:"
-            android:textStyle="bold|italic"
-            android:id="@+id/textViewHashTags"
-            android:layout_gravity="left|center_vertical" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold|italic" />
+
         <com.boleiros.bazart.hashtags.CustomRecipients
+            android:id="@+id/editTextHashtags"
             android:layout_width="214dp"
             android:layout_height="wrap_content"
-            android:id="@+id/editTextHashtags"
             android:layout_gravity="right|center_vertical" />
     </FrameLayout>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="360dp">
+
         <ImageView
+            android:id="@+id/previewAntesDeEnviar"
             android:layout_width="match_parent"
             android:layout_height="360dp"
-            android:id="@+id/previewAntesDeEnviar"
             android:scaleType="fitXY" />
     </FrameLayout>
 </LinearLayout>

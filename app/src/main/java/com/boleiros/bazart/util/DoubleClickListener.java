@@ -8,11 +8,11 @@ import android.view.View;
 public abstract class DoubleClickListener implements View.OnClickListener {
 
     private final long DOUBLE_CLICK_TIME_MILIS = 500;
-    private  long ultimoClick = 0;
+    private long ultimoClick = 0;
 
-    public void onClick(View v){
+    public void onClick(View v) {
         long tempoClick = System.currentTimeMillis();
-        if(tempoClick - ultimoClick <=  DOUBLE_CLICK_TIME_MILIS){
+        if (tempoClick - ultimoClick <= DOUBLE_CLICK_TIME_MILIS) {
             onDoubleClick(v);
         }
         ultimoClick = tempoClick;

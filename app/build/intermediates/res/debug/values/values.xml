@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/src/main/res/values/strings.xml -->
     <eat-comment />
 
     <string-array name="my_facebook_permissions">
         <item>public_profile</item>
     </string-array>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/src/main/res/values/colors.xml -->
     <eat-comment />
 
     <color name="black_overlay">#66000000</color>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
     <eat-comment />
 
     <color name="card_activated">#CFE9F3</color>
@@ -25,7 +25,7 @@
     <color name="card_pressed">#7E0099CC</color>
     <color name="card_pressed_kitkat">#10000000</color>
     <color name="card_text_color_header">#000</color>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart.facebook-sdk/facebook/unspecified/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/bazart.facebook-sdk/facebook/unspecified/res/values/values.xml -->
     <eat-comment />
 
     <color name="com_facebook_blue">#3B5998</color>
@@ -35,7 +35,7 @@
     <color name="com_facebook_usersettingsfragment_connected_shadow_color">#000000</color>
     <color name="com_facebook_usersettingsfragment_connected_text_color">#FFFFFF</color>
     <color name="com_facebook_usersettingsfragment_not_connected_text_color">#A6AED7</color>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart/ParseLoginUI/unspecified/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/bazart/ParseLoginUI/unspecified/res/values/values.xml -->
     <eat-comment />
 
     <color name="com_parse_ui_facebook_login_button">#3B5998</color>
@@ -52,7 +52,7 @@
     <color name="com_parse_ui_twitter_login_button">#2DAAE2</color>
     <color name="com_parse_ui_twitter_login_button_focus">#2788BE</color>
     <color name="com_parse_ui_twitter_login_button_push">#2588B5</color>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.4.52/res/values/common_colors.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.4.52/res/values/common_colors.xml -->
     <eat-comment />
 
     <color name="common_action_bar_splitter">#d2d2d2</color>
@@ -65,7 +65,7 @@
     <color name="common_signin_btn_light_text_disabled">#FFAAAAAA</color>
     <color name="common_signin_btn_light_text_focused">#FF737373</color>
     <color name="common_signin_btn_light_text_pressed">@android:color/white</color>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.4.52/res/values/wallet_colors.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.4.52/res/values/wallet_colors.xml -->
     <eat-comment />
 
     <color name="wallet_bright_foreground_disabled_holo_light">#ffb2b2b2</color>
@@ -81,7 +81,7 @@
     <color name="wallet_hint_foreground_holo_light">#808080</color>
     <color name="wallet_holo_blue_light">#ff33b5e5</color>
     <color name="wallet_link_text_light">#0000ee</color>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.4.52/res/values/admob_ads_attrs.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.4.52/res/values/admob_ads_attrs.xml -->
     <eat-comment />
 
     <declare-styleable name="AdsAttrs">
@@ -103,14 +103,14 @@
         <!-- The ad unit ID. -->
         <attr name="adUnitId" format="string" />
     </declare-styleable>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/values/attrs.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/src/main/res/values/attrs.xml -->
     <eat-comment />
 
     <declare-styleable name="ButtonBarContainerTheme">
         <attr name="metaButtonBarStyle" format="reference" />
         <attr name="metaButtonBarButtonStyle" format="reference" />
     </declare-styleable>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
     <eat-comment />
 
     <declare-styleable name="ForegroundLinearLayout">
@@ -118,7 +118,7 @@
         <attr name="android:foregroundInsidePadding" />
         <attr name="android:foregroundGravity" />
     </declare-styleable>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.4.52/res/values/maps_attrs.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.4.52/res/values/maps_attrs.xml -->
     <eat-comment />
 
     <declare-styleable name="MapAttrs">
@@ -143,7 +143,7 @@
         <attr name="useViewLifecycle" format="boolean" />
         <attr name="zOrderOnTop" format="boolean" />
     </declare-styleable>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart/chipsLibrary/unspecified/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/bazart/chipsLibrary/unspecified/res/values/values.xml -->
     <eat-comment />
 
     <declare-styleable name="RecipientEditTextView">
@@ -156,7 +156,7 @@
         <attr name="chipHeight" format="reference" />
         <attr name="chipFontSize" format="reference" />
     </declare-styleable>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.4.52/res/values/wallet_attrs.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.4.52/res/values/wallet_attrs.xml -->
     <eat-comment />
 
     <declare-styleable name="WalletFragmentOptions">
@@ -230,7 +230,7 @@
             <enum name="monochrome" value="2" />
         </attr>
     </declare-styleable>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
     <eat-comment />
 
     <declare-styleable name="card_listItem">
@@ -255,7 +255,7 @@
         <!-- Layout used by card in a ListView. Default value is  @layout/list_card_layout -->
         <attr name="list_card_layout_resourceID" format="reference" />
     </declare-styleable>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart.facebook-sdk/facebook/unspecified/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/bazart.facebook-sdk/facebook/unspecified/res/values/values.xml -->
     <eat-comment />
 
     <declare-styleable name="com_facebook_friend_picker_fragment">
@@ -292,12 +292,12 @@
         </attr>
         <attr name="is_cropped" format="boolean" />
     </declare-styleable>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/values/dimens.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/src/main/res/values/dimens.xml -->
     <eat-comment />
 
     <dimen name="activity_horizontal_margin">1dp</dimen>
     <dimen name="activity_vertical_margin">1dp</dimen>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
     <eat-comment />
 
     <dimen name="card_background_default_radius">2dip</dimen>
@@ -343,13 +343,13 @@
     <dimen name="card_shadow_view_margin_top">0dp</dimen>
     <dimen name="card_thumbnail_height">72dp</dimen>
     <dimen name="card_thumbnail_width">72dp</dimen>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart/chipsLibrary/unspecified/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/bazart/chipsLibrary/unspecified/res/values/values.xml -->
     <eat-comment />
 
     <dimen name="chip_height">32dip</dimen>
     <dimen name="chip_padding">8dip</dimen>
     <dimen name="chip_text_size">14sp</dimen>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart.facebook-sdk/facebook/unspecified/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/bazart.facebook-sdk/facebook/unspecified/res/values/values.xml -->
     <eat-comment />
 
     <dimen name="com_facebook_loginview_compound_drawable_padding">12dp</dimen>
@@ -365,7 +365,7 @@
     <dimen name="com_facebook_tooltip_horizontal_padding">10dp</dimen>
     <dimen name="com_facebook_usersettingsfragment_profile_picture_height">64dp</dimen>
     <dimen name="com_facebook_usersettingsfragment_profile_picture_width">64dp</dimen>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart/ParseLoginUI/unspecified/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/bazart/ParseLoginUI/unspecified/res/values/values.xml -->
     <eat-comment />
 
     <dimen name="com_parse_ui_horizontal_margin">16dp</dimen>
@@ -375,37 +375,37 @@
     <dimen name="com_parse_ui_vertical_margin">16dp</dimen>
     <dimen name="com_parse_ui_vertical_spacing">16dp</dimen>
     <dimen name="com_parse_ui_xlarge_vertical_spacing">36dp</dimen>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
     <eat-comment />
 
     <dimen name="grid_card_padding_bottom">2dp</dimen>
     <dimen name="grid_card_padding_left">2dp</dimen>
     <dimen name="grid_card_padding_right">2dp</dimen>
     <dimen name="grid_card_padding_top">2dp</dimen>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart/chipsLibrary/unspecified/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/bazart/chipsLibrary/unspecified/res/values/values.xml -->
     <eat-comment />
 
     <dimen name="line_spacing_extra">4dip</dimen>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
     <eat-comment />
 
     <dimen name="list_card_padding_bottom">6dp</dimen>
     <dimen name="list_card_padding_left">8dp</dimen>
     <dimen name="list_card_padding_right">8dp</dimen>
     <dimen name="list_card_padding_top">2dp</dimen>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart.facebook-sdk/facebook/unspecified/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/bazart.facebook-sdk/facebook/unspecified/res/values/values.xml -->
     <eat-comment />
 
     <drawable name="com_facebook_picker_default_separator_color">#33464c59</drawable>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart/chipsLibrary/unspecified/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/bazart/chipsLibrary/unspecified/res/values/values.xml -->
     <eat-comment />
 
     <integer name="chips_max_lines">-1</integer>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.4.52/res/values/version.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.4.52/res/values/version.xml -->
     <eat-comment />
 
     <integer name="google_play_services_version">4452000</integer>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
     <eat-comment />
 
     <integer name="list_card_undobar_hide_delay">5000</integer>
@@ -414,31 +414,31 @@
         <item quantity="one">1 item selected</item>
         <item quantity="other">%d items selected</item>
     </plurals>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart/ParseLoginUI/unspecified/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/bazart/ParseLoginUI/unspecified/res/values/values.xml -->
     <eat-comment />
 
     <plurals name="com_parse_ui_password_too_short_toast">
         <item quantity="one">Password must be at least %d character long</item>
         <item quantity="other">Password must be at least %d characters long</item>
     </plurals>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
     <eat-comment />
 
     <plurals name="list_card_undo_items">
         <item quantity="one">1 card removed</item>
         <item quantity="other">%d cards removed</item>
     </plurals>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/src/main/res/values/strings.xml -->
     <eat-comment />
 
     <string name="action_settings">Settings</string>
     <string name="app_name">Bazar+</string>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
     <eat-comment />
 
     <string name="card_empty_cardwithlist_text">No data....</string>
     <string name="card_progressbar_cardwithlist_text">Loading data...</string>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart.facebook-sdk/facebook/unspecified/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/bazart.facebook-sdk/facebook/unspecified/res/values/values.xml -->
     <eat-comment />
 
     <string name="com_facebook_choose_friends">Choose Friends</string>
@@ -467,7 +467,7 @@
     <string name="com_facebook_usersettingsfragment_log_in_button">Log in…</string>
     <string name="com_facebook_usersettingsfragment_logged_in">Logged in</string>
     <string name="com_facebook_usersettingsfragment_not_logged_in">Not logged in</string>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart/ParseLoginUI/unspecified/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/bazart/ParseLoginUI/unspecified/res/values/values.xml -->
     <eat-comment />
 
     <string name="com_parse_ui_confirm_password_input_hint">Re-enter password</string>
@@ -520,7 +520,7 @@
     <string name="com_parse_ui_twitter_login_failed_toast">Twitter login failed</string>
     <string name="com_parse_ui_username_input_hint">Username</string>
     <string name="com_parse_ui_username_taken_toast">Username is already taken, please choose a different one</string>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.4.52/res/values/common_strings.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.4.52/res/values/common_strings.xml -->
     <eat-comment />
 
     <string name="common_google_play_services_enable_button" msgid="2523291102206661146">Enable Google Play services</string>
@@ -548,13 +548,13 @@
     <string name="common_google_play_services_update_title" msgid="1788179980625863495">Update Google Play services</string>
     <string name="common_signin_button_text">Sign in</string>
     <string name="common_signin_button_text_long">Sign in with Google</string>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart/chipsLibrary/unspecified/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/bazart/chipsLibrary/unspecified/res/values/values.xml -->
     <eat-comment />
 
     <string name="copy_email">Copy email address</string>
     <string name="copy_number">Copy phone number</string>
     <string name="done">Return</string>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/src/main/res/values/strings.xml -->
     <eat-comment />
 
     <string name="dummy_button">Dummy Button</string>
@@ -562,15 +562,15 @@
     <string name="facebook_app_id">694582477277699</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hello_world">Hello world!</string>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
     <eat-comment />
 
     <string name="list_card_undo_title">Undo</string>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart/chipsLibrary/unspecified/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/bazart/chipsLibrary/unspecified/res/values/values.xml -->
     <eat-comment />
 
     <string name="more_string">\u002B<ns1:g id="count">%1$s</ns1:g></string>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/src/main/res/values/strings.xml -->
     <eat-comment />
 
     <string name="parse_app_id">DrWO1B4EeifVi4YOMqm80VResVR8KYJLNyojje2Q</string>
@@ -581,11 +581,11 @@
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.4.52/res/values/wallet_strings.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.4.52/res/values/wallet_strings.xml -->
     <eat-comment />
 
     <string name="wallet_buy_button_place_holder" translation_description="Text on a button that allows a user to make a payment with Google Wallet [CHAR LIMIT=30]">Buy with Google</string>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/src/main/res/values/styles.xml -->
     <eat-comment />
 
     <style name="AppTheme" parent="CustomActionBarTheme">
@@ -601,13 +601,13 @@
     </style>
 
     <style name="ButtonBarButton" />
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/values/themes.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/src/main/res/values/themes.xml -->
     <eat-comment />
 
     <style name="CustomActionBarTheme" parent="android:Theme.Holo.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/MyActionBar</item>
     </style>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/src/main/res/values/styles.xml -->
     <eat-comment />
 
     <style name="Divider">
@@ -630,13 +630,13 @@
         <item name="metaButtonBarStyle">@style/ButtonBar</item>
         <item name="metaButtonBarButtonStyle">@style/ButtonBarButton</item>
     </style>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/values/themes.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/src/main/res/values/themes.xml -->
     <eat-comment />
 
     <style name="MyActionBar" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
         <item name="android:background">#ff0000</item>
     </style>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart/ParseLoginUI/unspecified/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/bazart/ParseLoginUI/unspecified/res/values/values.xml -->
     <eat-comment />
 
     <style name="ParseLoginUI" />
@@ -672,7 +672,7 @@
         <item name="android:textColor">@color/com_parse_ui_parse_login_display_text</item>
         <item name="android:textSize">18sp</item>
     </style>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart/chipsLibrary/unspecified/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/bazart/chipsLibrary/unspecified/res/values/values.xml -->
     <eat-comment />
 
     <style name="RecipientEditTextView" parent="@android:attr/autoCompleteTextViewStyle">
@@ -687,7 +687,7 @@
         <item name="android:minHeight">48dip</item>
         <item name="android:lineSpacingExtra">@dimen/line_spacing_extra</item>
     </style>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.4.52/res/values/wallet_styles.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.4.52/res/values/wallet_styles.xml -->
     <eat-comment />
 
     <style name="WalletFragmentDefaultButtonTextAppearance">
@@ -725,7 +725,7 @@
         <item name="maskedWalletDetailsLogoTextColor">@color/wallet_bright_foreground_holo_dark</item>
         <item name="maskedWalletDetailsLogoImageType">classic</item>
     </style>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
     <eat-comment />
 
     <style name="card" />
@@ -867,7 +867,7 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:background">@color/card_base_cardwithlist_background_list_color</item>
     </style>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart.facebook-sdk/facebook/unspecified/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/bazart.facebook-sdk/facebook/unspecified/res/values/values.xml -->
     <eat-comment />
 
     <style name="com_facebook_loginview_default_style" parent="@android:style/Widget.Button">
@@ -890,7 +890,22 @@
         <item name="android:textColor">#4B5164</item>
         <item name="android:gravity">center</item>
     </style>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/src/main/res/values/styles.xml -->
+    <eat-comment />
+
+    <style name="custom_toast">
+        <item name="android:typeface">normal</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowRadius">1.5</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:background">#FFFFFF</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
+    </style>
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
     <eat-comment />
 
     <style name="grid_card">
@@ -899,6 +914,16 @@
         <item name="android:paddingBottom">@dimen/grid_card_padding_bottom</item>
         <item name="android:paddingTop">@dimen/grid_card_padding_top</item>
     </style>
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/src/main/res/values/styles.xml -->
+    <eat-comment />
+
+    <style name="image_like">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:background">#FFFFFF</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
+    </style>
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values/values.xml -->
+    <eat-comment />
 
     <style name="list_card">
         <item name="android:paddingLeft">@dimen/list_card_padding_left</item>
@@ -951,7 +976,7 @@
         <item name="android:textAppearance">?android:textAppearanceSmall</item>
         <item name="android:textColor">#fff</item>
     </style>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart.facebook-sdk/facebook/unspecified/res/values/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/bazart.facebook-sdk/facebook/unspecified/res/values/values.xml -->
     <eat-comment />
 
     <style name="tooltip_bubble_text">

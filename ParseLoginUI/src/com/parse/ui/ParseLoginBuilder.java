@@ -21,10 +21,10 @@
 
 package com.parse.ui;
 
-import java.util.Collection;
-
 import android.content.Context;
 import android.content.Intent;
+
+import java.util.Collection;
 
 public class ParseLoginBuilder {
 

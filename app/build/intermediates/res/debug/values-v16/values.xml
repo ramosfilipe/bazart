@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values-v16/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/res/values-v16/values.xml -->
     <eat-comment />
 
     <style name="card" />

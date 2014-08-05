@@ -217,7 +217,7 @@ public class Feed extends Activity {
             ParseQuery<Produto> query = ParseQuery.getQuery("Produto");
             query.include("author");
             query.orderByDescending("createdAt");
-            query.whereEqualTo("isSold",false);
+            query.whereEqualTo("isSold", false);
             //query.setLimit(10);
             query.findInBackground(new FindCallback<Produto>() {
                 @Override
@@ -238,7 +238,7 @@ public class Feed extends Activity {
         public void consultaAoParseComLocalizacao(ParseGeoPoint ponto) {
             ParseQuery<Produto> query = ParseQuery.getQuery("Produto");
             query.include("author");
-            query.whereEqualTo("isSold",false);
+            query.whereEqualTo("isSold", false);
             query.whereNear("location", ponto);
             query.setLimit(7);
             // query.orderByDescending("createdAt");

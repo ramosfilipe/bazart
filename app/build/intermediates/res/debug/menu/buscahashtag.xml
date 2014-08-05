@@ -6,4 +6,4 @@
         android:title="Busca"
         android:showAsAction="always"
         android:actionViewClass="android.widget.SearchView" />
-</menu><!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/menu/buscahashtag.xml -->
+</menu><!-- From: file:/Users/Filipe/Desktop/bazart/app/src/main/res/menu/buscahashtag.xml -->

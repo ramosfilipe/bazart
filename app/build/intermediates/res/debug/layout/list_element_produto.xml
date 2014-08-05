@@ -38,7 +38,7 @@
     </FrameLayout>
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="375dp"
+        android:layout_height="373dp"
         android:layout_weight="0.17">
         <ImageView
             android:layout_width="match_parent"
@@ -49,21 +49,16 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
-        <TextView
-            android:layout_width="63dp"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Like"
-            android:id="@+id/viewLike"
-            android:layout_gravity="right|bottom" />
-        />
-        </FrameLayout>
+
+
+
+    </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="96dp"
-        android:layout_gravity="center_horizontal"
-        android:background="#ffffffff">
+        android:background="#ffffffff"
+        android:id="@+id/content">
 
         <TextView
             android:typeface="sans"
@@ -73,14 +68,20 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="  Preço:"
             android:id="@+id/textViewPreco"
-            android:layout_gravity="left|bottom" />
+            android:layout_gravity="left|bottom"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:layout_width="166dp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/textViewSetPreco"
-            android:layout_gravity="center_horizontal|bottom" />
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_alignRight="@+id/textViewSetContato"
+            android:layout_alignEnd="@+id/textViewSetContato"
+            android:layout_below="@+id/viewLike" />
 
         <TextView
             android:typeface="sans"
@@ -90,21 +91,61 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="  Contato:"
             android:id="@+id/textViewContato"
-            android:layout_gravity="left|center_vertical" />
+            android:layout_gravity="left|center_vertical"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/likeButton"
+            android:layout_alignParentLeft="true" />
 
         <TextView
             android:layout_width="164dp"
-            android:layout_height="wrap_content"
+            android:layout_height="31dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/textViewSetContato"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:layout_alignTop="@+id/textViewContato"
+            android:layout_centerHorizontal="true" />
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal|top">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/like_disable"
+                android:id="@+id/likeButton"
+                android:layout_alignWithParentIfMissing="false"
+                android:background="@null"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_above="@+id/textViewPreco"
+                android:layout_alignRight="@+id/textViewPreco"
+                android:layout_alignEnd="@+id/textViewPreco" />
+
+            <TextView
+                android:layout_width="251dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Pessoas"
+                android:id="@+id/viewLike"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:textSize="33px"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@+id/textViewContato"
+                android:layout_alignParentTop="true"
+                android:layout_alignBottom="@+id/likeButton" />
+        </FrameLayout>
 
 
     </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="49dp"
         android:background="#ffffffff">
 
         <TextView
@@ -126,4 +167,4 @@
     </FrameLayout>
 
 </LinearLayout>
-<!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/layout/list_element_produto.xml -->
+<!-- From: file:/Users/Filipe/Desktop/bazart/app/src/main/res/layout/list_element_produto.xml -->

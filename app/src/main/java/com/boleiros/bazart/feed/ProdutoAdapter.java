@@ -1,7 +1,6 @@
 package com.boleiros.bazart.feed;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -28,16 +27,14 @@ import com.boleiros.bazart.R;
 import com.boleiros.bazart.modelo.Produto;
 import com.boleiros.bazart.util.CustomToast;
 import com.boleiros.bazart.util.DoubleClickListener;
-import com.boleiros.bazart.util.FrameAnimated;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
 
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import android.os.Handler;
+
 /**
  * Created by Filipe Ramos on 11/07/14.
  */
@@ -173,7 +170,8 @@ public class ProdutoAdapter extends BaseAdapter {
         final ViewHolder holderPattern;
 
         LayoutInflater inflaterTemp = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        final View viewContent = inflaterTemp.inflate(R.layout.list_element_produto, null);;
+        final View viewContent = inflaterTemp.inflate(R.layout.list_element_produto, null);
+        ;
         ImageView img = null;
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -203,34 +201,33 @@ public class ProdutoAdapter extends BaseAdapter {
         holderPattern.textViewSetPreco.setText(items.get(arg0).getPrice());
 
 
-
         final Flag like = new Flag();
         like.quantidadeLikes = items.get(arg0).getAmoutOfLikes();
-        holderPattern.textViewSetLikes.setText(like.quantidadeLikes + ((like.quantidadeLikes > 1)?" recomendações":" recomendação"));
-        like.isLiked =  items.get(arg0).isLikedByUser(ParseUser.getCurrentUser());
+        holderPattern.textViewSetLikes.setText(like.quantidadeLikes + ((like.quantidadeLikes > 1) ? " recomendações" : " recomendação"));
+        like.isLiked = items.get(arg0).isLikedByUser(ParseUser.getCurrentUser());
 
-            final int arg = arg0;
-            holderPattern.likeButton.setImageResource( like.isLiked? R.drawable.like_enable : R.drawable.like_disable);
+        final int arg = arg0;
+        holderPattern.likeButton.setImageResource(like.isLiked ? R.drawable.like_enable : R.drawable.like_disable);
 
-            holderPattern.likeButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+        holderPattern.likeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-                    items.get(arg).likeProduto(ParseUser.getCurrentUser(), like.isLiked);
-                    holderPattern.likeButton.setImageResource(like.isLiked ? R.drawable.like_disable : R.drawable.like_enable);
+                items.get(arg).likeProduto(ParseUser.getCurrentUser(), like.isLiked);
+                holderPattern.likeButton.setImageResource(like.isLiked ? R.drawable.like_disable : R.drawable.like_enable);
 
-                    like.quantidadeLikes = like.isLiked? --like.quantidadeLikes :  ++like.quantidadeLikes;
-                    Log.d("Quantidade likes: ",""+like.quantidadeLikes);
-                    holderPattern.textViewSetLikes.setText(like.quantidadeLikes + ((like.quantidadeLikes > 1)?" recomendações":" recomendação"));
+                like.quantidadeLikes = like.isLiked ? --like.quantidadeLikes : ++like.quantidadeLikes;
+                Log.d("Quantidade likes: ", "" + like.quantidadeLikes);
+                holderPattern.textViewSetLikes.setText(like.quantidadeLikes + ((like.quantidadeLikes > 1) ? " recomendações" : " recomendação"));
 
-                    if(!like.isLiked)
-                        CustomToast.makeText(holderPattern.fotoProduto.getContext(),"", Toast.LENGTH_SHORT).show();
-                    like.isLiked = !like.isLiked;
+                if (!like.isLiked)
+                    CustomToast.makeText(holderPattern.fotoProduto.getContext(), "", Toast.LENGTH_SHORT).show();
+                like.isLiked = !like.isLiked;
 
-                }
+            }
 
 
-            });
+        });
 
         holderPattern.fotoProduto.setOnClickListener(new DoubleClickListener() {
             @Override
@@ -238,10 +235,10 @@ public class ProdutoAdapter extends BaseAdapter {
                 items.get(arg).likeProduto(ParseUser.getCurrentUser(), like.isLiked);
                 holderPattern.likeButton.setImageResource(like.isLiked ? R.drawable.like_disable : R.drawable.like_enable);
 
-                like.quantidadeLikes = like.isLiked? --like.quantidadeLikes :  ++like.quantidadeLikes;
-                Log.d("Quantidade likes: ",""+like.quantidadeLikes);
-                holderPattern.textViewSetLikes.setText(like.quantidadeLikes + ((like.quantidadeLikes > 1)?" recomendações":" recomendação"));
-                if(!like.isLiked) {
+                like.quantidadeLikes = like.isLiked ? --like.quantidadeLikes : ++like.quantidadeLikes;
+                Log.d("Quantidade likes: ", "" + like.quantidadeLikes);
+                holderPattern.textViewSetLikes.setText(like.quantidadeLikes + ((like.quantidadeLikes > 1) ? " recomendações" : " recomendação"));
+                if (!like.isLiked) {
                     //ViewGroup viewGroup = (ViewGroup) viewContent.findViewById(R.id.layout_toast);
                     CustomToast.makeText(holderPattern.fotoProduto.getContext(), "", Toast.LENGTH_SHORT).show();
                    /* holderPattern.likeFrame.setVisibility(View.VISIBLE);
@@ -263,7 +260,6 @@ public class ProdutoAdapter extends BaseAdapter {
 
             }
         });
-
 
 
         try {
@@ -377,11 +373,6 @@ public class ProdutoAdapter extends BaseAdapter {
         return convertView;
     }
 
-    static class Flag{
-        public boolean isLiked;
-        public int quantidadeLikes = 0;
-    }
-
     private String formartaStringData(Date data) {
         String minutoAdicionadoComZero = "";
         if (data.getMinutes() < 10) {
@@ -411,6 +402,11 @@ public class ProdutoAdapter extends BaseAdapter {
 
     public Bitmap getBitmapFromMemCache(String key) {
         return (Bitmap) mMemoryCache.get(key);
+    }
+
+    static class Flag {
+        public boolean isLiked;
+        public int quantidadeLikes = 0;
     }
 
     static class ViewHolder {

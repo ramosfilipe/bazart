@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/chipsLibrary/src/main/res/values-sw600dp/styles.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/chipsLibrary/src/main/res/values-sw600dp/styles.xml -->
     <eat-comment />
 
     <style name="RecipientEditTextView" parent="@android:attr/autoCompleteTextViewStyle">

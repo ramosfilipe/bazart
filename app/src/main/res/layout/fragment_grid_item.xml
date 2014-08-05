@@ -2,20 +2,22 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/edit_name"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:layout_gravity="center" android:orientation="vertical"  >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical">
 
     <Button
+        android:id="@+id/buttonMarcarVendido"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Vendido"
-        android:id="@+id/buttonMarcarVendido" />
+        android:text="Vendido" />
 
     <Button
+        android:id="@+id/buttonRemover"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Remover"
-        android:id="@+id/buttonRemover" />
+        android:text="Remover" />
 
 
 </LinearLayout>

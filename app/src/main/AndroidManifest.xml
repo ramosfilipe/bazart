@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.boleiros.bazart" >
+    package="com.boleiros.bazart">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
+
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="com.boleiros.bazart.permission.MAPS_RECEIVE" />
 
@@ -12,22 +15,23 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <permission
         android:name="com.boleiros.bazart.permission.MAPS_RECEIVE"
-        android:protectionLevel="signature" >
-    </permission>
+        android:protectionLevel="signature"></permission>
 
     <application
-        android:largeHeap="true"
         android:name=".Bazart"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
-        <meta-data android:name="com.google.android.gms.version"
+        android:largeHeap="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
         <activity
             android:name="com.parse.ui.ParseLoginActivity"
             android:label="bazart"
-            android:launchMode="singleTop" >
+            android:launchMode="singleTop">
             <meta-data
                 android:name="com.parse.ui.ParseLoginActivity.FACEBOOK_LOGIN_BUTTON_TEXT"
                 android:value="Entre com o Facebook" />
@@ -57,7 +61,7 @@
 
         <activity
             android:name=".feed.Feed"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -65,20 +69,20 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".camera.CameraActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/app_name">
-        </activity>
+        <activity
+            android:name=".camera.CameraActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"></activity>
 
-        <activity android:name=".hashtags.HashtagActivity"
+        <activity
+            android:name=".hashtags.HashtagActivity"
+            android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysVisible"
-            android:label="@string/app_name">
-        </activity>
+            android:windowSoftInputMode="stateAlwaysVisible"></activity>
         <activity
             android:name=".profile.ProfileActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
 
         </activity>
     </application>

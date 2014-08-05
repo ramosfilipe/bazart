@@ -1,28 +1,23 @@
 package com.boleiros.bazart.profile;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.boleiros.bazart.R;
-import com.boleiros.bazart.feed.ProdutoAdapter;
 import com.boleiros.bazart.modelo.Produto;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -33,11 +28,14 @@ import java.util.List;
  * to handle interaction events.
  * Use the {@link com.boleiros.bazart.profile.Profile#newInstance} factory method to
  * create an instance of this fragment.
- *
  */
-public class Profile extends Fragment{
-    private OnFragmentInteractionListener mListener;
+public class Profile extends Fragment {
     ProfileAdapter adapt;
+    private OnFragmentInteractionListener mListener;
+
+    public Profile() {
+        // Required empty public constructor
+    }
 
     /**
      * Use this factory method to create a new instance of
@@ -54,9 +52,6 @@ public class Profile extends Fragment{
         fragment.setArguments(args);
         return fragment;
     }
-    public Profile() {
-        // Required empty public constructor
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,7 +61,7 @@ public class Profile extends Fragment{
     public void consultaAoParse() {
         ParseQuery<Produto> query = ParseQuery.getQuery("Produto");
         query.include("author");
-        query.whereEqualTo("author",ParseUser.getCurrentUser());
+        query.whereEqualTo("author", ParseUser.getCurrentUser());
         query.orderByDescending("createdAt");
         query.findInBackground(new FindCallback<Produto>() {
             @Override
@@ -89,7 +84,7 @@ public class Profile extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
-        TextView name = (TextView)v.findViewById(R.id.usernameProfileTextView);
+        TextView name = (TextView) v.findViewById(R.id.usernameProfileTextView);
         name.setText(ParseUser.getCurrentUser().getUsername());
         GridView gridView = (GridView) v.findViewById(R.id.gridProfile);
         consultaAoParse();
@@ -99,13 +94,13 @@ public class Profile extends Fragment{
                 FragmentManager fm = getFragmentManager();
                 DialogGrid dialogGrid = new DialogGrid();
                 Bundle bundle = new Bundle();
-                bundle.putString("id",((Produto)adapt.getItem(position)).getObjectId());
+                bundle.putString("id", ((Produto) adapt.getItem(position)).getObjectId());
                 dialogGrid.setArguments(bundle);
-                dialogGrid.show(fm,"fragment_grid_item");
+                dialogGrid.show(fm, "fragment_grid_item");
             }
         });
         return v;
-     }
+    }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -136,7 +131,7 @@ public class Profile extends Fragment{
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
-     * <p>
+     * <p/>
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.

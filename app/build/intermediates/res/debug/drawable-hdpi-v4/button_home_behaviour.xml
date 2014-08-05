@@ -2,4 +2,4 @@
     <item android:state_focused="true" android:drawable="@drawable/homefeedpressed"/>
     <item android:state_pressed="true" android:drawable="@drawable/homefeedpressed" />
     <item android:drawable="@drawable/homefeed" />  //means normal
-</selector><!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/src/main/res/drawable-hdpi/button_home_behaviour.xml -->
+</selector><!-- From: file:/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/button_home_behaviour.xml -->

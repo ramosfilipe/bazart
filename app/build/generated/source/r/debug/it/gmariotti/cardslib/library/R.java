@@ -102,12 +102,12 @@ public final class R {
 		public static final int ic_menu_overflow_card_rounded_dark_normal = 0x7f020067;
 		public static final int ic_menu_overflow_card_rounded_dark_pressed = 0x7f020068;
 		public static final int ic_undobar_undo = 0x7f02006d;
-		public static final int pressed_background_card = 0x7f020084;
-		public static final int pressed_background_kitkat_card = 0x7f020085;
-		public static final int undobar = 0x7f02008f;
-		public static final int undobar_button_focused = 0x7f020090;
-		public static final int undobar_button_pressed = 0x7f020091;
-		public static final int undobar_divider = 0x7f020092;
+		public static final int pressed_background_card = 0x7f020085;
+		public static final int pressed_background_kitkat_card = 0x7f020086;
+		public static final int undobar = 0x7f020090;
+		public static final int undobar_button_focused = 0x7f020091;
+		public static final int undobar_button_pressed = 0x7f020092;
+		public static final int undobar_divider = 0x7f020093;
 	}
 	public static final class id {
 		public static final int card_base_empty_cardwithlist_text = 0x7f070024;
@@ -198,13 +198,13 @@ public final class R {
 		public static final int card_thumbnail_image = 0x7f0c0027;
 		public static final int card_thumbnail_outer_layout = 0x7f0c0028;
 		public static final int cardwithlist = 0x7f0c0029;
-		public static final int grid_card = 0x7f0c002c;
-		public static final int list_card = 0x7f0c002d;
-		public static final int list_card_UndoBar = 0x7f0c0030;
-		public static final int list_card_UndoBarButton = 0x7f0c0031;
-		public static final int list_card_UndoBarMessage = 0x7f0c0032;
-		public static final int list_card_base = 0x7f0c002e;
-		public static final int list_card_thumbnail = 0x7f0c002f;
+		public static final int grid_card = 0x7f0c002d;
+		public static final int list_card = 0x7f0c002f;
+		public static final int list_card_UndoBar = 0x7f0c0032;
+		public static final int list_card_UndoBarButton = 0x7f0c0033;
+		public static final int list_card_UndoBarMessage = 0x7f0c0034;
+		public static final int list_card_base = 0x7f0c0030;
+		public static final int list_card_thumbnail = 0x7f0c0031;
 	}
 	public static final class styleable {
 		public static final int[] ForegroundLinearLayout = { 0x01010109, 0x01010200, 0x0101042e };

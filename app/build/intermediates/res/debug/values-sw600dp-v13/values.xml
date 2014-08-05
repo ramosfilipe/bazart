@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/app/build/intermediates/exploded-aar/bazart/chipsLibrary/unspecified/res/values-sw600dp-v13/values.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/bazart/chipsLibrary/unspecified/res/values-sw600dp-v13/values.xml -->
     <eat-comment />
 
     <style name="RecipientEditTextView" parent="@android:attr/autoCompleteTextViewStyle">

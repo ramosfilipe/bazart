@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/chipsLibrary/src/main/res/values/attrs.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/chipsLibrary/src/main/res/values/attrs.xml -->
     <eat-comment />
 
     <declare-styleable name="RecipientEditTextView">
@@ -14,7 +14,7 @@
         <attr name="chipHeight" format="reference" />
         <attr name="chipFontSize" format="reference" />
     </declare-styleable>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/chipsLibrary/src/main/res/values/dimen.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/chipsLibrary/src/main/res/values/dimen.xml -->
     <eat-comment />
 
     <dimen name="chip_height">32dip</dimen>
@@ -23,14 +23,14 @@
     <dimen name="line_spacing_extra">4dip</dimen>
 
     <integer name="chips_max_lines">-1</integer>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/chipsLibrary/src/main/res/values/strings.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/chipsLibrary/src/main/res/values/strings.xml -->
     <eat-comment />
 
     <string name="copy_email">Copy email address</string>
     <string name="copy_number">Copy phone number</string>
     <string name="done">Return</string>
     <string name="more_string">\u002B<ns1:g id="count">%1$s</ns1:g></string>
-    <!-- From: file:/C:/Users/Walter/projetoFinalLES/bazart/chipsLibrary/src/main/res/values/styles.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/chipsLibrary/src/main/res/values/styles.xml -->
     <eat-comment />
 
     <style name="RecipientEditTextView" parent="@android:attr/autoCompleteTextViewStyle">

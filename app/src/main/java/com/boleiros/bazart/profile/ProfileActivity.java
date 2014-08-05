@@ -6,10 +6,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import com.boleiros.bazart.R;
 import com.boleiros.bazart.feed.Feed;
 
-public class ProfileActivity extends Activity implements Profile.OnFragmentInteractionListener{
+public class ProfileActivity extends Activity implements Profile.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

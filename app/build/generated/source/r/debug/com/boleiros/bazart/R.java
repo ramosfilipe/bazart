@@ -732,7 +732,7 @@ containing a value of this type.
         public static final int com_facebook_list_section_header_background=0x7f020024;
         public static final int com_facebook_loginbutton_silver=0x7f020025;
         public static final int com_facebook_logo=0x7f020026;
-        public static final int com_facebook_picker_default_separator_color=0x7f020093;
+        public static final int com_facebook_picker_default_separator_color=0x7f020094;
         public static final int com_facebook_picker_item_background=0x7f020027;
         public static final int com_facebook_picker_list_focused=0x7f020028;
         public static final int com_facebook_picker_list_longpressed=0x7f020029;
@@ -813,37 +813,38 @@ containing a value of this type.
         public static final int lenssmall=0x7f020074;
         public static final int like_disable=0x7f020075;
         public static final int like_enable=0x7f020076;
-        public static final int list_divider=0x7f020077;
-        public static final int list_item_font_primary=0x7f020078;
-        public static final int list_item_font_secondary=0x7f020079;
-        public static final int loading=0x7f02007a;
-        public static final int loadingampulheta=0x7f02007b;
-        public static final int loadingamupletapreta=0x7f02007c;
-        public static final int loadingflower=0x7f02007d;
-        public static final int loginlogo=0x7f02007e;
-        public static final int logo=0x7f02007f;
-        public static final int logoresol=0x7f020080;
-        public static final int placeholderpicture=0x7f020081;
-        public static final int powered_by_google_dark=0x7f020082;
-        public static final int powered_by_google_light=0x7f020083;
-        public static final int pressed_background_card=0x7f020084;
-        public static final int pressed_background_kitkat_card=0x7f020085;
-        public static final int profile_icon_white=0x7f020086;
-        public static final int restartarrow=0x7f020087;
-        public static final int restartarrowgrey=0x7f020088;
-        public static final int restartarrowsmall=0x7f020089;
-        public static final int restartarrowwhite=0x7f02008a;
-        public static final int rightarrow=0x7f02008b;
-        public static final int rightarrowsmall=0x7f02008c;
-        public static final int searchicon=0x7f02008d;
-        public static final int searchiconred=0x7f02008e;
-        public static final int undobar=0x7f02008f;
-        public static final int undobar_button_focused=0x7f020090;
-        public static final int undobar_button_pressed=0x7f020091;
-        public static final int undobar_divider=0x7f020092;
+        public static final int like_toast=0x7f020077;
+        public static final int list_divider=0x7f020078;
+        public static final int list_item_font_primary=0x7f020079;
+        public static final int list_item_font_secondary=0x7f02007a;
+        public static final int loading=0x7f02007b;
+        public static final int loadingampulheta=0x7f02007c;
+        public static final int loadingamupletapreta=0x7f02007d;
+        public static final int loadingflower=0x7f02007e;
+        public static final int loginlogo=0x7f02007f;
+        public static final int logo=0x7f020080;
+        public static final int logoresol=0x7f020081;
+        public static final int placeholderpicture=0x7f020082;
+        public static final int powered_by_google_dark=0x7f020083;
+        public static final int powered_by_google_light=0x7f020084;
+        public static final int pressed_background_card=0x7f020085;
+        public static final int pressed_background_kitkat_card=0x7f020086;
+        public static final int profile_icon_white=0x7f020087;
+        public static final int restartarrow=0x7f020088;
+        public static final int restartarrowgrey=0x7f020089;
+        public static final int restartarrowsmall=0x7f02008a;
+        public static final int restartarrowwhite=0x7f02008b;
+        public static final int rightarrow=0x7f02008c;
+        public static final int rightarrowsmall=0x7f02008d;
+        public static final int searchicon=0x7f02008e;
+        public static final int searchiconred=0x7f02008f;
+        public static final int undobar=0x7f020090;
+        public static final int undobar_button_focused=0x7f020091;
+        public static final int undobar_button_pressed=0x7f020092;
+        public static final int undobar_divider=0x7f020093;
     }
     public static final class id {
-        public static final int action_settings=0x7f070095;
+        public static final int action_settings=0x7f070096;
         public static final int app_logo=0x7f070051;
         public static final int book_now=0x7f070010;
         public static final int botaoBuscaActionBar=0x7f070064;
@@ -932,6 +933,7 @@ containing a value of this type.
         public static final int imageButtonBack=0x7f070073;
         public static final int imageButtonUpload=0x7f070072;
         public static final int imageView=0x7f07008b;
+        public static final int ivLogo=0x7f070094;
         public static final int large=0x7f070015;
         public static final int likeButton=0x7f070091;
         public static final int linearLayoutFragmentFeed=0x7f070066;
@@ -947,7 +949,7 @@ containing a value of this type.
         public static final int login_password_input=0x7f070054;
         public static final int login_username_input=0x7f070053;
         public static final int match_parent=0x7f07000c;
-        public static final int menu_search=0x7f070094;
+        public static final int menu_search=0x7f070095;
         public static final int monochrome=0x7f070013;
         public static final int none=0x7f070000;
         public static final int normal=0x7f070001;
@@ -1058,6 +1060,7 @@ containing a value of this type.
         public static final int list_card_undo_message=0x7f030037;
         public static final int list_element_produto=0x7f030038;
         public static final int more_item=0x7f030039;
+        public static final int my_toast=0x7f03003a;
     }
     public static final class menu {
         public static final int buscahashtag=0x7f0d0000;
@@ -1210,7 +1213,7 @@ containing a value of this type.
         public static final int CustomActionBarTheme=0x7f0c0003;
         public static final int Divider=0x7f0c0004;
         public static final int DividerCropped=0x7f0c0005;
-        public static final int FullscreenActionBarStyle=0x7f0c0034;
+        public static final int FullscreenActionBarStyle=0x7f0c0036;
         public static final int FullscreenTheme=0x7f0c0006;
         public static final int MyActionBar=0x7f0c0007;
         public static final int ParseLoginUI=0x7f0c0008;
@@ -1249,14 +1252,16 @@ containing a value of this type.
         public static final int cardwithlist=0x7f0c0029;
         public static final int com_facebook_loginview_default_style=0x7f0c002a;
         public static final int com_facebook_loginview_silver_style=0x7f0c002b;
-        public static final int grid_card=0x7f0c002c;
-        public static final int list_card=0x7f0c002d;
-        public static final int list_card_base=0x7f0c002e;
-        public static final int list_card_thumbnail=0x7f0c002f;
-        public static final int list_card_UndoBar=0x7f0c0030;
-        public static final int list_card_UndoBarButton=0x7f0c0031;
-        public static final int list_card_UndoBarMessage=0x7f0c0032;
-        public static final int tooltip_bubble_text=0x7f0c0033;
+        public static final int custom_toast=0x7f0c002c;
+        public static final int grid_card=0x7f0c002d;
+        public static final int image_like=0x7f0c002e;
+        public static final int list_card=0x7f0c002f;
+        public static final int list_card_base=0x7f0c0030;
+        public static final int list_card_thumbnail=0x7f0c0031;
+        public static final int list_card_UndoBar=0x7f0c0032;
+        public static final int list_card_UndoBarButton=0x7f0c0033;
+        public static final int list_card_UndoBarMessage=0x7f0c0034;
+        public static final int tooltip_bubble_text=0x7f0c0035;
     }
     public static final class xml {
         public static final int cwac_camera_profile_htc_htc_mecha=0x7f040000;

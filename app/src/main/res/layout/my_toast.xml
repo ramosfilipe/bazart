@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#00ffffff"
+    android:orientation="horizontal"
 
     >
 
     <ImageView
+        android:id="@+id/ivLogo"
+        style="@style/image_like"
         android:layout_width="128dp"
         android:layout_height="128dp"
-        android:id="@+id/ivLogo"
         android:layout_gravity="center"
-        android:adjustViewBounds="true"
-        android:padding="4dp"
-        android:background="@drawable/like_toast"
-        android:scaleType="fitXY"
+        android:layout_marginBottom="2dp"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginTop="2dp"
-        android:layout_marginBottom="2dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/like_toast"
+        android:padding="4dp"
 
-        style="@style/image_like"
-        />
+        android:scaleType="fitXY" />
 
 
 </LinearLayout>

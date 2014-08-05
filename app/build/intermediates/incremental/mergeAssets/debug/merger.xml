@@ -2,28 +2,28 @@
 <merger version="2" >
 
     <dataSet config="1.7.3" >
-        <source path="C:\Users\Walter\projetoFinalLES\bazart\app\build\intermediates\exploded-aar\com.github.gabrielemariotti.cards\library\1.7.3\assets" />
+        <source path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.cards/library/1.7.3/assets" />
     </dataSet>
     <dataSet config="0.6.9" >
-        <source path="C:\Users\Walter\projetoFinalLES\bazart\app\build\intermediates\exploded-aar\com.commonsware.cwac\camera\0.6.9\assets" />
+        <source path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.9/assets" />
     </dataSet>
     <dataSet config="4.4.52" >
-        <source path="C:\Users\Walter\projetoFinalLES\bazart\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\4.4.52\assets" />
+        <source path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.4.52/assets" />
     </dataSet>
     <dataSet config="unspecified" >
-        <source path="C:\Users\Walter\projetoFinalLES\bazart\app\build\intermediates\exploded-aar\bazart\chipsLibrary\unspecified\assets" />
+        <source path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/bazart/chipsLibrary/unspecified/assets" />
     </dataSet>
     <dataSet config="unspecified" >
-        <source path="C:\Users\Walter\projetoFinalLES\bazart\app\build\intermediates\exploded-aar\bazart.facebook-sdk\facebook\unspecified\assets" />
+        <source path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/bazart.facebook-sdk/facebook/unspecified/assets" />
     </dataSet>
     <dataSet config="unspecified" >
-        <source path="C:\Users\Walter\projetoFinalLES\bazart\app\build\intermediates\exploded-aar\bazart\ParseLoginUI\unspecified\assets" />
+        <source path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/bazart/ParseLoginUI/unspecified/assets" />
     </dataSet>
     <dataSet config="main" >
-        <source path="C:\Users\Walter\projetoFinalLES\bazart\app\src\main\assets" />
+        <source path="/Users/Filipe/Desktop/bazart/app/src/main/assets" />
     </dataSet>
     <dataSet config="debug" >
-        <source path="C:\Users\Walter\projetoFinalLES\bazart\app\src\debug\assets" />
+        <source path="/Users/Filipe/Desktop/bazart/app/src/debug/assets" />
     </dataSet>
 
 </merger>

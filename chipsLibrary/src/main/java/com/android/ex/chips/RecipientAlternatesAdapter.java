@@ -14,13 +14,7 @@
  * limitations under the License.
  */
 package com.android.ex.chips;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
+
 import android.accounts.Account;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -40,9 +34,18 @@ import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.android.ex.chips.BaseRecipientAdapter.DirectoryListQuery;
 import com.android.ex.chips.BaseRecipientAdapter.DirectorySearchParams;
 import com.android.ex.chips.Queries.Query;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * RecipientAlternatesAdapter backs the RecipientEditTextView for managing contacts queried by email or by phone number.
