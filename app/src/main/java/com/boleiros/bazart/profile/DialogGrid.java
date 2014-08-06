@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -91,22 +92,25 @@ public class DialogGrid extends DialogFragment {
                     produto.setVendido(Boolean.TRUE);
                     try {
                         byte[] arrayImage = produto.getPhotoFile().getData();
-                        Bitmap image = BitmapFactory.decodeByteArray(arrayImage, 0,
-                                arrayImage.length);
-                        Bitmap imageMarked = mark(image);
-                        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                        imageMarked.compress(Bitmap.CompressFormat.JPEG, 100, bos);
-                        byte[] markedPhotoArray = bos.toByteArray();
-                        produto.setPhotoFile(new ParseFile("fotoProduto.jpg", markedPhotoArray));
+                        new BitmapWorker(produto).execute(arrayImage);
+                        produtoMarcadoComSucesso();
+
+//                        Bitmap image = BitmapFactory.decodeByteArray(arrayImage, 0,
+//                                arrayImage.length);
+//                        Bitmap imageMarked = mark(image);
+//                        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+//                        imageMarked.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+//                        byte[] markedPhotoArray = bos.toByteArray();
+                        //produto.setPhotoFile(new ParseFile("fotoProduto.jpg", markedPhotoArray));
                     } catch (ParseException e1) {
                         e1.printStackTrace();
                     }
-                    produto.saveInBackground(new SaveCallback() {
-                        @Override
-                        public void done(ParseException e) {
-                            produtoMarcadoComSucesso();
-                        }
-                    });
+//                    produto.saveInBackground(new SaveCallback() {
+//                        @Override
+//                        public void done(ParseException e) {
+//                            produtoMarcadoComSucesso();
+//                        }
+//                    });
                 }
             }
         });
@@ -151,5 +155,35 @@ public class DialogGrid extends DialogFragment {
             }
         });
         return view;
+    }
+    class BitmapWorker extends AsyncTask<byte[], Void, byte[]> {
+        private Produto produto;
+
+        public BitmapWorker(Produto produto) {
+            this.produto = produto;
+        }
+
+        // Decode image in background.
+        @Override
+        protected byte[] doInBackground(byte[]... params) {
+            Bitmap image = BitmapFactory.decodeByteArray(params[0], 0,
+                    params[0].length);
+            Bitmap imageMarked = mark(image);
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            imageMarked.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+            byte[] markedPhotoArray = bos.toByteArray();
+            return markedPhotoArray;
+        }
+
+        // Once complete, see if ImageView is still around and set bitmap.
+        @Override
+        protected void onPostExecute(byte[] markedPhotoArray) {
+            produto.setPhotoFile(new ParseFile("fotoProduto.jpg", markedPhotoArray));
+            produto.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+                }
+            });
+        }
     }
 }
