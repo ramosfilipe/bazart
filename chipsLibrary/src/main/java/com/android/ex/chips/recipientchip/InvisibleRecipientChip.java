@@ -37,13 +37,13 @@ public class InvisibleRecipientChip extends ReplacementSpan implements DrawableR
     }
 
     @Override
-    public void setSelected(final boolean selected) {
-        mDelegate.setSelected(selected);
+    public boolean isSelected() {
+        return mDelegate.isSelected();
     }
 
     @Override
-    public boolean isSelected() {
-        return mDelegate.isSelected();
+    public void setSelected(final boolean selected) {
+        mDelegate.setSelected(selected);
     }
 
     @Override
@@ -72,13 +72,13 @@ public class InvisibleRecipientChip extends ReplacementSpan implements DrawableR
     }
 
     @Override
-    public void setOriginalText(final String text) {
-        mDelegate.setOriginalText(text);
+    public CharSequence getOriginalText() {
+        return mDelegate.getOriginalText();
     }
 
     @Override
-    public CharSequence getOriginalText() {
-        return mDelegate.getOriginalText();
+    public void setOriginalText(final String text) {
+        mDelegate.setOriginalText(text);
     }
 
     @Override
@@ -88,13 +88,13 @@ public class InvisibleRecipientChip extends ReplacementSpan implements DrawableR
 
     @Override
     public void draw(final Canvas canvas, final CharSequence text, final int start, final int end,
-            final float x, final int top, final int y, final int bottom, final Paint paint) {
+                     final float x, final int top, final int y, final int bottom, final Paint paint) {
         // Do nothing.
     }
 
     @Override
     public int getSize(final Paint paint, final CharSequence text, final int start, final int end,
-            final Paint.FontMetricsInt fm) {
+                       final Paint.FontMetricsInt fm) {
         return 0;
     }
 

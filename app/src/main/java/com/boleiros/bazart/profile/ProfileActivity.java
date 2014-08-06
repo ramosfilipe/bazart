@@ -41,8 +41,8 @@ public class ProfileActivity extends Activity implements Profile.OnFragmentInter
         if (id == R.id.action_settings) {
             return true;
         }
-        if (id == android.R.id.home){
-            Intent intent = new Intent(this,Feed.class);
+        if (id == android.R.id.home) {
+            Intent intent = new Intent(this, Feed.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);

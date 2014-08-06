@@ -109,13 +109,15 @@ public class Produto extends ParseObject {
         put("hashtag", array);
     }
 
-    public void addLike(){
-        put("numLikes",getLikes()+ 1 );
+    public void addLike() {
+        put("numLikes", getLikes() + 1);
     }
-    public void removeLike(){
-        put("numLikes",getLikes()-1);
+
+    public void removeLike() {
+        put("numLikes", getLikes() - 1);
     }
-    public int getLikes(){
+
+    public int getLikes() {
         return getInt("numLikes");
     }
 
@@ -125,8 +127,9 @@ public class Produto extends ParseObject {
         Object[] obj = getList(LIKES).toArray();
         int newSize = 0;
         for (int i = 0; i < obj.length; i++) {
-            if (obj[i] != null){
-                newSize++;}
+            if (obj[i] != null) {
+                newSize++;
+            }
         }
 
         Object[] objNoNull = new Object[newSize];
@@ -145,18 +148,16 @@ public class Produto extends ParseObject {
             Object[] toDelete = new Object[1];
             for (int i = 0; i < obj.length; i++) {
                 if (obj[i] != null && obj[i].toString().equals(user.getObjectId())) {
-                        toDelete[0] = obj[i];
+                    toDelete[0] = obj[i];
                 }
 
             }
             removeLike();
             removeAll(LIKES, Arrays.asList(toDelete));
 
-        }
-
-        else {
+        } else {
             //obj != null ||
-            if ( obj.length != 0) {
+            if (obj.length != 0) {
                 Object[] tempArray = new Object[obj.length + 1];
                 tempArray[tempArray.length - 1] = user.getObjectId();
                 obj = tempArray;
@@ -193,7 +194,7 @@ public class Produto extends ParseObject {
 //
 //
 //        return result;
-         return getLikes();
+        return getLikes();
     }
 
 

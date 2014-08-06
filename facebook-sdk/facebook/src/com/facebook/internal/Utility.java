@@ -65,6 +65,8 @@ import java.util.concurrent.ConcurrentHashMap;
  * any time.
  */
 public final class Utility {
+    // This is the default used by the buffer streams, but they trace a warning if you do not specify.
+    public static final int DEFAULT_STREAM_BUFFER_SIZE = 8192;
     static final String LOG_TAG = "FacebookSDK";
     private static final String HASH_ALGORITHM_MD5 = "MD5";
     private static final String HASH_ALGORITHM_SHA1 = "SHA-1";
@@ -73,53 +75,15 @@ public final class Utility {
     private static final String SUPPORTS_IMPLICIT_SDK_LOGGING = "supports_implicit_sdk_logging";
     private static final String NUX_CONTENT = "gdpv4_nux_content";
     private static final String NUX_ENABLED = "gdpv4_nux_enabled";
-
-    private static final String [] APP_SETTING_FIELDS = new String[] {
+    private static final String[] APP_SETTING_FIELDS = new String[]{
             SUPPORTS_ATTRIBUTION,
             SUPPORTS_IMPLICIT_SDK_LOGGING,
             NUX_CONTENT,
             NUX_ENABLED
     };
     private static final String APPLICATION_FIELDS = "fields";
-
-    // This is the default used by the buffer streams, but they trace a warning if you do not specify.
-    public static final int DEFAULT_STREAM_BUFFER_SIZE = 8192;
-
     private static Map<String, FetchedAppSettings> fetchedAppSettings =
             new ConcurrentHashMap<String, FetchedAppSettings>();
-
-    public static class FetchedAppSettings {
-        private boolean supportsAttribution;
-        private boolean supportsImplicitLogging;
-        private String nuxContent;
-        private boolean nuxEnabled;
-
-        private FetchedAppSettings(boolean supportsAttribution,
-                                   boolean supportsImplicitLogging,
-                                   String nuxContent,
-                                   boolean nuxEnabled) {
-            this.supportsAttribution = supportsAttribution;
-            this.supportsImplicitLogging = supportsImplicitLogging;
-            this.nuxContent = nuxContent;
-            this.nuxEnabled = nuxEnabled;
-        }
-
-        public boolean supportsAttribution() {
-            return supportsAttribution;
-        }
-
-        public boolean supportsImplicitLogging() {
-            return supportsImplicitLogging;
-        }
-
-        public String getNuxContent() {
-            return nuxContent;
-        }
-
-        public boolean getNuxEnabled() {
-            return nuxEnabled;
-        }
-    }
 
     // Returns true iff all items in subset are in superset, treating null and
     // empty collections as
@@ -233,7 +197,7 @@ public final class Utility {
 
     public static void disconnectQuietly(URLConnection connection) {
         if (connection instanceof HttpURLConnection) {
-            ((HttpURLConnection)connection).disconnect();
+            ((HttpURLConnection) connection).disconnect();
         }
     }
 
@@ -401,7 +365,7 @@ public final class Utility {
                 safeGetBooleanFromResponse(supportResponse, SUPPORTS_IMPLICIT_SDK_LOGGING),
                 safeGetStringFromResponse(supportResponse, NUX_CONTENT),
                 safeGetBooleanFromResponse(supportResponse, NUX_ENABLED)
-                );
+        );
 
         fetchedAppSettings.put(applicationId, result);
 
@@ -472,7 +436,7 @@ public final class Utility {
     }
 
     public static void setAppEventAttributionParameters(GraphObject params,
-            AttributionIdentifiers attributionIdentifiers, String hashedDeviceAndAppId, boolean limitEventUsage) {
+                                                        AttributionIdentifiers attributionIdentifiers, String hashedDeviceAndAppId, boolean limitEventUsage) {
         // Send attributionID if it exists, otherwise send a hashed device+appid specific value as the advertiser_id.
         if (attributionIdentifiers != null && attributionIdentifiers.getAttributionId() != null) {
             params.setProperty("attribution", attributionIdentifiers.getAttributionId());
@@ -512,6 +476,39 @@ public final class Utility {
             return null;
         } catch (InvocationTargetException ex) {
             return null;
+        }
+    }
+
+    public static class FetchedAppSettings {
+        private boolean supportsAttribution;
+        private boolean supportsImplicitLogging;
+        private String nuxContent;
+        private boolean nuxEnabled;
+
+        private FetchedAppSettings(boolean supportsAttribution,
+                                   boolean supportsImplicitLogging,
+                                   String nuxContent,
+                                   boolean nuxEnabled) {
+            this.supportsAttribution = supportsAttribution;
+            this.supportsImplicitLogging = supportsImplicitLogging;
+            this.nuxContent = nuxContent;
+            this.nuxEnabled = nuxEnabled;
+        }
+
+        public boolean supportsAttribution() {
+            return supportsAttribution;
+        }
+
+        public boolean supportsImplicitLogging() {
+            return supportsImplicitLogging;
+        }
+
+        public String getNuxContent() {
+            return nuxContent;
+        }
+
+        public boolean getNuxEnabled() {
+            return nuxEnabled;
         }
     }
 }

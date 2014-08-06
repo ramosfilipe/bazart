@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 package com.android.ex.chips;
+
 import android.accounts.Account;
 
 /**
@@ -21,7 +22,6 @@ import android.accounts.Account;
  * that can take an account to retrieve information tied to
  * a specific account.
  */
-public interface AccountSpecifier
-{
-public void setAccount(Account account);
+public interface AccountSpecifier {
+    public void setAccount(Account account);
 }

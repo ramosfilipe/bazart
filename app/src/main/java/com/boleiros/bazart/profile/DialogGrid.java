@@ -35,6 +35,29 @@ public class DialogGrid extends DialogFragment {
         // Empty constructor required for DialogFragment
     }
 
+    public static Bitmap mark(Bitmap src) {
+        int w = src.getWidth();
+        int h = src.getHeight();
+        int size = 130;
+        Point location = new Point(100, 60);
+        Bitmap result = Bitmap.createBitmap(w, h, src.getConfig());
+
+        Canvas canvas = new Canvas(result);
+        canvas.drawBitmap(src, 0, 0, null);
+
+        Paint paint = new Paint();
+        paint.setColor(Color.RED);
+        paint.setFakeBoldText(true);
+//        paint.setAlpha(alpha);
+        paint.setTextSize(size);
+
+        paint.setAntiAlias(true);
+        paint.setUnderlineText(false);
+        canvas.rotate(45);
+        canvas.drawText("V E N D I D O", location.x, location.y, paint);
+        return result;
+    }
+
     public void removeDoParse(final String id) {
         ParseQuery<Produto> query = ParseQuery.getQuery("Produto");
         query.include("author");
@@ -73,7 +96,7 @@ public class DialogGrid extends DialogFragment {
                         ByteArrayOutputStream bos = new ByteArrayOutputStream();
                         imageMarked.compress(Bitmap.CompressFormat.JPEG, 100, bos);
                         byte[] markedPhotoArray = bos.toByteArray();
-                        produto.setPhotoFile(new ParseFile("fotoProduto.jpg",markedPhotoArray));
+                        produto.setPhotoFile(new ParseFile("fotoProduto.jpg", markedPhotoArray));
                     } catch (ParseException e1) {
                         e1.printStackTrace();
                     }
@@ -100,31 +123,6 @@ public class DialogGrid extends DialogFragment {
         startActivity(intent);
     }
 
-
-    public static Bitmap mark(Bitmap src) {
-        int w = src.getWidth();
-        int h = src.getHeight();
-        int size = 130;
-        Point location = new Point(100, 60);
-        Bitmap result = Bitmap.createBitmap(w, h, src.getConfig());
-
-        Canvas canvas = new Canvas(result);
-        canvas.drawBitmap(src, 0, 0, null);
-
-        Paint paint = new Paint();
-        paint.setColor(Color.RED);
-        paint.setFakeBoldText(true);
-//        paint.setAlpha(alpha);
-        paint.setTextSize(size);
-
-        paint.setAntiAlias(true);
-        paint.setUnderlineText(false);
-        canvas.rotate(45);
-        canvas.drawText("V E N D I D O", location.x, location.y, paint);
-        return result;
-    }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -133,7 +131,7 @@ public class DialogGrid extends DialogFragment {
         Button remover = (Button) view.findViewById(R.id.buttonRemover);
         Button vendido = (Button) view.findViewById(R.id.buttonMarcarVendido);
 
-        if(getArguments().getBoolean("vendido")){
+        if (getArguments().getBoolean("vendido")) {
             vendido.setEnabled(false);
         }
 

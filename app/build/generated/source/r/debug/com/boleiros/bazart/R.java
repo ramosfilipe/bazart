@@ -732,11 +732,7 @@ containing a value of this type.
         public static final int com_facebook_list_section_header_background=0x7f020024;
         public static final int com_facebook_loginbutton_silver=0x7f020025;
         public static final int com_facebook_logo=0x7f020026;
-<<<<<<< HEAD
         public static final int com_facebook_picker_default_separator_color=0x7f020098;
-=======
-        public static final int com_facebook_picker_default_separator_color=0x7f020096;
->>>>>>> FETCH_HEAD
         public static final int com_facebook_picker_item_background=0x7f020027;
         public static final int com_facebook_picker_list_focused=0x7f020028;
         public static final int com_facebook_picker_list_longpressed=0x7f020029;
@@ -836,7 +832,6 @@ containing a value of this type.
         public static final int profile_icon__pressed=0x7f020087;
         public static final int profile_icon_pressed=0x7f020088;
         public static final int profile_icon_white=0x7f020089;
-<<<<<<< HEAD
         public static final int recom=0x7f02008a;
         public static final int recompressed=0x7f02008b;
         public static final int restartarrow=0x7f02008c;
@@ -851,20 +846,6 @@ containing a value of this type.
         public static final int undobar_button_focused=0x7f020095;
         public static final int undobar_button_pressed=0x7f020096;
         public static final int undobar_divider=0x7f020097;
-=======
-        public static final int restartarrow=0x7f02008a;
-        public static final int restartarrowgrey=0x7f02008b;
-        public static final int restartarrowsmall=0x7f02008c;
-        public static final int restartarrowwhite=0x7f02008d;
-        public static final int rightarrow=0x7f02008e;
-        public static final int rightarrowsmall=0x7f02008f;
-        public static final int searchicon=0x7f020090;
-        public static final int searchiconred=0x7f020091;
-        public static final int undobar=0x7f020092;
-        public static final int undobar_button_focused=0x7f020093;
-        public static final int undobar_button_pressed=0x7f020094;
-        public static final int undobar_divider=0x7f020095;
->>>>>>> FETCH_HEAD
     }
     public static final class id {
         public static final int action_settings=0x7f070098;

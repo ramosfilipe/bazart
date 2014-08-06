@@ -219,8 +219,9 @@ public class ProdutoAdapter extends BaseAdapter {
                 Log.d("Quantidade likes: ", "" + like.quantidadeLikes);
                 holderPattern.textViewSetLikes.setText(like.quantidadeLikes + ((like.quantidadeLikes > 1) ? " recomendações" : " recomendação"));
 
-                if (!like.isLiked){
-                    CustomToast.makeText(holderPattern.fotoProduto.getContext(), "", Toast.LENGTH_SHORT).show();}
+                if (!like.isLiked) {
+                    CustomToast.makeText(holderPattern.fotoProduto.getContext(), "", Toast.LENGTH_SHORT).show();
+                }
                 like.isLiked = !like.isLiked;
 
             }

@@ -95,10 +95,10 @@ public class Profile extends Fragment {
                 DialogGrid dialogGrid = new DialogGrid();
                 Bundle bundle = new Bundle();
                 Produto produto = ((Produto) adapt.getItem(position));
-                if(produto.getVendido()){
-                    bundle.putBoolean("vendido",true);
-                } else{
-                    bundle.putBoolean("vendido",false);
+                if (produto.getVendido()) {
+                    bundle.putBoolean("vendido", true);
+                } else {
+                    bundle.putBoolean("vendido", false);
                 }
                 bundle.putString("id", produto.getObjectId());
                 dialogGrid.setArguments(bundle);

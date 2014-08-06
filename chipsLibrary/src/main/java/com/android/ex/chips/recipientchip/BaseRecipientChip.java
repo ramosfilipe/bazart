@@ -23,55 +23,55 @@ import com.android.ex.chips.RecipientEntry;
  */
 interface BaseRecipientChip {
 
-	/**
-	 * Set the selected state of the chip.
-	 */
-	void setSelected(boolean selected);
+    /**
+     * Return true if the chip is selected.
+     */
+    boolean isSelected();
 
-	/**
-	 * Return true if the chip is selected.
-	 */
-	boolean isSelected();
+    /**
+     * Set the selected state of the chip.
+     */
+    void setSelected(boolean selected);
 
-	/**
-	 * Get the text displayed in the chip.
-	 */
-	CharSequence getDisplay();
+    /**
+     * Get the text displayed in the chip.
+     */
+    CharSequence getDisplay();
 
-	/**
-	 * Get the text value this chip represents.
-	 */
-	CharSequence getValue();
+    /**
+     * Get the text value this chip represents.
+     */
+    CharSequence getValue();
 
-	/**
-	 * Get the id of the contact associated with this chip.
-	 */
-	long getContactId();
+    /**
+     * Get the id of the contact associated with this chip.
+     */
+    long getContactId();
 
-	/**
-	 * Get the id of the data associated with this chip.
-	 */
-	long getDataId();
+    /**
+     * Get the id of the data associated with this chip.
+     */
+    long getDataId();
 
-	/**
-	 * Get associated RecipientEntry.
-	 */
-	RecipientEntry getEntry();
+    /**
+     * Get associated RecipientEntry.
+     */
+    RecipientEntry getEntry();
 
-	/**
-	 * Set the text in the edittextview originally associated with this chip before any reverse lookups.
-	 */
-	void setOriginalText(String text);
+    /**
+     * Set the text in the edittextview originally associated with this chip before any reverse lookups.
+     */
+    CharSequence getOriginalText();
 
-	/**
-	 * Set the text in the edittextview originally associated with this chip before any reverse lookups.
-	 */
-	CharSequence getOriginalText();
+    /**
+     * Set the text in the edittextview originally associated with this chip before any reverse lookups.
+     */
+    void setOriginalText(String text);
 
-	/**
-	 * Checks if this contact was retrieved from a GAL lookup.
-	 * 
-	 * @return <code>true</code> if it came from GAL, <code>false</code> otherwise
-	 */
-	boolean isGalContact();
+    /**
+     * Checks if this contact was retrieved from a GAL lookup.
+     *
+     * @return <code>true</code> if it came from GAL, <code>false</code> otherwise
+     */
+    boolean isGalContact();
 }

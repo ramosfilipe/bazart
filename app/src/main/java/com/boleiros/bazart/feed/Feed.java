@@ -163,9 +163,9 @@ public class Feed extends Activity {
                 * FAST_CEILING_IN_SECONDS;
         private static final String ARG_SECTION_NUMBER = "section_number";
 
-        private static final int    BOTAO_GPS_ATIVADO = 1;
-        private static final int    BOTAO_HOME_ATIVADO = 2;
-        private static final int    BOTAO_RECOMENDACAO_ATIVADO = 3;
+        private static final int BOTAO_GPS_ATIVADO = 1;
+        private static final int BOTAO_HOME_ATIVADO = 2;
+        private static final int BOTAO_RECOMENDACAO_ATIVADO = 3;
 
 
         private int botaoSelecionado = BOTAO_HOME_ATIVADO;
@@ -255,6 +255,7 @@ public class Feed extends Activity {
                 }
             });
         }
+
         public void consultaAoParseComRecomendacao() {
             ParseQuery<Produto> query = ParseQuery.getQuery("Produto");
             query.include("author");
@@ -295,7 +296,7 @@ public class Feed extends Activity {
             gps.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(botaoSelecionado != BOTAO_GPS_ATIVADO){
+                    if (botaoSelecionado != BOTAO_GPS_ATIVADO) {
                         botaoSelecionado = BOTAO_GPS_ATIVADO;
                         gps.setImageResource(R.drawable.gpspressed);
                         home.setImageResource(R.drawable.homefeed);
@@ -386,7 +387,7 @@ public class Feed extends Activity {
                     if (botaoSelecionado == BOTAO_GPS_ATIVADO) {
                         consultaAoParseComLocalizacao(geoPointFromLocation(currentLocation));
                     }
-                    if (botaoSelecionado == BOTAO_RECOMENDACAO_ATIVADO){
+                    if (botaoSelecionado == BOTAO_RECOMENDACAO_ATIVADO) {
                         consultaAoParseComRecomendacao();
                     }
 

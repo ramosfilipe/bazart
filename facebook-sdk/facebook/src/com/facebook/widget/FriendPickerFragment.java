@@ -71,8 +71,9 @@ public class FriendPickerFragment extends PickerFragment<GraphUser> {
 
     /**
      * Constructor.
-     * @param args  a Bundle that optionally contains one or more values containing additional
-     *              configuration information for the Fragment.
+     *
+     * @param args a Bundle that optionally contains one or more values containing additional
+     *             configuration information for the Fragment.
      */
     @SuppressLint("ValidFragment")
     public FriendPickerFragment(Bundle args) {
@@ -83,6 +84,7 @@ public class FriendPickerFragment extends PickerFragment<GraphUser> {
     /**
      * Gets the ID of the user whose friends should be displayed. If null, the default is to
      * show the currently authenticated user's friends.
+     *
      * @return the user ID, or null
      */
     public String getUserId() {
@@ -92,7 +94,8 @@ public class FriendPickerFragment extends PickerFragment<GraphUser> {
     /**
      * Sets the ID of the user whose friends should be displayed. If null, the default is to
      * show the currently authenticated user's friends.
-     * @param userId     the user ID, or null
+     *
+     * @param userId the user ID, or null
      */
     public void setUserId(String userId) {
         this.userId = userId;
@@ -100,6 +103,7 @@ public class FriendPickerFragment extends PickerFragment<GraphUser> {
 
     /**
      * Gets whether the user can select multiple friends, or only one friend.
+     *
      * @return true if the user can select multiple friends, false if only one friend
      */
     public boolean getMultiSelect() {
@@ -108,7 +112,8 @@ public class FriendPickerFragment extends PickerFragment<GraphUser> {
 
     /**
      * Sets whether the user can select multiple friends, or only one friend.
-     * @param multiSelect    true if the user can select multiple friends, false if only one friend
+     *
+     * @param multiSelect true if the user can select multiple friends, false if only one friend
      */
     public void setMultiSelect(boolean multiSelect) {
         if (this.multiSelect != multiSelect) {
@@ -119,6 +124,7 @@ public class FriendPickerFragment extends PickerFragment<GraphUser> {
 
     /**
      * Sets the list of friends for pre selection. These friends will be selected by default.
+     *
      * @param userIds list of friends as ids
      */
     public void setSelectionByIds(List<String> userIds) {
@@ -127,6 +133,7 @@ public class FriendPickerFragment extends PickerFragment<GraphUser> {
 
     /**
      * Sets the list of friends for pre selection. These friends will be selected by default.
+     *
      * @param userIds list of friends as ids
      */
     public void setSelectionByIds(String... userIds) {
@@ -135,6 +142,7 @@ public class FriendPickerFragment extends PickerFragment<GraphUser> {
 
     /**
      * Sets the list of friends for pre selection. These friends will be selected by default.
+     *
      * @param graphUsers list of friends as GraphUsers
      */
     public void setSelection(GraphUser... graphUsers) {
@@ -142,23 +150,25 @@ public class FriendPickerFragment extends PickerFragment<GraphUser> {
     }
 
     /**
-     * Sets the list of friends for pre selection. These friends will be selected by default.
-     * @param graphUsers list of friends as GraphUsers
-     */
-    public void setSelection(List<GraphUser> graphUsers) {
-        List<String> userIds = new ArrayList<String>();
-        for(GraphUser graphUser: graphUsers) {
-            userIds.add(graphUser.getId());
-        }
-        setSelectionByIds(userIds);
-    }
-
-    /**
      * Gets the currently-selected list of users.
+     *
      * @return the currently-selected list of users
      */
     public List<GraphUser> getSelection() {
         return getSelectedGraphObjects();
+    }
+
+    /**
+     * Sets the list of friends for pre selection. These friends will be selected by default.
+     *
+     * @param graphUsers list of friends as GraphUsers
+     */
+    public void setSelection(List<GraphUser> graphUsers) {
+        List<String> userIds = new ArrayList<String>();
+        for (GraphUser graphUser : graphUsers) {
+            userIds.add(graphUser.getId());
+        }
+        setSelectionByIds(userIds);
     }
 
     @Override
@@ -289,7 +299,7 @@ public class FriendPickerFragment extends PickerFragment<GraphUser> {
     private class ImmediateLoadingStrategy extends LoadingStrategy {
         @Override
         protected void onLoadFinished(GraphObjectPagingLoader<GraphUser> loader,
-                SimpleGraphObjectCursor<GraphUser> data) {
+                                      SimpleGraphObjectCursor<GraphUser> data) {
             super.onLoadFinished(loader, data);
 
             // We could be called in this state if we are clearing data or if we are being re-attached

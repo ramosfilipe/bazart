@@ -38,13 +38,13 @@ public class VisibleRecipientChip extends ImageSpan implements DrawableRecipient
     }
 
     @Override
-    public void setSelected(final boolean selected) {
-        mDelegate.setSelected(selected);
+    public boolean isSelected() {
+        return mDelegate.isSelected();
     }
 
     @Override
-    public boolean isSelected() {
-        return mDelegate.isSelected();
+    public void setSelected(final boolean selected) {
+        mDelegate.setSelected(selected);
     }
 
     @Override
@@ -73,13 +73,13 @@ public class VisibleRecipientChip extends ImageSpan implements DrawableRecipient
     }
 
     @Override
-    public void setOriginalText(final String text) {
-        mDelegate.setOriginalText(text);
+    public CharSequence getOriginalText() {
+        return mDelegate.getOriginalText();
     }
 
     @Override
-    public CharSequence getOriginalText() {
-        return mDelegate.getOriginalText();
+    public void setOriginalText(final String text) {
+        mDelegate.setOriginalText(text);
     }
 
     @Override

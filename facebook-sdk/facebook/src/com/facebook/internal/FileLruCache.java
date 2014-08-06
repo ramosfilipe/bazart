@@ -77,9 +77,9 @@ public final class FileLruCache {
     private final String tag;
     private final Limits limits;
     private final File directory;
+    private final Object lock;
     private boolean isTrimPending;
     private boolean isTrimInProgress;
-    private final Object lock;
     private AtomicLong lastClearCacheTime = new AtomicLong(0);
 
     // The value of tag should be a final String that works as a directory name.
@@ -298,7 +298,7 @@ public final class FileLruCache {
             PriorityQueue<ModifiedFile> heap = new PriorityQueue<ModifiedFile>();
             long size = 0;
             long count = 0;
-            File[] filesToTrim =this.directory.listFiles(BufferFile.excludeBufferFiles());
+            File[] filesToTrim = this.directory.listFiles(BufferFile.excludeBufferFiles());
             if (filesToTrim != null) {
                 for (File file : filesToTrim) {
                     ModifiedFile modified = new ModifiedFile(file);
@@ -324,6 +324,10 @@ public final class FileLruCache {
                 lock.notifyAll();
             }
         }
+    }
+
+    private interface StreamCloseCallback {
+        void onClose();
     }
 
     private static class BufferFile {
@@ -415,7 +419,8 @@ public final class FileLruCache {
                 if (readCount < 1) {
                     Logger.log(LoggingBehavior.CACHE, TAG,
                             "readHeader: stream.read stopped at " + Integer.valueOf(count) + " when expected "
-                                    + headerBytes.length);
+                                    + headerBytes.length
+                    );
                     return null;
                 }
                 count += readCount;
@@ -554,7 +559,7 @@ public final class FileLruCache {
             byte[] buffer = new byte[1024];
             long total = 0;
             while (total < byteCount) {
-                int count = read(buffer, 0, (int)Math.min(byteCount - total, buffer.length));
+                int count = read(buffer, 0, (int) Math.min(byteCount - total, buffer.length));
                 if (count < 0) {
                     return total;
                 }
@@ -584,15 +589,15 @@ public final class FileLruCache {
             return byteCount;
         }
 
-        int getFileCount() {
-            return fileCount;
-        }
-
         void setByteCount(int n) {
             if (n < 0) {
                 throw new InvalidParameterException("Cache byte-count limit must be >= 0");
             }
             byteCount = n;
+        }
+
+        int getFileCount() {
+            return fileCount;
         }
 
         void setFileCount(int n) {
@@ -639,7 +644,7 @@ public final class FileLruCache {
         public boolean equals(Object another) {
             return
                     (another instanceof ModifiedFile) &&
-                    (compareTo((ModifiedFile)another) == 0);
+                            (compareTo((ModifiedFile) another) == 0);
         }
 
         @Override
@@ -651,9 +656,5 @@ public final class FileLruCache {
 
             return result;
         }
-    }
-
-    private interface StreamCloseCallback {
-        void onClose();
     }
 }
