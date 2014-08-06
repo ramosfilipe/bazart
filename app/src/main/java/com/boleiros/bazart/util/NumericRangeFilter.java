@@ -30,29 +30,29 @@ public class NumericRangeFilter implements InputFilter {
     /**
      * Creates a new filter.
      *
-     * @param p_min Minimum value.
-     * @param p_max Maximum value.
+     * @param pMin Minimum value.
+     * @param pMax Maximum value.
      */
 
 
-    public NumericRangeFilter(double p_min, double p_max) {
-        maximum = p_max;
-        minimum = p_min;
+    public NumericRangeFilter(double pMin, double pMax) {
+        maximum = pMax;
+        minimum = pMin;
     }
 
     @Override
     public CharSequence filter(
-            CharSequence p_source, int p_start,
-            int p_end, Spanned p_dest, int p_dstart, int p_dend
+            CharSequence pSource, int pStart,
+            int pEnd, Spanned pDest, int pDstart, int pDend
     ) {
         try {
-            String v_valueStr = p_dest.toString().concat(p_source.toString());
-            double v_value = Double.parseDouble(v_valueStr);
-            if (v_value <= maximum && v_value >= minimum) {
+            String vValueStr = pDest.toString().concat(pSource.toString());
+            double vValue = Double.parseDouble(vValueStr);
+            if (vValue <= maximum && vValue >= minimum) {
                 // Returning null will make the EditText to accept more values.
                 return null;
             }
-        } catch (NumberFormatException p_ex) {
+        } catch (NumberFormatException pEx) {
             // do nothing
         }
         // Value is out of range - return empty string.

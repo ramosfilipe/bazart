@@ -120,17 +120,24 @@ public class LoginButton extends Button {
                 // cannot use a drawable in edit mode, so setting the background color instead
                 // of a background resource.
                 this.setBackgroundColor(getResources().getColor(R.color.com_facebook_blue));
-                // hardcoding in edit mode as getResources().getString() doesn't seem to work in IntelliJ
+                // hardcoding in edit mode as getResources().getString() doesn't seem to work in
+                // IntelliJ
                 loginText = "Log in with Facebook";
             } else {
                 this.setBackgroundResource(R.drawable.com_facebook_button_blue);
-                this.setCompoundDrawablesWithIntrinsicBounds(R.drawable.com_facebook_inverse_icon, 0, 0, 0);
+                this.setCompoundDrawablesWithIntrinsicBounds(R.drawable
+                        .com_facebook_inverse_icon, 0, 0, 0);
                 this.setCompoundDrawablePadding(
-                        getResources().getDimensionPixelSize(R.dimen.com_facebook_loginview_compound_drawable_padding));
-                this.setPadding(getResources().getDimensionPixelSize(R.dimen.com_facebook_loginview_padding_left),
-                        getResources().getDimensionPixelSize(R.dimen.com_facebook_loginview_padding_top),
-                        getResources().getDimensionPixelSize(R.dimen.com_facebook_loginview_padding_right),
-                        getResources().getDimensionPixelSize(R.dimen.com_facebook_loginview_padding_bottom));
+                        getResources().getDimensionPixelSize(R.dimen
+                                .com_facebook_loginview_compound_drawable_padding));
+                this.setPadding(getResources().getDimensionPixelSize(R.dimen
+                                .com_facebook_loginview_padding_left),
+                        getResources().getDimensionPixelSize(R.dimen
+                                .com_facebook_loginview_padding_top),
+                        getResources().getDimensionPixelSize(R.dimen
+                                .com_facebook_loginview_padding_right),
+                        getResources().getDimensionPixelSize(R.dimen
+                                .com_facebook_loginview_padding_bottom));
             }
         }
         parseAttributes(attrs);
@@ -488,7 +495,8 @@ public class LoginButton extends Button {
         super.setOnClickListener(new LoginClickListener());
         setButtonText();
         if (!isInEditMode()) {
-            sessionTracker = new SessionTracker(getContext(), new LoginButtonCallback(), null, false);
+            sessionTracker = new SessionTracker(getContext(), new LoginButtonCallback(), null,
+                    false);
             fetchUserInfo();
         }
     }
@@ -546,7 +554,8 @@ public class LoginButton extends Button {
         } else {
             // kick off an async request
             final String appId = Utility.getMetadataApplicationId(getContext());
-            AsyncTask<Void, Void, FetchedAppSettings> task = new AsyncTask<Void, Void, Utility.FetchedAppSettings>() {
+            AsyncTask<Void, Void, FetchedAppSettings> task = new AsyncTask<Void, Void,
+                    Utility.FetchedAppSettings>() {
                 @Override
                 protected FetchedAppSettings doInBackground(Void... params) {
                     FetchedAppSettings settings = Utility.queryAppSettings(appId, false);
@@ -595,7 +604,8 @@ public class LoginButton extends Button {
     }
 
     private void parseAttributes(AttributeSet attrs) {
-        TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.com_facebook_login_view);
+        TypedArray a = getContext().obtainStyledAttributes(attrs,
+                R.styleable.com_facebook_login_view);
         confirmLogout = a.getBoolean(R.styleable.com_facebook_login_view_confirm_logout, true);
         fetchUserInfo = a.getBoolean(R.styleable.com_facebook_login_view_fetch_user_info, true);
         loginText = a.getString(R.styleable.com_facebook_login_view_login_text);
@@ -636,7 +646,8 @@ public class LoginButton extends Button {
             final Session currentSession = sessionTracker.getOpenSession();
             if (currentSession != null) {
                 if (currentSession != userInfoSession) {
-                    Request request = Request.newMeRequest(currentSession, new Request.GraphUserCallback() {
+                    Request request = Request.newMeRequest(currentSession,
+                            new Request.GraphUserCallback() {
                         @Override
                         public void onCompleted(GraphUser me, Response response) {
                             if (currentSession == sessionTracker.getOpenSession()) {
@@ -663,7 +674,8 @@ public class LoginButton extends Button {
     }
 
     /**
-     * Allow a developer to set the OnClickListener for the button.  This will be called back after we do any handling
+     * Allow a developer to set the OnClickListener for the button.  This will be called back
+     * after we do any handling
      * internally for login
      *
      * @param clickListener
@@ -754,7 +766,8 @@ public class LoginButton extends Button {
         public void setReadPermissions(List<String> permissions, Session session) {
             if (SessionAuthorizationType.PUBLISH.equals(authorizationType)) {
                 throw new UnsupportedOperationException(
-                        "Cannot call setReadPermissions after setPublishPermissions has been called.");
+                        "Cannot call setReadPermissions after setPublishPermissions has been " +
+                                "called.");
             }
             if (validatePermissions(permissions, SessionAuthorizationType.READ, session)) {
                 this.permissions = permissions;
@@ -765,7 +778,8 @@ public class LoginButton extends Button {
         public void setPublishPermissions(List<String> permissions, Session session) {
             if (SessionAuthorizationType.READ.equals(authorizationType)) {
                 throw new UnsupportedOperationException(
-                        "Cannot call setPublishPermissions after setReadPermissions has been called.");
+                        "Cannot call setPublishPermissions after setReadPermissions has been " +
+                                "called.");
             }
             if (validatePermissions(permissions, SessionAuthorizationType.PUBLISH, session)) {
                 this.permissions = permissions;
@@ -774,10 +788,12 @@ public class LoginButton extends Button {
         }
 
         private boolean validatePermissions(List<String> permissions,
-                                            SessionAuthorizationType authType, Session currentSession) {
+                                            SessionAuthorizationType authType,
+                                            Session currentSession) {
             if (SessionAuthorizationType.PUBLISH.equals(authType)) {
                 if (Utility.isNullOrEmpty(permissions)) {
-                    throw new IllegalArgumentException("Permissions for publish actions cannot be null or empty.");
+                    throw new IllegalArgumentException("Permissions for publish actions cannot be" +
+                            " null or empty.");
                 }
             }
             if (currentSession != null && currentSession.isOpened()) {
@@ -826,13 +842,17 @@ public class LoginButton extends Button {
                 // If the Session is currently open, it must mean we need to log out
                 if (confirmLogout) {
                     // Create a confirmation dialog
-                    String logout = getResources().getString(R.string.com_facebook_loginview_log_out_action);
-                    String cancel = getResources().getString(R.string.com_facebook_loginview_cancel_action);
+                    String logout = getResources().getString(R.string
+                            .com_facebook_loginview_log_out_action);
+                    String cancel = getResources().getString(R.string
+                            .com_facebook_loginview_cancel_action);
                     String message;
                     if (user != null && user.getName() != null) {
-                        message = String.format(getResources().getString(R.string.com_facebook_loginview_logged_in_as), user.getName());
+                        message = String.format(getResources().getString(R.string
+                                .com_facebook_loginview_logged_in_as), user.getName());
                     } else {
-                        message = getResources().getString(R.string.com_facebook_loginview_logged_in_using_facebook);
+                        message = getResources().getString(R.string
+                                .com_facebook_loginview_logged_in_using_facebook);
                     }
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
                     builder.setMessage(message)
@@ -851,7 +871,8 @@ public class LoginButton extends Button {
                 Session currentSession = sessionTracker.getSession();
                 if (currentSession == null || currentSession.getState().isClosed()) {
                     sessionTracker.setSession(null);
-                    Session session = new Session.Builder(context).setApplicationId(applicationId).build();
+                    Session session = new Session.Builder(context).setApplicationId
+                            (applicationId).build();
                     Session.setActiveSession(session);
                     currentSession = session;
                 }

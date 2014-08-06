@@ -150,7 +150,8 @@ public class Facebook {
     @Deprecated
     public Facebook(String appId) {
         if (appId == null) {
-            throw new IllegalArgumentException("You must specify your application ID when instantiating "
+            throw new IllegalArgumentException("You must specify your application ID when " +
+                    "instantiating "
                     + "a Facebook object. See README for details.");
         }
         mAppId = appId;
@@ -200,7 +201,8 @@ public class Facebook {
      */
     @Deprecated
     public void authorize(Activity activity, final DialogListener listener) {
-        authorize(activity, new String[]{}, DEFAULT_AUTH_ACTIVITY_CODE, SessionLoginBehavior.SSO_WITH_FALLBACK,
+        authorize(activity, new String[]{}, DEFAULT_AUTH_ACTIVITY_CODE,
+                SessionLoginBehavior.SSO_WITH_FALLBACK,
                 listener);
     }
 
@@ -213,7 +215,8 @@ public class Facebook {
      */
     @Deprecated
     public void authorize(Activity activity, String[] permissions, final DialogListener listener) {
-        authorize(activity, permissions, DEFAULT_AUTH_ACTIVITY_CODE, SessionLoginBehavior.SSO_WITH_FALLBACK, listener);
+        authorize(activity, permissions, DEFAULT_AUTH_ACTIVITY_CODE,
+                SessionLoginBehavior.SSO_WITH_FALLBACK, listener);
     }
 
     /**
@@ -277,7 +280,8 @@ public class Facebook {
      *                     canceled.
      */
     @Deprecated
-    public void authorize(Activity activity, String[] permissions, int activityCode, final DialogListener listener) {
+    public void authorize(Activity activity, String[] permissions, int activityCode,
+                          final DialogListener listener) {
         SessionLoginBehavior behavior = (activityCode >= 0) ? SessionLoginBehavior.SSO_WITH_FALLBACK
                 : SessionLoginBehavior.SUPPRESS_SSO;
 
@@ -448,7 +452,8 @@ public class Facebook {
 
         PackageInfo packageInfo;
         try {
-            packageInfo = context.getPackageManager().getPackageInfo(packageName, PackageManager.GET_SIGNATURES);
+            packageInfo = context.getPackageManager().getPackageInfo(packageName,
+                    PackageManager.GET_SIGNATURES);
         } catch (NameNotFoundException e) {
             return false;
         }
@@ -482,7 +487,8 @@ public class Facebook {
         checkUserSession("authorizeCallback");
         Session pending = this.pendingOpeningSession;
         if (pending != null) {
-            if (pending.onActivityResult(this.pendingAuthorizationActivity, requestCode, resultCode, data)) {
+            if (pending.onActivityResult(this.pendingAuthorizationActivity, requestCode,
+                    resultCode, data)) {
                 this.pendingOpeningSession = null;
                 this.pendingAuthorizationActivity = null;
                 this.pendingAuthorizationPermissions = null;
@@ -514,7 +520,8 @@ public class Facebook {
         checkUserSession("extendAccessToken");
         Intent intent = new Intent();
 
-        intent.setClassName("com.facebook.katana", "com.facebook.katana.platform.TokenRefreshService");
+        intent.setClassName("com.facebook.katana", "com.facebook.katana.platform" +
+                ".TokenRefreshService");
 
         // Verify that the application whose package name is
         // com.facebook.katana
@@ -523,7 +530,8 @@ public class Facebook {
             return false;
         }
 
-        return context.bindService(intent, new TokenRefreshServiceConnection(context, serviceListener),
+        return context.bindService(intent, new TokenRefreshServiceConnection(context,
+                        serviceListener),
                 Context.BIND_AUTO_CREATE);
     }
 
@@ -556,7 +564,8 @@ public class Facebook {
     public boolean shouldExtendAccessToken() {
         checkUserSession("shouldExtendAccessToken");
         return isSessionValid()
-                && (System.currentTimeMillis() - lastAccessUpdateMillisecondsAfterEpoch >= REFRESH_TOKEN_BARRIER);
+                && (System.currentTimeMillis() - lastAccessUpdateMillisecondsAfterEpoch >=
+                REFRESH_TOKEN_BARRIER);
     }
 
     /**
@@ -688,7 +697,8 @@ public class Facebook {
      * @throws MalformedURLException
      */
     @Deprecated
-    public String request(String graphPath, Bundle parameters) throws MalformedURLException, IOException {
+    public String request(String graphPath, Bundle parameters) throws MalformedURLException,
+            IOException {
         return requestImpl(graphPath, parameters, "GET");
     }
 
@@ -717,14 +727,16 @@ public class Facebook {
      * @throws MalformedURLException
      */
     @Deprecated
-    public String request(String graphPath, Bundle params, String httpMethod) throws FileNotFoundException,
+    public String request(String graphPath, Bundle params, String httpMethod) throws
+            FileNotFoundException,
             MalformedURLException, IOException {
         return requestImpl(graphPath, params, httpMethod);
     }
 
     // Internal call to avoid deprecated warnings.
     @SuppressWarnings("deprecation")
-    String requestImpl(String graphPath, Bundle params, String httpMethod) throws FileNotFoundException,
+    String requestImpl(String graphPath, Bundle params, String httpMethod) throws
+            FileNotFoundException,
             MalformedURLException, IOException {
         params.putString("format", "json");
         if (isSessionValid()) {
@@ -769,7 +781,8 @@ public class Facebook {
      *                   has completed.
      */
     @Deprecated
-    public void dialog(Context context, String action, Bundle parameters, final DialogListener listener) {
+    public void dialog(Context context, String action, Bundle parameters,
+                       final DialogListener listener) {
         parameters.putString("display", "touch");
         parameters.putString("redirect_uri", REDIRECT_URI);
 
@@ -784,8 +797,10 @@ public class Facebook {
             }
         }
 
-        if (context.checkCallingOrSelfPermission(Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
-            Util.showAlert(context, "Error", "Application requires permission to access the Internet");
+        if (context.checkCallingOrSelfPermission(Manifest.permission.INTERNET) != PackageManager
+                .PERMISSION_GRANTED) {
+            Util.showAlert(context, "Error", "Application requires permission to access the " +
+                    "Internet");
         } else {
             new FbDialog(context, action, parameters, listener).show();
         }
@@ -856,7 +871,8 @@ public class Facebook {
                 return null;
             }
             Session.OpenRequest openRequest =
-                    new Session.OpenRequest(pendingAuthorizationActivity).setPermissions(permissions);
+                    new Session.OpenRequest(pendingAuthorizationActivity).setPermissions
+                            (permissions);
             openSession(newSession, openRequest, !permissions.isEmpty());
 
             Session invalidatedSession = null;
@@ -1052,8 +1068,10 @@ public class Facebook {
     }
 
     /**
-     * Get the auto install publish setting.  If true, an install event will be published during authorize(), unless
-     * it has occurred previously or the app does not have install attribution enabled on the application's developer
+     * Get the auto install publish setting.  If true, an install event will be published during
+     * authorize(), unless
+     * it has occurred previously or the app does not have install attribution enabled on the
+     * application's developer
      * config page.
      * <p/>
      * This method is deprecated.  See {@link Facebook} and {@link Settings} for more info.
@@ -1078,14 +1096,17 @@ public class Facebook {
     }
 
     /**
-     * Manually publish install attribution to the Facebook graph.  Internally handles tracking repeat calls to prevent
+     * Manually publish install attribution to the Facebook graph.  Internally handles tracking
+     * repeat calls to prevent
      * multiple installs being published to the graph.
      * <p/>
      * This method is deprecated.  See {@link Facebook} and {@link Settings} for more info.
      *
      * @param context the current Android context
-     * @return Always false.  Earlier versions of the API returned true if it was no longer necessary to call.
-     * Apps should ignore this value, but for compatibility we will return false to ensure repeat calls (and the
+     * @return Always false.  Earlier versions of the API returned true if it was no longer
+     * necessary to call.
+     * Apps should ignore this value, but for compatibility we will return false to ensure repeat
+     * calls (and the
      * underlying code will prevent duplicate network traffic).
      */
     @Deprecated
@@ -1180,10 +1201,14 @@ public class Facebook {
     }
 
     // Creating a static Handler class to reduce the possibility of a memory leak.
-    // Handler objects for the same thread all share a common Looper object, which they post messages
-    // to and read from. As messages contain target Handler, as long as there are messages with target
-    // handler in the message queue, the handler cannot be garbage collected. If handler is not static,
-    // the instance of the containing class also cannot be garbage collected even if it is destroyed.
+    // Handler objects for the same thread all share a common Looper object,
+    // which they post messages
+    // to and read from. As messages contain target Handler, as long as there are messages with
+    // target
+    // handler in the message queue, the handler cannot be garbage collected. If handler is not
+    // static,
+    // the instance of the containing class also cannot be garbage collected even if it is
+    // destroyed.
     private static class TokenRefreshConnectionHandler extends Handler {
         WeakReference<Facebook> facebookWeakReference;
         WeakReference<TokenRefreshServiceConnection> connectionWeakReference;
@@ -1204,7 +1229,8 @@ public class Facebook {
             }
 
             String token = msg.getData().getString(TOKEN);
-            // Legacy functions in Facebook class (and ServiceListener implementors) expect expires_in in
+            // Legacy functions in Facebook class (and ServiceListener implementors) expect
+            // expires_in in
             // milliseconds from epoch
             long expiresAtMsecFromEpoch = msg.getData().getLong(EXPIRES) * 1000L;
 
@@ -1214,7 +1240,8 @@ public class Facebook {
 
                 Session refreshSession = facebook.session;
                 if (refreshSession != null) {
-                    // Session.internalRefreshToken expects the original bundle with expires_in in seconds from
+                    // Session.internalRefreshToken expects the original bundle with expires_in
+                    // in seconds from
                     // epoch.
                     LegacyHelper.extendTokenCompleted(refreshSession, msg.getData());
                 }
@@ -1233,9 +1260,11 @@ public class Facebook {
                 String error = msg.getData().getString("error");
                 if (msg.getData().containsKey("error_code")) {
                     int errorCode = msg.getData().getInt("error_code");
-                    connection.serviceListener.onFacebookError(new FacebookError(error, null, errorCode));
+                    connection.serviceListener.onFacebookError(new FacebookError(error, null,
+                            errorCode));
                 } else {
-                    connection.serviceListener.onError(new Error(error != null ? error : "Unknown service error"));
+                    connection.serviceListener.onError(new Error(error != null ? error : "Unknown" +
+                            " service error"));
                 }
             }
 
@@ -1259,7 +1288,8 @@ public class Facebook {
 
         Messenger messageSender = null;
 
-        public TokenRefreshServiceConnection(Context applicationsContext, ServiceListener serviceListener) {
+        public TokenRefreshServiceConnection(Context applicationsContext,
+                                             ServiceListener serviceListener) {
             this.applicationsContext = applicationsContext;
             this.serviceListener = serviceListener;
         }
@@ -1302,10 +1332,13 @@ public class Facebook {
 
             if (accessToken != null) {
                 TokenCachingStrategy.putToken(bundle, accessToken);
-                TokenCachingStrategy.putExpirationMilliseconds(bundle, accessExpiresMillisecondsAfterEpoch);
-                TokenCachingStrategy.putPermissions(bundle, stringList(pendingAuthorizationPermissions));
+                TokenCachingStrategy.putExpirationMilliseconds(bundle,
+                        accessExpiresMillisecondsAfterEpoch);
+                TokenCachingStrategy.putPermissions(bundle,
+                        stringList(pendingAuthorizationPermissions));
                 TokenCachingStrategy.putSource(bundle, AccessTokenSource.WEB_VIEW);
-                TokenCachingStrategy.putLastRefreshMilliseconds(bundle, lastAccessUpdateMillisecondsAfterEpoch);
+                TokenCachingStrategy.putLastRefreshMilliseconds(bundle,
+                        lastAccessUpdateMillisecondsAfterEpoch);
             }
 
             return bundle;
@@ -1314,9 +1347,12 @@ public class Facebook {
         @Override
         public void save(Bundle bundle) {
             accessToken = TokenCachingStrategy.getToken(bundle);
-            accessExpiresMillisecondsAfterEpoch = TokenCachingStrategy.getExpirationMilliseconds(bundle);
-            pendingAuthorizationPermissions = stringArray(TokenCachingStrategy.getPermissions(bundle));
-            lastAccessUpdateMillisecondsAfterEpoch = TokenCachingStrategy.getLastRefreshMilliseconds(bundle);
+            accessExpiresMillisecondsAfterEpoch = TokenCachingStrategy.getExpirationMilliseconds
+                    (bundle);
+            pendingAuthorizationPermissions = stringArray(TokenCachingStrategy.getPermissions
+                    (bundle));
+            lastAccessUpdateMillisecondsAfterEpoch = TokenCachingStrategy
+                    .getLastRefreshMilliseconds(bundle);
         }
 
         @Override

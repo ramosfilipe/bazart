@@ -24,7 +24,8 @@ public class CameraFragment extends com.commonsware.cwac.camera.CameraFragment {
 
         ImageButton buttonphotook = (ImageButton) content.findViewById(R.id.buttonphotook);
         buttonphotook.setVisibility(View.GONE);
-        ImageButton buttonphotorestart = (ImageButton) content.findViewById(R.id.buttonphotorestart);
+        ImageButton buttonphotorestart = (ImageButton) content.findViewById(R.id
+                .buttonphotorestart);
         buttonphotorestart.setVisibility(View.GONE);
         takePictureButton = (ImageButton) content.findViewById(R.id.takePictureButton);
         takePictureButton.setOnClickListener(new View.OnClickListener() {
@@ -32,9 +33,11 @@ public class CameraFragment extends com.commonsware.cwac.camera.CameraFragment {
             public void onClick(View v) {
                 takePicture();
                 takePictureButton.setVisibility(View.GONE);
-                ImageButton buttonphotook = (ImageButton) getActivity().findViewById(R.id.buttonphotook);
+                ImageButton buttonphotook = (ImageButton) getActivity().findViewById(R.id
+                        .buttonphotook);
                 buttonphotook.setVisibility(View.VISIBLE);
-                ImageButton buttonphotorestart = (ImageButton) getActivity().findViewById(R.id.buttonphotorestart);
+                ImageButton buttonphotorestart = (ImageButton) getActivity().findViewById(R.id
+                        .buttonphotorestart);
                 buttonphotorestart.setVisibility(View.VISIBLE);
 
                 buttonphotorestart.setOnClickListener(new View.OnClickListener() {
@@ -43,9 +46,11 @@ public class CameraFragment extends com.commonsware.cwac.camera.CameraFragment {
                     public void onClick(View v) {
                         restartPreview();
                         takePictureButton.setVisibility(View.VISIBLE);
-                        ImageButton buttonphotook = (ImageButton) getActivity().findViewById(R.id.buttonphotook);
+                        ImageButton buttonphotook = (ImageButton) getActivity().findViewById(R.id
+                                .buttonphotook);
                         buttonphotook.setVisibility(View.GONE);
-                        ImageButton buttonphotorestart = (ImageButton) getActivity().findViewById(R.id.buttonphotorestart);
+                        ImageButton buttonphotorestart = (ImageButton) getActivity().findViewById
+                                (R.id.buttonphotorestart);
                         buttonphotorestart.setVisibility(View.GONE);
                     }
                 });

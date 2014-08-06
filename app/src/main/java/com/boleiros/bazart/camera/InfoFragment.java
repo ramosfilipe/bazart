@@ -49,9 +49,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class InfoFragment extends Fragment implements LocationListener, GooglePlayServicesClient.ConnectionCallbacks,
+public class InfoFragment extends Fragment implements LocationListener,
+        GooglePlayServicesClient.ConnectionCallbacks,
         GooglePlayServicesClient.OnConnectionFailedListener {
-    private static final InputFilter[] FILTERS = new InputFilter[]{new NumericRangeFilter(0.00, 999999.99)};
+    private static final InputFilter[] FILTERS = new InputFilter[]{new NumericRangeFilter(0.00,
+            999999.99)};
     /*
       * Define a request code to send to Google Play services This code is returned in
       * Activity.onActivityResult
@@ -108,10 +110,12 @@ public class InfoFragment extends Fragment implements LocationListener, GooglePl
         final CustomRecipients hashtags = (CustomRecipients) v.findViewById(R.id.editTextHashtags);
 
         hashtags.setTokenizer(new Rfc822Tokenizer());
-        BaseRecipientAdapter a = new BaseRecipientAdapter(BaseRecipientAdapter.QUERY_TYPE_PHONE, getActivity()) {
+        BaseRecipientAdapter a = new BaseRecipientAdapter(BaseRecipientAdapter.QUERY_TYPE_PHONE,
+                getActivity()) {
         };
 
-        hashtags.setAdapter(new BaseRecipientAdapter(BaseRecipientAdapter.QUERY_TYPE_PHONE, getActivity()) {
+        hashtags.setAdapter(new BaseRecipientAdapter(BaseRecipientAdapter.QUERY_TYPE_PHONE,
+                getActivity()) {
         });
         preco.setFilters(FILTERS);
         // preco.setOnFocusChangeListener(ON_FOCUS);
@@ -134,28 +138,35 @@ public class InfoFragment extends Fragment implements LocationListener, GooglePl
             @Override
             public void onClick(View v) {
                 if (preco.getText().length() < 1) {
-                    Toast.makeText(getActivity(), "Insira o preço do produto", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Insira o preço do produto",
+                            Toast.LENGTH_SHORT).show();
                 } else if (telefone.getText().length() < 1) {
-                    Toast.makeText(getActivity(), "Insira o número para contato", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Insira o número para contato",
+                            Toast.LENGTH_SHORT).show();
                 } else if (hashtags.getSize() == 0) {
-                    Toast.makeText(getActivity(), "Insira alguma hashtag", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Insira alguma hashtag",
+                            Toast.LENGTH_SHORT).show();
                 } else if (hashtags.getSize() > 3) {
-                    Toast.makeText(getActivity(), "Insira no máximo 3 hashtags", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Insira no máximo 3 hashtags",
+                            Toast.LENGTH_SHORT).show();
                 } else {
 
                     Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
                     if (myLoc == null) {
                         Toast.makeText(getActivity(),
-                                "Please try again after your location appears on the map.", Toast.LENGTH_LONG).show();
+                                "Please try again after your location appears on the map.",
+                                Toast.LENGTH_LONG).show();
                         return;
                     }
                     final ParseGeoPoint myPoint = geoPointFromLocation(myLoc);
 
                     botaoEnvia.setVisibility(View.GONE);
-                    ParseFile photoFile = new ParseFile("fotoProduto.jpg", ActivityStore.getInstance(getActivity()).
+                    ParseFile photoFile = new ParseFile("fotoProduto.jpg",
+                            ActivityStore.getInstance(getActivity()).
                             getImage());
                     EditText preco1 = (EditText) getActivity().findViewById(R.id.editTextPreco);
-                    EditText telefone1 = (EditText) getActivity().findViewById(R.id.editTextPhoneNumber);
+                    EditText telefone1 = (EditText) getActivity().findViewById(R.id
+                            .editTextPhoneNumber);
                     String precoStr = preco.getText().toString();
                     precoStr = "R$ " + precoStr;
                     Produto produto = new Produto();
@@ -176,7 +187,8 @@ public class InfoFragment extends Fragment implements LocationListener, GooglePl
                                         "Error saving: " + e.getMessage(),
                                         Toast.LENGTH_LONG).show();
                             } else {
-                                Toast.makeText(getActivity(), "Produto anunciado!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getActivity(), "Produto anunciado!",
+                                        Toast.LENGTH_LONG).show();
                                 locationClient.disconnect();
                                 Intent intent = new Intent(getActivity(), Feed.class);
                                 startActivity(intent);
@@ -216,7 +228,8 @@ public class InfoFragment extends Fragment implements LocationListener, GooglePl
             return true;
         } else {
             System.out.println("testeeee");
-            Dialog dialog = GooglePlayServicesUtil.getErrorDialog(resultCode, this.getActivity(), 0);
+            Dialog dialog = GooglePlayServicesUtil.getErrorDialog(resultCode, this.getActivity(),
+                    0);
             if (dialog != null) {
                 ErrorDialogFragment errorFragment = new ErrorDialogFragment();
                 errorFragment.setDialog(dialog);
@@ -295,7 +308,8 @@ public class InfoFragment extends Fragment implements LocationListener, GooglePl
     public void onConnectionFailed(ConnectionResult connectionResult) {
         if (connectionResult.hasResolution()) {
             try {
-                connectionResult.startResolutionForResult(this.getActivity(), CONNECTION_FAILURE_RESOLUTION_REQUEST);
+                connectionResult.startResolutionForResult(this.getActivity(),
+                        CONNECTION_FAILURE_RESOLUTION_REQUEST);
             } catch (IntentSender.SendIntentException e) {
             }
         } else {

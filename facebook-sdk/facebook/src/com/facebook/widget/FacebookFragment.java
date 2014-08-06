@@ -58,7 +58,8 @@ class FacebookFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        sessionTracker.getSession().onActivityResult(this.getActivity(), requestCode, resultCode, data);
+        sessionTracker.getSession().onActivityResult(this.getActivity(), requestCode, resultCode,
+                data);
     }
 
     @Override
@@ -228,7 +229,8 @@ class FacebookFragment extends Fragment {
      */
     protected final void openSessionForRead(String applicationId, List<String> permissions,
                                             SessionLoginBehavior behavior, int activityCode) {
-        openSession(applicationId, permissions, behavior, activityCode, SessionAuthorizationType.READ);
+        openSession(applicationId, permissions, behavior, activityCode,
+                SessionAuthorizationType.READ);
     }
 
     /**
@@ -256,15 +258,18 @@ class FacebookFragment extends Fragment {
      */
     protected final void openSessionForPublish(String applicationId, List<String> permissions,
                                                SessionLoginBehavior behavior, int activityCode) {
-        openSession(applicationId, permissions, behavior, activityCode, SessionAuthorizationType.PUBLISH);
+        openSession(applicationId, permissions, behavior, activityCode,
+                SessionAuthorizationType.PUBLISH);
     }
 
     private void openSession(String applicationId, List<String> permissions,
-                             SessionLoginBehavior behavior, int activityCode, SessionAuthorizationType authType) {
+                             SessionLoginBehavior behavior, int activityCode,
+                             SessionAuthorizationType authType) {
         if (sessionTracker != null) {
             Session currentSession = sessionTracker.getSession();
             if (currentSession == null || currentSession.getState().isClosed()) {
-                Session session = new Session.Builder(getActivity()).setApplicationId(applicationId).build();
+                Session session = new Session.Builder(getActivity()).setApplicationId
+                        (applicationId).build();
                 Session.setActiveSession(session);
                 currentSession = session;
             }

@@ -53,30 +53,39 @@ import java.util.TimerTask;
 
 public class PlacePickerFragment extends PickerFragment<GraphPlace> {
     /**
-     * The key for an int parameter in the fragment's Intent bundle to indicate the radius in meters around
+     * The key for an int parameter in the fragment's Intent bundle to indicate the radius in
+     * meters around
      * the center point to search. The default is 1000 meters.
      */
-    public static final String RADIUS_IN_METERS_BUNDLE_KEY = "com.facebook.widget.PlacePickerFragment.RadiusInMeters";
+    public static final String RADIUS_IN_METERS_BUNDLE_KEY = "com.facebook.widget" +
+            ".PlacePickerFragment.RadiusInMeters";
     /**
-     * The key for an int parameter in the fragment's Intent bundle to indicate what how many results to
+     * The key for an int parameter in the fragment's Intent bundle to indicate what how many
+     * results to
      * return at a time. The default is 100 results.
      */
-    public static final String RESULTS_LIMIT_BUNDLE_KEY = "com.facebook.widget.PlacePickerFragment.ResultsLimit";
+    public static final String RESULTS_LIMIT_BUNDLE_KEY = "com.facebook.widget" +
+            ".PlacePickerFragment.ResultsLimit";
     /**
-     * The key for a String parameter in the fragment's Intent bundle to indicate what search text should
+     * The key for a String parameter in the fragment's Intent bundle to indicate what search
+     * text should
      * be sent to the service. The default is to have no search text.
      */
-    public static final String SEARCH_TEXT_BUNDLE_KEY = "com.facebook.widget.PlacePickerFragment.SearchText";
+    public static final String SEARCH_TEXT_BUNDLE_KEY = "com.facebook.widget.PlacePickerFragment" +
+            ".SearchText";
     /**
-     * The key for a Location parameter in the fragment's Intent bundle to indicate what geographical
+     * The key for a Location parameter in the fragment's Intent bundle to indicate what
+     * geographical
      * location should be the center of the search.
      */
-    public static final String LOCATION_BUNDLE_KEY = "com.facebook.widget.PlacePickerFragment.Location";
+    public static final String LOCATION_BUNDLE_KEY = "com.facebook.widget.PlacePickerFragment" +
+            ".Location";
     /**
      * The key for a boolean parameter in the fragment's Intent bundle to indicate that the fragment
      * should display a search box and automatically update the search text as it changes.
      */
-    public static final String SHOW_SEARCH_BOX_BUNDLE_KEY = "com.facebook.widget.PlacePickerFragment.ShowSearchBox";
+    public static final String SHOW_SEARCH_BOX_BUNDLE_KEY = "com.facebook.widget" +
+            ".PlacePickerFragment.ShowSearchBox";
 
     /**
      * The default radius around the center point to search.
@@ -121,7 +130,8 @@ public class PlacePickerFragment extends PickerFragment<GraphPlace> {
     }
 
     /**
-     * Gets the location to search around. Either the location or the search text (or both) must be specified.
+     * Gets the location to search around. Either the location or the search text (or both) must
+     * be specified.
      *
      * @return the Location to search around
      */
@@ -130,7 +140,8 @@ public class PlacePickerFragment extends PickerFragment<GraphPlace> {
     }
 
     /**
-     * Sets the location to search around. Either the location or the search text (or both) must be specified.
+     * Sets the location to search around. Either the location or the search text (or both) must
+     * be specified.
      *
      * @param location the Location to search around
      */
@@ -203,18 +214,24 @@ public class PlacePickerFragment extends PickerFragment<GraphPlace> {
 
     /**
      * Sets the search text and reloads the data in the control. This is used to provide search-box
-     * functionality where the user may be typing or editing text rapidly. It uses a timer to avoid repeated
-     * requerying, preferring to wait until the user pauses typing to refresh the data. Note that this
-     * method will NOT update the text in the search box, if any, as it is intended to be called as a result
-     * of changes to the search box (and is public to enable applications to provide their own search box
+     * functionality where the user may be typing or editing text rapidly. It uses a timer to
+     * avoid repeated
+     * requerying, preferring to wait until the user pauses typing to refresh the data. Note that
+     * this
+     * method will NOT update the text in the search box, if any, as it is intended to be called
+     * as a result
+     * of changes to the search box (and is public to enable applications to provide their own
+     * search box
      * UI instead of the default one).
      *
      * @param searchText                 the search text
-     * @param forceReloadEventIfSameText if true, will reload even if the search text has not changed; if false,
+     * @param forceReloadEventIfSameText if true, will reload even if the search text has not
+     *                                   changed; if false,
      *                                   identical search text will not force a reload
      */
     public void onSearchBoxTextChanged(String searchText, boolean forceReloadEventIfSameText) {
-        if (!forceReloadEventIfSameText && Utility.stringsEqualOrEmpty(this.searchText, searchText)) {
+        if (!forceReloadEventIfSameText && Utility.stringsEqualOrEmpty(this.searchText,
+                searchText)) {
             return;
         }
 
@@ -223,8 +240,10 @@ public class PlacePickerFragment extends PickerFragment<GraphPlace> {
         }
         this.searchText = searchText;
 
-        // If search text is being set in response to user input, it is wasteful to send a new request
-        // with every keystroke. Send a request the first time the search text is set, then set up a 2-second timer
+        // If search text is being set in response to user input, it is wasteful to send a new
+        // request
+        // with every keystroke. Send a request the first time the search text is set,
+        // then set up a 2-second timer
         // and send whatever changes the user has made since then. (If nothing has changed
         // in 2 seconds, we reset so the next change will cause an immediate re-query.)
         hasSearchTextChangedSinceLastQuery = true;
@@ -251,14 +270,18 @@ public class PlacePickerFragment extends PickerFragment<GraphPlace> {
     @Override
     public void onInflate(Activity activity, AttributeSet attrs, Bundle savedInstanceState) {
         super.onInflate(activity, attrs, savedInstanceState);
-        TypedArray a = activity.obtainStyledAttributes(attrs, R.styleable.com_facebook_place_picker_fragment);
+        TypedArray a = activity.obtainStyledAttributes(attrs,
+                R.styleable.com_facebook_place_picker_fragment);
 
-        setRadiusInMeters(a.getInt(R.styleable.com_facebook_place_picker_fragment_radius_in_meters, radiusInMeters));
-        setResultsLimit(a.getInt(R.styleable.com_facebook_place_picker_fragment_results_limit, resultsLimit));
+        setRadiusInMeters(a.getInt(R.styleable
+                .com_facebook_place_picker_fragment_radius_in_meters, radiusInMeters));
+        setResultsLimit(a.getInt(R.styleable.com_facebook_place_picker_fragment_results_limit,
+                resultsLimit));
         if (a.hasValue(R.styleable.com_facebook_place_picker_fragment_results_limit)) {
             setSearchText(a.getString(R.styleable.com_facebook_place_picker_fragment_search_text));
         }
-        showSearchBox = a.getBoolean(R.styleable.com_facebook_place_picker_fragment_show_search_box, showSearchBox);
+        showSearchBox = a.getBoolean(R.styleable
+                .com_facebook_place_picker_fragment_show_search_box, showSearchBox);
 
         a.recycle();
     }
@@ -287,7 +310,8 @@ public class PlacePickerFragment extends PickerFragment<GraphPlace> {
         super.onAttach(activity);
 
         if (searchBox != null) {
-            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context
+                    .INPUT_METHOD_SERVICE);
             imm.showSoftInput(searchBox, InputMethodManager.SHOW_IMPLICIT);
         }
     }
@@ -297,7 +321,8 @@ public class PlacePickerFragment extends PickerFragment<GraphPlace> {
         super.onDetach();
 
         if (searchBox != null) {
-            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context
+                    .INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(searchBox.getWindowToken(), 0);
         }
     }
@@ -319,7 +344,8 @@ public class PlacePickerFragment extends PickerFragment<GraphPlace> {
 
     @Override
     Request getRequestForLoadData(Session session) {
-        return createRequest(location, radiusInMeters, resultsLimit, searchText, extraFields, session);
+        return createRequest(location, radiusInMeters, resultsLimit, searchText, extraFields,
+                session);
     }
 
     @Override
@@ -332,10 +358,13 @@ public class PlacePickerFragment extends PickerFragment<GraphPlace> {
         AppEventsLogger logger = AppEventsLogger.newLogger(this.getActivity(), getSession());
         Bundle parameters = new Bundle();
 
-        // If Done was clicked, we know this completed successfully. If not, we don't know (caller might have
-        // dismissed us in response to selection changing, or user might have hit back button). Either way
+        // If Done was clicked, we know this completed successfully. If not,
+        // we don't know (caller might have
+        // dismissed us in response to selection changing, or user might have hit back button).
+        // Either way
         // we'll log the number of selections.
-        String outcome = doneButtonClicked ? AnalyticsEvents.PARAMETER_DIALOG_OUTCOME_VALUE_COMPLETED :
+        String outcome = doneButtonClicked ? AnalyticsEvents
+                .PARAMETER_DIALOG_OUTCOME_VALUE_COMPLETED :
                 AnalyticsEvents.PARAMETER_DIALOG_OUTCOME_VALUE_UNKNOWN;
         parameters.putString(AnalyticsEvents.PARAMETER_DIALOG_OUTCOME, outcome);
         parameters.putInt("num_places_picked", (getSelection() != null) ? 1 : 0);
@@ -354,11 +383,15 @@ public class PlacePickerFragment extends PickerFragment<GraphPlace> {
 
                 String result = null;
                 if (category != null && wereHereCount != null) {
-                    result = getString(R.string.com_facebook_placepicker_subtitle_format, category, wereHereCount);
+                    result = getString(R.string.com_facebook_placepicker_subtitle_format,
+                            category, wereHereCount);
                 } else if (category == null && wereHereCount != null) {
-                    result = getString(R.string.com_facebook_placepicker_subtitle_were_here_only_format, wereHereCount);
+                    result = getString(R.string
+                            .com_facebook_placepicker_subtitle_were_here_only_format,
+                            wereHereCount);
                 } else if (category != null && wereHereCount == null) {
-                    result = getString(R.string.com_facebook_placepicker_subtitle_catetory_only_format, category);
+                    result = getString(R.string
+                            .com_facebook_placepicker_subtitle_catetory_only_format, category);
                 }
                 return result;
             }
@@ -389,10 +422,12 @@ public class PlacePickerFragment extends PickerFragment<GraphPlace> {
         return new SingleSelectionStrategy();
     }
 
-    private Request createRequest(Location location, int radiusInMeters, int resultsLimit, String searchText,
+    private Request createRequest(Location location, int radiusInMeters, int resultsLimit,
+                                  String searchText,
                                   Set<String> extraFields,
                                   Session session) {
-        Request request = Request.newPlacesSearchRequest(session, location, radiusInMeters, resultsLimit, searchText,
+        Request request = Request.newPlacesSearchRequest(session, location, radiusInMeters,
+                resultsLimit, searchText,
                 null);
 
         Set<String> fields = new HashSet<String>(extraFields);
@@ -418,7 +453,8 @@ public class PlacePickerFragment extends PickerFragment<GraphPlace> {
     }
 
     private void setPlacePickerSettingsFromBundle(Bundle inState) {
-        // We do this in a separate non-overridable method so it is safe to call from the constructor.
+        // We do this in a separate non-overridable method so it is safe to call from the
+        // constructor.
         if (inState != null) {
             setRadiusInMeters(inState.getInt(RADIUS_IN_METERS_BUNDLE_KEY, radiusInMeters));
             setResultsLimit(inState.getInt(RESULTS_LIMIT_BUNDLE_KEY, resultsLimit));
@@ -464,7 +500,8 @@ public class PlacePickerFragment extends PickerFragment<GraphPlace> {
                             if (onErrorListener != null) {
                                 onErrorListener.onError(PlacePickerFragment.this, error);
                             } else {
-                                Logger.log(LoggingBehavior.REQUESTS, TAG, "Error loading data : %s", error);
+                                Logger.log(LoggingBehavior.REQUESTS, TAG,
+                                        "Error loading data : %s", error);
                             }
                         }
                     }
@@ -486,7 +523,8 @@ public class PlacePickerFragment extends PickerFragment<GraphPlace> {
             this.adapter.setDataNeededListener(new GraphObjectAdapter.DataNeededListener() {
                 @Override
                 public void onDataNeeded() {
-                    // Do nothing if we are currently loading data . We will get notified again when that load finishes if the adapter still
+                    // Do nothing if we are currently loading data . We will get notified again
+                    // when that load finishes if the adapter still
                     // needs more data. Otherwise, follow the next link.
                     if (!loader.isLoading()) {
                         loader.followNextLink();
@@ -500,7 +538,8 @@ public class PlacePickerFragment extends PickerFragment<GraphPlace> {
                                       SimpleGraphObjectCursor<GraphPlace> data) {
             super.onLoadFinished(loader, data);
 
-            // We could be called in this state if we are clearing data or if we are being re-attached
+            // We could be called in this state if we are clearing data or if we are being
+            // re-attached
             // in the middle of a query.
             if (data == null || loader.isLoading()) {
                 return;
@@ -509,10 +548,13 @@ public class PlacePickerFragment extends PickerFragment<GraphPlace> {
             hideActivityCircle();
 
             if (data.isFromCache()) {
-                // Only the first page can be cached, since all subsequent pages will be round-tripped. Force
-                // a refresh of the first page before we allow paging to begin. If the first page produced
+                // Only the first page can be cached, since all subsequent pages will be
+                // round-tripped. Force
+                // a refresh of the first page before we allow paging to begin. If the first page
+                // produced
                 // no data, launch the refresh immediately, otherwise schedule it for later.
-                loader.refreshOriginalRequest(data.areMoreObjectsAvailable() ? CACHED_RESULT_REFRESH_DELAY : 0);
+                loader.refreshOriginalRequest(data.areMoreObjectsAvailable() ?
+                        CACHED_RESULT_REFRESH_DELAY : 0);
             }
         }
     }

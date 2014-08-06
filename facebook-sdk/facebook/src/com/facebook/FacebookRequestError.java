@@ -92,8 +92,10 @@ public final class FacebookRequestError {
     private final FacebookException exception;
 
     private FacebookRequestError(int requestStatusCode, int errorCode,
-                                 int subErrorCode, String errorType, String errorMessage, JSONObject requestResultBody,
-                                 JSONObject requestResult, Object batchRequestResult, HttpURLConnection connection,
+                                 int subErrorCode, String errorType, String errorMessage,
+                                 JSONObject requestResultBody,
+                                 JSONObject requestResult, Object batchRequestResult,
+                                 HttpURLConnection connection,
                                  FacebookException exception) {
         this.requestStatusCode = requestStatusCode;
         this.errorCode = errorCode;
@@ -126,7 +128,8 @@ public final class FacebookRequestError {
                 errorCategory = Category.SERVER;
             } else if (errorCode == EC_APP_TOO_MANY_CALLS || errorCode == EC_USER_TOO_MANY_CALLS) {
                 errorCategory = Category.THROTTLING;
-            } else if (errorCode == EC_PERMISSION_DENIED || EC_RANGE_PERMISSION.contains(errorCode)) {
+            } else if (errorCode == EC_PERMISSION_DENIED || EC_RANGE_PERMISSION.contains
+                    (errorCode)) {
                 errorCategory = Category.PERMISSION;
                 messageId = R.string.com_facebook_requesterror_permissions;
             } else if (errorCode == EC_INVALID_SESSION || errorCode == EC_INVALID_TOKEN) {
@@ -165,8 +168,10 @@ public final class FacebookRequestError {
     }
 
     private FacebookRequestError(int requestStatusCode, int errorCode,
-                                 int subErrorCode, String errorType, String errorMessage, JSONObject requestResultBody,
-                                 JSONObject requestResult, Object batchRequestResult, HttpURLConnection connection) {
+                                 int subErrorCode, String errorType, String errorMessage,
+                                 JSONObject requestResultBody,
+                                 JSONObject requestResult, Object batchRequestResult,
+                                 HttpURLConnection connection) {
         this(requestStatusCode, errorCode, subErrorCode, errorType, errorMessage,
                 requestResultBody, requestResult, batchRequestResult, connection, null);
     }
@@ -185,7 +190,8 @@ public final class FacebookRequestError {
     }
 
     static FacebookRequestError checkResponseAndCreateError(JSONObject singleResult,
-                                                            Object batchResult, HttpURLConnection connection) {
+                                                            Object batchResult,
+                                                            HttpURLConnection connection) {
         try {
             if (singleResult.has(CODE_KEY)) {
                 int responseCode = singleResult.getInt(CODE_KEY);
@@ -194,8 +200,10 @@ public final class FacebookRequestError {
 
                 if (body != null && body instanceof JSONObject) {
                     JSONObject jsonBody = (JSONObject) body;
-                    // Does this response represent an error from the service? We might get either an "error"
-                    // with several sub-properties, or else one or more top-level fields containing error info.
+                    // Does this response represent an error from the service? We might get
+                    // either an "error"
+                    // with several sub-properties, or else one or more top-level fields
+                    // containing error info.
                     String errorType = null;
                     String errorMessage = null;
                     int errorCode = INVALID_ERROR_CODE;
@@ -204,7 +212,8 @@ public final class FacebookRequestError {
                     boolean hasError = false;
                     if (jsonBody.has(ERROR_KEY)) {
                         // We assume the error object is correctly formatted.
-                        JSONObject error = (JSONObject) Utility.getStringPropertyAsJSON(jsonBody, ERROR_KEY, null);
+                        JSONObject error = (JSONObject) Utility.getStringPropertyAsJSON(jsonBody,
+                                ERROR_KEY, null);
 
                         errorType = error.optString(ERROR_TYPE_FIELD_KEY, null);
                         errorMessage = error.optString(ERROR_MESSAGE_FIELD_KEY, null);
@@ -222,17 +231,20 @@ public final class FacebookRequestError {
 
                     if (hasError) {
                         return new FacebookRequestError(responseCode, errorCode, errorSubCode,
-                                errorType, errorMessage, jsonBody, singleResult, batchResult, connection);
+                                errorType, errorMessage, jsonBody, singleResult, batchResult,
+                                connection);
                     }
                 }
 
-                // If we didn't get error details, but we did get a failure response code, report it.
+                // If we didn't get error details, but we did get a failure response code,
+                // report it.
                 if (!HTTP_RANGE_SUCCESS.contains(responseCode)) {
                     return new FacebookRequestError(responseCode, INVALID_ERROR_CODE,
                             INVALID_ERROR_CODE, null, null,
                             singleResult.has(BODY_KEY) ?
                                     (JSONObject) Utility.getStringPropertyAsJSON(
-                                            singleResult, BODY_KEY, Response.NON_JSON_RESPONSE_PROPERTY) : null,
+                                            singleResult, BODY_KEY,
+                                            Response.NON_JSON_RESPONSE_PROPERTY) : null,
                             singleResult, batchResult, connection
                     );
                 }

@@ -27,7 +27,8 @@ public enum LoggingBehavior {
      */
     REQUESTS,
     /**
-     * Indicates that access tokens should be logged as part of the request logging; normally they are not.
+     * Indicates that access tokens should be logged as part of the request logging; normally
+     * they are not.
      */
     INCLUDE_ACCESS_TOKENS,
     /**
@@ -43,7 +44,8 @@ public enum LoggingBehavior {
      */
     APP_EVENTS,
     /**
-     * Indicates that likely developer errors should be logged.  (This is set by default in LoggingBehavior.)
+     * Indicates that likely developer errors should be logged.  (This is set by default in
+     * LoggingBehavior.)
      */
     DEVELOPER_ERRORS;
 

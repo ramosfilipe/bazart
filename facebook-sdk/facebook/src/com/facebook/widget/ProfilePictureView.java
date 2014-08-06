@@ -374,9 +374,11 @@ public class ProfilePictureView extends FrameLayout {
     }
 
     private void parseAttributes(AttributeSet attrs) {
-        TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.com_facebook_profile_picture_view);
+        TypedArray a = getContext().obtainStyledAttributes(attrs,
+                R.styleable.com_facebook_profile_picture_view);
         setPresetSize(a.getInt(R.styleable.com_facebook_profile_picture_view_preset_size, CUSTOM));
-        isCropped = a.getBoolean(R.styleable.com_facebook_profile_picture_view_is_cropped, IS_CROPPED_DEFAULT_VALUE);
+        isCropped = a.getBoolean(R.styleable.com_facebook_profile_picture_view_is_cropped,
+                IS_CROPPED_DEFAULT_VALUE);
         a.recycle();
     }
 
@@ -403,7 +405,8 @@ public class ProfilePictureView extends FrameLayout {
             // Update profile image dimensions.
             updateImageQueryParameters();
             // Resize inputBitmap to new dimensions of queryWidth and queryHeight.
-            Bitmap scaledBitmap = Bitmap.createScaledBitmap(customizedDefaultProfilePicture, queryWidth, queryHeight, false);
+            Bitmap scaledBitmap = Bitmap.createScaledBitmap(customizedDefaultProfilePicture,
+                    queryWidth, queryHeight, false);
             setImageBitmap(scaledBitmap);
         }
     }
@@ -459,7 +462,8 @@ public class ProfilePictureView extends FrameLayout {
                 OnErrorListener listener = onErrorListener;
                 if (listener != null) {
                     listener.onError(new FacebookException(
-                            "Error in downloading profile picture for profileId: " + getProfileId(), error));
+                            "Error in downloading profile picture for profileId: " + getProfileId
+                                    (), error));
                 } else {
                     Logger.log(LoggingBehavior.REQUESTS, Log.ERROR, TAG, error.toString());
                 }

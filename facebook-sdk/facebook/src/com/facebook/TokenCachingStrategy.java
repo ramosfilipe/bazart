@@ -51,13 +51,15 @@ public abstract class TokenCachingStrategy {
      * The key used by Session to store the expiration date value in the Bundle
      * during load and save.
      */
-    public static final String EXPIRATION_DATE_KEY = "com.facebook.TokenCachingStrategy.ExpirationDate";
+    public static final String EXPIRATION_DATE_KEY = "com.facebook.TokenCachingStrategy" +
+            ".ExpirationDate";
 
     /**
      * The key used by Session to store the last refresh date value in the
      * Bundle during load and save.
      */
-    public static final String LAST_REFRESH_DATE_KEY = "com.facebook.TokenCachingStrategy.LastRefreshDate";
+    public static final String LAST_REFRESH_DATE_KEY = "com.facebook.TokenCachingStrategy" +
+            ".LastRefreshDate";
 
     /**
      * The key used by Session to store the user's id value in the Bundle during
@@ -69,7 +71,8 @@ public abstract class TokenCachingStrategy {
      * The key used by Session to store an enum indicating the source of the token
      * in the Bundle during load and save.
      */
-    public static final String TOKEN_SOURCE_KEY = "com.facebook.TokenCachingStrategy.AccessTokenSource";
+    public static final String TOKEN_SOURCE_KEY = "com.facebook.TokenCachingStrategy" +
+            ".AccessTokenSource";
 
     /**
      * The key used by Session to store the list of permissions granted by the
@@ -78,10 +81,12 @@ public abstract class TokenCachingStrategy {
     public static final String PERMISSIONS_KEY = "com.facebook.TokenCachingStrategy.Permissions";
 
     /**
-     * The key used by Session to store the list of permissions declined by the user in the token in the Bundle
+     * The key used by Session to store the list of permissions declined by the user in the token
+     * in the Bundle
      * during load and save.
      */
-    public static final String DECLINED_PERMISSIONS_KEY = "com.facebook.TokenCachingStrategy.DeclinedPermissions";
+    public static final String DECLINED_PERMISSIONS_KEY = "com.facebook.TokenCachingStrategy" +
+            ".DeclinedPermissions";
 
     private static final long INVALID_BUNDLE_MILLISECONDS = Long.MIN_VALUE;
     private static final String IS_SSO_KEY = "com.facebook.TokenCachingStrategy.IsSSO";
@@ -252,7 +257,8 @@ public abstract class TokenCachingStrategy {
     public static AccessTokenSource getSource(Bundle bundle) {
         Validate.notNull(bundle, "bundle");
         if (bundle.containsKey(TokenCachingStrategy.TOKEN_SOURCE_KEY)) {
-            return (AccessTokenSource) bundle.getSerializable(TokenCachingStrategy.TOKEN_SOURCE_KEY);
+            return (AccessTokenSource) bundle.getSerializable(TokenCachingStrategy
+                    .TOKEN_SOURCE_KEY);
         } else {
             boolean isSSO = bundle.getBoolean(TokenCachingStrategy.IS_SSO_KEY);
             return isSSO ? AccessTokenSource.FACEBOOK_APPLICATION_WEB : AccessTokenSource.WEB_VIEW;

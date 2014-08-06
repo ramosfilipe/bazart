@@ -59,12 +59,14 @@ interface BaseRecipientChip {
     RecipientEntry getEntry();
 
     /**
-     * Set the text in the edittextview originally associated with this chip before any reverse lookups.
+     * Set the text in the edittextview originally associated with this chip before any reverse
+     * lookups.
      */
     CharSequence getOriginalText();
 
     /**
-     * Set the text in the edittextview originally associated with this chip before any reverse lookups.
+     * Set the text in the edittextview originally associated with this chip before any reverse
+     * lookups.
      */
     void setOriginalText(String text);
 

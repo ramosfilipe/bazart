@@ -65,11 +65,13 @@ public class LoginActivity extends Activity {
 
         if (savedInstanceState != null) {
             callingPackage = savedInstanceState.getString(SAVED_CALLING_PKG_KEY);
-            authorizationClient = (AuthorizationClient) savedInstanceState.getSerializable(SAVED_AUTH_CLIENT);
+            authorizationClient = (AuthorizationClient) savedInstanceState.getSerializable
+                    (SAVED_AUTH_CLIENT);
         } else {
             callingPackage = getCallingPackage();
             authorizationClient = new AuthorizationClient();
-            request = (AuthorizationClient.AuthorizationRequest) getIntent().getSerializableExtra(EXTRA_REQUEST);
+            request = (AuthorizationClient.AuthorizationRequest) getIntent().getSerializableExtra
+                    (EXTRA_REQUEST);
         }
 
         authorizationClient.setContext(this);
@@ -79,15 +81,18 @@ public class LoginActivity extends Activity {
                 onAuthClientCompleted(outcome);
             }
         });
-        authorizationClient.setBackgroundProcessingListener(new AuthorizationClient.BackgroundProcessingListener() {
+        authorizationClient.setBackgroundProcessingListener(new AuthorizationClient
+                .BackgroundProcessingListener() {
             @Override
             public void onBackgroundProcessingStarted() {
-                findViewById(R.id.com_facebook_login_activity_progress_bar).setVisibility(View.VISIBLE);
+                findViewById(R.id.com_facebook_login_activity_progress_bar).setVisibility(View
+                        .VISIBLE);
             }
 
             @Override
             public void onBackgroundProcessingStopped() {
-                findViewById(R.id.com_facebook_login_activity_progress_bar).setVisibility(View.GONE);
+                findViewById(R.id.com_facebook_login_activity_progress_bar).setVisibility(View
+                        .GONE);
             }
         });
     }

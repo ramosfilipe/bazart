@@ -44,14 +44,17 @@ import java.util.Set;
 public class FriendPickerFragment extends PickerFragment<GraphUser> {
     /**
      * The key for a String parameter in the fragment's Intent bundle to indicate what user's
-     * friends should be shown. The default is to display the currently authenticated user's friends.
+     * friends should be shown. The default is to display the currently authenticated user's
+     * friends.
      */
-    public static final String USER_ID_BUNDLE_KEY = "com.facebook.widget.FriendPickerFragment.UserId";
+    public static final String USER_ID_BUNDLE_KEY = "com.facebook.widget.FriendPickerFragment" +
+            ".UserId";
     /**
      * The key for a boolean parameter in the fragment's Intent bundle to indicate whether the
      * picker should allow more than one friend to be selected or not.
      */
-    public static final String MULTI_SELECT_BUNDLE_KEY = "com.facebook.widget.FriendPickerFragment.MultiSelect";
+    public static final String MULTI_SELECT_BUNDLE_KEY = "com.facebook.widget" +
+            ".FriendPickerFragment.MultiSelect";
 
     private static final String ID = "id";
     private static final String NAME = "name";
@@ -174,9 +177,11 @@ public class FriendPickerFragment extends PickerFragment<GraphUser> {
     @Override
     public void onInflate(Activity activity, AttributeSet attrs, Bundle savedInstanceState) {
         super.onInflate(activity, attrs, savedInstanceState);
-        TypedArray a = activity.obtainStyledAttributes(attrs, R.styleable.com_facebook_friend_picker_fragment);
+        TypedArray a = activity.obtainStyledAttributes(attrs,
+                R.styleable.com_facebook_friend_picker_fragment);
 
-        setMultiSelect(a.getBoolean(R.styleable.com_facebook_friend_picker_fragment_multi_select, multiSelect));
+        setMultiSelect(a.getBoolean(R.styleable.com_facebook_friend_picker_fragment_multi_select,
+                multiSelect));
 
         a.recycle();
     }
@@ -247,10 +252,13 @@ public class FriendPickerFragment extends PickerFragment<GraphUser> {
         AppEventsLogger logger = AppEventsLogger.newLogger(this.getActivity(), getSession());
         Bundle parameters = new Bundle();
 
-        // If Done was clicked, we know this completed successfully. If not, we don't know (caller might have
-        // dismissed us in response to selection changing, or user might have hit back button). Either way
+        // If Done was clicked, we know this completed successfully. If not,
+        // we don't know (caller might have
+        // dismissed us in response to selection changing, or user might have hit back button).
+        // Either way
         // we'll log the number of selections.
-        String outcome = doneButtonClicked ? AnalyticsEvents.PARAMETER_DIALOG_OUTCOME_VALUE_COMPLETED :
+        String outcome = doneButtonClicked ? AnalyticsEvents
+                .PARAMETER_DIALOG_OUTCOME_VALUE_COMPLETED :
                 AnalyticsEvents.PARAMETER_DIALOG_OUTCOME_VALUE_UNKNOWN;
         parameters.putString(AnalyticsEvents.PARAMETER_DIALOG_OUTCOME, outcome);
         parameters.putInt("num_friends_picked", getSelection().size());
@@ -287,7 +295,8 @@ public class FriendPickerFragment extends PickerFragment<GraphUser> {
     }
 
     private void setFriendPickerSettingsFromBundle(Bundle inState) {
-        // We do this in a separate non-overridable method so it is safe to call from the constructor.
+        // We do this in a separate non-overridable method so it is safe to call from the
+        // constructor.
         if (inState != null) {
             if (inState.containsKey(USER_ID_BUNDLE_KEY)) {
                 setUserId(inState.getString(USER_ID_BUNDLE_KEY));
@@ -302,7 +311,8 @@ public class FriendPickerFragment extends PickerFragment<GraphUser> {
                                       SimpleGraphObjectCursor<GraphUser> data) {
             super.onLoadFinished(loader, data);
 
-            // We could be called in this state if we are clearing data or if we are being re-attached
+            // We could be called in this state if we are clearing data or if we are being
+            // re-attached
             // in the middle of a query.
             if (data == null || loader.isLoading()) {
                 return;
@@ -315,16 +325,19 @@ public class FriendPickerFragment extends PickerFragment<GraphUser> {
                 // We finished loading results.
                 hideActivityCircle();
 
-                // If this was from the cache, schedule a delayed refresh query (unless we got no results
+                // If this was from the cache, schedule a delayed refresh query (unless we got no
+                // results
                 // at all, in which case refresh immediately.
                 if (data.isFromCache()) {
-                    loader.refreshOriginalRequest(data.getCount() == 0 ? CACHED_RESULT_REFRESH_DELAY : 0);
+                    loader.refreshOriginalRequest(data.getCount() == 0 ?
+                            CACHED_RESULT_REFRESH_DELAY : 0);
                 }
             }
         }
 
         private void followNextLink() {
-            // This may look redundant, but this causes the circle to be alpha-dimmed if we have results.
+            // This may look redundant, but this causes the circle to be alpha-dimmed if we have
+            // results.
             displayActivityCircle();
 
             loader.followNextLink();

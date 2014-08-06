@@ -46,7 +46,8 @@ public class RequestAsyncTask extends AsyncTask<Void, Void, List<Response>> {
         for (Method method : AsyncTask.class.getMethods()) {
             if ("executeOnExecutor".equals(method.getName())) {
                 Class<?>[] parameters = method.getParameterTypes();
-                if ((parameters.length == 2) && (parameters[0] == Executor.class) && parameters[1].isArray()) {
+                if ((parameters.length == 2) && (parameters[0] == Executor.class) &&
+                        parameters[1].isArray()) {
                     executeOnExecutorMethod = method;
                     break;
                 }
@@ -55,7 +56,8 @@ public class RequestAsyncTask extends AsyncTask<Void, Void, List<Response>> {
     }
 
     /**
-     * Constructor. Serialization of the requests will be done in the background, so any serialization-
+     * Constructor. Serialization of the requests will be done in the background,
+     * so any serialization-
      * related errors will be returned via the Response.getException() method.
      *
      * @param requests the requests to execute
@@ -65,7 +67,8 @@ public class RequestAsyncTask extends AsyncTask<Void, Void, List<Response>> {
     }
 
     /**
-     * Constructor. Serialization of the requests will be done in the background, so any serialization-
+     * Constructor. Serialization of the requests will be done in the background,
+     * so any serialization-
      * related errors will be returned via the Response.getException() method.
      *
      * @param requests the requests to execute
@@ -75,7 +78,8 @@ public class RequestAsyncTask extends AsyncTask<Void, Void, List<Response>> {
     }
 
     /**
-     * Constructor. Serialization of the requests will be done in the background, so any serialization-
+     * Constructor. Serialization of the requests will be done in the background,
+     * so any serialization-
      * related errors will be returned via the Response.getException() method.
      *
      * @param requests the requests to execute
@@ -134,7 +138,8 @@ public class RequestAsyncTask extends AsyncTask<Void, Void, List<Response>> {
 
     @Override
     public String toString() {
-        return new StringBuilder().append("{RequestAsyncTask: ").append(" connection: ").append(connection)
+        return new StringBuilder().append("{RequestAsyncTask: ").append(" connection: ").append
+                (connection)
                 .append(", requests: ").append(requests).append("}").toString();
     }
 
@@ -143,7 +148,8 @@ public class RequestAsyncTask extends AsyncTask<Void, Void, List<Response>> {
         super.onPreExecute();
 
         if (requests.getCallbackHandler() == null) {
-            // We want any callbacks to go to a handler on this thread unless a handler has already been specified.
+            // We want any callbacks to go to a handler on this thread unless a handler has
+            // already been specified.
             requests.setCallbackHandler(new Handler());
         }
     }
@@ -153,7 +159,8 @@ public class RequestAsyncTask extends AsyncTask<Void, Void, List<Response>> {
         super.onPostExecute(result);
 
         if (exception != null) {
-            Log.d(TAG, String.format("onPostExecute: exception encountered during request: %s", exception.getMessage()));
+            Log.d(TAG, String.format("onPostExecute: exception encountered during request: %s",
+                    exception.getMessage()));
         }
     }
 

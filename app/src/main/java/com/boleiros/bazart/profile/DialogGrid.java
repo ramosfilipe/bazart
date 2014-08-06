@@ -91,7 +91,8 @@ public class DialogGrid extends DialogFragment {
                     produto.setVendido(Boolean.TRUE);
                     try {
                         byte[] arrayImage = produto.getPhotoFile().getData();
-                        Bitmap image = BitmapFactory.decodeByteArray(arrayImage, 0, arrayImage.length);
+                        Bitmap image = BitmapFactory.decodeByteArray(arrayImage, 0,
+                                arrayImage.length);
                         Bitmap imageMarked = mark(image);
                         ByteArrayOutputStream bos = new ByteArrayOutputStream();
                         imageMarked.compress(Bitmap.CompressFormat.JPEG, 100, bos);

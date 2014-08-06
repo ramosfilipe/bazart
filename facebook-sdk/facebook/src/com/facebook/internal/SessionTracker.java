@@ -26,8 +26,10 @@ import com.facebook.Session;
 import com.facebook.SessionState;
 
 /**
- * com.facebook.internal is solely for the use of other packages within the Facebook SDK for Android. Use of
- * any of the classes in this package is unsupported, and they may be modified or removed without warning at
+ * com.facebook.internal is solely for the use of other packages within the Facebook SDK for
+ * Android. Use of
+ * any of the classes in this package is unsupported, and they may be modified or removed without
+ * warning at
  * any time.
  */
 public class SessionTracker {
@@ -70,7 +72,8 @@ public class SessionTracker {
      * @param session       the Session object to track
      * @param startTracking whether to start tracking the Session right away
      */
-    public SessionTracker(Context context, Session.StatusCallback callback, Session session, boolean startTracking) {
+    public SessionTracker(Context context, Session.StatusCallback callback, Session session,
+                          boolean startTracking) {
         this.callback = new CallbackWrapper(callback);
         this.session = session;
         this.receiver = new ActiveSessionBroadcastReceiver();

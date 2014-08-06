@@ -1,13 +1,17 @@
 package com.facebook.internal;
 
 /**
- * com.facebook.internal is solely for the use of other packages within the Facebook SDK for Android. Use of
- * any of the classes in this package is unsupported, and they may be modified or removed without warning at
+ * com.facebook.internal is solely for the use of other packages within the Facebook SDK for
+ * Android. Use of
+ * any of the classes in this package is unsupported, and they may be modified or removed without
+ * warning at
  * any time.
  */
 public class AnalyticsEvents {
-    public static final String EVENT_NATIVE_LOGIN_DIALOG_COMPLETE = "fb_dialogs_native_login_dialog_complete";
-    public static final String EVENT_NATIVE_LOGIN_DIALOG_START = "fb_dialogs_native_login_dialog_start";
+    public static final String EVENT_NATIVE_LOGIN_DIALOG_COMPLETE =
+            "fb_dialogs_native_login_dialog_complete";
+    public static final String EVENT_NATIVE_LOGIN_DIALOG_START =
+            "fb_dialogs_native_login_dialog_start";
     public static final String EVENT_WEB_LOGIN_COMPLETE = "fb_dialogs_web_login_dialog_complete";
     public static final String EVENT_FRIEND_PICKER_USAGE = "fb_friend_picker_usage";
     public static final String EVENT_PLACE_PICKER_USAGE = "fb_place_picker_usage";
@@ -20,7 +24,8 @@ public class AnalyticsEvents {
     public static final String PARAMETER_WEB_LOGIN_SWITCHBACK_TIME = "fb_web_login_switchback_time";
     public static final String PARAMETER_APP_ID = "app_id";
     public static final String PARAMETER_ACTION_ID = "action_id";
-    public static final String PARAMETER_NATIVE_LOGIN_DIALOG_START_TIME = "fb_native_login_dialog_start_time";
+    public static final String PARAMETER_NATIVE_LOGIN_DIALOG_START_TIME =
+            "fb_native_login_dialog_start_time";
     public static final String PARAMETER_NATIVE_LOGIN_DIALOG_COMPLETE_TIME =
             "fb_native_login_dialog_complete_time";
 
@@ -33,7 +38,10 @@ public class AnalyticsEvents {
     public static final String EVENT_NATIVE_DIALOG_TYPE_SHARE = "fb_dialogs_present_share";
     public static final String EVENT_NATIVE_DIALOG_TYPE_MESSAGE = "fb_dialogs_present_message";
     public static final String EVENT_NATIVE_DIALOG_TYPE_OG_SHARE = "fb_dialogs_present_share_og";
-    public static final String EVENT_NATIVE_DIALOG_TYPE_OG_MESSAGE = "fb_dialogs_present_message_og";
-    public static final String EVENT_NATIVE_DIALOG_TYPE_PHOTO_SHARE = "fb_dialogs_present_share_photo";
-    public static final String EVENT_NATIVE_DIALOG_TYPE_PHOTO_MESSAGE = "fb_dialogs_present_message_photo";
+    public static final String EVENT_NATIVE_DIALOG_TYPE_OG_MESSAGE =
+            "fb_dialogs_present_message_og";
+    public static final String EVENT_NATIVE_DIALOG_TYPE_PHOTO_SHARE =
+            "fb_dialogs_present_share_photo";
+    public static final String EVENT_NATIVE_DIALOG_TYPE_PHOTO_MESSAGE =
+            "fb_dialogs_present_message_photo";
 }

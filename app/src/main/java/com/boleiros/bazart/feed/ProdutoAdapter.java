@@ -47,7 +47,8 @@ public class ProdutoAdapter extends BaseAdapter {
     public ProdutoAdapter(Context context, List<Produto> items) {
         this.context = context;
         this.items = items;
-        mPlaceHolderBitmap = decodeSampledBitmapFromResource(context.getResources(), R.drawable.placeholderpicture, 300, 300);
+        mPlaceHolderBitmap = decodeSampledBitmapFromResource(context.getResources(),
+                R.drawable.placeholderpicture, 300, 300);
         // Get memory class of this device, exceeding this amount will throw an
         // OutOfMemory exception.
         final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
@@ -96,7 +97,8 @@ public class ProdutoAdapter extends BaseAdapter {
     }
 
     public static Bitmap decodeSampledBitmapFromResource(ParseFile pf,
-                                                         int reqWidth, int reqHeight) throws ParseException {
+                                                         int reqWidth,
+                                                         int reqHeight) throws ParseException {
 
         // First decode with inJustDecodeBounds=true to check dimensions
         final BitmapFactory.Options options = new BitmapFactory.Options();
@@ -169,19 +171,27 @@ public class ProdutoAdapter extends BaseAdapter {
     public View getView(int arg0, View convertView, ViewGroup arg2) {
         final ViewHolder holderPattern;
 
-        LayoutInflater inflaterTemp = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflaterTemp = (LayoutInflater) context.getSystemService(Context
+                .LAYOUT_INFLATER_SERVICE);
         final View viewContent = inflaterTemp.inflate(R.layout.list_element_produto, null);
         ImageView img = null;
         if (convertView == null) {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context
+                    .LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.list_element_produto, null);
             holderPattern = new ViewHolder();
-            holderPattern.textViewSetCidade = (TextView) convertView.findViewById(R.id.textViewSetCidade);
-            holderPattern.textViewSetHoraPostagem = (TextView) convertView.findViewById(R.id.textViewSetHoraPostagem);
-            holderPattern.textViewSetNomeUsuario = (TextView) convertView.findViewById(R.id.textViewSetNomeUsuario);
-            holderPattern.textViewSetContato = (TextView) convertView.findViewById(R.id.textViewSetContato);
-            holderPattern.textViewSetPreco = (TextView) convertView.findViewById(R.id.textViewSetPreco);
-            holderPattern.textViewSetHashTags = (TextView) convertView.findViewById(R.id.textViewSetHashTags);
+            holderPattern.textViewSetCidade = (TextView) convertView.findViewById(R.id
+                    .textViewSetCidade);
+            holderPattern.textViewSetHoraPostagem = (TextView) convertView.findViewById(R.id
+                    .textViewSetHoraPostagem);
+            holderPattern.textViewSetNomeUsuario = (TextView) convertView.findViewById(R.id
+                    .textViewSetNomeUsuario);
+            holderPattern.textViewSetContato = (TextView) convertView.findViewById(R.id
+                    .textViewSetContato);
+            holderPattern.textViewSetPreco = (TextView) convertView.findViewById(R.id
+                    .textViewSetPreco);
+            holderPattern.textViewSetHashTags = (TextView) convertView.findViewById(R.id
+                    .textViewSetHashTags);
             holderPattern.textViewSetLikes = (TextView) convertView.findViewById(R.id.viewLike);
             holderPattern.fotoProduto = (ImageView) convertView.findViewById(R.id.imageView);
             holderPattern.likeButton = (ImageButton) convertView.findViewById(R.id.likeButton);
@@ -194,33 +204,41 @@ public class ProdutoAdapter extends BaseAdapter {
 
         //holderPattern.likeFrame.setVisibility(View.INVISIBLE);
         holderPattern.textViewSetCidade.setText("  em " + items.get(arg0).getCidade());
-        holderPattern.textViewSetHoraPostagem.setText(formartaStringData(items.get(arg0).getCreatedAt()));
-        holderPattern.textViewSetNomeUsuario.setText(" Anunciante: " + items.get(arg0).getAuthor().getUsername());
+        holderPattern.textViewSetHoraPostagem.setText(formartaStringData(items.get(arg0)
+                .getCreatedAt()));
+        holderPattern.textViewSetNomeUsuario.setText(" Anunciante: " + items.get(arg0).getAuthor
+                ().getUsername());
         holderPattern.textViewSetContato.setText(items.get(arg0).getPhoneNumber());
         holderPattern.textViewSetPreco.setText(items.get(arg0).getPrice());
 
 
         final Flag like = new Flag();
         like.quantidadeLikes = items.get(arg0).getAmoutOfLikes();
-        holderPattern.textViewSetLikes.setText(like.quantidadeLikes + ((like.quantidadeLikes > 1) ? " recomendações" : " recomendação"));
+        holderPattern.textViewSetLikes.setText(like.quantidadeLikes + ((like.quantidadeLikes > 1)
+                ? " recomendações" : " recomendação"));
         like.isLiked = items.get(arg0).isLikedByUser(ParseUser.getCurrentUser());
 
         final int arg = arg0;
-        holderPattern.likeButton.setImageResource(like.isLiked ? R.drawable.like_enable : R.drawable.like_disable);
+        holderPattern.likeButton.setImageResource(like.isLiked ? R.drawable.like_enable : R
+                .drawable.like_disable);
 
         holderPattern.likeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 items.get(arg).likeProduto(ParseUser.getCurrentUser(), like.isLiked);
-                holderPattern.likeButton.setImageResource(like.isLiked ? R.drawable.like_disable : R.drawable.like_enable);
+                holderPattern.likeButton.setImageResource(like.isLiked ? R.drawable.like_disable
+                        : R.drawable.like_enable);
 
-                like.quantidadeLikes = like.isLiked ? --like.quantidadeLikes : ++like.quantidadeLikes;
+                like.quantidadeLikes = like.isLiked ? --like.quantidadeLikes : ++like
+                        .quantidadeLikes;
                 Log.d("Quantidade likes: ", "" + like.quantidadeLikes);
-                holderPattern.textViewSetLikes.setText(like.quantidadeLikes + ((like.quantidadeLikes > 1) ? " recomendações" : " recomendação"));
+                holderPattern.textViewSetLikes.setText(like.quantidadeLikes + ((like
+                        .quantidadeLikes > 1) ? " recomendações" : " recomendação"));
 
                 if (!like.isLiked) {
-                    CustomToast.makeText(holderPattern.fotoProduto.getContext(), "", Toast.LENGTH_SHORT).show();
+                    CustomToast.makeText(holderPattern.fotoProduto.getContext(), "",
+                            Toast.LENGTH_SHORT).show();
                 }
                 like.isLiked = !like.isLiked;
 
@@ -233,14 +251,18 @@ public class ProdutoAdapter extends BaseAdapter {
             @Override
             public void onDoubleClick(View v) {
                 items.get(arg).likeProduto(ParseUser.getCurrentUser(), like.isLiked);
-                holderPattern.likeButton.setImageResource(like.isLiked ? R.drawable.like_disable : R.drawable.like_enable);
+                holderPattern.likeButton.setImageResource(like.isLiked ? R.drawable.like_disable
+                        : R.drawable.like_enable);
 
-                like.quantidadeLikes = like.isLiked ? --like.quantidadeLikes : ++like.quantidadeLikes;
+                like.quantidadeLikes = like.isLiked ? --like.quantidadeLikes : ++like
+                        .quantidadeLikes;
                 Log.d("Quantidade likes: ", "" + like.quantidadeLikes);
-                holderPattern.textViewSetLikes.setText(like.quantidadeLikes + ((like.quantidadeLikes > 1) ? " recomendações" : " recomendação"));
+                holderPattern.textViewSetLikes.setText(like.quantidadeLikes + ((like
+                        .quantidadeLikes > 1) ? " recomendações" : " recomendação"));
                 if (!like.isLiked) {
                     //ViewGroup viewGroup = (ViewGroup) viewContent.findViewById(R.id.layout_toast);
-                    CustomToast.makeText(holderPattern.fotoProduto.getContext(), "", Toast.LENGTH_SHORT).show();
+                    CustomToast.makeText(holderPattern.fotoProduto.getContext(), "",
+                            Toast.LENGTH_SHORT).show();
                    /* holderPattern.likeFrame.setVisibility(View.VISIBLE);
                     Runnable mRunnable;
                     Handler mHandler=new Handler();
@@ -250,8 +272,10 @@ public class ProdutoAdapter extends BaseAdapter {
                         @Override
                         public void run() {
                             // TODO Auto-generated method stub
-                            holderPattern.likeFrame.setVisibility(View.INVISIBLE); //If you want just hide the View. But it will retain space occupied by the View.
-                            holderPattern.likeFrame.setVisibility(View.GONE); //This will remove the View. and free s the space occupied by the View
+                            holderPattern.likeFrame.setVisibility(View.INVISIBLE); //If you want
+                            just hide the View. But it will retain space occupied by the View.
+                            holderPattern.likeFrame.setVisibility(View.GONE); //This will remove
+                            the View. and free s the space occupied by the View
                         }
                     };
                     mHandler.postDelayed(mRunnable,2*1000);*/
@@ -293,12 +317,17 @@ public class ProdutoAdapter extends BaseAdapter {
                         }
                     };
 
-                    ss.setSpan(clickableSpan1, 0, primeiro.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    ss.setSpan(clickableSpan2, primeiro.length() + 1, primeiro.length() + segundo.length() + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    ss.setSpan(clickableSpan3, primeiro.length() + segundo.length() + 2, saida.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    ss.setSpan(clickableSpan1, 0, primeiro.length(),
+                            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    ss.setSpan(clickableSpan2, primeiro.length() + 1,
+                            primeiro.length() + segundo.length() + 1,
+                            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    ss.setSpan(clickableSpan3, primeiro.length() + segundo.length() + 2,
+                            saida.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
                     holderPattern.textViewSetHashTags.setText(ss);
-                    holderPattern.textViewSetHashTags.setMovementMethod(LinkMovementMethod.getInstance());
+                    holderPattern.textViewSetHashTags.setMovementMethod(LinkMovementMethod
+                            .getInstance());
                 } else if (array.length == 2) {
                     final String primeiro = array[0];
                     final String segundo = array[1];
@@ -319,11 +348,15 @@ public class ProdutoAdapter extends BaseAdapter {
                         }
                     };
 
-                    ss.setSpan(clickableSpan1, 0, primeiro.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    ss.setSpan(clickableSpan2, primeiro.length() + 1, primeiro.length() + segundo.length() + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    ss.setSpan(clickableSpan1, 0, primeiro.length(),
+                            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    ss.setSpan(clickableSpan2, primeiro.length() + 1,
+                            primeiro.length() + segundo.length() + 1,
+                            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
                     holderPattern.textViewSetHashTags.setText(ss);
-                    holderPattern.textViewSetHashTags.setMovementMethod(LinkMovementMethod.getInstance());
+                    holderPattern.textViewSetHashTags.setMovementMethod(LinkMovementMethod
+                            .getInstance());
                 } else if (array.length == 1) {
                     final String saida = array[0];
 
@@ -339,7 +372,8 @@ public class ProdutoAdapter extends BaseAdapter {
                     ss.setSpan(clickableSpan1, 0, saida.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
                     holderPattern.textViewSetHashTags.setText(ss);
-                    holderPattern.textViewSetHashTags.setMovementMethod(LinkMovementMethod.getInstance());
+                    holderPattern.textViewSetHashTags.setMovementMethod(LinkMovementMethod
+                            .getInstance());
                 }
             } else {
                 if (array.length == 3) {
@@ -349,20 +383,23 @@ public class ProdutoAdapter extends BaseAdapter {
                     String saida = primeiro + " " + segundo + " " + terceiro;
 
                     holderPattern.textViewSetHashTags.setText(saida);
-                    holderPattern.textViewSetHashTags.setMovementMethod(LinkMovementMethod.getInstance());
+                    holderPattern.textViewSetHashTags.setMovementMethod(LinkMovementMethod
+                            .getInstance());
                 } else if (array.length == 2) {
                     final String primeiro = array[0];
                     final String segundo = array[1];
                     final String saida = primeiro + " " + segundo;
 
                     holderPattern.textViewSetHashTags.setText(saida);
-                    holderPattern.textViewSetHashTags.setMovementMethod(LinkMovementMethod.getInstance());
+                    holderPattern.textViewSetHashTags.setMovementMethod(LinkMovementMethod
+                            .getInstance());
                 } else if (array.length == 1) {
                     final String saida = array[0];
 
 
                     holderPattern.textViewSetHashTags.setText(saida);
-                    holderPattern.textViewSetHashTags.setMovementMethod(LinkMovementMethod.getInstance());
+                    holderPattern.textViewSetHashTags.setMovementMethod(LinkMovementMethod
+                            .getInstance());
                 }
             }
         } catch (Exception e) {
@@ -381,7 +418,8 @@ public class ProdutoAdapter extends BaseAdapter {
             minutoAdicionadoComZero = "" + data.getMinutes();
         }
 
-        return "" + data.getDate() + "/" + data.getMonth() + " às " + data.getHours() + ":" + minutoAdicionadoComZero + "h";
+        return "" + data.getDate() + "/" + data.getMonth() + " às " + data.getHours() + ":" +
+                minutoAdicionadoComZero + "h";
     }
 
     public void loadBitmap(ParseFile pf, ImageView imageView) {
@@ -456,7 +494,8 @@ public class ProdutoAdapter extends BaseAdapter {
                 return getBitmapFromMemCache(String.valueOf(params[0]));
             }
             try {
-                //bitmap  = BitmapFactory.decodeByteArray(params[0].getData(), 0, params[0].getData().length);
+                //bitmap  = BitmapFactory.decodeByteArray(params[0].getData(), 0,
+                // params[0].getData().length);
                 bitmap = decodeSampledBitmapFromResource(params[0], 650, 650);
             } catch (ParseException e1) {
                 e1.printStackTrace();

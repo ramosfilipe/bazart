@@ -80,13 +80,15 @@ public class HashtagActivity extends Activity implements OnFragmentInteractionLi
             public void done(List<Produto> parseObjects, com.parse.ParseException e) {
                 if (e == null) {
 
-                    ProdutoAdapter produtoAdapter = new ProdutoAdapter(getBaseContext(), parseObjects);
+                    ProdutoAdapter produtoAdapter = new ProdutoAdapter(getBaseContext(),
+                            parseObjects);
                     final ListView listaDeExibicao = (ListView) findViewById(R.id.listaCardsBusca);
                     if (listaDeExibicao != null) {
                         listaDeExibicao.setAdapter(produtoAdapter);
                     }
                     if (parseObjects.size() == 0) {
-                        Toast.makeText(getBaseContext(), "Não foi encontrado nenhum produto", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getBaseContext(), "Não foi encontrado nenhum produto",
+                                Toast.LENGTH_SHORT).show();
                     }
                 }
             }

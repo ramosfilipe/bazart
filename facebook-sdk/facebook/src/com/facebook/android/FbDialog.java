@@ -73,7 +73,8 @@ public class FbDialog extends WebDialog {
             if (error instanceof FacebookDialogException) {
                 FacebookDialogException facebookDialogException = (FacebookDialogException) error;
                 DialogError dialogError = new DialogError(facebookDialogException.getMessage(),
-                        facebookDialogException.getErrorCode(), facebookDialogException.getFailingUrl());
+                        facebookDialogException.getErrorCode(),
+                        facebookDialogException.getFailingUrl());
                 mListener.onError(dialogError);
             } else if (error instanceof FacebookOperationCanceledException) {
                 mListener.onCancel();

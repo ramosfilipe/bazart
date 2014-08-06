@@ -29,7 +29,8 @@ public class RecipientEntry {
     public static final int ENTRY_TYPE_SIZE = 1;
     /* package */static final int INVALID_CONTACT = -1;
     /**
-     * A GENERATED_CONTACT is one that was created based entirely on information passed in to the RecipientEntry from an
+     * A GENERATED_CONTACT is one that was created based entirely on information passed in to the
+     * RecipientEntry from an
      * external source that is not a real contact.
      */
 /* package */static final int GENERATED_CONTACT = -2;
@@ -39,7 +40,8 @@ public class RecipientEntry {
 /* package */static final int INVALID_DESTINATION_TYPE = -1;
     private final int mEntryType;
     /**
-     * True when this entry is the first entry in a group, which should have a photo and display name, while the second
+     * True when this entry is the first entry in a group, which should have a photo and display
+     * name, while the second
      * or later entries won't.
      */
     private final boolean mIsFirstLevel;
@@ -53,7 +55,8 @@ public class RecipientEntry {
      */
     private final int mDestinationType;
     /**
-     * Label of the destination which will be used when type was {@link Email#TYPE_CUSTOM}. Can be null when {@link #mDestinationType} is {@link #INVALID_DESTINATION_TYPE}.
+     * Label of the destination which will be used when type was {@link Email#TYPE_CUSTOM}. Can
+     * be null when {@link #mDestinationType} is {@link #INVALID_DESTINATION_TYPE}.
      */
     private final String mDestinationLabel;
     /**
@@ -69,11 +72,17 @@ public class RecipientEntry {
     private final boolean mIsValid;
     private final boolean mIsGalContact;
     /**
-     * This can be updated after this object being constructed, when the photo is fetched from remote directories.
+     * This can be updated after this object being constructed, when the photo is fetched from
+     * remote directories.
      */
     private byte[] mPhotoBytes;
 
-    private RecipientEntry(final int entryType, final String displayName, final String destination, final int destinationType, final String destinationLabel, final long contactId, final long dataId, final Uri photoThumbnailUri, final boolean isFirstLevel, final boolean isValid, final boolean isGalContact) {
+    private RecipientEntry(final int entryType, final String displayName,
+                           final String destination, final int destinationType,
+                           final String destinationLabel, final long contactId,
+                           final long dataId, final Uri photoThumbnailUri,
+                           final boolean isFirstLevel, final boolean isValid,
+                           final boolean isGalContact) {
         mEntryType = entryType;
         mIsFirstLevel = isFirstLevel;
         mDisplayName = displayName;
@@ -97,49 +106,97 @@ public class RecipientEntry {
     }
 
     /**
-     * Construct a RecipientEntry from just an address that has been entered. This address has not been resolved to a
+     * Construct a RecipientEntry from just an address that has been entered. This address has
+     * not been resolved to a
      * contact and therefore does not have a contact id or photo.
      */
     public static RecipientEntry constructFakeEntry(final String address, final boolean isValid) {
         final Rfc822Token[] tokens = Rfc822Tokenizer.tokenize(address);
         final String tokenizedAddress = tokens.length > 0 ? tokens[0].getAddress() : address;
-        return new RecipientEntry(ENTRY_TYPE_PERSON, tokenizedAddress, tokenizedAddress, INVALID_DESTINATION_TYPE, null, INVALID_CONTACT, INVALID_CONTACT, null, true, isValid, false /* isGalContact */);
+        return new RecipientEntry(ENTRY_TYPE_PERSON, tokenizedAddress, tokenizedAddress,
+                INVALID_DESTINATION_TYPE, null, INVALID_CONTACT, INVALID_CONTACT, null, true,
+                isValid, false /* isGalContact */);
     }
 
     /**
      * Construct a RecipientEntry from just a phone number.
      */
-    public static RecipientEntry constructFakePhoneEntry(final String phoneNumber, final boolean isValid) {
-        return new RecipientEntry(ENTRY_TYPE_PERSON, phoneNumber, phoneNumber, INVALID_DESTINATION_TYPE, null, INVALID_CONTACT, INVALID_CONTACT, null, true, isValid, false /* isGalContact */);
+    public static RecipientEntry constructFakePhoneEntry(final String phoneNumber,
+                                                         final boolean isValid) {
+        return new RecipientEntry(ENTRY_TYPE_PERSON, phoneNumber, phoneNumber,
+                INVALID_DESTINATION_TYPE, null, INVALID_CONTACT, INVALID_CONTACT, null, true,
+                isValid, false /* isGalContact */);
     }
 
     /**
-     * @return the display name for the entry. If the display name source is larger than {@link DisplayNameSources#PHONE} we use the contact's display name, but if not, i.e. the display name
-     * came from an email address or a phone number, we don't use it to avoid confusion and just use the
+     * @return the display name for the entry. If the display name source is larger than {@link
+     * DisplayNameSources#PHONE} we use the contact's display name, but if not,
+     * i.e. the display name
+     * came from an email address or a phone number, we don't use it to avoid confusion and just
+     * use the
      * destination instead.
      */
-    private static String pickDisplayName(final int displayNameSource, final String displayName, final String destination) {
+    private static String pickDisplayName(final int displayNameSource, final String displayName,
+                                          final String destination) {
         return displayNameSource > DisplayNameSources.PHONE ? displayName : destination;
     }
 
     /**
-     * Construct a RecipientEntry from just an address that has been entered with both an associated display name. This
+     * Construct a RecipientEntry from just an address that has been entered with both an
+     * associated display name. This
      * address has not been resolved to a contact and therefore does not have a contact id or photo.
      */
-    public static RecipientEntry constructGeneratedEntry(final String display, final String address, final boolean isValid) {
-        return new RecipientEntry(ENTRY_TYPE_PERSON, display, address, INVALID_DESTINATION_TYPE, null, GENERATED_CONTACT, GENERATED_CONTACT, null, true, isValid, false /* isGalContact */);
+    public static RecipientEntry constructGeneratedEntry(final String display,
+                                                         final String address,
+                                                         final boolean isValid) {
+        return new RecipientEntry(ENTRY_TYPE_PERSON, display, address, INVALID_DESTINATION_TYPE,
+                null, GENERATED_CONTACT, GENERATED_CONTACT, null, true, isValid,
+                false /* isGalContact */);
     }
 
-    public static RecipientEntry constructTopLevelEntry(final String displayName, final int displayNameSource, final String destination, final int destinationType, final String destinationLabel, final long contactId, final long dataId, final Uri photoThumbnailUri, final boolean isValid, final boolean isGalContact) {
-        return new RecipientEntry(ENTRY_TYPE_PERSON, pickDisplayName(displayNameSource, displayName, destination), destination, destinationType, destinationLabel, contactId, dataId, photoThumbnailUri, true, isValid, isGalContact);
+    public static RecipientEntry constructTopLevelEntry(final String displayName,
+                                                        final int displayNameSource,
+                                                        final String destination,
+                                                        final int destinationType,
+                                                        final String destinationLabel,
+                                                        final long contactId, final long dataId,
+                                                        final Uri photoThumbnailUri,
+                                                        final boolean isValid,
+                                                        final boolean isGalContact) {
+        return new RecipientEntry(ENTRY_TYPE_PERSON, pickDisplayName(displayNameSource,
+                displayName, destination), destination, destinationType, destinationLabel,
+                contactId, dataId, photoThumbnailUri, true, isValid, isGalContact);
     }
 
-    public static RecipientEntry constructTopLevelEntry(final String displayName, final int displayNameSource, final String destination, final int destinationType, final String destinationLabel, final long contactId, final long dataId, final String thumbnailUriAsString, final boolean isValid, final boolean isGalContact) {
-        return new RecipientEntry(ENTRY_TYPE_PERSON, pickDisplayName(displayNameSource, displayName, destination), destination, destinationType, destinationLabel, contactId, dataId, thumbnailUriAsString != null ? Uri.parse(thumbnailUriAsString) : null, true, isValid, isGalContact);
+    public static RecipientEntry constructTopLevelEntry(final String displayName,
+                                                        final int displayNameSource,
+                                                        final String destination,
+                                                        final int destinationType,
+                                                        final String destinationLabel,
+                                                        final long contactId, final long dataId,
+                                                        final String thumbnailUriAsString,
+                                                        final boolean isValid,
+                                                        final boolean isGalContact) {
+        return new RecipientEntry(ENTRY_TYPE_PERSON, pickDisplayName(displayNameSource,
+                displayName, destination), destination, destinationType, destinationLabel,
+                contactId, dataId, thumbnailUriAsString != null ? Uri.parse(thumbnailUriAsString)
+                : null, true, isValid, isGalContact);
     }
 
-    public static RecipientEntry constructSecondLevelEntry(final String displayName, final int displayNameSource, final String destination, final int destinationType, final String destinationLabel, final long contactId, final long dataId, final String thumbnailUriAsString, final boolean isValid, final boolean isGalContact) {
-        return new RecipientEntry(ENTRY_TYPE_PERSON, pickDisplayName(displayNameSource, displayName, destination), destination, destinationType, destinationLabel, contactId, dataId, thumbnailUriAsString != null ? Uri.parse(thumbnailUriAsString) : null, false, isValid, isGalContact);
+    public static RecipientEntry constructSecondLevelEntry(final String displayName,
+                                                           final int displayNameSource,
+                                                           final String destination,
+                                                           final int destinationType,
+                                                           final String destinationLabel,
+                                                           final long contactId,
+                                                           final long dataId,
+                                                           final String thumbnailUriAsString,
+                                                           final boolean isValid,
+                                                           final boolean isGalContact) {
+        return new RecipientEntry(ENTRY_TYPE_PERSON, pickDisplayName(displayNameSource,
+                displayName, destination), destination, destinationType, destinationLabel,
+                contactId, dataId, thumbnailUriAsString != null ? Uri.parse(thumbnailUriAsString)
+                : null, false, isValid, isGalContact);
     }
 
     public boolean isValid() {
@@ -154,7 +211,8 @@ public class RecipientEntry {
     @Override
     public boolean equals(final Object o) {
         final RecipientEntry other = (RecipientEntry) o;
-        return o != null && mDestination.equals(other.mDestination) && mContactId == other.mContactId;
+        return o != null && mDestination.equals(other.mDestination) && mContactId == other
+                .mContactId;
     }
 
     public int getEntryType() {

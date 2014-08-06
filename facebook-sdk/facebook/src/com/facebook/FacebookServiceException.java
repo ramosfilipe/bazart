@@ -35,7 +35,8 @@ public class FacebookServiceException extends FacebookException {
     }
 
     /**
-     * Returns an object that encapsulates complete information representing the error returned by Facebook.
+     * Returns an object that encapsulates complete information representing the error returned
+     * by Facebook.
      *
      * @return complete information representing the error.
      */

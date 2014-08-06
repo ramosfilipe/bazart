@@ -36,18 +36,25 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * <p>This class works in conjunction with {@link NativeAppCallContentProvider} to allow apps to attach binary
- * attachments (e.g., images) to native dialogs launched via the {@link com.facebook.widget.FacebookDialog}
- * class. It stores attachments in temporary files and allows the Facebook application to retrieve them via
+ * <p>This class works in conjunction with {@link NativeAppCallContentProvider} to allow apps to
+ * attach binary
+ * attachments (e.g., images) to native dialogs launched via the {@link com.facebook.widget
+ * .FacebookDialog}
+ * class. It stores attachments in temporary files and allows the Facebook application to
+ * retrieve them via
  * the content provider.</p>
  * <p/>
  * <p>Callers are generally not expected to need to use this class directly;
- * see {@link com.facebook.widget.FacebookDialog.OpenGraphActionDialogBuilder#setImageAttachmentsForObject(String,
- * java.util.List) OpenGraphActionDialogBuilder.setImageAttachmentsForObject} for an example of a function
- * that will accept attachments, attach them to the native dialog call, and add them to the content provider
+ * see {@link com.facebook.widget.FacebookDialog
+ * .OpenGraphActionDialogBuilder#setImageAttachmentsForObject(String,
+ * java.util.List) OpenGraphActionDialogBuilder.setImageAttachmentsForObject} for an example of a
+ * function
+ * that will accept attachments, attach them to the native dialog call,
+ * and add them to the content provider
  * automatically.</p>
  */
-public final class NativeAppCallAttachmentStore implements NativeAppCallContentProvider.AttachmentDataSource {
+public final class NativeAppCallAttachmentStore implements NativeAppCallContentProvider
+        .AttachmentDataSource {
     static final String ATTACHMENTS_DIR_NAME = "com.facebook.NativeAppCallAttachmentStore.files";
     private static final String TAG = NativeAppCallAttachmentStore.class.getName();
     private static File attachmentsDirectory;
@@ -60,16 +67,19 @@ public final class NativeAppCallAttachmentStore implements NativeAppCallContentP
     }
 
     /**
-     * Adds a number of bitmap attachments associated with a native app call. The attachments will be
+     * Adds a number of bitmap attachments associated with a native app call. The attachments
+     * will be
      * served via {@link NativeAppCallContentProvider#openFile(android.net.Uri, String) openFile}.
      *
      * @param context          the Context the call is being made from
      * @param callId           the unique ID of the call
-     * @param imageAttachments a Map of attachment names to Bitmaps; the attachment names will be part of
+     * @param imageAttachments a Map of attachment names to Bitmaps; the attachment names will be
+     *                         part of
      *                         the URI processed by openFile
      * @throws java.io.IOException
      */
-    public void addAttachmentsForCall(Context context, UUID callId, Map<String, Bitmap> imageAttachments) {
+    public void addAttachmentsForCall(Context context, UUID callId, Map<String,
+            Bitmap> imageAttachments) {
         Validate.notNull(context, "context");
         Validate.notNull(callId, "callId");
         Validate.containsNoNulls(imageAttachments.values(), "imageAttachments");
@@ -89,16 +99,19 @@ public final class NativeAppCallAttachmentStore implements NativeAppCallContentP
     }
 
     /**
-     * Adds a number of bitmap attachment files associated with a native app call. The attachments will be
+     * Adds a number of bitmap attachment files associated with a native app call. The
+     * attachments will be
      * served via {@link NativeAppCallContentProvider#openFile(android.net.Uri, String) openFile}.
      *
      * @param context          the Context the call is being made from
      * @param callId           the unique ID of the call
-     * @param imageAttachments a Map of attachment names to Files containing the bitmaps; the attachment names will be
+     * @param imageAttachments a Map of attachment names to Files containing the bitmaps; the
+     *                         attachment names will be
      *                         part of the URI processed by openFile
      * @throws java.io.IOException
      */
-    public void addAttachmentFilesForCall(Context context, UUID callId, Map<String, File> imageAttachmentFiles) {
+    public void addAttachmentFilesForCall(Context context, UUID callId, Map<String,
+            File> imageAttachmentFiles) {
         Validate.notNull(context, "context");
         Validate.notNull(callId, "callId");
         Validate.containsNoNulls(imageAttachmentFiles.values(), "imageAttachmentFiles");
@@ -185,7 +198,8 @@ public final class NativeAppCallAttachmentStore implements NativeAppCallContentP
         try {
             return getAttachmentFile(callId, attachmentName, false);
         } catch (IOException e) {
-            // We don't try to create the file, so we shouldn't get any IOExceptions. But if we do, just
+            // We don't try to create the file, so we shouldn't get any IOExceptions. But if we
+            // do, just
             // act like the file wasn't found.
             throw new FileNotFoundException();
         }
@@ -209,7 +223,8 @@ public final class NativeAppCallAttachmentStore implements NativeAppCallContentP
         return dir;
     }
 
-    File getAttachmentFile(UUID callId, String attachmentName, boolean createDirs) throws IOException {
+    File getAttachmentFile(UUID callId, String attachmentName, boolean createDirs) throws
+            IOException {
         File dir = getAttachmentsDirectoryForCall(callId, createDirs);
         if (dir == null) {
             return null;
@@ -223,7 +238,8 @@ public final class NativeAppCallAttachmentStore implements NativeAppCallContentP
     }
 
     void cleanupAllAttachments(Context context) {
-        // Attachments directory may or may not exist; we won't create it if not, since we are just going to delete it.
+        // Attachments directory may or may not exist; we won't create it if not,
+        // since we are just going to delete it.
         File dir = getAttachmentsDirectory(context);
         Utility.deleteDirectory(dir);
     }

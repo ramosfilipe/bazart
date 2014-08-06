@@ -35,11 +35,13 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * This class represents an access token returned by the Facebook Login service, along with associated
+ * This class represents an access token returned by the Facebook Login service,
+ * along with associated
  * metadata such as its expiration date and permissions. In general, the {@link Session} class will
  * abstract away the need to worry about the details of an access token, but there are situations
  * (such as handling native links, importing previously-obtained access tokens, etc.) where it is
- * useful to deal with access tokens directly. Factory methods are provided to construct access tokens.
+ * useful to deal with access tokens directly. Factory methods are provided to construct access
+ * tokens.
  * <p/>
  * For more information on access tokens, see
  * <a href="https://developers.facebook.com/docs/facebook-login/access-tokens/">Access Tokens</a>.
@@ -53,7 +55,8 @@ public final class AccessToken implements Serializable {
     private static final Date MAX_DATE = new Date(Long.MAX_VALUE);
     private static final Date DEFAULT_EXPIRATION_TIME = MAX_DATE;
     private static final Date DEFAULT_LAST_REFRESH_TIME = new Date();
-    private static final AccessTokenSource DEFAULT_ACCESS_TOKEN_SOURCE = AccessTokenSource.FACEBOOK_APPLICATION_WEB;
+    private static final AccessTokenSource DEFAULT_ACCESS_TOKEN_SOURCE = AccessTokenSource
+            .FACEBOOK_APPLICATION_WEB;
     private final Date expires;
     private final List<String> permissions;
     private final List<String> declinedPermissions;
@@ -61,7 +64,8 @@ public final class AccessToken implements Serializable {
     private final AccessTokenSource source;
     private final Date lastRefresh;
 
-    AccessToken(String token, Date expires, List<String> permissions, List<String> declinedPermissions, AccessTokenSource source, Date lastRefresh) {
+    AccessToken(String token, Date expires, List<String> permissions,
+                List<String> declinedPermissions, AccessTokenSource source, Date lastRefresh) {
         if (permissions == null) {
             permissions = Collections.emptyList();
         }
@@ -79,23 +83,31 @@ public final class AccessToken implements Serializable {
 
     /**
      * Creates a new AccessToken using the supplied information from a previously-obtained access
-     * token (for instance, from an already-cached access token obtained prior to integration with the
+     * token (for instance, from an already-cached access token obtained prior to integration
+     * with the
      * Facebook SDK).
      *
      * @param accessToken       the access token string obtained from Facebook
-     * @param expirationTime    the expiration date associated with the token; if null, an infinite expiration time is
+     * @param expirationTime    the expiration date associated with the token; if null,
+     *                          an infinite expiration time is
      *                          assumed (but will become correct when the token is refreshed)
-     * @param lastRefreshTime   the last time the token was refreshed (or when it was first obtained); if null,
+     * @param lastRefreshTime   the last time the token was refreshed (or when it was first
+     *                          obtained); if null,
      *                          the current time is used.
-     * @param accessTokenSource an enum indicating how the token was originally obtained (in most cases,
+     * @param accessTokenSource an enum indicating how the token was originally obtained (in most
+     *                          cases,
      *                          this will be either AccessTokenSource.FACEBOOK_APPLICATION or
-     *                          AccessTokenSource.WEB_VIEW); if null, FACEBOOK_APPLICATION is assumed.
-     * @param permissions       the permissions that were requested when the token was obtained (or when
+     *                          AccessTokenSource.WEB_VIEW); if null,
+     *                          FACEBOOK_APPLICATION is assumed.
+     * @param permissions       the permissions that were requested when the token was obtained
+     *                          (or when
      *                          it was last reauthorized); may be null if permission set is unknown
      * @return a new AccessToken
      */
     public static AccessToken createFromExistingAccessToken(String accessToken, Date expirationTime,
-                                                            Date lastRefreshTime, AccessTokenSource accessTokenSource, List<String> permissions) {
+                                                            Date lastRefreshTime,
+                                                            AccessTokenSource accessTokenSource,
+                                                            List<String> permissions) {
         if (expirationTime == null) {
             expirationTime = DEFAULT_EXPIRATION_TIME;
         }
@@ -106,12 +118,15 @@ public final class AccessToken implements Serializable {
             accessTokenSource = DEFAULT_ACCESS_TOKEN_SOURCE;
         }
 
-        return new AccessToken(accessToken, expirationTime, permissions, null, accessTokenSource, lastRefreshTime);
+        return new AccessToken(accessToken, expirationTime, permissions, null, accessTokenSource,
+                lastRefreshTime);
     }
 
     /**
-     * Creates a new AccessToken using the information contained in an Intent populated by the Facebook
-     * application in order to launch a native link. For more information on native linking, please see
+     * Creates a new AccessToken using the information contained in an Intent populated by the
+     * Facebook
+     * application in order to launch a native link. For more information on native linking,
+     * please see
      * https://developers.facebook.com/docs/mobile/android/deep_linking/.
      *
      * @param intent the Intent that was used to start an Activity; must not be null
@@ -124,16 +139,20 @@ public final class AccessToken implements Serializable {
             return null;
         }
 
-        return createFromBundle(null, intent.getExtras(), AccessTokenSource.FACEBOOK_APPLICATION_WEB, new Date());
+        return createFromBundle(null, intent.getExtras(),
+                AccessTokenSource.FACEBOOK_APPLICATION_WEB, new Date());
     }
 
     static AccessToken createEmptyToken() {
-        return new AccessToken("", ALREADY_EXPIRED_EXPIRATION_TIME, null, null, AccessTokenSource.NONE,
+        return new AccessToken("", ALREADY_EXPIRED_EXPIRATION_TIME, null, null,
+                AccessTokenSource.NONE,
                 DEFAULT_LAST_REFRESH_TIME);
     }
 
-    static AccessToken createFromString(String token, List<String> permissions, AccessTokenSource source) {
-        return new AccessToken(token, DEFAULT_EXPIRATION_TIME, permissions, null, source, DEFAULT_LAST_REFRESH_TIME);
+    static AccessToken createFromString(String token, List<String> permissions,
+                                        AccessTokenSource source) {
+        return new AccessToken(token, DEFAULT_EXPIRATION_TIME, permissions, null, source,
+                DEFAULT_LAST_REFRESH_TIME);
     }
 
     static AccessToken createFromNativeLogin(Bundle bundle, AccessTokenSource source) {
@@ -145,19 +164,23 @@ public final class AccessToken implements Serializable {
         return createNew(permissions, null, token, expires, source);
     }
 
-    static AccessToken createFromWebBundle(List<String> requestedPermissions, Bundle bundle, AccessTokenSource source) {
+    static AccessToken createFromWebBundle(List<String> requestedPermissions, Bundle bundle,
+                                           AccessTokenSource source) {
         Date expires = getBundleLongAsDate(bundle, EXPIRES_IN_KEY, new Date());
         String token = bundle.getString(ACCESS_TOKEN_KEY);
 
-        // With Login v4, we now get back the actual permissions granted, so update the permissions to be the real thing
+        // With Login v4, we now get back the actual permissions granted,
+        // so update the permissions to be the real thing
         String grantedPermissions = bundle.getString("granted_scopes");
         if (!Utility.isNullOrEmpty(grantedPermissions)) {
-            requestedPermissions = new ArrayList<String>(Arrays.asList(grantedPermissions.split(",")));
+            requestedPermissions = new ArrayList<String>(Arrays.asList(grantedPermissions.split
+                    (",")));
         }
         String deniedPermissions = bundle.getString("denied_scopes");
         List<String> declinedPermissions = null;
         if (!Utility.isNullOrEmpty(deniedPermissions)) {
-            declinedPermissions = new ArrayList<String>(Arrays.asList(deniedPermissions.split(",")));
+            declinedPermissions = new ArrayList<String>(Arrays.asList(deniedPermissions.split("," +
+                    "")));
         }
 
         return createNew(requestedPermissions, declinedPermissions, token, expires, source);
@@ -165,7 +188,8 @@ public final class AccessToken implements Serializable {
 
     @SuppressLint("FieldGetter")
     static AccessToken createFromRefresh(AccessToken current, Bundle bundle) {
-        // Only tokens obtained via SSO support refresh. Token refresh returns the expiration date in
+        // Only tokens obtained via SSO support refresh. Token refresh returns the expiration
+        // date in
         // seconds from the epoch rather than seconds from now.
         assert (current.source == AccessTokenSource.FACEBOOK_APPLICATION_WEB ||
                 current.source == AccessTokenSource.FACEBOOK_APPLICATION_NATIVE ||
@@ -174,14 +198,16 @@ public final class AccessToken implements Serializable {
         Date expires = getBundleLongAsDate(bundle, EXPIRES_IN_KEY, new Date(0));
         String token = bundle.getString(ACCESS_TOKEN_KEY);
 
-        return createNew(current.getPermissions(), current.getDeclinedPermissions(), token, expires, current.source);
+        return createNew(current.getPermissions(), current.getDeclinedPermissions(), token,
+                expires, current.source);
     }
 
     static AccessToken createFromTokenWithRefreshedPermissions(
             AccessToken token,
             List<String> grantedPermissions,
             List<String> declinedPermissions) {
-        return new AccessToken(token.token, token.expires, grantedPermissions, declinedPermissions, token.source, token.lastRefresh);
+        return new AccessToken(token.token, token.expires, grantedPermissions,
+                declinedPermissions, token.source, token.lastRefresh);
     }
 
     private static AccessToken createNew(
@@ -192,15 +218,19 @@ public final class AccessToken implements Serializable {
         if (Utility.isNullOrEmpty(accessToken) || (expires == null)) {
             return createEmptyToken();
         } else {
-            return new AccessToken(accessToken, expires, grantedPermissions, declinedPermissions, source, new Date());
+            return new AccessToken(accessToken, expires, grantedPermissions, declinedPermissions,
+                    source, new Date());
         }
     }
 
     static AccessToken createFromCache(Bundle bundle) {
-        List<String> permissions = getPermissionsFromBundle(bundle, TokenCachingStrategy.PERMISSIONS_KEY);
-        List<String> declinedPermissions = getPermissionsFromBundle(bundle, TokenCachingStrategy.DECLINED_PERMISSIONS_KEY);
+        List<String> permissions = getPermissionsFromBundle(bundle,
+                TokenCachingStrategy.PERMISSIONS_KEY);
+        List<String> declinedPermissions = getPermissionsFromBundle(bundle,
+                TokenCachingStrategy.DECLINED_PERMISSIONS_KEY);
 
-        return new AccessToken(bundle.getString(TokenCachingStrategy.TOKEN_KEY), TokenCachingStrategy.getDate(bundle,
+        return new AccessToken(bundle.getString(TokenCachingStrategy.TOKEN_KEY),
+                TokenCachingStrategy.getDate(bundle,
                 TokenCachingStrategy.EXPIRATION_DATE_KEY), permissions, declinedPermissions,
                 TokenCachingStrategy.getSource(bundle),
                 TokenCachingStrategy.getDate(bundle, TokenCachingStrategy.LAST_REFRESH_DATE_KEY)
@@ -281,18 +311,23 @@ public final class AccessToken implements Serializable {
      * Gets the list of permissions associated with this access token. Note that the most up-to-date
      * list of permissions is maintained by the Facebook service, so this list may be outdated if
      * permissions have been added or removed since the time the AccessToken object was created. For
-     * more information on permissions, see https://developers.facebook.com/docs/reference/login/#permissions.
+     * more information on permissions, see https://developers.facebook
+     * .com/docs/reference/login/#permissions.
      *
-     * @return a read-only list of strings representing the permissions granted via this access token
+     * @return a read-only list of strings representing the permissions granted via this access
+     * token
      */
     public List<String> getPermissions() {
         return this.permissions;
     }
 
     /**
-     * Gets the list of permissions declined by the user with this access token.  It represents the entire set
-     * of permissions that have been requested and declined.  Note that the most up-to-date list of permissions is
-     * maintained by the Facebook service, so this list may be outdated if permissions have been granted or declined
+     * Gets the list of permissions declined by the user with this access token.  It represents
+     * the entire set
+     * of permissions that have been requested and declined.  Note that the most up-to-date list
+     * of permissions is
+     * maintained by the Facebook service, so this list may be outdated if permissions have been
+     * granted or declined
      * since the last time an AccessToken object was created.
      *
      * @return a read-only list of strings representing the permissions declined by the user
@@ -337,10 +372,13 @@ public final class AccessToken implements Serializable {
 
         bundle.putString(TokenCachingStrategy.TOKEN_KEY, this.token);
         TokenCachingStrategy.putDate(bundle, TokenCachingStrategy.EXPIRATION_DATE_KEY, expires);
-        bundle.putStringArrayList(TokenCachingStrategy.PERMISSIONS_KEY, new ArrayList<String>(permissions));
-        bundle.putStringArrayList(TokenCachingStrategy.DECLINED_PERMISSIONS_KEY, new ArrayList<String>(declinedPermissions));
+        bundle.putStringArrayList(TokenCachingStrategy.PERMISSIONS_KEY,
+                new ArrayList<String>(permissions));
+        bundle.putStringArrayList(TokenCachingStrategy.DECLINED_PERMISSIONS_KEY,
+                new ArrayList<String>(declinedPermissions));
         bundle.putSerializable(TokenCachingStrategy.TOKEN_SOURCE_KEY, source);
-        TokenCachingStrategy.putDate(bundle, TokenCachingStrategy.LAST_REFRESH_DATE_KEY, lastRefresh);
+        TokenCachingStrategy.putDate(bundle, TokenCachingStrategy.LAST_REFRESH_DATE_KEY,
+                lastRefresh);
 
         return bundle;
     }
@@ -371,7 +409,8 @@ public final class AccessToken implements Serializable {
     }
 
     private Object writeReplace() {
-        return new SerializationProxyV2(token, expires, permissions, declinedPermissions, source, lastRefresh);
+        return new SerializationProxyV2(token, expires, permissions, declinedPermissions, source,
+                lastRefresh);
     }
 
     // have a readObject that throws to prevent spoofing
@@ -388,7 +427,8 @@ public final class AccessToken implements Serializable {
         private final Date lastRefresh;
 
         private SerializationProxyV1(String token, Date expires,
-                                     List<String> permissions, AccessTokenSource source, Date lastRefresh) {
+                                     List<String> permissions, AccessTokenSource source,
+                                     Date lastRefresh) {
             this.expires = expires;
             this.permissions = permissions;
             this.token = token;
@@ -422,7 +462,8 @@ public final class AccessToken implements Serializable {
         }
 
         private Object readResolve() {
-            return new AccessToken(token, expires, permissions, declinedPermissions, source, lastRefresh);
+            return new AccessToken(token, expires, permissions, declinedPermissions, source,
+                    lastRefresh);
         }
     }
 }

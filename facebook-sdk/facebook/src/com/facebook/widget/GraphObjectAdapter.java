@@ -77,7 +77,8 @@ class GraphObjectAdapter<T extends GraphObject> extends BaseAdapter implements S
     private DataNeededListener dataNeededListener;
     private GraphObjectCursor<T> cursor;
     private Context context;
-    private Map<String, ImageResponse> prefetchedPictureCache = new HashMap<String, ImageResponse>();
+    private Map<String, ImageResponse> prefetchedPictureCache = new HashMap<String,
+            ImageResponse>();
     private ArrayList<String> prefetchedProfilePictureIds = new ArrayList<String>();
     private OnErrorListener onErrorListener;
 
@@ -86,7 +87,8 @@ class GraphObjectAdapter<T extends GraphObject> extends BaseAdapter implements S
         this.inflater = LayoutInflater.from(context);
     }
 
-    private static int compareGraphObjects(GraphObject a, GraphObject b, Collection<String> sortFields,
+    private static int compareGraphObjects(GraphObject a, GraphObject b,
+                                           Collection<String> sortFields,
                                            Collator collator) {
         for (String sortField : sortFields) {
             String sa = (String) a.getProperty(sortField);
@@ -222,7 +224,8 @@ class GraphObjectAdapter<T extends GraphObject> extends BaseAdapter implements S
             URI uri = getPictureUriOfGraphObject(graphObject);
             final String id = getIdOfGraphObject(graphObject);
 
-            // This URL already have been requested for pre-fetching, but we want to act in an LRU manner, so move
+            // This URL already have been requested for pre-fetching,
+            // but we want to act in an LRU manner, so move
             // it to the end of the list regardless.
             boolean alreadyPrefetching = prefetchedProfilePictureIds.remove(id);
             prefetchedProfilePictureIds.add(id);
@@ -261,7 +264,8 @@ class GraphObjectAdapter<T extends GraphObject> extends BaseAdapter implements S
         if (o instanceof String) {
             uri = (String) o;
         } else if (o instanceof JSONObject) {
-            ItemPicture itemPicture = GraphObject.Factory.create((JSONObject) o).cast(ItemPicture.class);
+            ItemPicture itemPicture = GraphObject.Factory.create((JSONObject) o).cast(ItemPicture
+                    .class);
             ItemPictureData data = itemPicture.getData();
             if (data != null) {
                 uri = data.getUrl();
@@ -281,7 +285,8 @@ class GraphObjectAdapter<T extends GraphObject> extends BaseAdapter implements S
         TextView result = (TextView) convertView;
 
         if (result == null) {
-            result = (TextView) inflater.inflate(R.layout.com_facebook_picker_list_section_header, null);
+            result = (TextView) inflater.inflate(R.layout
+                    .com_facebook_picker_list_section_header, null);
         }
 
         result.setText(sectionHeader);
@@ -306,7 +311,8 @@ class GraphObjectAdapter<T extends GraphObject> extends BaseAdapter implements S
         if (result == null) {
             result = inflater.inflate(R.layout.com_facebook_picker_activity_circle_row, null);
         }
-        ProgressBar activityCircle = (ProgressBar) result.findViewById(R.id.com_facebook_picker_row_activity_circle);
+        ProgressBar activityCircle = (ProgressBar) result.findViewById(R.id
+                .com_facebook_picker_row_activity_circle);
         activityCircle.setVisibility(View.VISIBLE);
 
         return result;
@@ -323,7 +329,8 @@ class GraphObjectAdapter<T extends GraphObject> extends BaseAdapter implements S
     protected View createGraphObjectView(T graphObject) {
         View result = inflater.inflate(getGraphObjectRowLayoutId(graphObject), null);
 
-        ViewStub checkboxStub = (ViewStub) result.findViewById(R.id.com_facebook_picker_checkbox_stub);
+        ViewStub checkboxStub = (ViewStub) result.findViewById(R.id
+                .com_facebook_picker_checkbox_stub);
         if (checkboxStub != null) {
             if (!getShowCheckbox()) {
                 checkboxStub.setVisibility(View.GONE);
@@ -333,7 +340,8 @@ class GraphObjectAdapter<T extends GraphObject> extends BaseAdapter implements S
             }
         }
 
-        ViewStub profilePicStub = (ViewStub) result.findViewById(R.id.com_facebook_picker_profile_pic_stub);
+        ViewStub profilePicStub = (ViewStub) result.findViewById(R.id
+                .com_facebook_picker_profile_pic_stub);
         if (!getShowPicture()) {
             profilePicStub.setVisibility(View.GONE);
         } else {
@@ -374,7 +382,8 @@ class GraphObjectAdapter<T extends GraphObject> extends BaseAdapter implements S
             URI pictureURI = getPictureUriOfGraphObject(graphObject);
 
             if (pictureURI != null) {
-                ImageView profilePic = (ImageView) view.findViewById(R.id.com_facebook_picker_image);
+                ImageView profilePic = (ImageView) view.findViewById(R.id
+                        .com_facebook_picker_image);
 
                 // See if we have already pre-fetched this; if not, download it.
                 if (prefetchedPictureCache.containsKey(id)) {
@@ -431,13 +440,15 @@ class GraphObjectAdapter<T extends GraphObject> extends BaseAdapter implements S
 
         // Note: these dimensions are in pixels, not dips
         ViewGroup.LayoutParams layoutParams = picture.getLayoutParams();
-        return String.format(Locale.US, "picture.height(%d).width(%d)", layoutParams.height, layoutParams.width);
+        return String.format(Locale.US, "picture.height(%d).width(%d)", layoutParams.height,
+                layoutParams.width);
     }
 
     private boolean shouldShowActivityCircleCell() {
         // We show the "more data" activity circle cell if we have a listener to request more data,
         // we are expecting more data, and we have some data already (i.e., not on a fresh query).
-        return (cursor != null) && cursor.areMoreObjectsAvailable() && (dataNeededListener != null) && !isEmpty();
+        return (cursor != null) && cursor.areMoreObjectsAvailable() && (dataNeededListener !=
+                null) && !isEmpty();
     }
 
     private void rebuildSections() {
@@ -502,14 +513,17 @@ class GraphObjectAdapter<T extends GraphObject> extends BaseAdapter implements S
             if (position >= 0 && position < section.size()) {
                 graphObject = graphObjectsBySection.get(sectionKey).get(position);
             } else {
-                // We are off the end; we must be adding an activity circle to indicate more data is coming.
+                // We are off the end; we must be adding an activity circle to indicate more data
+                // is coming.
                 assert dataNeededListener != null && cursor.areMoreObjectsAvailable();
                 // We return null for both to indicate this.
                 return new SectionAndItem<T>(null, null);
             }
         } else {
-            // Count through the sections; the "0" position in each section is the header. We decrement
-            // position each time we skip forward a certain number of elements, including the header.
+            // Count through the sections; the "0" position in each section is the header. We
+            // decrement
+            // position each time we skip forward a certain number of elements,
+            // including the header.
             for (String key : sectionKeys) {
                 // Decrement if we skip over the header
                 if (position-- == 0) {
@@ -519,7 +533,8 @@ class GraphObjectAdapter<T extends GraphObject> extends BaseAdapter implements S
 
                 List<T> section = graphObjectsBySection.get(key);
                 if (position < section.size()) {
-                    // The position is somewhere in this section. Get the corresponding graph object.
+                    // The position is somewhere in this section. Get the corresponding graph
+                    // object.
                     sectionKey = key;
                     graphObject = section.get(position);
                     break;
@@ -584,14 +599,16 @@ class GraphObjectAdapter<T extends GraphObject> extends BaseAdapter implements S
             return 0;
         }
 
-        // If we are not displaying sections, we don't display a header; otherwise, we have one header per item in
+        // If we are not displaying sections, we don't display a header; otherwise,
+        // we have one header per item in
         // addition to the actual items.
         int count = (displaySections) ? sectionKeys.size() : 0;
         for (List<T> section : graphObjectsBySection.values()) {
             count += section.size();
         }
 
-        // If we should show a cell with an activity circle indicating more data is coming, add it to the count.
+        // If we should show a cell with an activity circle indicating more data is coming,
+        // add it to the count.
         if (shouldShowActivityCircleCell()) {
             ++count;
         }
@@ -618,13 +635,16 @@ class GraphObjectAdapter<T extends GraphObject> extends BaseAdapter implements S
     @Override
     public Object getItem(int position) {
         SectionAndItem<T> sectionAndItem = getSectionAndItem(position);
-        return (sectionAndItem.getType() == SectionAndItem.Type.GRAPH_OBJECT) ? sectionAndItem.graphObject : null;
+        return (sectionAndItem.getType() == SectionAndItem.Type.GRAPH_OBJECT) ? sectionAndItem
+                .graphObject : null;
     }
 
     @Override
     public long getItemId(int position) {
-        // We assume IDs that can be converted to longs. If this is not the case for certain types of
-        // GraphObjects, subclasses should override this to return, e.g., position, and override hasStableIds
+        // We assume IDs that can be converted to longs. If this is not the case for certain
+        // types of
+        // GraphObjects, subclasses should override this to return, e.g., position,
+        // and override hasStableIds
         // to return false.
         SectionAndItem<T> sectionAndItem = getSectionAndItem(position);
         if (sectionAndItem != null && sectionAndItem.graphObject != null) {
@@ -700,7 +720,8 @@ class GraphObjectAdapter<T extends GraphObject> extends BaseAdapter implements S
         SectionAndItem<T> sectionAndItem = getSectionAndItem(position);
         if (sectionAndItem != null &&
                 sectionAndItem.getType() != SectionAndItem.Type.ACTIVITY_CIRCLE) {
-            return Math.max(0, Math.min(sectionKeys.indexOf(sectionAndItem.sectionKey), sectionKeys.size() - 1));
+            return Math.max(0, Math.min(sectionKeys.indexOf(sectionAndItem.sectionKey),
+                    sectionKeys.size() - 1));
         }
         return 0;
     }
@@ -720,14 +741,17 @@ class GraphObjectAdapter<T extends GraphObject> extends BaseAdapter implements S
         return result;
     }
 
-    private void downloadProfilePicture(final String profileId, URI pictureURI, final ImageView imageView) {
+    private void downloadProfilePicture(final String profileId, URI pictureURI,
+                                        final ImageView imageView) {
         if (pictureURI == null) {
             return;
         }
 
-        // If we don't have an imageView, we are pre-fetching this image to store in-memory because we
+        // If we don't have an imageView, we are pre-fetching this image to store in-memory
+        // because we
         // think the user might scroll to its corresponding list row. If we do have an imageView, we
-        // only want to queue a download if the view's tag isn't already set to the URL (which would mean
+        // only want to queue a download if the view's tag isn't already set to the URL (which
+        // would mean
         // it's already got the correct picture).
         boolean prefetching = imageView == null;
         if (prefetching || !pictureURI.equals(imageView.getTag())) {
@@ -738,7 +762,8 @@ class GraphObjectAdapter<T extends GraphObject> extends BaseAdapter implements S
                 imageView.setImageResource(getDefaultPicture());
             }
 
-            ImageRequest.Builder builder = new ImageRequest.Builder(context.getApplicationContext(), pictureURI)
+            ImageRequest.Builder builder = new ImageRequest.Builder(context.getApplicationContext
+                    (), pictureURI)
                     .setCallerTag(this)
                     .setCallback(
                             new ImageRequest.Callback() {
@@ -765,7 +790,8 @@ class GraphObjectAdapter<T extends GraphObject> extends BaseAdapter implements S
         }
     }
 
-    private void processImageResponse(ImageResponse response, String graphObjectId, ImageView imageView) {
+    private void processImageResponse(ImageResponse response, String graphObjectId,
+                                      ImageView imageView) {
         pendingRequests.remove(graphObjectId);
         if (response.getError() != null) {
             callOnErrorListener(response.getError());

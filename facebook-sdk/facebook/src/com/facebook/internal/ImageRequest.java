@@ -60,7 +60,8 @@ public class ImageRequest {
             throw new IllegalArgumentException("Either width or height must be greater than 0");
         }
 
-        Uri.Builder builder = new Uri.Builder().encodedPath(String.format(PROFILEPIC_URL_FORMAT, userId));
+        Uri.Builder builder = new Uri.Builder().encodedPath(String.format(PROFILEPIC_URL_FORMAT,
+                userId));
 
         if (height != UNSPECIFIED_DIMENSION) {
             builder.appendQueryParameter(HEIGHT_PARAM, String.valueOf(height));

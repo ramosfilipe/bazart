@@ -39,22 +39,37 @@ import java.util.Set;
  */
 public class ParseLoginConfig {
     public static final String APP_LOGO = "com.parse.ui.ParseLoginActivity.APP_LOGO";
-    public static final String PARSE_LOGIN_ENABLED = "com.parse.ui.ParseLoginActivity.PARSE_LOGIN_ENABLED";
-    public static final String PARSE_LOGIN_BUTTON_TEXT = "com.parse.ui.ParseLoginActivity.PARSE_LOGIN_BUTTON_TEXT";
-    public static final String PARSE_SIGNUP_BUTTON_TEXT = "com.parse.ui.ParseLoginActivity.PARSE_SIGNUP_BUTTON_TEXT";
-    public static final String PARSE_LOGIN_HELP_TEXT = "com.parse.ui.ParseLoginActivity.PARSE_LOGIN_HELP_TEXT";
-    public static final String PARSE_LOGIN_INVALID_CREDENTIALS_TOAST_TEXT = "com.parse.ui.ParseLoginActivity.PARSE_LOGIN_INVALID_CREDENTIALS_TEXT";
-    public static final String PARSE_LOGIN_EMAIL_AS_USERNAME = "com.parse.ui.ParseLoginActivity.PARSE_LOGIN_EMAIL_AS_USERNAME";
-    public static final String PARSE_SIGNUP_MIN_PASSWORD_LENGTH = "com.parse.ui.ParseLoginActivity.PARSE_SIGNUP_MIN_PASSWORD_LENGTH";
-    public static final String PARSE_SIGNUP_SUBMIT_BUTTON_TEXT = "com.parse.ui.ParseLoginActivity.PARSE_SIGNUP_SUBMIT_BUTTON_TEXT";
-    public static final String FACEBOOK_LOGIN_ENABLED = "com.parse.ui.ParseLoginActivity.FACEBOOK_LOGIN_ENABLED";
-    public static final String FACEBOOK_LOGIN_BUTTON_TEXT = "com.parse.ui.ParseLoginActivity.FACEBOOK_LOGIN_BUTTON_TEXT";
-    public static final String FACEBOOK_LOGIN_PERMISSIONS = "com.parse.ui.ParseLoginActivity.FACEBOOK_LOGIN_PERMISSIONS";
-    public static final String TWITTER_LOGIN_ENABLED = "com.parse.ui.ParseLoginActivity.TWITTER_LOGIN_ENABLED";
-    public static final String TWITTER_LOGIN_BUTTON_TEXT = "com.parse.ui.ParseLoginActivity.TWITTER_LOGIN_BUTTON_TEXT";
+    public static final String PARSE_LOGIN_ENABLED = "com.parse.ui.ParseLoginActivity" +
+            ".PARSE_LOGIN_ENABLED";
+    public static final String PARSE_LOGIN_BUTTON_TEXT = "com.parse.ui.ParseLoginActivity" +
+            ".PARSE_LOGIN_BUTTON_TEXT";
+    public static final String PARSE_SIGNUP_BUTTON_TEXT = "com.parse.ui.ParseLoginActivity" +
+            ".PARSE_SIGNUP_BUTTON_TEXT";
+    public static final String PARSE_LOGIN_HELP_TEXT = "com.parse.ui.ParseLoginActivity" +
+            ".PARSE_LOGIN_HELP_TEXT";
+    public static final String PARSE_LOGIN_INVALID_CREDENTIALS_TOAST_TEXT = "com.parse.ui" +
+            ".ParseLoginActivity.PARSE_LOGIN_INVALID_CREDENTIALS_TEXT";
+    public static final String PARSE_LOGIN_EMAIL_AS_USERNAME = "com.parse.ui.ParseLoginActivity" +
+            ".PARSE_LOGIN_EMAIL_AS_USERNAME";
+    public static final String PARSE_SIGNUP_MIN_PASSWORD_LENGTH = "com.parse.ui" +
+            ".ParseLoginActivity.PARSE_SIGNUP_MIN_PASSWORD_LENGTH";
+    public static final String PARSE_SIGNUP_SUBMIT_BUTTON_TEXT = "com.parse.ui.ParseLoginActivity" +
+            ".PARSE_SIGNUP_SUBMIT_BUTTON_TEXT";
+    public static final String FACEBOOK_LOGIN_ENABLED = "com.parse.ui.ParseLoginActivity" +
+            ".FACEBOOK_LOGIN_ENABLED";
+    public static final String FACEBOOK_LOGIN_BUTTON_TEXT = "com.parse.ui.ParseLoginActivity" +
+            ".FACEBOOK_LOGIN_BUTTON_TEXT";
+    public static final String FACEBOOK_LOGIN_PERMISSIONS = "com.parse.ui.ParseLoginActivity" +
+            ".FACEBOOK_LOGIN_PERMISSIONS";
+    public static final String TWITTER_LOGIN_ENABLED = "com.parse.ui.ParseLoginActivity" +
+            ".TWITTER_LOGIN_ENABLED";
+    public static final String TWITTER_LOGIN_BUTTON_TEXT = "com.parse.ui.ParseLoginActivity" +
+            ".TWITTER_LOGIN_BUTTON_TEXT";
 
-    // For internally serializing to/from string array (the public analog above is for resource from activity meta-data).
-    private static final String FACEBOOK_LOGIN_PERMISSIONS_STRING_ARRAY = "com.parse.ui.ParseLoginActivity.FACEBOOK_LOGIN_PERMISSIONS_STRING_ARRAY";
+    // For internally serializing to/from string array (the public analog above is for resource
+    // from activity meta-data).
+    private static final String FACEBOOK_LOGIN_PERMISSIONS_STRING_ARRAY = "com.parse.ui" +
+            ".ParseLoginActivity.FACEBOOK_LOGIN_PERMISSIONS_STRING_ARRAY";
 
     private static final String LOG_TAG = "com.parse.ui.ParseLoginConfig";
 
@@ -120,7 +135,8 @@ public class ParseLoginConfig {
             config.setParseSignupMinPasswordLength(bundle.getInt(PARSE_SIGNUP_MIN_PASSWORD_LENGTH));
         }
         if (keys.contains(PARSE_SIGNUP_SUBMIT_BUTTON_TEXT)) {
-            config.setParseSignupSubmitButtonText(bundle.getCharSequence(PARSE_SIGNUP_SUBMIT_BUTTON_TEXT));
+            config.setParseSignupSubmitButtonText(bundle.getCharSequence
+                    (PARSE_SIGNUP_SUBMIT_BUTTON_TEXT));
         }
 
         if (keys.contains(FACEBOOK_LOGIN_ENABLED)) {

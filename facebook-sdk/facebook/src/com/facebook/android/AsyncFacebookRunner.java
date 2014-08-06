@@ -63,7 +63,8 @@ public class AsyncFacebookRunner {
      * in a background thread; operations that affect the UI will need to be
      * posted to the UI thread or an appropriate handler.
      * <p/>
-     * This method is deprecated.  See {@link Facebook} and {@link com.facebook.Session} for more info.
+     * This method is deprecated.  See {@link Facebook} and {@link com.facebook.Session} for more
+     * info.
      *
      * @param context  The Android context in which the logout should be called: it
      *                 should be the same context in which the login occurred in
@@ -123,7 +124,8 @@ public class AsyncFacebookRunner {
      * String response = request(parameters);
      * </code>
      * <p/>
-     * This method is deprecated.  See {@link Facebook} and {@link com.facebook.Request} for more info.
+     * This method is deprecated.  See {@link Facebook} and {@link com.facebook.Request} for more
+     * info.
      *
      * @param parameters Key-value pairs of parameters to the request. Refer to the
      *                   documentation: one of the parameters must be "method".
@@ -154,7 +156,8 @@ public class AsyncFacebookRunner {
      * in a background thread; operations that affect the UI will need to be
      * posted to the UI thread or an appropriate handler.
      * <p/>
-     * This method is deprecated.  See {@link Facebook} and {@link com.facebook.Request} for more info.
+     * This method is deprecated.  See {@link Facebook} and {@link com.facebook.Request} for more
+     * info.
      *
      * @param graphPath Path to resource in the Facebook graph, e.g., to fetch data
      *                  about the currently logged authenticated user, provide "me",
@@ -187,7 +190,8 @@ public class AsyncFacebookRunner {
      * in a background thread; operations that affect the UI will need to be
      * posted to the UI thread or an appropriate handler.
      * <p/>
-     * This method is deprecated.  See {@link Facebook} and {@link com.facebook.Request} for more info.
+     * This method is deprecated.  See {@link Facebook} and {@link com.facebook.Request} for more
+     * info.
      *
      * @param graphPath  Path to resource in the Facebook graph, e.g., to fetch data
      *                   about the currently logged authenticated user, provide "me",
@@ -228,7 +232,8 @@ public class AsyncFacebookRunner {
      * in a background thread; operations that affect the UI will need to be
      * posted to the UI thread or an appropriate handler.
      * <p/>
-     * This method is deprecated.  See {@link Facebook} and {@link com.facebook.Request} for more info.
+     * This method is deprecated.  See {@link Facebook} and {@link com.facebook.Request} for more
+     * info.
      *
      * @param graphPath  Path to resource in the Facebook graph, e.g., to fetch data
      *                   about the currently logged authenticated user, provide "me",
@@ -274,7 +279,8 @@ public class AsyncFacebookRunner {
      * request. It will be set to the value passed when originally calling the
      * request method, or null if none was passed.
      * <p/>
-     * This interface is deprecated.  See {@link Facebook} and {@link com.facebook.Request} for more info.
+     * This interface is deprecated.  See {@link Facebook} and {@link com.facebook.Request} for
+     * more info.
      */
     @Deprecated
     public static interface RequestListener {

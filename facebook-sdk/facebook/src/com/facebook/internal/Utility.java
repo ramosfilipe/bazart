@@ -60,12 +60,15 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * com.facebook.internal is solely for the use of other packages within the Facebook SDK for Android. Use of
- * any of the classes in this package is unsupported, and they may be modified or removed without warning at
+ * com.facebook.internal is solely for the use of other packages within the Facebook SDK for
+ * Android. Use of
+ * any of the classes in this package is unsupported, and they may be modified or removed without
+ * warning at
  * any time.
  */
 public final class Utility {
-    // This is the default used by the buffer streams, but they trace a warning if you do not specify.
+    // This is the default used by the buffer streams, but they trace a warning if you do not
+    // specify.
     public static final int DEFAULT_STREAM_BUFFER_SIZE = 8192;
     static final String LOG_TAG = "FacebookSDK";
     private static final String HASH_ALGORITHM_MD5 = "MD5";
@@ -227,8 +230,10 @@ public final class Utility {
         return map;
     }
 
-    // Returns either a JSONObject or JSONArray representation of the 'key' property of 'jsonObject'.
-    public static Object getStringPropertyAsJSON(JSONObject jsonObject, String key, String nonJSONPropertyKey)
+    // Returns either a JSONObject or JSONArray representation of the 'key' property of
+    // 'jsonObject'.
+    public static Object getStringPropertyAsJSON(JSONObject jsonObject, String key,
+                                                 String nonJSONPropertyKey)
             throws JSONException {
         Object value = jsonObject.opt(key);
         if (value != null && value instanceof String) {
@@ -294,7 +299,8 @@ public final class Utility {
     }
 
     private static void clearCookiesForDomain(Context context, String domain) {
-        // This is to work around a bug where CookieManager may fail to instantiate if CookieSyncManager
+        // This is to work around a bug where CookieManager may fail to instantiate if
+        // CookieSyncManager
         // has never been created.
         CookieSyncManager syncManager = CookieSyncManager.createInstance(context);
         syncManager.sync();
@@ -310,7 +316,8 @@ public final class Utility {
         for (String cookie : splitCookies) {
             String[] cookieParts = cookie.split("=");
             if (cookieParts.length > 0) {
-                String newCookie = cookieParts[0].trim() + "=;expires=Sat, 1 Jan 2000 00:00:01 UTC;";
+                String newCookie = cookieParts[0].trim() + "=;expires=Sat, " +
+                        "1 Jan 2000 00:00:01 UTC;";
                 cookieManager.setCookie(domain, newCookie);
             }
         }
@@ -318,8 +325,10 @@ public final class Utility {
     }
 
     public static void clearFacebookCookies(Context context) {
-        // setCookie acts differently when trying to expire cookies between builds of Android that are using
-        // Chromium HTTP stack and those that are not. Using both of these domains to ensure it works on both.
+        // setCookie acts differently when trying to expire cookies between builds of Android
+        // that are using
+        // Chromium HTTP stack and those that are not. Using both of these domains to ensure it
+        // works on both.
         clearCookiesForDomain(context, "facebook.com");
         clearCookiesForDomain(context, ".facebook.com");
         clearCookiesForDomain(context, "https://facebook.com");
@@ -345,8 +354,10 @@ public final class Utility {
         return a.equals(b);
     }
 
-    // Note that this method makes a synchronous Graph API call, so should not be called from the main thread.
-    public static FetchedAppSettings queryAppSettings(final String applicationId, final boolean forceRequery) {
+    // Note that this method makes a synchronous Graph API call, so should not be called from the
+    // main thread.
+    public static FetchedAppSettings queryAppSettings(final String applicationId,
+                                                      final boolean forceRequery) {
 
         // Cache the last app checked results.
         if (!forceRequery && fetchedAppSettings.containsKey(applicationId)) {
@@ -421,9 +432,12 @@ public final class Utility {
         return result;
     }
 
-    // Return a hash of the android_id combined with the appid.  Intended to dedupe requests on the server side
-    // in order to do counting of users unknown to Facebook.  Because we put the appid into the key prior to hashing,
-    // we cannot do correlation of the same user across multiple apps -- this is intentional.  When we transition to
+    // Return a hash of the android_id combined with the appid.  Intended to dedupe requests on
+    // the server side
+    // in order to do counting of users unknown to Facebook.  Because we put the appid into the
+    // key prior to hashing,
+    // we cannot do correlation of the same user across multiple apps -- this is intentional.
+    // When we transition to
     // the Google advertising ID, we'll get rid of this and always send that up.
     public static String getHashedDeviceAndAppID(Context context, String applicationId) {
         String androidId = Secure.getString(context.getContentResolver(), Secure.ANDROID_ID);
@@ -436,15 +450,21 @@ public final class Utility {
     }
 
     public static void setAppEventAttributionParameters(GraphObject params,
-                                                        AttributionIdentifiers attributionIdentifiers, String hashedDeviceAndAppId, boolean limitEventUsage) {
-        // Send attributionID if it exists, otherwise send a hashed device+appid specific value as the advertiser_id.
+                                                        AttributionIdentifiers
+                                                                attributionIdentifiers,
+                                                        String hashedDeviceAndAppId,
+                                                        boolean limitEventUsage) {
+        // Send attributionID if it exists, otherwise send a hashed device+appid specific value
+        // as the advertiser_id.
         if (attributionIdentifiers != null && attributionIdentifiers.getAttributionId() != null) {
             params.setProperty("attribution", attributionIdentifiers.getAttributionId());
         }
 
-        if (attributionIdentifiers != null && attributionIdentifiers.getAndroidAdvertiserId() != null) {
+        if (attributionIdentifiers != null && attributionIdentifiers.getAndroidAdvertiserId() !=
+                null) {
             params.setProperty("advertiser_id", attributionIdentifiers.getAndroidAdvertiserId());
-            params.setProperty("advertiser_tracking_enabled", !attributionIdentifiers.isTrackingLimited());
+            params.setProperty("advertiser_tracking_enabled",
+                    !attributionIdentifiers.isTrackingLimited());
         } else if (hashedDeviceAndAppId != null) {
             params.setProperty("advertiser_id", hashedDeviceAndAppId);
         }
@@ -452,7 +472,8 @@ public final class Utility {
         params.setProperty("application_tracking_enabled", !limitEventUsage);
     }
 
-    public static Method getMethodQuietly(Class<?> clazz, String methodName, Class<?>... parameterTypes) {
+    public static Method getMethodQuietly(Class<?> clazz, String methodName,
+                                          Class<?>... parameterTypes) {
         try {
             return clazz.getMethod(methodName, parameterTypes);
         } catch (NoSuchMethodException ex) {
@@ -460,7 +481,8 @@ public final class Utility {
         }
     }
 
-    public static Method getMethodQuietly(String className, String methodName, Class<?>... parameterTypes) {
+    public static Method getMethodQuietly(String className, String methodName,
+                                          Class<?>... parameterTypes) {
         try {
             Class<?> clazz = Class.forName(className);
             return getMethodQuietly(clazz, methodName, parameterTypes);

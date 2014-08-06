@@ -28,8 +28,10 @@ import android.os.Messenger;
 import android.os.RemoteException;
 
 /**
- * com.facebook.internal is solely for the use of other packages within the Facebook SDK for Android. Use of
- * any of the classes in this package is unsupported, and they may be modified or removed without warning at
+ * com.facebook.internal is solely for the use of other packages within the Facebook SDK for
+ * Android. Use of
+ * any of the classes in this package is unsupported, and they may be modified or removed without
+ * warning at
  * any time.
  */
 abstract public class PlatformServiceClient implements ServiceConnection {
@@ -43,7 +45,8 @@ abstract public class PlatformServiceClient implements ServiceConnection {
     private int requestMessage;
     private int replyMessage;
 
-    public PlatformServiceClient(Context context, int requestMessage, int replyMessage, int protocolVersion,
+    public PlatformServiceClient(Context context, int requestMessage, int replyMessage,
+                                 int protocolVersion,
                                  String applicationId) {
         Context applicationContext = context.getApplicationContext();
 
@@ -75,7 +78,8 @@ abstract public class PlatformServiceClient implements ServiceConnection {
         }
 
         // Make sure that the service can handle the requested protocol version
-        int availableVersion = NativeProtocol.getLatestAvailableProtocolVersionForService(context, protocolVersion);
+        int availableVersion = NativeProtocol.getLatestAvailableProtocolVersionForService
+                (context, protocolVersion);
         if (availableVersion == NativeProtocol.NO_PROTOCOL_AVAILABLE) {
             return false;
         }

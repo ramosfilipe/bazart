@@ -93,7 +93,8 @@ public class UiLifecycleHelper {
             Session.setActiveSession(session);
         }
         if (savedInstanceState != null) {
-            pendingFacebookDialogCall = savedInstanceState.getParcelable(DIALOG_CALL_BUNDLE_SAVE_KEY);
+            pendingFacebookDialogCall = savedInstanceState.getParcelable
+                    (DIALOG_CALL_BUNDLE_SAVE_KEY);
         }
     }
 
@@ -133,7 +134,8 @@ public class UiLifecycleHelper {
     }
 
     /**
-     * To be called from an Activity or Fragment's onActivityResult method, when the results of a FacebookDialog
+     * To be called from an Activity or Fragment's onActivityResult method,
+     * when the results of a FacebookDialog
      * call are expected.
      *
      * @param requestCode    the request code
@@ -190,9 +192,12 @@ public class UiLifecycleHelper {
     }
 
     /**
-     * Register that we are expecting results from a call to the Facebook application (e.g., from a native
-     * dialog provided by the Facebook app). Activity results forwarded to onActivityResults will be parsed
-     * and handled if they correspond to this call. Only a single pending FacebookDialog call can be tracked
+     * Register that we are expecting results from a call to the Facebook application (e.g.,
+     * from a native
+     * dialog provided by the Facebook app). Activity results forwarded to onActivityResults will
+     * be parsed
+     * and handled if they correspond to this call. Only a single pending FacebookDialog call can
+     * be tracked
      * at a time; attempting to track another one will cancel the first one.
      *
      * @param appCall an PendingCall object containing the call ID
@@ -200,19 +205,24 @@ public class UiLifecycleHelper {
     public void trackPendingDialogCall(FacebookDialog.PendingCall pendingCall) {
         if (pendingFacebookDialogCall != null) {
             // If one is already pending, cancel it; we don't allow multiple pending calls.
-            Log.i("Facebook", "Tracking new app call while one is still pending; canceling pending call.");
+            Log.i("Facebook", "Tracking new app call while one is still pending; canceling " +
+                    "pending call.");
             cancelPendingAppCall(null);
         }
         pendingFacebookDialogCall = pendingCall;
     }
 
     /**
-     * Retrieves an instance of AppEventsLogger that can be used for the current Session, if any. Different
-     * instances may be returned if the current Session changes, so this value should not be cached for long
-     * periods of time -- always call getAppEventsLogger to get the right logger for the current Session. If
+     * Retrieves an instance of AppEventsLogger that can be used for the current Session,
+     * if any. Different
+     * instances may be returned if the current Session changes, so this value should not be
+     * cached for long
+     * periods of time -- always call getAppEventsLogger to get the right logger for the current
+     * Session. If
      * no Session is currently available, this method will return null.
      * <p/>
-     * To ensure delivery of app events across Activity lifecycle events, calling Activities should be sure to
+     * To ensure delivery of app events across Activity lifecycle events,
+     * calling Activities should be sure to
      * call the onStop method.
      *
      * @return an AppEventsLogger to use for logging app events
@@ -225,7 +235,8 @@ public class UiLifecycleHelper {
 
         if (appEventsLogger == null || !appEventsLogger.isValidForSession(session)) {
             if (appEventsLogger != null) {
-                // Pretend we got stopped so the old logger will persist its results now, in case we get stopped
+                // Pretend we got stopped so the old logger will persist its results now,
+                // in case we get stopped
                 // before events get flushed.
                 AppEventsLogger.onContextStop();
             }
@@ -236,14 +247,18 @@ public class UiLifecycleHelper {
     }
 
     private boolean handleFacebookDialogActivityResult(int requestCode, int resultCode, Intent data,
-                                                       FacebookDialog.Callback facebookDialogCallback) {
-        if (pendingFacebookDialogCall == null || pendingFacebookDialogCall.getRequestCode() != requestCode) {
+                                                       FacebookDialog.Callback
+                                                               facebookDialogCallback) {
+        if (pendingFacebookDialogCall == null || pendingFacebookDialogCall.getRequestCode() !=
+                requestCode) {
             return false;
         }
 
         if (data == null) {
-            // We understand the request code, but have no Intent. This can happen if the called Activity crashes
-            // before it can be started; we treat this as a cancellation because we have no other information.
+            // We understand the request code, but have no Intent. This can happen if the called
+            // Activity crashes
+            // before it can be started; we treat this as a cancellation because we have no other
+            // information.
             cancelPendingAppCall(facebookDialogCallback);
             return true;
         }
@@ -260,7 +275,8 @@ public class UiLifecycleHelper {
         // Was this result for the call we are waiting on?
         if (callId != null && pendingFacebookDialogCall.getCallId().equals(callId)) {
             // Yes, we can handle it normally.
-            FacebookDialog.handleActivityResult(activity, pendingFacebookDialogCall, requestCode, data,
+            FacebookDialog.handleActivityResult(activity, pendingFacebookDialogCall, requestCode,
+                    data,
                     facebookDialogCallback);
         } else {
             // No, send a cancellation error to the pending call and ignore the result, because we
@@ -283,10 +299,12 @@ public class UiLifecycleHelper {
                     pendingIntent.getStringExtra(NativeProtocol.EXTRA_PROTOCOL_ACTION));
             cancelIntent.putExtra(NativeProtocol.EXTRA_PROTOCOL_VERSION,
                     pendingIntent.getIntExtra(NativeProtocol.EXTRA_PROTOCOL_VERSION, 0));
-            cancelIntent.putExtra(NativeProtocol.STATUS_ERROR_TYPE, NativeProtocol.ERROR_UNKNOWN_ERROR);
+            cancelIntent.putExtra(NativeProtocol.STATUS_ERROR_TYPE,
+                    NativeProtocol.ERROR_UNKNOWN_ERROR);
 
             FacebookDialog.handleActivityResult(activity, pendingFacebookDialogCall,
-                    pendingFacebookDialogCall.getRequestCode(), cancelIntent, facebookDialogCallback);
+                    pendingFacebookDialogCall.getRequestCode(), cancelIntent,
+                    facebookDialogCallback);
         }
         pendingFacebookDialogCall = null;
     }

@@ -35,12 +35,14 @@ import org.json.JSONObject;
 import java.util.Iterator;
 
 /**
- * Class to encapsulate an app link, and provide methods for constructing the data from various sources
+ * Class to encapsulate an app link, and provide methods for constructing the data from various
+ * sources
  */
 public class AppLinkData {
 
     /**
-     * Key that should be used to pull out the UTC Unix tap-time from the arguments for this app link.
+     * Key that should be used to pull out the UTC Unix tap-time from the arguments for this app
+     * link.
      */
     public static final String ARGUMENTS_TAPTIME_KEY = "com.facebook.platform.APPLINK_TAP_TIME_UTC";
     /**
@@ -49,12 +51,15 @@ public class AppLinkData {
     public static final String ARGUMENTS_REFERER_DATA_KEY = "referer_data";
 
     /**
-     * Key that should be used to pull out the native class that would have been used if the applink was deferred.
+     * Key that should be used to pull out the native class that would have been used if the
+     * applink was deferred.
      */
-    public static final String ARGUMENTS_NATIVE_CLASS_KEY = "com.facebook.platform.APPLINK_NATIVE_CLASS";
+    public static final String ARGUMENTS_NATIVE_CLASS_KEY = "com.facebook.platform" +
+            ".APPLINK_NATIVE_CLASS";
 
     /**
-     * Key that should be used to pull out the native url that would have been used if the applink was deferred.
+     * Key that should be used to pull out the native url that would have been used if the
+     * applink was deferred.
      */
     public static final String ARGUMENTS_NATIVE_URL = "com.facebook.platform.APPLINK_NATIVE_URL";
 
@@ -90,10 +95,12 @@ public class AppLinkData {
      * after installation of the app
      *
      * @param context           The context
-     * @param completionHandler CompletionHandler to be notified with the AppLinkData object or null if none is
+     * @param completionHandler CompletionHandler to be notified with the AppLinkData object or
+     *                          null if none is
      *                          available.  Must not be null.
      */
-    public static void fetchDeferredAppLinkData(Context context, CompletionHandler completionHandler) {
+    public static void fetchDeferredAppLinkData(Context context,
+                                                CompletionHandler completionHandler) {
         fetchDeferredAppLinkData(context, null, completionHandler);
     }
 
@@ -103,7 +110,8 @@ public class AppLinkData {
      *
      * @param context           The context
      * @param applicationId     Facebook application Id. If null, it is taken from the manifest
-     * @param completionHandler CompletionHandler to be notified with the AppLinkData object or null if none is
+     * @param completionHandler CompletionHandler to be notified with the AppLinkData object or
+     *                          null if none is
      *                          available.  Must not be null.
      */
     public static void fetchDeferredAppLinkData(
@@ -124,7 +132,8 @@ public class AppLinkData {
         Settings.getExecutor().execute(new Runnable() {
             @Override
             public void run() {
-                fetchDeferredAppLinkFromServer(applicationContext, applicationIdCopy, completionHandler);
+                fetchDeferredAppLinkFromServer(applicationContext, applicationIdCopy,
+                        completionHandler);
             }
         });
     }
@@ -150,11 +159,15 @@ public class AppLinkData {
                     null, deferredApplinkUrlPath, deferredApplinkParams, null);
             Response deferredApplinkResponse = deferredApplinkRequest.executeAndWait();
             GraphObject wireResponse = deferredApplinkResponse.getGraphObject();
-            JSONObject jsonResponse = wireResponse != null ? wireResponse.getInnerJSONObject() : null;
+            JSONObject jsonResponse = wireResponse != null ? wireResponse.getInnerJSONObject() :
+                    null;
             if (jsonResponse != null) {
-                final String appLinkArgsJsonString = jsonResponse.optString(DEFERRED_APP_LINK_ARGS_FIELD);
-                final long tapTimeUtc = jsonResponse.optLong(DEFERRED_APP_LINK_CLICK_TIME_FIELD, -1);
-                final String appLinkClassName = jsonResponse.optString(DEFERRED_APP_LINK_CLASS_FIELD);
+                final String appLinkArgsJsonString = jsonResponse.optString
+                        (DEFERRED_APP_LINK_ARGS_FIELD);
+                final long tapTimeUtc = jsonResponse.optLong(DEFERRED_APP_LINK_CLICK_TIME_FIELD,
+                        -1);
+                final String appLinkClassName = jsonResponse.optString
+                        (DEFERRED_APP_LINK_CLASS_FIELD);
                 final String appLinkUrl = jsonResponse.optString(DEFERRED_APP_LINK_URL_FIELD);
 
                 if (appLinkArgsJsonString != null && appLinkArgsJsonString != "") {
@@ -166,7 +179,8 @@ public class AppLinkData {
                                 appLinkData.arguments.put(ARGUMENTS_TAPTIME_KEY, tapTimeUtc);
                             }
                             if (appLinkData.argumentBundle != null) {
-                                appLinkData.argumentBundle.putString(ARGUMENTS_TAPTIME_KEY, Long.toString(tapTimeUtc));
+                                appLinkData.argumentBundle.putString(ARGUMENTS_TAPTIME_KEY,
+                                        Long.toString(tapTimeUtc));
                             }
                         } catch (JSONException e) {
                             Log.d(TAG, "Unable to put tap time in AppLinkData.arguments");
@@ -176,10 +190,12 @@ public class AppLinkData {
                     if (appLinkClassName != null) {
                         try {
                             if (appLinkData.arguments != null) {
-                                appLinkData.arguments.put(ARGUMENTS_NATIVE_CLASS_KEY, appLinkClassName);
+                                appLinkData.arguments.put(ARGUMENTS_NATIVE_CLASS_KEY,
+                                        appLinkClassName);
                             }
                             if (appLinkData.argumentBundle != null) {
-                                appLinkData.argumentBundle.putString(ARGUMENTS_NATIVE_CLASS_KEY, appLinkClassName);
+                                appLinkData.argumentBundle.putString(ARGUMENTS_NATIVE_CLASS_KEY,
+                                        appLinkClassName);
                             }
                         } catch (JSONException e) {
                             Log.d(TAG, "Unable to put tap time in AppLinkData.arguments");
@@ -192,7 +208,8 @@ public class AppLinkData {
                                 appLinkData.arguments.put(ARGUMENTS_NATIVE_URL, appLinkUrl);
                             }
                             if (appLinkData.argumentBundle != null) {
-                                appLinkData.argumentBundle.putString(ARGUMENTS_NATIVE_URL, appLinkUrl);
+                                appLinkData.argumentBundle.putString(ARGUMENTS_NATIVE_URL,
+                                        appLinkUrl);
                             }
                         } catch (JSONException e) {
                             Log.d(TAG, "Unable to put tap time in AppLinkData.arguments");
@@ -279,14 +296,16 @@ public class AppLinkData {
                     appLinkData.ref = appLinkData.arguments.getString(METHOD_ARGS_REF_KEY);
                 } else if (appLinkData.arguments.has(ARGUMENTS_REFERER_DATA_KEY)) {
                     // if it's not in the top level args, it could be in the "referer_data" blob
-                    JSONObject refererData = appLinkData.arguments.getJSONObject(ARGUMENTS_REFERER_DATA_KEY);
+                    JSONObject refererData = appLinkData.arguments.getJSONObject
+                            (ARGUMENTS_REFERER_DATA_KEY);
                     if (refererData.has(REFERER_DATA_REF_KEY)) {
                         appLinkData.ref = refererData.getString(REFERER_DATA_REF_KEY);
                     }
                 }
 
                 if (appLinkData.arguments.has(METHOD_ARGS_TARGET_URL_KEY)) {
-                    appLinkData.targetUri = Uri.parse(appLinkData.arguments.getString(METHOD_ARGS_TARGET_URL_KEY));
+                    appLinkData.targetUri = Uri.parse(appLinkData.arguments.getString
+                            (METHOD_ARGS_TARGET_URL_KEY));
                 }
 
                 appLinkData.argumentBundle = toBundle(appLinkData.arguments);
@@ -392,7 +411,8 @@ public class AppLinkData {
     }
 
     /**
-     * The referer data associated with the app link. This will contain Facebook specific information like
+     * The referer data associated with the app link. This will contain Facebook specific
+     * information like
      * fb_access_token, fb_expires_in, and fb_ref.
      *
      * @return the referer data.
@@ -409,7 +429,8 @@ public class AppLinkData {
      */
     public interface CompletionHandler {
         /**
-         * This method is called when deferred app link data has been fetched. If no app link data was found,
+         * This method is called when deferred app link data has been fetched. If no app link
+         * data was found,
          * this method is called with null
          *
          * @param appLinkData The app link data that was fetched. Null if none was found.

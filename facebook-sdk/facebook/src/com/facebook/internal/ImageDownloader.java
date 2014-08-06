@@ -39,7 +39,8 @@ public class ImageDownloader {
     private static WorkQueue downloadQueue = new WorkQueue(DOWNLOAD_QUEUE_MAX_CONCURRENT);
     private static final int CACHE_READ_QUEUE_MAX_CONCURRENT = 2;
     private static WorkQueue cacheReadQueue = new WorkQueue(CACHE_READ_QUEUE_MAX_CONCURRENT);
-    private static final Map<RequestKey, DownloaderContext> pendingRequests = new HashMap<RequestKey, DownloaderContext>();
+    private static final Map<RequestKey, DownloaderContext> pendingRequests = new
+            HashMap<RequestKey, DownloaderContext>();
     private static Handler handler;
 
     /**
@@ -56,8 +57,10 @@ public class ImageDownloader {
         // NOTE: This is the ONLY place where the original request's Url is read. From here on,
         // we will keep track of the Url separately. This is because we might be dealing with a
         // redirect response and the Url might change. We can't create our own new ImageRequests
-        // for these changed Urls since the caller might be doing some book-keeping with the request's
-        // object reference. So we keep the old references and just map them to new urls in the downloader
+        // for these changed Urls since the caller might be doing some book-keeping with the
+        // request's
+        // object reference. So we keep the old references and just map them to new urls in the
+        // downloader
         RequestKey key = new RequestKey(request.getImageUri(), request.getCallerTag());
         synchronized (pendingRequests) {
             DownloaderContext downloaderContext = pendingRequests.get(key);
@@ -78,7 +81,8 @@ public class ImageDownloader {
             DownloaderContext downloaderContext = pendingRequests.get(key);
             if (downloaderContext != null) {
                 // If we were able to find the request in our list of pending requests, then we will
-                // definitely be able to prevent an ImageResponse from being issued. This is regardless
+                // definitely be able to prevent an ImageResponse from being issued. This is
+                // regardless
                 // of whether a cache-read or network-download is underway for this request.
                 cancelled = true;
 
@@ -110,7 +114,8 @@ public class ImageDownloader {
         UrlRedirectCache.clearCache(context);
     }
 
-    private static void enqueueCacheRead(ImageRequest request, RequestKey key, boolean allowCachedRedirects) {
+    private static void enqueueCacheRead(ImageRequest request, RequestKey key,
+                                         boolean allowCachedRedirects) {
         enqueueRequest(
                 request,
                 key,
@@ -136,11 +141,14 @@ public class ImageDownloader {
             downloaderContext.request = request;
             pendingRequests.put(key, downloaderContext);
 
-            // The creation of the WorkItem should be done after the pending request has been registered.
-            // This is necessary since the WorkItem might kick off right away and attempt to retrieve
+            // The creation of the WorkItem should be done after the pending request has been
+            // registered.
+            // This is necessary since the WorkItem might kick off right away and attempt to
+            // retrieve
             // the request's DownloaderContext prior to it being ready for access.
             //
-            // It is also necessary to hold on to the lock until after the workItem is created, since
+            // It is also necessary to hold on to the lock until after the workItem is created,
+            // since
             // calls to cancelRequest or prioritizeRequest might come in and expect a registered
             // request to have a workItem available as well.
             downloaderContext.workItem = workQueue.addActiveWorkItem(workItem);
@@ -174,7 +182,8 @@ public class ImageDownloader {
         }
     }
 
-    private static void readFromCache(RequestKey key, Context context, boolean allowCachedRedirects) {
+    private static void readFromCache(RequestKey key, Context context,
+                                      boolean allowCachedRedirects) {
         InputStream cachedStream = null;
         boolean isCachedRedirect = false;
         if (allowCachedRedirects) {
@@ -227,7 +236,8 @@ public class ImageDownloader {
                         URI redirectUri = new URI(redirectLocation);
                         UrlRedirectCache.cacheUriRedirect(context, key.uri, redirectUri);
 
-                        // Once the old downloader context is removed, we are thread-safe since this is the
+                        // Once the old downloader context is removed,
+                        // we are thread-safe since this is the
                         // only reference to it
                         DownloaderContext downloaderContext = removePendingRequest(key);
                         if (downloaderContext != null && !downloaderContext.isCancelled) {

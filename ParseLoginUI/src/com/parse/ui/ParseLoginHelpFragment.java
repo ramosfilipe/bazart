@@ -118,16 +118,19 @@ public class ParseLoginHelpFragment extends ParseLoginFragmentBase implements On
                                             .setText(R.string.com_parse_ui_login_help_email_sent);
                                     emailField.setVisibility(View.INVISIBLE);
                                     submitButton
-                                            .setText(R.string.com_parse_ui_login_help_login_again_button_label);
+                                            .setText(R.string
+                                                    .com_parse_ui_login_help_login_again_button_label);
                                     emailSent = true;
                                 } else {
-                                    debugLog(getString(R.string.com_parse_ui_login_warning_password_reset_failed) +
+                                    debugLog(getString(R.string
+                                            .com_parse_ui_login_warning_password_reset_failed) +
                                             e.toString());
                                     if (e.getCode() == ParseException.INVALID_EMAIL_ADDRESS ||
                                             e.getCode() == ParseException.EMAIL_NOT_FOUND) {
                                         showToast(R.string.com_parse_ui_invalid_email_toast);
                                     } else {
-                                        showToast(R.string.com_parse_ui_login_help_submit_failed_unknown);
+                                        showToast(R.string
+                                                .com_parse_ui_login_help_submit_failed_unknown);
                                     }
                                 }
                             }

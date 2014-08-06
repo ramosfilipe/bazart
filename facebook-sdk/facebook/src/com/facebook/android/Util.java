@@ -220,7 +220,8 @@ public final class Util {
                 if (!dataparams.isEmpty()) {
 
                     for (String key : dataparams.keySet()) {
-                        os.write(("Content-Disposition: form-data; filename=\"" + key + "\"" + endLine).getBytes());
+                        os.write(("Content-Disposition: form-data; filename=\"" + key + "\"" +
+                                endLine).getBytes());
                         os.write(("Content-Type: content/unknown" + endLine + endLine).getBytes());
                         os.write(dataparams.getByteArray(key));
                         os.write((endLine + "--" + strBoundary + endLine).getBytes());

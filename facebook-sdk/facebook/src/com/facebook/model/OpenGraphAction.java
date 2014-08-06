@@ -23,9 +23,11 @@ import java.util.List;
 
 /**
  * Provides a strongly-typed representation of an Open Graph Action.
- * For more documentation of OG Actions, see: https://developers.facebook.com/docs/opengraph/actions/
+ * For more documentation of OG Actions, see: https://developers.facebook
+ * .com/docs/opengraph/actions/
  * <p/>
- * Note that this interface is intended to be used with GraphObject.Factory or OpenGraphAction.Factory
+ * Note that this interface is intended to be used with GraphObject.Factory or OpenGraphAction
+ * .Factory
  * and not implemented directly.
  */
 public interface OpenGraphAction extends GraphObject {
@@ -200,8 +202,10 @@ public interface OpenGraphAction extends GraphObject {
     void setImage(List<JSONObject> image);
 
     /**
-     * Sets the images associated with the Open Graph action by specifying their URLs. This is a helper
-     * that will create GraphObjects with the correct URLs and populate the property with those objects.
+     * Sets the images associated with the Open Graph action by specifying their URLs. This is a
+     * helper
+     * that will create GraphObjects with the correct URLs and populate the property with those
+     * objects.
      *
      * @param urls the URLs
      */
@@ -283,7 +287,8 @@ public interface OpenGraphAction extends GraphObject {
 
     /**
      * Gets whether the action has been explicitly shared by the user. See
-     * <a href="https://developers.facebook.com/docs/opengraph/guides/explicit-sharing/">Explicit Sharing</a> for
+     * <a href="https://developers.facebook.com/docs/opengraph/guides/explicit-sharing/">Explicit
+     * Sharing</a> for
      * more information.
      *
      * @return true if this action was explicitly shared
@@ -293,8 +298,10 @@ public interface OpenGraphAction extends GraphObject {
 
     /**
      * Sets whether the action has been explicitly shared by the user. See
-     * <a href="https://developers.facebook.com/docs/opengraph/guides/explicit-sharing/">Explicit Sharing</a> for
-     * more information. You should only specify this property if explicit sharing has been enabled for an
+     * <a href="https://developers.facebook.com/docs/opengraph/guides/explicit-sharing/">Explicit
+     * Sharing</a> for
+     * more information. You should only specify this property if explicit sharing has been
+     * enabled for an
      * Open Graph action type.
      *
      * @param explicitlyShared true if this action was explicitly shared
@@ -319,7 +326,8 @@ public interface OpenGraphAction extends GraphObject {
         /**
          * Creates an OpenGraphAction suitable for posting via, e.g., a native Share dialog.
          *
-         * @param type the Open Graph action type for the action, or null if it will be specified later
+         * @param type the Open Graph action type for the action, or null if it will be specified
+         *             later
          * @return an OpenGraphAction
          */
         public static OpenGraphAction createForPost(String type) {
@@ -329,11 +337,13 @@ public interface OpenGraphAction extends GraphObject {
         /**
          * Creates an OpenGraphAction suitable for posting via, e.g., a native Share dialog.
          *
-         * @param type             the Open Graph action type for the action, or null if it will be specified later
+         * @param type             the Open Graph action type for the action,
+         *                         or null if it will be specified later
          * @param graphObjectClass the OpenGraphAction-derived type to return
          * @return an OpenGraphAction
          */
-        public static <T extends OpenGraphAction> T createForPost(Class<T> graphObjectClass, String type) {
+        public static <T extends OpenGraphAction> T createForPost(Class<T> graphObjectClass,
+                                                                  String type) {
             T object = GraphObject.Factory.create(graphObjectClass);
 
             if (type != null) {

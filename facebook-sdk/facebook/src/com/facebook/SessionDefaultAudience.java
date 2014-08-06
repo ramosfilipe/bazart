@@ -19,9 +19,12 @@ package com.facebook;
 import com.facebook.internal.NativeProtocol;
 
 /**
- * Certain operations such as publishing a status or publishing a photo require an audience. When the user
- * grants an application permission to perform a publish operation, a default audience is selected as the
- * publication ceiling for the application. This enumerated value allows the application to select which
+ * Certain operations such as publishing a status or publishing a photo require an audience. When
+ * the user
+ * grants an application permission to perform a publish operation,
+ * a default audience is selected as the
+ * publication ceiling for the application. This enumerated value allows the application to
+ * select which
  * audience to ask the user to grant publish permission for.
  */
 public enum SessionDefaultAudience {

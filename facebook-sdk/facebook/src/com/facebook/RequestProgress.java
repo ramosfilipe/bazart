@@ -59,7 +59,8 @@ class RequestProgress {
                 // Keep copies to avoid threading issues
                 final long currentCopy = progress;
                 final long maxProgressCopy = maxProgress;
-                final Request.OnProgressCallback callbackCopy = (Request.OnProgressCallback) callback;
+                final Request.OnProgressCallback callbackCopy = (Request.OnProgressCallback)
+                        callback;
                 if (callbackHandler == null) {
                     callbackCopy.onProgress(currentCopy, maxProgressCopy);
                 } else {

@@ -20,8 +20,10 @@ package com.facebook;
  * Specifies the behaviors to try during
  * {@link Session#openForRead(com.facebook.Session.OpenRequest) openForRead},
  * {@link Session#openForPublish(com.facebook.Session.OpenRequest) openForPublish},
- * {@link Session#requestNewReadPermissions(com.facebook.Session.NewPermissionsRequest) requestNewReadPermissions}, or
- * {@link Session#requestNewPublishPermissions(com.facebook.Session.NewPermissionsRequest) requestNewPublishPermissions}.
+ * {@link Session#requestNewReadPermissions(com.facebook.Session.NewPermissionsRequest)
+ * requestNewReadPermissions}, or
+ * {@link Session#requestNewPublishPermissions(com.facebook.Session.NewPermissionsRequest)
+ * requestNewPublishPermissions}.
  */
 public enum SessionLoginBehavior {
     /**

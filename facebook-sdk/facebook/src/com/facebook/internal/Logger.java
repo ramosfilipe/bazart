@@ -25,8 +25,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * com.facebook.internal is solely for the use of other packages within the Facebook SDK for Android. Use of
- * any of the classes in this package is unsupported, and they may be modified or removed without warning at
+ * com.facebook.internal is solely for the use of other packages within the Facebook SDK for
+ * Android. Use of
+ * any of the classes in this package is unsupported, and they may be modified or removed without
+ * warning at
  * any time.
  */
 public class Logger {
@@ -46,7 +48,8 @@ public class Logger {
         this.contents = new StringBuilder();
     }
 
-    // Note that the mapping of replaced strings is never emptied, so it should be used only for things that
+    // Note that the mapping of replaced strings is never emptied, so it should be used only for
+    // things that
     // are not expected to be too numerous, such as access tokens.
     public synchronized static void registerStringToReplace(String original, String replace) {
         stringsToReplace.put(original, replace);
@@ -77,7 +80,8 @@ public class Logger {
             }
             Log.println(priority, tag, string);
 
-            // Developer errors warrant special treatment by printing out a stack trace, to make both more noticeable,
+            // Developer errors warrant special treatment by printing out a stack trace,
+            // to make both more noticeable,
             // and let the source of the problem be more easily pinpointed.
             if (behavior == LoggingBehavior.DEVELOPER_ERRORS) {
                 (new Exception()).printStackTrace();
@@ -97,7 +101,8 @@ public class Logger {
     }
 
     public void setPriority(int value) {
-        Validate.oneOf(value, "value", Log.ASSERT, Log.DEBUG, Log.ERROR, Log.INFO, Log.VERBOSE, Log.WARN);
+        Validate.oneOf(value, "value", Log.ASSERT, Log.DEBUG, Log.ERROR, Log.INFO, Log.VERBOSE,
+                Log.WARN);
 
         priority = value;
     }

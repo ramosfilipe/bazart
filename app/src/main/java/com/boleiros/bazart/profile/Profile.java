@@ -69,7 +69,8 @@ public class Profile extends Fragment {
                 if (e == null) {
                     ProfileAdapter profileAdapter = new ProfileAdapter(getActivity(), parseObjects);
                     adapt = profileAdapter;
-                    final GridView gridView = (GridView) getActivity().findViewById(R.id.gridProfile);
+                    final GridView gridView = (GridView) getActivity().findViewById(R.id
+                            .gridProfile);
                     if (gridView != null) {
                         gridView.setAdapter(profileAdapter);
                     }

@@ -29,24 +29,32 @@ import java.io.FileNotFoundException;
 import java.util.UUID;
 
 /**
- * <p>Implements a <a href="http://developer.android.com/reference/android/content/ContentProvider.html">
+ * <p>Implements a <a href="http://developer.android
+ * .com/reference/android/content/ContentProvider.html">
  * ContentProvider</a> that can be used to provide binary attachments (e.g., images) to calls made
- * via @link FacebookDialog}. The {@link NativeAppCallAttachmentStore} class provides methods to attach
+ * via @link FacebookDialog}. The {@link NativeAppCallAttachmentStore} class provides methods to
+ * attach
  * and clean up the attachments.
  * <p/>
- * <p>Note that this ContentProvider is only necessary if an application wishes to attach images, etc., that are
- * stored in memory and do not have another way to be referenced by a content URI. For images obtained from,
- * e.g., the Camera or Gallery, that already have a content URI associated with them, use of this class is not
+ * <p>Note that this ContentProvider is only necessary if an application wishes to attach images,
+ * etc., that are
+ * stored in memory and do not have another way to be referenced by a content URI. For images
+ * obtained from,
+ * e.g., the Camera or Gallery, that already have a content URI associated with them,
+ * use of this class is not
  * necessary.</p>
  * <p/>
- * <p>If an application wishes to attach images that are stored in-memory within the application, this content
- * provider must be listed in the application's AndroidManifest.xml, and it should be named according to the
+ * <p>If an application wishes to attach images that are stored in-memory within the application,
+ * this content
+ * provider must be listed in the application's AndroidManifest.xml,
+ * and it should be named according to the
  * pattern <code>"com.facebook.app.NativeAppCallContentProvider{FACEBOOK_APP_ID}"</code>. See the
  * {@link NativeAppCallContentProvider#getAttachmentUrl(String) getContentProviderName} method.</p>
  */
 public class NativeAppCallContentProvider extends ContentProvider {
     private static final String TAG = NativeAppCallContentProvider.class.getName();
-    private static final String ATTACHMENT_URL_BASE = "content://com.facebook.app.NativeAppCallContentProvider";
+    private static final String ATTACHMENT_URL_BASE = "content://com.facebook.app" +
+            ".NativeAppCallContentProvider";
 
     private final AttachmentDataSource dataSource;
 
@@ -64,8 +72,10 @@ public class NativeAppCallContentProvider extends ContentProvider {
      * @param applicationId the Facebook application ID of the application
      * @return the String to use as the authority portion of a content URI.
      */
-    public static String getAttachmentUrl(String applicationId, UUID callId, String attachmentName) {
-        return String.format("%s%s/%s/%s", ATTACHMENT_URL_BASE, applicationId, callId.toString(), attachmentName);
+    public static String getAttachmentUrl(String applicationId, UUID callId,
+                                          String attachmentName) {
+        return String.format("%s%s/%s/%s", ATTACHMENT_URL_BASE, applicationId, callId.toString(),
+                attachmentName);
     }
 
     @Override
@@ -108,7 +118,8 @@ public class NativeAppCallContentProvider extends ContentProvider {
         }
 
         try {
-            File file = dataSource.openAttachment(callIdAndAttachmentName.first, callIdAndAttachmentName.second);
+            File file = dataSource.openAttachment(callIdAndAttachmentName.first,
+                    callIdAndAttachmentName.second);
 
             return ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY);
         } catch (FileNotFoundException exception) {
@@ -119,8 +130,10 @@ public class NativeAppCallContentProvider extends ContentProvider {
 
     Pair<UUID, String> parseCallIdAndAttachmentName(Uri uri) {
         try {
-            // We don't do explicit format checking here. Malformed URIs may generate NullPointerExceptions or
-            // array bounds exceptions, which we'll catch and return null. All of these will result in a
+            // We don't do explicit format checking here. Malformed URIs may generate
+            // NullPointerExceptions or
+            // array bounds exceptions, which we'll catch and return null. All of these will
+            // result in a
             // FileNotFoundException being thrown in openFile.
             String callIdAndAttachmentName = uri.getPath().substring(1);
             String[] parts = callIdAndAttachmentName.split("/");

@@ -120,7 +120,8 @@ public class Feed extends Activity {
                             // Populate the JSON object
                             String nome = user.getName();
                             int maxLength = (nome.length() < MAX_CHAR) ? nome.length() : MAX_CHAR;
-                            ParseUser.getCurrentUser().setUsername(user.getName().substring(0, maxLength));
+                            ParseUser.getCurrentUser().setUsername(user.getName().substring(0,
+                                    maxLength));
                             ParseUser.getCurrentUser().saveEventually();
                         }
                     }
@@ -139,7 +140,8 @@ public class Feed extends Activity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment implements LocationListener, GooglePlayServicesClient.ConnectionCallbacks,
+    public static class PlaceholderFragment extends Fragment implements LocationListener,
+            GooglePlayServicesClient.ConnectionCallbacks,
             GooglePlayServicesClient.OnConnectionFailedListener {
         /*
      * Define a request code to send to Google Play services This code is returned in
@@ -223,8 +225,10 @@ public class Feed extends Activity {
                 @Override
                 public void done(List<Produto> parseObjects, com.parse.ParseException e) {
                     if (e == null) {
-                        ProdutoAdapter produtoAdapter = new ProdutoAdapter(getActivity(), parseObjects);
-                        final ListView listaDeExibicao = (ListView) getActivity().findViewById(R.id.listaCards);
+                        ProdutoAdapter produtoAdapter = new ProdutoAdapter(getActivity(),
+                                parseObjects);
+                        final ListView listaDeExibicao = (ListView) getActivity().findViewById(R
+                                .id.listaCards);
                         if (listaDeExibicao != null) {
                             listaDeExibicao.setAdapter(produtoAdapter);
                         }
@@ -245,8 +249,10 @@ public class Feed extends Activity {
                 @Override
                 public void done(List<Produto> parseObjects, com.parse.ParseException e) {
                     if (e == null) {
-                        ProdutoAdapter produtoAdapter = new ProdutoAdapter(getActivity(), parseObjects);
-                        final ListView listaDeExibicao = (ListView) getActivity().findViewById(R.id.listaCards);
+                        ProdutoAdapter produtoAdapter = new ProdutoAdapter(getActivity(),
+                                parseObjects);
+                        final ListView listaDeExibicao = (ListView) getActivity().findViewById(R
+                                .id.listaCards);
                         if (listaDeExibicao != null) {
                             listaDeExibicao.setAdapter(produtoAdapter);
                         }
@@ -266,8 +272,10 @@ public class Feed extends Activity {
                 @Override
                 public void done(List<Produto> parseObjects, com.parse.ParseException e) {
                     if (e == null) {
-                        ProdutoAdapter produtoAdapter = new ProdutoAdapter(getActivity(), parseObjects);
-                        final ListView listaDeExibicao = (ListView) getActivity().findViewById(R.id.listaCards);
+                        ProdutoAdapter produtoAdapter = new ProdutoAdapter(getActivity(),
+                                parseObjects);
+                        final ListView listaDeExibicao = (ListView) getActivity().findViewById(R
+                                .id.listaCards);
                         if (listaDeExibicao != null) {
                             listaDeExibicao.setAdapter(produtoAdapter);
                         }
@@ -281,17 +289,22 @@ public class Feed extends Activity {
         @Override
         public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                                  Bundle savedInstanceState) {
-            swipeRefreshLayout = (SwipeRefreshLayout) inflater.inflate(R.layout.fragment_feed, container, false);
+            swipeRefreshLayout = (SwipeRefreshLayout) inflater.inflate(R.layout.fragment_feed,
+                    container, false);
             ImageButton camera = (ImageButton) swipeRefreshLayout.findViewById(R.id.cameraButton);
             final ImageButton gps = (ImageButton) swipeRefreshLayout.findViewById(R.id.gpsButton);
             final ImageButton home = (ImageButton) swipeRefreshLayout.findViewById(R.id.homeButton);
-            final ImageButton profile = (ImageButton) swipeRefreshLayout.findViewById(R.id.profileImageButton);
-            final ImageButton recomendacao = (ImageButton) swipeRefreshLayout.findViewById(R.id.recomendacaoImageButton);
+            final ImageButton profile = (ImageButton) swipeRefreshLayout.findViewById(R.id
+                    .profileImageButton);
+            final ImageButton recomendacao = (ImageButton) swipeRefreshLayout.findViewById(R.id
+                    .recomendacaoImageButton);
             locationClient.connect();
 
-            final ListView listaDeExibicao = (ListView) swipeRefreshLayout.findViewById(R.id.listaCards);
+            final ListView listaDeExibicao = (ListView) swipeRefreshLayout.findViewById(R.id
+                    .listaCards);
 
-            final ImageButton busca = (ImageButton) getActivity().findViewById(R.id.botaoBuscaActionBar);
+            final ImageButton busca = (ImageButton) getActivity().findViewById(R.id
+                    .botaoBuscaActionBar);
 
             gps.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -306,7 +319,8 @@ public class Feed extends Activity {
                         Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
                         if (myLoc == null) {
                             Toast.makeText(getActivity(),
-                                    "Please try again after your location appears on the map.", Toast.LENGTH_LONG).show();
+                                    "Please try again after your location appears on the map.",
+                                    Toast.LENGTH_LONG).show();
                             return;
                         }
                         final ParseGeoPoint myPoint = geoPointFromLocation(myLoc);
@@ -373,7 +387,8 @@ public class Feed extends Activity {
                 }
             });
 
-            swipeRefreshLayout.setColorScheme(android.R.color.darker_gray, android.R.color.holo_red_light,
+            swipeRefreshLayout.setColorScheme(android.R.color.darker_gray,
+                    android.R.color.holo_red_light,
                     android.R.color.holo_red_dark, android.R.color.background_light);
             swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 
@@ -436,15 +451,18 @@ public class Feed extends Activity {
         }
 
         private boolean servicesConnected() {
-            int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this.getActivity());
+            int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this
+                    .getActivity());
 
             if (ConnectionResult.SUCCESS == resultCode) {
 
                 return true;
             } else {
-                Dialog dialog = GooglePlayServicesUtil.getErrorDialog(resultCode, this.getActivity(), 0);
+                Dialog dialog = GooglePlayServicesUtil.getErrorDialog(resultCode,
+                        this.getActivity(), 0);
                 if (dialog != null) {
-                    InfoFragment.ErrorDialogFragment errorFragment = new InfoFragment.ErrorDialogFragment();
+                    InfoFragment.ErrorDialogFragment errorFragment = new InfoFragment
+                            .ErrorDialogFragment();
                     errorFragment.setDialog(dialog);
                     errorFragment.show(getFragmentManager(), Bazart.APPTAG);
                 }
@@ -519,7 +537,8 @@ public class Feed extends Activity {
         public void onConnectionFailed(ConnectionResult connectionResult) {
             if (connectionResult.hasResolution()) {
                 try {
-                    connectionResult.startResolutionForResult(this.getActivity(), CONNECTION_FAILURE_RESOLUTION_REQUEST);
+                    connectionResult.startResolutionForResult(this.getActivity(),
+                            CONNECTION_FAILURE_RESOLUTION_REQUEST);
                 } catch (IntentSender.SendIntentException e) {
                 }
             }

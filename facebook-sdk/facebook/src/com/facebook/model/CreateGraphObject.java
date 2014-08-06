@@ -24,7 +24,8 @@ import java.lang.annotation.RetentionPolicy;
  * GraphObject, if you wish to provide a setter that takes a primitive data type (e.g., String)
  * or a List of primitive data types, but actually populates its underlying property with a
  * new GraphObject with a property equal to the specified value (or a List of such GraphObjects).
- * This is useful for providing "helper" setters to avoid requiring callers to instantiate a GraphObject
+ * This is useful for providing "helper" setters to avoid requiring callers to instantiate a
+ * GraphObject
  * just to set a single property on it (e.g., 'url' or 'id').
  * <p/>
  * The String value provided to this annotation should be the name of the property that will be

@@ -17,7 +17,8 @@
 package com.facebook;
 
 /**
- * Predefined event and parameter names for logging events common to many apps. Logging occurs through the
+ * Predefined event and parameter names for logging events common to many apps. Logging occurs
+ * through the
  * {@link AppEventsLogger#logEvent(String, android.os.Bundle)} family of methods.
  */
 public class AppEventsConstants {
@@ -33,7 +34,8 @@ public class AppEventsConstants {
     /**
      * Log this event when a user has completed registration with the app.
      */
-    public static final String EVENT_NAME_COMPLETED_REGISTRATION = "fb_mobile_complete_registration";
+    public static final String EVENT_NAME_COMPLETED_REGISTRATION =
+            "fb_mobile_complete_registration";
 
     /**
      * Log this event when a user has viewed a form of content in the app.
@@ -83,7 +85,8 @@ public class AppEventsConstants {
 
     /**
      * Log this event when the user has completed a purchase.
-     * The {@link AppEventsLogger#logPurchase(java.math.BigDecimal, java.util.Currency)} method is a shortcut for
+     * The {@link AppEventsLogger#logPurchase(java.math.BigDecimal, java.util.Currency)} method
+     * is a shortcut for
      * logging this event.
      */
     public static final String EVENT_NAME_PURCHASED = "fb_mobile_purchase";
@@ -111,18 +114,21 @@ public class AppEventsConstants {
 
     /**
      * Parameter key used to specify currency used with logged event.  E.g. "USD", "EUR", "GBP".
-     * See ISO-4217 for specific values.  One reference for these is <http://en.wikipedia.org/wiki/ISO_4217>.
+     * See ISO-4217 for specific values.  One reference for these is <http://en.wikipedia
+     * .org/wiki/ISO_4217>.
      */
     public static final String EVENT_PARAM_CURRENCY = "fb_currency";
 
     /**
-     * Parameter key used to specify method user has used to register for the app, e.g., "Facebook", "email",
+     * Parameter key used to specify method user has used to register for the app, e.g.,
+     * "Facebook", "email",
      * "Twitter", etc.
      */
     public static final String EVENT_PARAM_REGISTRATION_METHOD = "fb_registration_method";
 
     /**
-     * Parameter key used to specify a generic content type/family for the logged event, e.g. "music", "photo",
+     * Parameter key used to specify a generic content type/family for the logged event,
+     * e.g. "music", "photo",
      * "video".  Options to use will vary based upon what the app is all about.
      */
     public static final String EVENT_PARAM_CONTENT_TYPE = "fb_content_type";
@@ -140,7 +146,8 @@ public class AppEventsConstants {
 
     /**
      * Parameter key used to specify whether the activity being logged about was successful or not.
-     * EVENT_PARAM_VALUE_YES and EVENT_PARAM_VALUE_NO are good canonical values to use for this parameter.
+     * EVENT_PARAM_VALUE_YES and EVENT_PARAM_VALUE_NO are good canonical values to use for this
+     * parameter.
      */
     public static final String EVENT_PARAM_SUCCESS = "fb_success";
 
@@ -151,13 +158,16 @@ public class AppEventsConstants {
     public static final String EVENT_PARAM_MAX_RATING_VALUE = "fb_max_rating_value";
 
     /**
-     * Parameter key used to specify whether payment info is available for the EVENT_NAME_INITIATED_CHECKOUT event.
-     * EVENT_PARAM_VALUE_YES and EVENT_PARAM_VALUE_NO are good canonical values to use for this parameter.
+     * Parameter key used to specify whether payment info is available for the
+     * EVENT_NAME_INITIATED_CHECKOUT event.
+     * EVENT_PARAM_VALUE_YES and EVENT_PARAM_VALUE_NO are good canonical values to use for this
+     * parameter.
      */
     public static final String EVENT_PARAM_PAYMENT_INFO_AVAILABLE = "fb_payment_info_available";
 
     /**
-     * Parameter key used to specify how many items are being processed for an EVENT_NAME_INITIATED_CHECKOUT
+     * Parameter key used to specify how many items are being processed for an
+     * EVENT_NAME_INITIATED_CHECKOUT
      * or EVENT_NAME_PURCHASE event.
      */
     public static final String EVENT_PARAM_NUM_ITEMS = "fb_num_items";

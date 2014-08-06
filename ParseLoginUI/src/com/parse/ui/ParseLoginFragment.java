@@ -174,18 +174,23 @@ public class ParseLoginFragment extends ParseLoginFragmentBase {
                             } else {
                                 loadingFinish();
                                 if (e != null) {
-                                    debugLog(getString(R.string.com_parse_ui_login_warning_parse_login_failed) +
+                                    debugLog(getString(R.string
+                                            .com_parse_ui_login_warning_parse_login_failed) +
                                             e.toString());
                                     if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
-                                        if (config.getParseLoginInvalidCredentialsToastText() != null) {
-                                            showToast(config.getParseLoginInvalidCredentialsToastText());
+                                        if (config.getParseLoginInvalidCredentialsToastText() !=
+                                                null) {
+                                            showToast(config
+                                                    .getParseLoginInvalidCredentialsToastText());
                                         } else {
-                                            showToast(R.string.com_parse_ui_parse_login_invalid_credentials_toast);
+                                            showToast(R.string
+                                                    .com_parse_ui_parse_login_invalid_credentials_toast);
                                         }
                                         passwordField.selectAll();
                                         passwordField.requestFocus();
                                     } else {
-                                        showToast(R.string.com_parse_ui_parse_login_failed_unknown_toast);
+                                        showToast(R.string
+                                                .com_parse_ui_parse_login_failed_unknown_toast);
                                     }
                                 }
                             }
@@ -243,8 +248,10 @@ public class ParseLoginFragment extends ParseLoginFragmentBase {
                                 if (user == null) {
                                     loadingFinish();
                                     if (e != null) {
-                                        showToast(R.string.com_parse_ui_facebook_login_failed_toast);
-                                        debugLog(getString(R.string.com_parse_ui_login_warning_facebook_login_failed) +
+                                        showToast(R.string
+                                                .com_parse_ui_facebook_login_failed_toast);
+                                        debugLog(getString(R.string
+                                                .com_parse_ui_login_warning_facebook_login_failed) +
                                                 e.toString());
                                     }
                                 } else if (user.isNew()) {
@@ -257,10 +264,12 @@ public class ParseLoginFragment extends ParseLoginFragmentBase {
                         If we were able to successfully retrieve the Facebook
                         user's name, let's set it on the fullName field.
                       */
-                                                    ParseUser parseUser = ParseUser.getCurrentUser();
+                                                    ParseUser parseUser = ParseUser
+                                                            .getCurrentUser();
                                                     if (fbUser != null && parseUser != null
                                                             && fbUser.getName().length() > 0) {
-                                                        parseUser.put(USER_OBJECT_NAME_FIELD, fbUser.getName());
+                                                        parseUser.put(USER_OBJECT_NAME_FIELD,
+                                                                fbUser.getName());
                                                         parseUser.saveInBackground(new SaveCallback() {
                                                             @Override
                                                             public void done(ParseException e) {
@@ -309,7 +318,8 @@ public class ParseLoginFragment extends ParseLoginFragmentBase {
                             loadingFinish();
                             if (e != null) {
                                 showToast(R.string.com_parse_ui_twitter_login_failed_toast);
-                                debugLog(getString(R.string.com_parse_ui_login_warning_twitter_login_failed) +
+                                debugLog(getString(R.string
+                                        .com_parse_ui_login_warning_twitter_login_failed) +
                                         e.toString());
                             }
                         } else if (user.isNew()) {

@@ -206,7 +206,8 @@ public class ProfileAdapter extends BaseAdapter {
                 return getBitmapFromMemCache(String.valueOf(params[0]));
             }
             try {
-                bitmap = BitmapFactory.decodeByteArray(params[0].getData(), 0, params[0].getData().length);
+                bitmap = BitmapFactory.decodeByteArray(params[0].getData(), 0,
+                        params[0].getData().length);
             } catch (ParseException e1) {
                 e1.printStackTrace();
             }

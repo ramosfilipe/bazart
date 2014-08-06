@@ -20,7 +20,8 @@ public class CustomToast extends Toast {
     public CustomToast(Context context, CharSequence text, int duration) {
         super(context);
 
-        LayoutInflater inflate = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflate = (LayoutInflater) context.getSystemService(Context
+                .LAYOUT_INFLATER_SERVICE);
 
 
         View view = inflate.inflate(R.layout.my_toast, null);
@@ -28,7 +29,8 @@ public class CustomToast extends Toast {
 
         this.setView(view);
         this.setDuration(duration);
-        this.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL, Gravity.CENTER_VERTICAL, (int) convertDpToPixel(50, context));
+        this.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL, Gravity.CENTER_VERTICAL,
+                (int) convertDpToPixel(50, context));
 
 
     }

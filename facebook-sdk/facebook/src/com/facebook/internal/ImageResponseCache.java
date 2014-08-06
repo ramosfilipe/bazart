@@ -36,7 +36,8 @@ class ImageResponseCache {
 
     synchronized static FileLruCache getCache(Context context) throws IOException {
         if (imageCache == null) {
-            imageCache = new FileLruCache(context.getApplicationContext(), TAG, new FileLruCache.Limits());
+            imageCache = new FileLruCache(context.getApplicationContext(), TAG,
+                    new FileLruCache.Limits());
         }
         return imageCache;
     }
@@ -59,7 +60,9 @@ class ImageResponseCache {
         return imageStream;
     }
 
-    static InputStream interceptAndCacheImageStream(Context context, HttpURLConnection connection) throws IOException {
+    static InputStream interceptAndCacheImageStream(Context context,
+                                                    HttpURLConnection connection) throws
+            IOException {
         InputStream stream = null;
         if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
             URL url = connection.getURL();

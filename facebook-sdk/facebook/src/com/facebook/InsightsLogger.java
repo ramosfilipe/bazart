@@ -50,14 +50,16 @@ public class InsightsLogger {
     /**
      * Deprecated. Please use {@link AppEventsLogger} instead.
      */
-    public static InsightsLogger newLogger(Context context, String clientToken, String applicationId) {
+    public static InsightsLogger newLogger(Context context, String clientToken,
+                                           String applicationId) {
         return new InsightsLogger(context, applicationId, null);
     }
 
     /**
      * Deprecated. Please use {@link AppEventsLogger} instead.
      */
-    public static InsightsLogger newLogger(Context context, String clientToken, String applicationId, Session session) {
+    public static InsightsLogger newLogger(Context context, String clientToken,
+                                           String applicationId, Session session) {
         return new InsightsLogger(context, applicationId, session);
     }
 

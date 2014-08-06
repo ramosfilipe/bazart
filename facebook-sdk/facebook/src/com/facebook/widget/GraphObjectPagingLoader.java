@@ -78,7 +78,8 @@ class GraphObjectPagingLoader<T extends GraphObject> extends Loader<SimpleGraphO
     public void refreshOriginalRequest(long afterDelay) {
         if (originalRequest == null) {
             throw new FacebookException(
-                    "refreshOriginalRequest may not be called until after startLoading has been called.");
+                    "refreshOriginalRequest may not be called until after startLoading has been " +
+                            "called.");
         }
         startLoading(originalRequest, false, afterDelay);
     }
@@ -96,7 +97,8 @@ class GraphObjectPagingLoader<T extends GraphObject> extends Loader<SimpleGraphO
             });
 
             loading = true;
-            CacheableRequestBatch batch = putRequestIntoBatch(currentRequest, skipRoundtripIfCached);
+            CacheableRequestBatch batch = putRequestIntoBatch(currentRequest,
+                    skipRoundtripIfCached);
             Request.executeBatchAsync(batch);
         }
     }
@@ -154,7 +156,8 @@ class GraphObjectPagingLoader<T extends GraphObject> extends Loader<SimpleGraphO
         }
     }
 
-    private CacheableRequestBatch putRequestIntoBatch(Request request, boolean skipRoundtripIfCached) {
+    private CacheableRequestBatch putRequestIntoBatch(Request request,
+                                                      boolean skipRoundtripIfCached) {
         // We just use the request URL as the cache key.
         CacheableRequestBatch batch = new CacheableRequestBatch(request);
         // We use the default cache key (request URL).
@@ -174,7 +177,8 @@ class GraphObjectPagingLoader<T extends GraphObject> extends Loader<SimpleGraphO
         FacebookRequestError requestError = response.getError();
         FacebookException exception = (requestError == null) ? null : requestError.getException();
         if (response.getGraphObject() == null && exception == null) {
-            exception = new FacebookException("GraphObjectPagingLoader received neither a result nor an error.");
+            exception = new FacebookException("GraphObjectPagingLoader received neither a result " +
+                    "nor an error.");
         }
 
         if (exception != null) {
@@ -189,7 +193,8 @@ class GraphObjectPagingLoader<T extends GraphObject> extends Loader<SimpleGraphO
     }
 
     private void addResults(Response response) {
-        SimpleGraphObjectCursor<T> cursorToModify = (cursor == null || !appendResults) ? new SimpleGraphObjectCursor<T>() :
+        SimpleGraphObjectCursor<T> cursorToModify = (cursor == null || !appendResults) ? new
+                SimpleGraphObjectCursor<T>() :
                 new SimpleGraphObjectCursor<T>(cursor);
 
         PagedResults result = response.getGraphObjectAs(PagedResults.class);

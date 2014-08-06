@@ -35,7 +35,8 @@ import android.provider.ContactsContract.Contacts;
             Contacts.DISPLAY_NAME_SOURCE // 7
     }, Phone.CONTENT_FILTER_URI, Phone.CONTENT_URI) {
         @Override
-        public CharSequence getTypeLabel(final Resources res, final int type, final CharSequence label) {
+        public CharSequence getTypeLabel(final Resources res, final int type,
+                                         final CharSequence label) {
             return Phone.getTypeLabel(res, type, label);
         }
     };
@@ -49,7 +50,8 @@ import android.provider.ContactsContract.Contacts;
             Contacts.DISPLAY_NAME_SOURCE // 7
     }, Email.CONTENT_FILTER_URI, Email.CONTENT_URI) {
         @Override
-        public CharSequence getTypeLabel(final Resources res, final int type, final CharSequence label) {
+        public CharSequence getTypeLabel(final Resources res, final int type,
+                                         final CharSequence label) {
             return Email.getTypeLabel(res, type, label);
         }
     };

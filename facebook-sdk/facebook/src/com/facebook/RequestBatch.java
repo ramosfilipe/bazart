@@ -26,7 +26,8 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * RequestBatch contains a list of Request objects that can be sent to Facebook in a single round-trip.
+ * RequestBatch contains a list of Request objects that can be sent to Facebook in a single
+ * round-trip.
  */
 public class RequestBatch extends AbstractList<Request> {
     private static AtomicInteger idGenerator = new AtomicInteger();
@@ -96,7 +97,8 @@ public class RequestBatch extends AbstractList<Request> {
     }
 
     /**
-     * Adds a batch-level callback which will be called when the entire batch has finished executing.
+     * Adds a batch-level callback which will be called when the entire batch has finished
+     * executing.
      *
      * @param callback the callback
      */
@@ -183,11 +185,14 @@ public class RequestBatch extends AbstractList<Request> {
      * <p/>
      * This should only be used if you have transitioned off the UI thread.
      *
-     * @return a list of Response objects representing the results of the requests; responses are returned in the same
+     * @return a list of Response objects representing the results of the requests; responses are
+     * returned in the same
      * order as the requests were specified.
-     * @throws FacebookException        If there was an error in the protocol used to communicate with the service
+     * @throws FacebookException        If there was an error in the protocol used to communicate
+     * with the service
      * @throws IllegalArgumentException if the passed in RequestBatch is empty
-     * @throws NullPointerException     if the passed in RequestBatch or any of its contents are null
+     * @throws NullPointerException     if the passed in RequestBatch or any of its contents are
+     * null
      */
     public final List<Response> executeAndWait() {
         return executeAndWaitImpl();
@@ -218,8 +223,10 @@ public class RequestBatch extends AbstractList<Request> {
     }
 
     /**
-     * Specifies the interface that consumers of the RequestBatch class can implement in order to be notified when the
-     * entire batch completes execution. It will be called after all per-Request callbacks are called.
+     * Specifies the interface that consumers of the RequestBatch class can implement in order to
+     * be notified when the
+     * entire batch completes execution. It will be called after all per-Request callbacks are
+     * called.
      */
     public interface Callback {
         /**
@@ -231,7 +238,8 @@ public class RequestBatch extends AbstractList<Request> {
     }
 
     /**
-     * Specifies the interface that consumers of the RequestBatch class can implement in order to be notified when the
+     * Specifies the interface that consumers of the RequestBatch class can implement in order to
+     * be notified when the
      * batch makes progress. The frequency of the callbacks can be controlled using
      * {@link com.facebook.Settings#setOnProgressThreshold(long)}.
      */

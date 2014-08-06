@@ -60,10 +60,12 @@ public class UserSettingsFragment extends FacebookFragment {
     private static final String NAME = "name";
     private static final String ID = "id";
     private static final String PICTURE = "picture";
-    private static final String REQUEST_FIELDS = TextUtils.join(",", new String[]{ID, NAME, PICTURE});
+    private static final String REQUEST_FIELDS = TextUtils.join(",", new String[]{ID, NAME,
+            PICTURE});
     private static final String FIELDS = "fields";
     private LoginButton loginButton;
-    private LoginButton.LoginButtonProperties loginButtonProperties = new LoginButton.LoginButtonProperties();
+    private LoginButton.LoginButtonProperties loginButtonProperties = new LoginButton
+            .LoginButtonProperties();
     private TextView connectedStateLabel;
     private GraphUser user;
     private Session userInfoSession; // the Session used to fetch the current user info
@@ -72,9 +74,11 @@ public class UserSettingsFragment extends FacebookFragment {
     private Session.StatusCallback sessionStatusCallback;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.com_facebook_usersettingsfragment, container, false);
-        loginButton = (LoginButton) view.findViewById(R.id.com_facebook_usersettingsfragment_login_button);
+        loginButton = (LoginButton) view.findViewById(R.id
+                .com_facebook_usersettingsfragment_login_button);
         loginButton.setProperties(loginButtonProperties);
         loginButton.setFragment(this);
         loginButton.setLoginLogoutEventName(AnalyticsEvents.EVENT_USER_SETTINGS_USAGE);
@@ -83,7 +87,8 @@ public class UserSettingsFragment extends FacebookFragment {
         if (session != null && !session.equals(Session.getActiveSession())) {
             loginButton.setSession(session);
         }
-        connectedStateLabel = (TextView) view.findViewById(R.id.com_facebook_usersettingsfragment_profile_name);
+        connectedStateLabel = (TextView) view.findViewById(R.id
+                .com_facebook_usersettingsfragment_profile_name);
 
         // if no background is set for some reason, then default to Facebook blue
         if (view.getBackground() == null) {
@@ -343,7 +348,8 @@ public class UserSettingsFragment extends FacebookFragment {
         final Session currentSession = getSession();
         if (currentSession != null && currentSession.isOpened()) {
             if (currentSession != userInfoSession) {
-                Request request = Request.newMeRequest(currentSession, new Request.GraphUserCallback() {
+                Request request = Request.newMeRequest(currentSession,
+                        new Request.GraphUserCallback() {
                     @Override
                     public void onCompleted(GraphUser me, Response response) {
                         if (currentSession == getSession()) {
@@ -371,9 +377,11 @@ public class UserSettingsFragment extends FacebookFragment {
             return;
         }
         if (isSessionOpen()) {
-            connectedStateLabel.setTextColor(getResources().getColor(R.color.com_facebook_usersettingsfragment_connected_text_color));
+            connectedStateLabel.setTextColor(getResources().getColor(R.color
+                    .com_facebook_usersettingsfragment_connected_text_color));
             connectedStateLabel.setShadowLayer(1f, 0f, -1f,
-                    getResources().getColor(R.color.com_facebook_usersettingsfragment_connected_shadow_color));
+                    getResources().getColor(R.color
+                            .com_facebook_usersettingsfragment_connected_shadow_color));
 
             if (user != null) {
                 ImageRequest request = getImageRequest();
@@ -382,7 +390,8 @@ public class UserSettingsFragment extends FacebookFragment {
                     // Do we already have the right picture? If so, leave it alone.
                     if (!requestUrl.equals(connectedStateLabel.getTag())) {
                         if (user.getId().equals(userProfilePicID)) {
-                            connectedStateLabel.setCompoundDrawables(null, userProfilePic, null, null);
+                            connectedStateLabel.setCompoundDrawables(null, userProfilePic, null,
+                                    null);
                             connectedStateLabel.setTag(requestUrl);
                         } else {
                             ImageDownloader.downloadAsync(request);
@@ -393,14 +402,18 @@ public class UserSettingsFragment extends FacebookFragment {
             } else {
                 connectedStateLabel.setText(getResources().getString(
                         R.string.com_facebook_usersettingsfragment_logged_in));
-                Drawable noProfilePic = getResources().getDrawable(R.drawable.com_facebook_profile_default_icon);
+                Drawable noProfilePic = getResources().getDrawable(R.drawable
+                        .com_facebook_profile_default_icon);
                 noProfilePic.setBounds(0, 0,
-                        getResources().getDimensionPixelSize(R.dimen.com_facebook_usersettingsfragment_profile_picture_width),
-                        getResources().getDimensionPixelSize(R.dimen.com_facebook_usersettingsfragment_profile_picture_height));
+                        getResources().getDimensionPixelSize(R.dimen
+                                .com_facebook_usersettingsfragment_profile_picture_width),
+                        getResources().getDimensionPixelSize(R.dimen
+                                .com_facebook_usersettingsfragment_profile_picture_height));
                 connectedStateLabel.setCompoundDrawables(null, noProfilePic, null, null);
             }
         } else {
-            int textColor = getResources().getColor(R.color.com_facebook_usersettingsfragment_not_connected_text_color);
+            int textColor = getResources().getColor(R.color
+                    .com_facebook_usersettingsfragment_not_connected_text_color);
             connectedStateLabel.setTextColor(textColor);
             connectedStateLabel.setShadowLayer(0f, 0f, 0f, textColor);
             connectedStateLabel.setText(getResources().getString(
@@ -417,8 +430,10 @@ public class UserSettingsFragment extends FacebookFragment {
                     getActivity(),
                     ImageRequest.getProfilePictureUrl(
                             user.getId(),
-                            getResources().getDimensionPixelSize(R.dimen.com_facebook_usersettingsfragment_profile_picture_width),
-                            getResources().getDimensionPixelSize(R.dimen.com_facebook_usersettingsfragment_profile_picture_height))
+                            getResources().getDimensionPixelSize(R.dimen
+                                    .com_facebook_usersettingsfragment_profile_picture_width),
+                            getResources().getDimensionPixelSize(R.dimen
+                                    .com_facebook_usersettingsfragment_profile_picture_height))
             );
 
             request = requestBuilder.setCallerTag(this)
@@ -440,10 +455,13 @@ public class UserSettingsFragment extends FacebookFragment {
         if (response != null) {
             Bitmap bitmap = response.getBitmap();
             if (bitmap != null) {
-                BitmapDrawable drawable = new BitmapDrawable(UserSettingsFragment.this.getResources(), bitmap);
+                BitmapDrawable drawable = new BitmapDrawable(UserSettingsFragment.this
+                        .getResources(), bitmap);
                 drawable.setBounds(0, 0,
-                        getResources().getDimensionPixelSize(R.dimen.com_facebook_usersettingsfragment_profile_picture_width),
-                        getResources().getDimensionPixelSize(R.dimen.com_facebook_usersettingsfragment_profile_picture_height));
+                        getResources().getDimensionPixelSize(R.dimen
+                                .com_facebook_usersettingsfragment_profile_picture_width),
+                        getResources().getDimensionPixelSize(R.dimen
+                                .com_facebook_usersettingsfragment_profile_picture_height));
                 userProfilePic = drawable;
                 userProfilePicID = id;
                 connectedStateLabel.setCompoundDrawables(null, drawable, null, null);

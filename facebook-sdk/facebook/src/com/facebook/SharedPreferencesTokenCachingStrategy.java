@@ -35,7 +35,8 @@ import java.util.Map;
 
 /*
  * <p>
- * An implementation of {@link TokenCachingStrategy TokenCachingStrategy} that uses Android SharedPreferences
+ * An implementation of {@link TokenCachingStrategy TokenCachingStrategy} that uses Android
+ * SharedPreferences
  * to persist information.
  * </p>
  * <p>
@@ -47,7 +48,8 @@ import java.util.Map;
  */
 public class SharedPreferencesTokenCachingStrategy extends TokenCachingStrategy {
 
-    private static final String DEFAULT_CACHE_KEY = "com.facebook.SharedPreferencesTokenCachingStrategy.DEFAULT_KEY";
+    private static final String DEFAULT_CACHE_KEY = "com.facebook" +
+            ".SharedPreferencesTokenCachingStrategy.DEFAULT_KEY";
     private static final String TAG = SharedPreferencesTokenCachingStrategy.class.getSimpleName();
 
     private static final String JSON_VALUE_TYPE = "valueType";
@@ -78,7 +80,8 @@ public class SharedPreferencesTokenCachingStrategy extends TokenCachingStrategy 
     private SharedPreferences cache;
 
     /**
-     * Creates a default {@link SharedPreferencesTokenCachingStrategy SharedPreferencesTokenCachingStrategy}
+     * Creates a default {@link SharedPreferencesTokenCachingStrategy
+     * SharedPreferencesTokenCachingStrategy}
      * instance that provides access to a single set of token information.
      *
      * @param context The Context object to use to get the SharedPreferences object.
@@ -89,7 +92,8 @@ public class SharedPreferencesTokenCachingStrategy extends TokenCachingStrategy 
     }
 
     /**
-     * Creates a {@link SharedPreferencesTokenCachingStrategy SharedPreferencesTokenCachingStrategy} instance
+     * Creates a {@link SharedPreferencesTokenCachingStrategy
+     * SharedPreferencesTokenCachingStrategy} instance
      * that is distinct for the passed in cacheKey.
      *
      * @param context  The Context object to use to get the SharedPreferences object.
@@ -152,7 +156,8 @@ public class SharedPreferencesTokenCachingStrategy extends TokenCachingStrategy 
                 serializeKey(key, bundle, editor);
             } catch (JSONException e) {
                 // Error in the bundle. Don't store a partial cache.
-                Logger.log(LoggingBehavior.CACHE, Log.WARN, TAG, "Error processing value for key: '" + key + "' -- " + e);
+                Logger.log(LoggingBehavior.CACHE, Log.WARN, TAG, "Error processing value for key:" +
+                        " '" + key + "' -- " + e);
 
                 // Bypass the commit and just return. This cancels the entire edit transaction
                 return;
@@ -161,7 +166,8 @@ public class SharedPreferencesTokenCachingStrategy extends TokenCachingStrategy 
 
         boolean successfulCommit = editor.commit();
         if (!successfulCommit) {
-            Logger.log(LoggingBehavior.CACHE, Log.WARN, TAG, "SharedPreferences.Editor.commit() was not successful");
+            Logger.log(LoggingBehavior.CACHE, Log.WARN, TAG, "SharedPreferences.Editor.commit() " +
+                    "was not successful");
         }
     }
 
@@ -379,7 +385,8 @@ public class SharedPreferencesTokenCachingStrategy extends TokenCachingStrategy 
             ArrayList<String> stringList = new ArrayList<String>(numStrings);
             for (int i = 0; i < numStrings; i++) {
                 Object jsonStringValue = jsonArray.get(i);
-                stringList.add(i, jsonStringValue == JSONObject.NULL ? null : (String) jsonStringValue);
+                stringList.add(i, jsonStringValue == JSONObject.NULL ? null : (String)
+                        jsonStringValue);
             }
             bundle.putStringArrayList(key, stringList);
         } else if (valueType.equals(TYPE_ENUM)) {

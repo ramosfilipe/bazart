@@ -55,7 +55,8 @@ public class ParseSignupFragment extends ParseLoginFragmentBase implements OnCli
     private ParseLoginConfig config;
     private int minPasswordLength;
 
-    public static ParseSignupFragment newInstance(Bundle configOptions, String username, String password) {
+    public static ParseSignupFragment newInstance(Bundle configOptions, String username,
+                                                  String password) {
         ParseSignupFragment signupFragment = new ParseSignupFragment();
         Bundle args = new Bundle(configOptions);
         args.putString(ParseSignupFragment.USERNAME, username);
@@ -195,7 +196,8 @@ public class ParseSignupFragment extends ParseLoginFragmentBase implements OnCli
                     } else {
                         loadingFinish();
                         if (e != null) {
-                            debugLog(getString(R.string.com_parse_ui_login_warning_parse_signup_failed) +
+                            debugLog(getString(R.string
+                                    .com_parse_ui_login_warning_parse_signup_failed) +
                                     e.toString());
                             switch (e.getCode()) {
                                 case ParseException.INVALID_EMAIL_ADDRESS:

@@ -37,8 +37,10 @@ import bolts.Continuation;
 import bolts.Task;
 
 /**
- * Provides an implementation for the {@link AppLinkResolver AppLinkResolver} interface that uses the Facebook App Link
- * index to solve App Links, given a Url. It also provides an additional helper method that can resolve multiple App
+ * Provides an implementation for the {@link AppLinkResolver AppLinkResolver} interface that uses
+ * the Facebook App Link
+ * index to solve App Links, given a Url. It also provides an additional helper method that can
+ * resolve multiple App
  * Links in a single call.
  */
 public class FacebookAppLinkResolver implements AppLinkResolver {
@@ -71,16 +73,19 @@ public class FacebookAppLinkResolver implements AppLinkResolver {
     }
 
     private static Uri getWebFallbackUriFromJson(Uri sourceUrl, JSONObject urlData) {
-        // Try and get a web target. This is best effort. Any failures results in null being returned.
+        // Try and get a web target. This is best effort. Any failures results in null being
+        // returned.
         try {
             JSONObject webTarget = urlData.getJSONObject(APP_LINK_WEB_TARGET_KEY);
-            boolean shouldFallback = tryGetBooleanFromJson(webTarget, APP_LINK_TARGET_SHOULD_FALLBACK_KEY, true);
+            boolean shouldFallback = tryGetBooleanFromJson(webTarget,
+                    APP_LINK_TARGET_SHOULD_FALLBACK_KEY, true);
             if (!shouldFallback) {
                 // Don't use a fallback url
                 return null;
             }
 
-            String webTargetUrlString = tryGetStringFromJson(webTarget, APP_LINK_TARGET_URL_KEY, null);
+            String webTargetUrlString = tryGetStringFromJson(webTarget, APP_LINK_TARGET_URL_KEY,
+                    null);
             Uri webUri = null;
             if (webTargetUrlString != null) {
                 webUri = Uri.parse(webTargetUrlString);
@@ -94,7 +99,8 @@ public class FacebookAppLinkResolver implements AppLinkResolver {
         }
     }
 
-    private static String tryGetStringFromJson(JSONObject json, String propertyName, String defaultValue) {
+    private static String tryGetStringFromJson(JSONObject json, String propertyName,
+                                               String defaultValue) {
         try {
             return json.getString(propertyName);
         } catch (JSONException e) {
@@ -102,7 +108,8 @@ public class FacebookAppLinkResolver implements AppLinkResolver {
         }
     }
 
-    private static boolean tryGetBooleanFromJson(JSONObject json, String propertyName, boolean defaultValue) {
+    private static boolean tryGetBooleanFromJson(JSONObject json, String propertyName,
+                                                 boolean defaultValue) {
         try {
             return json.getBoolean(propertyName);
         } catch (JSONException e) {
@@ -114,9 +121,11 @@ public class FacebookAppLinkResolver implements AppLinkResolver {
      * Asynchronously resolves App Link data for the passed in Uri
      *
      * @param uri Uri to be resolved into an App Link
-     * @return A Task that, when successful, will return an AppLink for the passed in Uri. This may be null if no App
+     * @return A Task that, when successful, will return an AppLink for the passed in Uri. This
+     * may be null if no App
      * Link data was found for this Uri.
-     * In the case of general server errors, the task will be completed with the corresponding error.
+     * In the case of general server errors, the task will be completed with the corresponding
+     * error.
      */
     public Task<AppLink> getAppLinkFromUrlInBackground(final Uri uri) {
         ArrayList<Uri> uris = new ArrayList<Uri>();
@@ -136,9 +145,12 @@ public class FacebookAppLinkResolver implements AppLinkResolver {
      * Asynchronously resolves App Link data for multiple Urls
      *
      * @param uris A list of Uri objects to resolve into App Links
-     * @return A Task that, when successful, will return a Map of Uri->AppLink for each Uri that was successfully
-     * resolved into an App Link. Uris that could not be resolved into App Links will not be present in the Map.
-     * In the case of general server errors, the task will be completed with the corresponding error.
+     * @return A Task that, when successful, will return a Map of Uri->AppLink for each Uri that
+     * was successfully
+     * resolved into an App Link. Uris that could not be resolved into App Links will not be
+     * present in the Map.
+     * In the case of general server errors, the task will be completed with the corresponding
+     * error.
      */
     public Task<Map<Uri, AppLink>> getAppLinkFromUrlsInBackground(List<Uri> uris) {
         final Map<Uri, AppLink> appLinkResults = new HashMap<Uri, AppLink>();
@@ -190,7 +202,8 @@ public class FacebookAppLinkResolver implements AppLinkResolver {
                         }
 
                         GraphObject responseObject = response.getGraphObject();
-                        JSONObject responseJson = responseObject != null ? responseObject.getInnerJSONObject() : null;
+                        JSONObject responseJson = responseObject != null ? responseObject
+                                .getInnerJSONObject() : null;
                         if (responseJson == null) {
                             taskCompletionSource.setResult(appLinkResults);
                             return;
@@ -205,13 +218,16 @@ public class FacebookAppLinkResolver implements AppLinkResolver {
                             JSONObject urlData = null;
                             try {
                                 urlData = responseJson.getJSONObject(uri.toString());
-                                JSONArray rawTargets = urlData.getJSONArray(APP_LINK_ANDROID_TARGET_KEY);
+                                JSONArray rawTargets = urlData.getJSONArray
+                                        (APP_LINK_ANDROID_TARGET_KEY);
 
                                 int targetsCount = rawTargets.length();
-                                List<AppLink.Target> targets = new ArrayList<AppLink.Target>(targetsCount);
+                                List<AppLink.Target> targets = new ArrayList<AppLink.Target>
+                                        (targetsCount);
 
                                 for (int i = 0; i < targetsCount; i++) {
-                                    AppLink.Target target = getAndroidTargetFromJson(rawTargets.getJSONObject(i));
+                                    AppLink.Target target = getAndroidTargetFromJson(rawTargets
+                                            .getJSONObject(i));
                                     if (target != null) {
                                         targets.add(target);
                                     }

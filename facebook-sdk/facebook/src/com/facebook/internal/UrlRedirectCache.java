@@ -36,7 +36,8 @@ class UrlRedirectCache {
 
     synchronized static FileLruCache getCache(Context context) throws IOException {
         if (urlRedirectCache == null) {
-            urlRedirectCache = new FileLruCache(context.getApplicationContext(), TAG, new FileLruCache.Limits());
+            urlRedirectCache = new FileLruCache(context.getApplicationContext(), TAG,
+                    new FileLruCache.Limits());
         }
         return urlRedirectCache;
     }
