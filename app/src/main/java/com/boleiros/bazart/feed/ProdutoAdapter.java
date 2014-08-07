@@ -418,7 +418,7 @@ public class ProdutoAdapter extends BaseAdapter {
             minutoAdicionadoComZero = "" + data.getMinutes();
         }
 
-        return "" + data.getDate() + "/" + data.getMonth() + " às " + data.getHours() + ":" +
+        return "" + data.getDate() + "/" + (data.getMonth() + 1) + " às " + data.getHours() + ":" +
                 minutoAdicionadoComZero + "h";
     }
 

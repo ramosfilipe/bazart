@@ -156,6 +156,7 @@ public class DialogGrid extends DialogFragment {
         });
         return view;
     }
+
     class BitmapWorker extends AsyncTask<byte[], Void, byte[]> {
         private Produto produto;
 
