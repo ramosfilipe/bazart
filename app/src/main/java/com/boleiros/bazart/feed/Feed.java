@@ -213,6 +213,7 @@ public class Feed extends Activity {
             locationClient.connect();
             consultaAoParse();
 
+
         }
 
         public void consultaAoParse() {
@@ -233,6 +234,9 @@ public class Feed extends Activity {
                             listaDeExibicao.setAdapter(produtoAdapter);
                         }
                         swipeRefreshLayout.setRefreshing(false);
+                    }
+                    else{
+                        ocorreuProblemaNaConsulta();
                     }
                 }
             });
@@ -258,6 +262,9 @@ public class Feed extends Activity {
                         }
                         swipeRefreshLayout.setRefreshing(false);
                     }
+                    else{
+                        ocorreuProblemaNaConsulta();
+                    }
                 }
             });
         }
@@ -281,8 +288,18 @@ public class Feed extends Activity {
                         }
                         swipeRefreshLayout.setRefreshing(false);
                     }
+                    else{
+                        ocorreuProblemaNaConsulta();
+                    }
                 }
             });
+        }
+
+
+        private void ocorreuProblemaNaConsulta(){
+            Toast.makeText(getActivity(),
+                    "Ops... Verifique sua conexão com a Internet",
+                    Toast.LENGTH_LONG).show();
         }
 
 
@@ -291,6 +308,8 @@ public class Feed extends Activity {
                                  Bundle savedInstanceState) {
             swipeRefreshLayout = (SwipeRefreshLayout) inflater.inflate(R.layout.fragment_feed,
                     container, false);
+            swipeRefreshLayout.setRefreshing(true);
+
             ImageButton camera = (ImageButton) swipeRefreshLayout.findViewById(R.id.cameraButton);
             final ImageButton gps = (ImageButton) swipeRefreshLayout.findViewById(R.id.gpsButton);
             final ImageButton home = (ImageButton) swipeRefreshLayout.findViewById(R.id.homeButton);
@@ -309,6 +328,7 @@ public class Feed extends Activity {
             gps.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    swipeRefreshLayout.setRefreshing(true);
                     if (botaoSelecionado != BOTAO_GPS_ATIVADO) {
                         botaoSelecionado = BOTAO_GPS_ATIVADO;
                         gps.setImageResource(R.drawable.gpspressed);
@@ -342,6 +362,8 @@ public class Feed extends Activity {
             recomendacao.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    swipeRefreshLayout.setRefreshing(true);
+
                     if (botaoSelecionado != BOTAO_RECOMENDACAO_ATIVADO) {
                         botaoSelecionado = BOTAO_RECOMENDACAO_ATIVADO;
                         gps.setImageResource(R.drawable.gps);
@@ -357,6 +379,8 @@ public class Feed extends Activity {
             home.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    swipeRefreshLayout.setRefreshing(true);
+
                     if (botaoSelecionado != BOTAO_HOME_ATIVADO) {
                         botaoSelecionado = BOTAO_HOME_ATIVADO;
                         gps.setImageResource(R.drawable.gps);

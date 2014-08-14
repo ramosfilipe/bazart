@@ -1,6 +1,7 @@
 package com.boleiros.bazart.profile;
 
 import android.app.DialogFragment;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -60,6 +61,9 @@ public class DialogGrid extends DialogFragment {
     }
 
     public void removeDoParse(final String id) {
+        final ProgressDialog pDialog;
+        pDialog = ProgressDialog.show(getActivity(), null, "Initializing...");
+
         ParseQuery<Produto> query = ParseQuery.getQuery("Produto");
         query.include("author");
         query.whereEqualTo("objectId", id);
@@ -70,7 +74,10 @@ public class DialogGrid extends DialogFragment {
                     parseObjects.get(0).deleteInBackground(new DeleteCallback() {
                         public void done(ParseException e) {
                             if (e == null) {
+                                pDialog.dismiss();
                                 myObjectWasDeletedSuccessfully();
+                            } else {
+                                produtoRemovidoComFalha();
                             }
                         }
                     });
@@ -93,24 +100,11 @@ public class DialogGrid extends DialogFragment {
                     try {
                         byte[] arrayImage = produto.getPhotoFile().getData();
                         new BitmapWorker(produto).execute(arrayImage);
-                        produtoMarcadoComSucesso();
 
-//                        Bitmap image = BitmapFactory.decodeByteArray(arrayImage, 0,
-//                                arrayImage.length);
-//                        Bitmap imageMarked = mark(image);
-//                        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-//                        imageMarked.compress(Bitmap.CompressFormat.JPEG, 100, bos);
-//                        byte[] markedPhotoArray = bos.toByteArray();
-                        //produto.setPhotoFile(new ParseFile("fotoProduto.jpg", markedPhotoArray));
                     } catch (ParseException e1) {
                         e1.printStackTrace();
                     }
-//                    produto.saveInBackground(new SaveCallback() {
-//                        @Override
-//                        public void done(ParseException e) {
-//                            produtoMarcadoComSucesso();
-//                        }
-//                    });
+
                 }
             }
         });
@@ -120,6 +114,14 @@ public class DialogGrid extends DialogFragment {
         Toast.makeText(getActivity(), "Produto marcado como vendido", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getActivity(), ProfileActivity.class);
         startActivity(intent);
+    }
+
+    public void produtoMarcadoComFalha() {
+        Toast.makeText(getActivity(), "Ops... Tente salvar novamente", Toast.LENGTH_SHORT).show();
+    }
+
+    public void produtoRemovidoComFalha() {
+        Toast.makeText(getActivity(), "Ops... Tente remover novamente", Toast.LENGTH_SHORT).show();
     }
 
     public void myObjectWasDeletedSuccessfully() {
@@ -159,9 +161,16 @@ public class DialogGrid extends DialogFragment {
 
     class BitmapWorker extends AsyncTask<byte[], Void, byte[]> {
         private Produto produto;
+        private ProgressDialog progressDialog;
 
         public BitmapWorker(Produto produto) {
             this.produto = produto;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            progressDialog = ProgressDialog.show(getActivity(), null, "Initializing...");
+
         }
 
         // Decode image in background.
@@ -176,13 +185,19 @@ public class DialogGrid extends DialogFragment {
             return markedPhotoArray;
         }
 
-        // Once complete, see if ImageView is still around and set bitmap.
         @Override
         protected void onPostExecute(byte[] markedPhotoArray) {
             produto.setPhotoFile(new ParseFile("fotoProduto.jpg", markedPhotoArray));
             produto.saveInBackground(new SaveCallback() {
                 @Override
                 public void done(ParseException e) {
+                    if (e == null) {
+                        progressDialog.dismiss();
+                        produtoMarcadoComSucesso();
+                    } else {
+                        progressDialog.dismiss();
+                        produtoMarcadoComFalha();
+                    }
                 }
             });
         }

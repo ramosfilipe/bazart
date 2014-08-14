@@ -63,7 +63,6 @@ public class Profile extends Fragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -117,6 +116,11 @@ public class Profile extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+    public void consultaAoParse() {
+
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -132,17 +136,12 @@ public class Profile extends Fragment {
         public void onFragmentInteraction(Uri uri);
     }
 
-    public void consultaAoParse() {
-
-    }
-
-
     private class ConsultaAoParseTask extends AsyncTask<Void, Void, Void> {
         Context context;
         private ProgressDialog progressDialog;
 
 
-        public ConsultaAoParseTask(Context ctx){
+        public ConsultaAoParseTask(Context ctx) {
             context = ctx;
         }
 
@@ -151,6 +150,7 @@ public class Profile extends Fragment {
             progressDialog = ProgressDialog.show(getActivity(), null, "Initializing...");
 
         }
+
         @Override
         protected Void doInBackground(Void... params) {
             ParseQuery<Produto> query = ParseQuery.getQuery("Produto");

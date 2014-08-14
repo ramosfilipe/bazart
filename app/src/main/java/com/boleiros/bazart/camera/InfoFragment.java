@@ -3,6 +3,7 @@ package com.boleiros.bazart.camera;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
@@ -161,6 +162,8 @@ public class InfoFragment extends Fragment implements LocationListener,
                     final ParseGeoPoint myPoint = geoPointFromLocation(myLoc);
 
                     botaoEnvia.setVisibility(View.GONE);
+                    final ProgressDialog pDialog;
+                    pDialog = ProgressDialog.show(getActivity(), null, "Initializing...");
                     ParseFile photoFile = new ParseFile("fotoProduto.jpg",
                             ActivityStore.getInstance(getActivity()).
                             getImage());
@@ -183,10 +186,12 @@ public class InfoFragment extends Fragment implements LocationListener,
                         @Override
                         public void done(com.parse.ParseException e) {
                             if (e != null) {
+                                pDialog.dismiss();
                                 Toast.makeText(getActivity(),
-                                        "Error saving: " + e.getMessage(),
+                                        "Ops... Tente Enviar novamente",
                                         Toast.LENGTH_LONG).show();
                             } else {
+                                pDialog.dismiss();
                                 Toast.makeText(getActivity(), "Produto anunciado!",
                                         Toast.LENGTH_LONG).show();
                                 locationClient.disconnect();
@@ -486,17 +491,6 @@ public class InfoFragment extends Fragment implements LocationListener,
         }
     }
 }
-/**
- * A subclass of AsyncTask that calls getFromLocation() in the
- * background. The class definition has these generic types:
- * Location - A Location object containing
- * the current location.
- * Void     - indicates that progress units are not used
- * String   - An address passed to onPostExecute()
- */
-
-
-
 
 
 
