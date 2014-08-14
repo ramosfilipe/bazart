@@ -3,7 +3,10 @@ package com.boleiros.bazart.profile;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.boleiros.bazart.R;
 import com.boleiros.bazart.modelo.Produto;
@@ -58,27 +62,7 @@ public class Profile extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    public void consultaAoParse() {
-        ParseQuery<Produto> query = ParseQuery.getQuery("Produto");
-        query.include("author");
-        query.whereEqualTo("author", ParseUser.getCurrentUser());
-        query.orderByDescending("createdAt");
-        query.findInBackground(new FindCallback<Produto>() {
-            @Override
-            public void done(List<Produto> parseObjects, ParseException e) {
-                if (e == null) {
-                    ProfileAdapter profileAdapter = new ProfileAdapter(getActivity(), parseObjects);
-                    adapt = profileAdapter;
-                    final GridView gridView = (GridView) getActivity().findViewById(R.id
-                            .gridProfile);
-                    if (gridView != null) {
-                        gridView.setAdapter(profileAdapter);
-                    }
-                } else {
-                }
-            }
-        });
-    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -88,7 +72,8 @@ public class Profile extends Fragment {
         TextView name = (TextView) v.findViewById(R.id.usernameProfileTextView);
         name.setText(ParseUser.getCurrentUser().getUsername());
         GridView gridView = (GridView) v.findViewById(R.id.gridProfile);
-        consultaAoParse();
+        //consultaAoParse();
+        new ConsultaAoParseTask(v.getContext()).execute();
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -132,7 +117,6 @@ public class Profile extends Fragment {
         super.onDetach();
         mListener = null;
     }
-
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -146,6 +130,62 @@ public class Profile extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
+    }
+
+    public void consultaAoParse() {
+
+    }
+
+
+    private class ConsultaAoParseTask extends AsyncTask<Void, Void, Void> {
+        Context context;
+        private ProgressDialog progressDialog;
+
+
+        public ConsultaAoParseTask(Context ctx){
+            context = ctx;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            progressDialog = ProgressDialog.show(getActivity(), null, "Initializing...");
+
+        }
+        @Override
+        protected Void doInBackground(Void... params) {
+            ParseQuery<Produto> query = ParseQuery.getQuery("Produto");
+            query.include("author");
+            query.whereEqualTo("author", ParseUser.getCurrentUser());
+            query.orderByDescending("createdAt");
+            query.findInBackground(new FindCallback<Produto>() {
+                public void done(List<Produto> objects, ParseException e) {
+                    if (e == null) {
+                        progressDialog.dismiss();
+                        ProfileAdapter profileAdapter = new ProfileAdapter(getActivity(), objects);
+                        adapt = profileAdapter;
+                        final GridView gridView = (GridView) getActivity().findViewById(R.id
+                                .gridProfile);
+                        if (gridView != null) {
+                            gridView.setAdapter(profileAdapter);
+                        }
+                    } else {
+                        progressDialog.dismiss();
+                        CharSequence text = "Verifique sua conexão com a internet";
+                        int duration = Toast.LENGTH_LONG;
+
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    }
+                }
+            });
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+//            if (progressDialog != null && progressDialog.isShowing())
+//                progressDialog.dismiss();
+        }
     }
 
 }
