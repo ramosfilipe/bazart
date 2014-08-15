@@ -49,6 +49,7 @@ import com.parse.SaveCallback;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 public class InfoFragment extends Fragment implements LocationListener,
         GooglePlayServicesClient.ConnectionCallbacks,
@@ -155,15 +156,18 @@ public class InfoFragment extends Fragment implements LocationListener,
                     Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
                     if (myLoc == null) {
                         Toast.makeText(getActivity(),
-                                "Please try again after your location appears on the map.",
+                                "Por favor verifique se o GPS está ativado!",
                                 Toast.LENGTH_LONG).show();
                         return;
                     }
                     final ParseGeoPoint myPoint = geoPointFromLocation(myLoc);
 
                     botaoEnvia.setVisibility(View.GONE);
-                    final ProgressDialog pDialog;
-                    pDialog = ProgressDialog.show(getActivity(), null, "Initializing...");
+                    int max = ActivityStore.getInstance(getActivity()).getFrases().size();
+                    Random r = new Random();
+                    int numeroSorteado = r.nextInt(max);
+                    final ProgressDialog pDialog = ProgressDialog.show(getActivity(), null,
+                            ActivityStore.getInstance(getActivity()).getFrases().get(numeroSorteado));
                     ParseFile photoFile = new ParseFile("fotoProduto.jpg",
                             ActivityStore.getInstance(getActivity()).
                                     getImage()
@@ -233,7 +237,6 @@ public class InfoFragment extends Fragment implements LocationListener,
 
             return true;
         } else {
-            System.out.println("testeeee");
             Dialog dialog = GooglePlayServicesUtil.getErrorDialog(resultCode, this.getActivity(),
                     0);
             if (dialog != null) {
@@ -317,6 +320,7 @@ public class InfoFragment extends Fragment implements LocationListener,
                 connectionResult.startResolutionForResult(this.getActivity(),
                         CONNECTION_FAILURE_RESOLUTION_REQUEST);
             } catch (IntentSender.SendIntentException e) {
+                showErrorDialog(connectionResult.getErrorCode());
             }
         } else {
             showErrorDialog(connectionResult.getErrorCode());
@@ -456,7 +460,7 @@ public class InfoFragment extends Fragment implements LocationListener,
                 // Return the text
                 return addressText;
             } else {
-                return "No address found";
+                return "Endereço não encontrado";
             }
         }
 

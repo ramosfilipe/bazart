@@ -147,9 +147,9 @@ public class Feed extends Activity {
             GooglePlayServicesClient.ConnectionCallbacks,
             GooglePlayServicesClient.OnConnectionFailedListener {
         /*
-     * Define a request code to send to Google Play services This code is returned in
-     * Activity.onActivityResult
-     */
+             * Define a request code to send to Google Play services This code is returned in
+             * Activity.onActivityResult
+             */
         private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
         /*
          * Constants for location update parameters
@@ -171,6 +171,8 @@ public class Feed extends Activity {
         private static final int BOTAO_GPS_ATIVADO = 1;
         private static final int BOTAO_HOME_ATIVADO = 2;
         private static final int BOTAO_RECOMENDACAO_ATIVADO = 3;
+        public static final String PRODUTO = "Produto";
+        public static final String IS_SOLD = "isSold";
 
 
         private int botaoSelecionado = BOTAO_HOME_ATIVADO;
@@ -220,10 +222,10 @@ public class Feed extends Activity {
         }
 
         public void consultaAoParse() {
-            ParseQuery<Produto> query = ParseQuery.getQuery("Produto");
+            ParseQuery<Produto> query = ParseQuery.getQuery(PRODUTO);
             query.include("author");
             query.orderByDescending("createdAt");
-            query.whereEqualTo("isSold", false);
+            query.whereEqualTo(IS_SOLD, false);
             //query.setLimit(10);
             query.findInBackground(new FindCallback<Produto>() {
                 @Override
@@ -245,9 +247,9 @@ public class Feed extends Activity {
         }
 
         public void consultaAoParseComLocalizacao(ParseGeoPoint ponto) {
-            ParseQuery<Produto> query = ParseQuery.getQuery("Produto");
+            ParseQuery<Produto> query = ParseQuery.getQuery(PRODUTO);
             query.include("author");
-            query.whereEqualTo("isSold", false);
+            query.whereEqualTo(IS_SOLD, false);
             query.whereNear("location", ponto);
             query.setLimit(7);
             // query.orderByDescending("createdAt");
@@ -271,9 +273,9 @@ public class Feed extends Activity {
         }
 
         public void consultaAoParseComRecomendacao() {
-            ParseQuery<Produto> query = ParseQuery.getQuery("Produto");
+            ParseQuery<Produto> query = ParseQuery.getQuery(PRODUTO);
             query.include("author");
-            query.whereEqualTo("isSold", false);
+            query.whereEqualTo(IS_SOLD, false);
             query.orderByDescending("numLikes");
             query.setLimit(7);
             query.findInBackground(new FindCallback<Produto>() {
@@ -297,15 +299,15 @@ public class Feed extends Activity {
 
         private void geraFrasesDoSistema() {
             final ArrayList<String> frases = ActivityStore.getInstance(getActivity()).getFrases();
-            ParseQuery<Produto> query = new ParseQuery("Produto");
+            ParseQuery<Produto> query = new ParseQuery(PRODUTO);
             query.countInBackground(new CountCallback() {
                 @Override
                 public void done(int count, ParseException e) {
                     if (e == null) {
                         frases.add("Temos " + count + " produto(s) anunciados");
                         ActivityStore.getInstance(getActivity()).setFrases(frases);
-                        ParseQuery<Produto> query3 = new ParseQuery("Produto");
-                        query3.whereEqualTo("isSold", true);
+                        ParseQuery<Produto> query3 = new ParseQuery(PRODUTO);
+                        query3.whereEqualTo(IS_SOLD, true);
                         query3.countInBackground(new CountCallback() {
                             @Override
                             public void done(int count, ParseException e) {
@@ -610,6 +612,7 @@ public class Feed extends Activity {
                     connectionResult.startResolutionForResult(this.getActivity(),
                             CONNECTION_FAILURE_RESOLUTION_REQUEST);
                 } catch (IntentSender.SendIntentException e) {
+                    System.out.println("erro OnConnectionFailed");
                 }
             }
         }

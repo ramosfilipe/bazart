@@ -5,6 +5,7 @@ package com.boleiros.bazart.hashtags;
  */
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -18,16 +19,20 @@ import com.boleiros.bazart.R;
 import com.boleiros.bazart.camera.InfoFragment.OnFragmentInteractionListener;
 import com.boleiros.bazart.feed.ProdutoAdapter;
 import com.boleiros.bazart.modelo.Produto;
+import com.boleiros.bazart.util.ActivityStore;
 import com.parse.FindCallback;
 import com.parse.ParseQuery;
 
 import java.util.List;
+import java.util.Random;
 
 public class HashtagActivity extends Activity implements OnFragmentInteractionListener {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busca);
+
 
 
     }
@@ -70,6 +75,12 @@ public class HashtagActivity extends Activity implements OnFragmentInteractionLi
     }
 
     public void consultaAoParse(String termo) {
+        final ProgressDialog pDialog;
+        int max = ActivityStore.getInstance(this).getFrases().size();
+        Random r = new Random();
+        int numeroSorteado = r.nextInt(max);
+        pDialog = ProgressDialog.show(this, null,
+                ActivityStore.getInstance(this).getFrases().get(numeroSorteado));
         ParseQuery<Produto> query = ParseQuery.getQuery("Produto");
         query.include("author");
 
@@ -79,7 +90,7 @@ public class HashtagActivity extends Activity implements OnFragmentInteractionLi
             @Override
             public void done(List<Produto> parseObjects, com.parse.ParseException e) {
                 if (e == null) {
-
+                    pDialog.dismiss();
                     ProdutoAdapter produtoAdapter = new ProdutoAdapter(getBaseContext(),
                             parseObjects);
                     final ListView listaDeExibicao = (ListView) findViewById(R.id.listaCardsBusca);
@@ -90,6 +101,10 @@ public class HashtagActivity extends Activity implements OnFragmentInteractionLi
                         Toast.makeText(getBaseContext(), "Não foi encontrado nenhum produto",
                                 Toast.LENGTH_SHORT).show();
                     }
+                }else{
+                    pDialog.dismiss();
+                    Toast.makeText(getBaseContext(), "Verifique sua conexão com a internet",
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });

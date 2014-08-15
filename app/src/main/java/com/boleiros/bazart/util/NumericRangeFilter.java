@@ -53,7 +53,7 @@ public class NumericRangeFilter implements InputFilter {
                 return null;
             }
         } catch (NumberFormatException pEx) {
-            // do nothing
+            System.out.println("Number format exception");
         }
         // Value is out of range - return empty string.
         return "";

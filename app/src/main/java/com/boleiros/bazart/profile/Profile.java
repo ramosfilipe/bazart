@@ -59,11 +59,6 @@ public class Profile extends Fragment {
         return fragment;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
