@@ -166,7 +166,8 @@ public class InfoFragment extends Fragment implements LocationListener,
                     pDialog = ProgressDialog.show(getActivity(), null, "Initializing...");
                     ParseFile photoFile = new ParseFile("fotoProduto.jpg",
                             ActivityStore.getInstance(getActivity()).
-                            getImage());
+                                    getImage()
+                    );
                     EditText preco1 = (EditText) getActivity().findViewById(R.id.editTextPreco);
                     EditText telefone1 = (EditText) getActivity().findViewById(R.id
                             .editTextPhoneNumber);

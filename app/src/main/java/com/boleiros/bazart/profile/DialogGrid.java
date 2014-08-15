@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.boleiros.bazart.R;
 import com.boleiros.bazart.modelo.Produto;
+import com.boleiros.bazart.util.ActivityStore;
 import com.parse.DeleteCallback;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -28,6 +29,7 @@ import com.parse.SaveCallback;
 
 import java.io.ByteArrayOutputStream;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by diego on 8/4/14.
@@ -62,7 +64,11 @@ public class DialogGrid extends DialogFragment {
 
     public void removeDoParse(final String id) {
         final ProgressDialog pDialog;
-        pDialog = ProgressDialog.show(getActivity(), null, "Initializing...");
+        int max = ActivityStore.getInstance(getActivity()).getFrases().size();
+        Random r = new Random();
+        int numeroSorteado = r.nextInt(max);
+        pDialog = ProgressDialog.show(getActivity(), null,
+                ActivityStore.getInstance(getActivity()).getFrases().get(numeroSorteado));
 
         ParseQuery<Produto> query = ParseQuery.getQuery("Produto");
         query.include("author");
@@ -169,7 +175,11 @@ public class DialogGrid extends DialogFragment {
 
         @Override
         protected void onPreExecute() {
-            progressDialog = ProgressDialog.show(getActivity(), null, "Initializing...");
+            int max = ActivityStore.getInstance(getActivity()).getFrases().size();
+            Random r = new Random();
+            int numeroSorteado = r.nextInt(max);
+            progressDialog = ProgressDialog.show(getActivity(), null,
+                    ActivityStore.getInstance(getActivity()).getFrases().get(numeroSorteado));
 
         }
 

@@ -30,6 +30,7 @@ import com.boleiros.bazart.camera.InfoFragment;
 import com.boleiros.bazart.hashtags.HashtagActivity;
 import com.boleiros.bazart.modelo.Produto;
 import com.boleiros.bazart.profile.ProfileActivity;
+import com.boleiros.bazart.util.ActivityStore;
 import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.Session;
@@ -40,13 +41,16 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
+import com.parse.CountCallback;
 import com.parse.FindCallback;
+import com.parse.ParseException;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.ui.ParseLoginBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Feed extends Activity {
@@ -84,7 +88,6 @@ public class Feed extends Activity {
         final ActionBar actionBar = getActionBar();
         actionBar.setCustomView(R.layout.custom_actionbar);
         actionBar.setDisplayShowCustomEnabled(true);
-
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -234,8 +237,7 @@ public class Feed extends Activity {
                             listaDeExibicao.setAdapter(produtoAdapter);
                         }
                         swipeRefreshLayout.setRefreshing(false);
-                    }
-                    else{
+                    } else {
                         ocorreuProblemaNaConsulta();
                     }
                 }
@@ -261,8 +263,7 @@ public class Feed extends Activity {
                             listaDeExibicao.setAdapter(produtoAdapter);
                         }
                         swipeRefreshLayout.setRefreshing(false);
-                    }
-                    else{
+                    } else {
                         ocorreuProblemaNaConsulta();
                     }
                 }
@@ -287,16 +288,64 @@ public class Feed extends Activity {
                             listaDeExibicao.setAdapter(produtoAdapter);
                         }
                         swipeRefreshLayout.setRefreshing(false);
-                    }
-                    else{
+                    } else {
                         ocorreuProblemaNaConsulta();
                     }
                 }
             });
         }
 
+        private void geraFrasesDoSistema() {
+            final ArrayList<String> frases = ActivityStore.getInstance(getActivity()).getFrases();
+            ParseQuery<Produto> query = new ParseQuery("Produto");
+            query.countInBackground(new CountCallback() {
+                @Override
+                public void done(int count, ParseException e) {
+                    if (e == null) {
+                        frases.add("Temos " + count + " produto(s) anunciados");
+                        ActivityStore.getInstance(getActivity()).setFrases(frases);
+                        ParseQuery<Produto> query3 = new ParseQuery("Produto");
+                        query3.whereEqualTo("isSold", true);
+                        query3.countInBackground(new CountCallback() {
+                            @Override
+                            public void done(int count, ParseException e) {
+                                if (e == null) {
+                                    frases.add("Temos " + count + " produtos vendidos");
+                                    ActivityStore.getInstance(getActivity()).setFrases(frases);
+                                } else {
+                                    Toast.makeText(getActivity(),
+                                            "Ops... Verifique sua conexão com a Internet",
+                                            Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        });
 
-        private void ocorreuProblemaNaConsulta(){
+                    } else {
+                        Toast.makeText(getActivity(),
+                                "Ops... Verifique sua conexão com a Internet",
+                                Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+//            ParseQuery<ParseObject> query2 = new ParseQuery("user");
+//            query.countInBackground(new CountCallback() {
+//                @Override
+//                public void done(int count, ParseException e) {
+//                    if (e == null) {
+//                        frases.add("Temos "+ count+" usuários no bazar+");
+//                        ActivityStore.getInstance(getActivity()).setFrases(frases);
+//                    } else {
+//                        Toast.makeText(getActivity(),
+//                                "Ops... Verifique sua conexão com a Internet",
+//                                Toast.LENGTH_LONG).show();
+//                    }
+//                }
+//            });
+
+
+        }
+
+        private void ocorreuProblemaNaConsulta() {
             Toast.makeText(getActivity(),
                     "Ops... Verifique sua conexão com a Internet",
                     Toast.LENGTH_LONG).show();
@@ -309,7 +358,7 @@ public class Feed extends Activity {
             swipeRefreshLayout = (SwipeRefreshLayout) inflater.inflate(R.layout.fragment_feed,
                     container, false);
             swipeRefreshLayout.setRefreshing(true);
-
+            geraFrasesDoSistema();
             ImageButton camera = (ImageButton) swipeRefreshLayout.findViewById(R.id.cameraButton);
             final ImageButton gps = (ImageButton) swipeRefreshLayout.findViewById(R.id.gpsButton);
             final ImageButton home = (ImageButton) swipeRefreshLayout.findViewById(R.id.homeButton);
@@ -328,8 +377,8 @@ public class Feed extends Activity {
             gps.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    swipeRefreshLayout.setRefreshing(true);
                     if (botaoSelecionado != BOTAO_GPS_ATIVADO) {
+                        swipeRefreshLayout.setRefreshing(true);
                         botaoSelecionado = BOTAO_GPS_ATIVADO;
                         gps.setImageResource(R.drawable.gpspressed);
                         home.setImageResource(R.drawable.homefeed);
@@ -362,9 +411,9 @@ public class Feed extends Activity {
             recomendacao.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    swipeRefreshLayout.setRefreshing(true);
 
                     if (botaoSelecionado != BOTAO_RECOMENDACAO_ATIVADO) {
+                        swipeRefreshLayout.setRefreshing(true);
                         botaoSelecionado = BOTAO_RECOMENDACAO_ATIVADO;
                         gps.setImageResource(R.drawable.gps);
                         home.setImageResource(R.drawable.homefeed);
@@ -379,9 +428,9 @@ public class Feed extends Activity {
             home.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    swipeRefreshLayout.setRefreshing(true);
 
                     if (botaoSelecionado != BOTAO_HOME_ATIVADO) {
+                        swipeRefreshLayout.setRefreshing(true);
                         botaoSelecionado = BOTAO_HOME_ATIVADO;
                         gps.setImageResource(R.drawable.gps);
                         home.setImageResource(R.drawable.homefeedpressed);
@@ -419,7 +468,6 @@ public class Feed extends Activity {
                 @Override
                 public void onRefresh() {
                     Log.e(getClass().getSimpleName(), "refresh");
-                    //if(gps==false){
                     if (botaoSelecionado == BOTAO_HOME_ATIVADO) {
                         consultaAoParse();
                     }
@@ -429,8 +477,6 @@ public class Feed extends Activity {
                     if (botaoSelecionado == BOTAO_RECOMENDACAO_ATIVADO) {
                         consultaAoParseComRecomendacao();
                     }
-
-                    //consultaAoParseComLocalizacao(currentLocation);
                 }
             });
 
@@ -567,7 +613,40 @@ public class Feed extends Activity {
                 }
             }
         }
-
+//        private class geraFrasesDoSistemaTask extends AsyncTask<Void, Void , String[]> {
+//            Context context;
+//
+//
+//            public geraFrasesDoSistemaTask(Context ctx) {
+//                context = ctx;
+//            }
+//
+//            @Override
+//            protected void onPreExecute() {
+//
+//            }
+//
+//            @Override
+//            protected String[] doInBackground(Void... params) {
+//                ParseQuery<ParseObject> query = ParseQuery.getQuery("MyClass");
+//                query.countInBackground(new CountCallback() {
+//                    public void done(int count, ParseException e) {
+//                        if (e == null) {
+//                            objectsWereCounted(count);
+//                        } else {
+//                            objectCountFailed();
+//                        }
+//                    }
+//                }
+//                return null;
+//            }
+//
+//            @Override
+//            protected void onPostExecute(String[] result) {
+//                ActivityStore.getInstance(context).setFrases(result);
+//
+//            }
+//        }
     }
 
     /**

@@ -18,12 +18,14 @@ import android.widget.Toast;
 
 import com.boleiros.bazart.R;
 import com.boleiros.bazart.modelo.Produto;
+import com.boleiros.bazart.util.ActivityStore;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * A simple {@link android.app.Fragment} subclass.
@@ -147,8 +149,11 @@ public class Profile extends Fragment {
 
         @Override
         protected void onPreExecute() {
-            progressDialog = ProgressDialog.show(getActivity(), null, "Initializing...");
-
+            int max = ActivityStore.getInstance(getActivity()).getFrases().size();
+            Random r = new Random();
+            int i1 = r.nextInt(max);
+            progressDialog = ProgressDialog.show(getActivity(), null,
+                    ActivityStore.getInstance(getActivity()).getFrases().get(i1));
         }
 
         @Override
