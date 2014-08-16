@@ -195,6 +195,8 @@ public class InfoFragment extends Fragment implements LocationListener,
                                 Toast.makeText(getActivity(),
                                         "Ops... Tente Enviar novamente",
                                         Toast.LENGTH_LONG).show();
+                                botaoEnvia.setVisibility(View.VISIBLE);
+
                             } else {
                                 pDialog.dismiss();
                                 Toast.makeText(getActivity(), "Produto anunciado!",

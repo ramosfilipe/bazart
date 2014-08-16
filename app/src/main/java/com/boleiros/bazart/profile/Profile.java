@@ -5,6 +5,8 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +24,7 @@ import com.boleiros.bazart.modelo.Produto;
 import com.boleiros.bazart.util.ActivityStore;
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
@@ -67,6 +71,16 @@ public class Profile extends Fragment {
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
         TextView name = (TextView) v.findViewById(R.id.usernameProfileTextView);
         name.setText(ParseUser.getCurrentUser().getUsername());
+        ImageView profilePic = (ImageView)v.findViewById(R.id.profileProfilePic);
+        ParseFile parseFile = ParseUser.getCurrentUser().getParseFile("profilePic");
+        try {
+            byte[] byteArray = parseFile.getData();
+            Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray,0,byteArray.length);
+            profilePic.setImageBitmap(bitmap);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
         GridView gridView = (GridView) v.findViewById(R.id.gridProfile);
         //consultaAoParse();
         new ConsultaAoParseTask(v.getContext()).execute();

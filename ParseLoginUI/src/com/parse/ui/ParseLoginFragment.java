@@ -22,6 +22,11 @@
 package com.parse.ui;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.LayoutInflater;
@@ -39,10 +44,21 @@ import com.facebook.model.GraphUser;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseFacebookUtils;
+import com.parse.ParseFile;
 import com.parse.ParseTwitterUtils;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 import com.parse.twitter.Twitter;
+
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.Array;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
 
 /**
  * Fragment for the user login screen.
@@ -226,6 +242,7 @@ public class ParseLoginFragment extends ParseLoginFragmentBase {
         });
     }
 
+
     private void setUpFacebookLogin() {
         facebookLoginButton.setVisibility(View.VISIBLE);
 
@@ -258,18 +275,52 @@ public class ParseLoginFragment extends ParseLoginFragmentBase {
                                     Request.newMeRequest(ParseFacebookUtils.getSession(),
                                             new Request.GraphUserCallback() {
                                                 @Override
-                                                public void onCompleted(GraphUser fbUser,
+                                                public void onCompleted(final GraphUser fbUser,
                                                                         Response response) {
                       /*
                         If we were able to successfully retrieve the Facebook
                         user's name, let's set it on the fullName field.
                       */
-                                                    ParseUser parseUser = ParseUser
+                                                    final ParseUser parseUser = ParseUser
                                                             .getCurrentUser();
                                                     if (fbUser != null && parseUser != null
                                                             && fbUser.getName().length() > 0) {
                                                         parseUser.put(USER_OBJECT_NAME_FIELD,
                                                                 fbUser.getName());
+                                                        AsyncTask<Void, Void, Bitmap> t = new AsyncTask<Void, Void, Bitmap>(){
+                                                            protected Bitmap doInBackground(Void... p) {
+                                                                Bitmap bm = null;
+                                                                try {
+                                                                    URL aURL = new URL("https://graph.facebook.com/"+fbUser.getId()+"/picture?type=large");
+                                                                    URLConnection conn = aURL.openConnection();
+                                                                    conn.setUseCaches(true);
+                                                                    conn.connect();
+                                                                    InputStream is = conn.getInputStream();
+                                                                    BufferedInputStream bis = new BufferedInputStream(is);
+                                                                    bm = BitmapFactory.decodeStream(bis);
+                                                                    bis.close();
+                                                                    is.close();
+                                                                } catch (IOException e) {
+                                                                    e.printStackTrace();
+                                                                }
+                                                                return bm;
+                                                            }
+
+                                                            protected void onPostExecute(Bitmap bm){
+                                                                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                                                bm.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                                                                byte[] byteArray = stream.toByteArray();
+                                                                ParseFile profilePic = new ParseFile("profilePic.jpg",byteArray);
+                                                                parseUser.put("profilePic",profilePic);
+                                                                parseUser.saveInBackground(new SaveCallback() {
+                                                                    @Override
+                                                                    public void done(ParseException e) {
+                                                                    }
+                                                                });
+
+                                                            }
+                                                        };
+                                                        t.execute();
                                                         parseUser.saveInBackground(new SaveCallback() {
                                                             @Override
                                                             public void done(ParseException e) {

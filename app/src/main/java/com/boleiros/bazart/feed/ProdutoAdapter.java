@@ -173,8 +173,6 @@ public class ProdutoAdapter extends BaseAdapter {
 
         LayoutInflater inflaterTemp = (LayoutInflater) context.getSystemService(Context
                 .LAYOUT_INFLATER_SERVICE);
-        final View viewContent = inflaterTemp.inflate(R.layout.list_element_produto, null);
-        ImageView img = null;
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context
                     .LAYOUT_INFLATER_SERVICE);
@@ -182,6 +180,7 @@ public class ProdutoAdapter extends BaseAdapter {
             holderPattern = new ViewHolder();
             holderPattern.textViewSetCidade = (TextView) convertView.findViewById(R.id
                     .textViewSetCidade);
+            holderPattern.imageViewProfilePic = (ImageView) convertView.findViewById(R.id.imageViewProfilePic);
             holderPattern.textViewSetHoraPostagem = (TextView) convertView.findViewById(R.id
                     .textViewSetHoraPostagem);
             holderPattern.textViewSetNomeUsuario = (TextView) convertView.findViewById(R.id
@@ -206,7 +205,7 @@ public class ProdutoAdapter extends BaseAdapter {
         holderPattern.textViewSetCidade.setText("  em " + items.get(arg0).getCidade());
         holderPattern.textViewSetHoraPostagem.setText(formartaStringData(items.get(arg0)
                 .getCreatedAt()));
-        holderPattern.textViewSetNomeUsuario.setText(" Anunciante: " + items.get(arg0).getAuthor
+        holderPattern.textViewSetNomeUsuario.setText(" " + items.get(arg0).getAuthor
                 ().getUsername());
         holderPattern.textViewSetContato.setText(items.get(arg0).getPhoneNumber());
         holderPattern.textViewSetPreco.setText(items.get(arg0).getPrice());
@@ -407,6 +406,10 @@ public class ProdutoAdapter extends BaseAdapter {
         }
         ParseFile pf = items.get(arg0).getPhotoFile();
         loadBitmap(pf, holderPattern.fotoProduto);
+        ParseFile parseFileProfilePic = items.get(arg0).getAuthor().getParseFile("profilePic");
+        if(parseFileProfilePic!= null) {
+            loadBitmap(parseFileProfilePic,holderPattern.imageViewProfilePic);
+        }
         return convertView;
     }
 
@@ -456,6 +459,7 @@ public class ProdutoAdapter extends BaseAdapter {
         TextView textViewSetHashTags;
         TextView textViewSetLikes;
         ImageView fotoProduto;
+        ImageView imageViewProfilePic;
         ImageButton likeButton;
         LinearLayout likeFrame;
     }

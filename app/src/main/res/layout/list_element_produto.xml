@@ -10,6 +10,43 @@
         android:layout_width="match_parent"
         android:layout_height="50dp">
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="336dp"
+            android:layout_height="match_parent"
+            android:weightSum="1">
+
+            <FrameLayout
+                android:layout_width="14dp"
+                android:layout_height="fill_parent"></FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent">
+
+                <ImageView
+                    android:layout_width="47dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageViewProfilePic"
+                    android:focusableInTouchMode="false"
+                    android:layout_weight="0"
+                    android:layout_gravity="center" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="12dp"
+                android:layout_height="fill_parent"></FrameLayout>
+
+            <TextView
+                android:id="@+id/textViewSetNomeUsuario"
+                android:layout_width="218dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:maxLines="1"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
         <TextView
             android:id="@+id/textViewSetHoraPostagem"
             android:layout_width="103dp"
@@ -17,14 +54,6 @@
             android:layout_gravity="right|center_vertical"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textStyle="italic" />
-
-        <TextView
-            android:id="@+id/textViewSetNomeUsuario"
-            android:layout_width="248dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left|center_vertical"
-            android:maxLines="1"
-            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewSetCidade"
