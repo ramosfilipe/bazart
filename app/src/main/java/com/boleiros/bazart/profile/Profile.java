@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -68,43 +69,57 @@ public class Profile extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        String id;
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
         TextView name = (TextView) v.findViewById(R.id.usernameProfileTextView);
-        name.setText(ParseUser.getCurrentUser().getUsername());
         ImageView profilePic = (ImageView)v.findViewById(R.id.profileProfilePic);
         ParseFile parseFile = ParseUser.getCurrentUser().getParseFile("profilePic");
-        try {
-            byte[] byteArray = parseFile.getData();
-            Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray,0,byteArray.length);
-            profilePic.setImageBitmap(bitmap);
-        } catch (ParseException e) {
-            e.printStackTrace();
+        Bundle args = getArguments();
+        if(args != null && !args.getString("id").equals(ParseUser.getCurrentUser().getObjectId())){
+            name.setText(getArguments().getString("name"));
+            byte[] pic = getArguments().getByteArray("pic");
+            Bitmap bit = BitmapFactory.decodeByteArray(pic,0,pic.length);
+            profilePic.setImageBitmap(bit);
+            id = getArguments().getString("id");
+
+        }
+        else {
+            GridView gridView = (GridView) v.findViewById(R.id.gridProfile);
+            name.setText(ParseUser.getCurrentUser().getUsername());
+            id = ParseUser.getCurrentUser().getObjectId();
+            try {
+                byte[] byteArray = parseFile.getData();
+                Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+                profilePic.setImageBitmap(bitmap);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    FragmentManager fm = getFragmentManager();
+                    DialogGrid dialogGrid = new DialogGrid();
+                    Bundle bundle = new Bundle();
+                    Produto produto = ((Produto) adapt.getItem(position));
+                    if (produto.getVendido()) {
+                        bundle.putBoolean("vendido", true);
+                    } else {
+                        bundle.putBoolean("vendido", false);
+                    }
+                    bundle.putString("id", produto.getObjectId());
+                    dialogGrid.setArguments(bundle);
+                    dialogGrid.show(fm, "fragment_grid_item");
+                }
+            });
         }
 
-        GridView gridView = (GridView) v.findViewById(R.id.gridProfile);
+
         //consultaAoParse();
-        new ConsultaAoParseTask(v.getContext()).execute();
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                FragmentManager fm = getFragmentManager();
-                DialogGrid dialogGrid = new DialogGrid();
-                Bundle bundle = new Bundle();
-                Produto produto = ((Produto) adapt.getItem(position));
-                if (produto.getVendido()) {
-                    bundle.putBoolean("vendido", true);
-                } else {
-                    bundle.putBoolean("vendido", false);
-                }
-                bundle.putString("id", produto.getObjectId());
-                dialogGrid.setArguments(bundle);
-                dialogGrid.show(fm, "fragment_grid_item");
-            }
-        });
+        new ConsultaAoParseTask(v.getContext(),id).execute();
+
         return v;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -121,6 +136,8 @@ public class Profile extends Fragment {
                     + " must implement OnFragmentInteractionListener");
         }
     }
+
+
 
     @Override
     public void onDetach() {
@@ -149,11 +166,13 @@ public class Profile extends Fragment {
 
     private class ConsultaAoParseTask extends AsyncTask<Void, Void, Void> {
         Context context;
+        String userId;
         private ProgressDialog progressDialog;
 
 
-        public ConsultaAoParseTask(Context ctx) {
+        public ConsultaAoParseTask(Context ctx,String id) {
             context = ctx;
+            userId = id;
         }
 
         @Override
@@ -169,7 +188,7 @@ public class Profile extends Fragment {
         protected Void doInBackground(Void... params) {
             ParseQuery<Produto> query = ParseQuery.getQuery("Produto");
             query.include("author");
-            query.whereEqualTo("author", ParseUser.getCurrentUser());
+            query.whereEqualTo("authorStr", userId);
             query.orderByDescending("createdAt");
             query.findInBackground(new FindCallback<Produto>() {
                 public void done(List<Produto> objects, ParseException e) {

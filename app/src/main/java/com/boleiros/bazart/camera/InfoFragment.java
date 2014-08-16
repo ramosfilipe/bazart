@@ -186,6 +186,7 @@ public class InfoFragment extends Fragment implements LocationListener,
                     produto.setPrice(precoStr);
                     produto.setArrayHashtags(hashtags.getArrayOfText());
                     produto.initLikeArray();
+                    produto.setAuthorStr(ParseUser.getCurrentUser().getObjectId());
                     produto.setCity(localizacao.getText().toString());
                     produto.saveInBackground(new SaveCallback() {
                         @Override

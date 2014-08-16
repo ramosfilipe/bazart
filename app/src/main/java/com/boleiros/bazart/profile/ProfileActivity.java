@@ -18,6 +18,7 @@ public class ProfileActivity extends Activity implements Profile.OnFragmentInter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         Profile current = new Profile();
+        current.setArguments(getIntent().getExtras());
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         getFragmentManager().beginTransaction()

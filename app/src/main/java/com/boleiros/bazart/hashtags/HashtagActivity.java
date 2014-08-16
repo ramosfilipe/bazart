@@ -4,6 +4,7 @@ package com.boleiros.bazart.hashtags;
  * Created by diego on 7/16/14.
  */
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -17,11 +18,15 @@ import android.widget.Toast;
 
 import com.boleiros.bazart.R;
 import com.boleiros.bazart.camera.InfoFragment.OnFragmentInteractionListener;
+import com.boleiros.bazart.feed.Feed;
 import com.boleiros.bazart.feed.ProdutoAdapter;
 import com.boleiros.bazart.modelo.Produto;
+import com.boleiros.bazart.profile.ProfileActivity;
 import com.boleiros.bazart.util.ActivityStore;
 import com.parse.FindCallback;
+import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.List;
 import java.util.Random;
@@ -32,7 +37,8 @@ public class HashtagActivity extends Activity implements OnFragmentInteractionLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busca);
-
+        ActionBar actionBar = getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
 
     }
@@ -72,6 +78,38 @@ public class HashtagActivity extends Activity implements OnFragmentInteractionLi
 
 
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            Intent intent = new Intent(this, Feed.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, Feed.class);
+        startActivity(intent);
+
+    }
+
+    public void changeActProfile(ParseUser user){
+        Intent intent = new Intent(this, ProfileActivity.class);
+        intent.putExtra("name",user.getUsername());
+        intent.putExtra("id",user.getObjectId());
+        try {
+            intent.putExtra("pic",user.getParseFile("profilePic").getData());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        startActivity(intent);
     }
 
     public void consultaAoParse(String termo) {

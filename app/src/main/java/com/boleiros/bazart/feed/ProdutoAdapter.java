@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.boleiros.bazart.R;
+import com.boleiros.bazart.hashtags.HashtagActivity;
 import com.boleiros.bazart.modelo.Produto;
 import com.boleiros.bazart.util.CustomToast;
 import com.boleiros.bazart.util.DoubleClickListener;
@@ -170,7 +171,7 @@ public class ProdutoAdapter extends BaseAdapter {
     @Override
     public View getView(int arg0, View convertView, ViewGroup arg2) {
         final ViewHolder holderPattern;
-
+        final int aux = arg0;
         LayoutInflater inflaterTemp = (LayoutInflater) context.getSystemService(Context
                 .LAYOUT_INFLATER_SERVICE);
         if (convertView == null) {
@@ -205,8 +206,22 @@ public class ProdutoAdapter extends BaseAdapter {
         holderPattern.textViewSetCidade.setText("  em " + items.get(arg0).getCidade());
         holderPattern.textViewSetHoraPostagem.setText(formartaStringData(items.get(arg0)
                 .getCreatedAt()));
-        holderPattern.textViewSetNomeUsuario.setText(" " + items.get(arg0).getAuthor
-                ().getUsername());
+        String user = items.get(arg0).getAuthor().getUsername();
+
+        System.out.println("USER " + user);
+        SpannableString spannableString = new SpannableString(user);
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View widget) {
+                if(context instanceof Feed) {
+                    ((Feed) context).changeActProfile(items.get(aux).getAuthor());
+                }
+            }
+        };
+        spannableString.setSpan(clickableSpan,0,spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        holderPattern.textViewSetNomeUsuario.setText(spannableString);
+        holderPattern.textViewSetNomeUsuario.setMovementMethod(LinkMovementMethod.getInstance());
+
         holderPattern.textViewSetContato.setText(items.get(arg0).getPhoneNumber());
         holderPattern.textViewSetPreco.setText(items.get(arg0).getPrice());
 

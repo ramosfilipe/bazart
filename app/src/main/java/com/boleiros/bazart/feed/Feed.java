@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.boleiros.bazart.Bazart;
@@ -87,6 +88,7 @@ public class Feed extends Activity {
 
         final ActionBar actionBar = getActionBar();
         actionBar.setCustomView(R.layout.custom_actionbar);
+
         actionBar.setDisplayShowCustomEnabled(true);
 
         // Create the adapter that will return a fragment for each of the three
@@ -95,6 +97,8 @@ public class Feed extends Activity {
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
+        TextView actionBarText = (TextView) findViewById(R.id.textViewActionBar);
+        actionBarText.setText("Feed");
         mViewPager.setAdapter(mSectionsPagerAdapter);
         Session session = ParseFacebookUtils.getSession();
         if (session != null && session.isOpened()) {
@@ -105,11 +109,21 @@ public class Feed extends Activity {
     }
 
     public void changeAct(String str) {
-        System.out.println(str);
         Intent intent = new Intent(this, HashtagActivity.class);
         intent.putExtra("busca", str);
         startActivity(intent);
 
+    }
+    public void changeActProfile(ParseUser user){
+        Intent intent = new Intent(this, ProfileActivity.class);
+        intent.putExtra("name",user.getUsername());
+        intent.putExtra("id",user.getObjectId());
+        try {
+            intent.putExtra("pic",user.getParseFile("profilePic").getData());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        startActivity(intent);
     }
 
 
@@ -375,6 +389,7 @@ public class Feed extends Activity {
 
             final ImageButton busca = (ImageButton) getActivity().findViewById(R.id
                     .botaoBuscaActionBar);
+            final TextView actionBarText = (TextView) getActivity().findViewById(R.id.textViewActionBar);
 
             gps.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -382,6 +397,7 @@ public class Feed extends Activity {
                     if (botaoSelecionado != BOTAO_GPS_ATIVADO) {
                         swipeRefreshLayout.setRefreshing(true);
                         botaoSelecionado = BOTAO_GPS_ATIVADO;
+                        actionBarText.setText("Localização");
                         gps.setImageResource(R.drawable.gpspressed);
                         home.setImageResource(R.drawable.homefeed);
                         recomendacao.setImageResource(R.drawable.recom);
@@ -413,8 +429,8 @@ public class Feed extends Activity {
             recomendacao.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     if (botaoSelecionado != BOTAO_RECOMENDACAO_ATIVADO) {
+                        actionBarText.setText("Recomendações");
                         swipeRefreshLayout.setRefreshing(true);
                         botaoSelecionado = BOTAO_RECOMENDACAO_ATIVADO;
                         gps.setImageResource(R.drawable.gps);
@@ -433,6 +449,7 @@ public class Feed extends Activity {
 
                     if (botaoSelecionado != BOTAO_HOME_ATIVADO) {
                         swipeRefreshLayout.setRefreshing(true);
+                        actionBarText.setText("Feed");
                         botaoSelecionado = BOTAO_HOME_ATIVADO;
                         gps.setImageResource(R.drawable.gps);
                         home.setImageResource(R.drawable.homefeedpressed);

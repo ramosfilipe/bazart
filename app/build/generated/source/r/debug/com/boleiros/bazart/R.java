@@ -852,7 +852,7 @@ containing a value of this type.
         public static final int action_settings=0x7f07009a;
         public static final int app_logo=0x7f070051;
         public static final int book_now=0x7f070010;
-        public static final int botaoBuscaActionBar=0x7f070065;
+        public static final int botaoBuscaActionBar=0x7f070064;
         public static final int buttonMarcarVendido=0x7f070070;
         public static final int buttonRemover=0x7f070071;
         public static final int buttonphotook=0x7f070027;
@@ -985,7 +985,7 @@ containing a value of this type.
         public static final int takePictureButton=0x7f07002b;
         public static final int terrain=0x7f070003;
         public static final int text1=0x7f070097;
-        public static final int textView=0x7f070064;
+        public static final int textViewActionBar=0x7f070065;
         public static final int textViewContato=0x7f070093;
         public static final int textViewHashTags=0x7f07007b;
         public static final int textViewLocalizacao=0x7f070076;

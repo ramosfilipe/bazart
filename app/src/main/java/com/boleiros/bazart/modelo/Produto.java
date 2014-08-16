@@ -48,6 +48,11 @@ public class Produto extends ParseObject {
         put("author", user);
     }
 
+
+    public void setAuthorStr(String authorStr){
+        put("authorStr", authorStr);
+    }
+
     public String[] getArrayHashtags() {
         Object[] obj = getList("tags").toArray();
         String[] array = Arrays.copyOf(obj, obj.length, String[].class);
