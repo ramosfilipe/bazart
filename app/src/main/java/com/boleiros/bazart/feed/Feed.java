@@ -98,7 +98,7 @@ public class Feed extends Activity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         TextView actionBarText = (TextView) findViewById(R.id.textViewActionBar);
-        actionBarText.setText("Feed");
+        actionBarText.setText("Mais recentes");
         mViewPager.setAdapter(mSectionsPagerAdapter);
         Session session = ParseFacebookUtils.getSession();
         if (session != null && session.isOpened()) {
@@ -397,7 +397,7 @@ public class Feed extends Activity {
                     if (botaoSelecionado != BOTAO_GPS_ATIVADO) {
                         swipeRefreshLayout.setRefreshing(true);
                         botaoSelecionado = BOTAO_GPS_ATIVADO;
-                        actionBarText.setText("Localização");
+                        actionBarText.setText("Mais próximos");
                         gps.setImageResource(R.drawable.gpspressed);
                         home.setImageResource(R.drawable.homefeed);
                         recomendacao.setImageResource(R.drawable.recom);
@@ -430,7 +430,7 @@ public class Feed extends Activity {
                 @Override
                 public void onClick(View v) {
                     if (botaoSelecionado != BOTAO_RECOMENDACAO_ATIVADO) {
-                        actionBarText.setText("Recomendações");
+                        actionBarText.setText("Mais recomendados");
                         swipeRefreshLayout.setRefreshing(true);
                         botaoSelecionado = BOTAO_RECOMENDACAO_ATIVADO;
                         gps.setImageResource(R.drawable.gps);
@@ -449,7 +449,7 @@ public class Feed extends Activity {
 
                     if (botaoSelecionado != BOTAO_HOME_ATIVADO) {
                         swipeRefreshLayout.setRefreshing(true);
-                        actionBarText.setText("Feed");
+                        actionBarText.setText("Mais recentes");
                         botaoSelecionado = BOTAO_HOME_ATIVADO;
                         gps.setImageResource(R.drawable.gps);
                         home.setImageResource(R.drawable.homefeedpressed);
