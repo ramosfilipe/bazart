@@ -30,3 +30,4 @@ config/
 facebook-sdk/
 gradle/
 libs/
+app/src/main/java/com/boleiros/bazart/Bazart.java
