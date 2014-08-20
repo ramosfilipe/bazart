@@ -13,14 +13,6 @@
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bazar+"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#FFFFFF" />
-
         <ImageButton
             android:id="@+id/botaoBuscaActionBar"
             android:layout_width="wrap_content"
@@ -31,6 +23,14 @@
             android:focusable="false"
             android:longClickable="false"
             android:src="@drawable/searchicon" />
+
+        <TextView
+            android:id="@+id/textViewActionBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="center" />
 
 
     </FrameLayout>

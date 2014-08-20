@@ -13076,6 +13076,10 @@ public_profile
                 </string>
                 <string name="parse_app_id" >DrWO1B4EeifVi4YOMqm80VResVR8KYJLNyojje2Q
                 </string>
+                <string name="action_sobre" >Sobre
+                </string>
+                <string name="title_activity_sobre" >Sobre
+                </string>
                 <string name="hello_blank_fragment" >Hello blank fragment
                 </string>
                 <string name="title_activity_camera_demo" >CameraDemo
@@ -13279,6 +13283,16 @@ true
                 <dimen name="activity_horizontal_margin" >64dp
                 </dimen>
             </file>
+            <file
+                name="activity_sobre"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/activity_sobre.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="list_element_sobre"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/list_element_sobre.xml"
+                qualifiers=""
+                type="layout" />
         </source>
         <source path="/Users/Filipe/Desktop/bazart/app/build/generated/res/rs/debug" />
         <source path="/Users/Filipe/Desktop/bazart/app/build/generated/res/generated/debug" />
