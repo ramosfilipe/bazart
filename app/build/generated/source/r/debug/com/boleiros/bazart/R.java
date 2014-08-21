@@ -848,8 +848,8 @@ containing a value of this type.
         public static final int undobar_divider=0x7f020097;
     }
     public static final class id {
-        public static final int action_settings=0x7f07009e;
-        public static final int action_sobre=0x7f07009d;
+        public static final int action_settings=0x7f07009d;
+        public static final int action_sobre=0x7f07009c;
         public static final int app_logo=0x7f070052;
         public static final int book_now=0x7f070010;
         public static final int botaoBuscaActionBar=0x7f070065;
@@ -914,7 +914,7 @@ containing a value of this type.
         public static final int com_facebook_usersettingsfragment_profile_name=0x7f070050;
         public static final int container=0x7f070018;
         public static final int containerbusca=0x7f070016;
-        public static final int content=0x7f070091;
+        public static final int content=0x7f070090;
         public static final int create_account=0x7f070064;
         public static final int editTextHashtags=0x7f07007d;
         public static final int editTextPhoneNumber=0x7f07007b;
@@ -937,11 +937,11 @@ containing a value of this type.
         public static final int hybrid=0x7f070004;
         public static final int imageButtonBack=0x7f070076;
         public static final int imageButtonUpload=0x7f070075;
-        public static final int imageView=0x7f070090;
+        public static final int imageView=0x7f07008f;
         public static final int imageViewProfilePic=0x7f07008c;
-        public static final int ivLogo=0x7f07009b;
+        public static final int ivLogo=0x7f07009a;
         public static final int large=0x7f070015;
-        public static final int likeButton=0x7f070092;
+        public static final int likeButton=0x7f070091;
         public static final int linearLayoutFragmentFeed=0x7f070068;
         public static final int listView_sobre=0x7f07001c;
         public static final int list_cardId=0x7f070088;
@@ -956,7 +956,7 @@ containing a value of this type.
         public static final int login_password_input=0x7f070055;
         public static final int login_username_input=0x7f070054;
         public static final int match_parent=0x7f07000c;
-        public static final int menu_search=0x7f07009c;
+        public static final int menu_search=0x7f07009b;
         public static final int monochrome=0x7f070013;
         public static final int none=0x7f070000;
         public static final int normal=0x7f070001;
@@ -985,27 +985,26 @@ containing a value of this type.
         public static final int strict_sandbox=0x7f070009;
         public static final int takePictureButton=0x7f07002c;
         public static final int terrain=0x7f070003;
-        public static final int text1=0x7f07009a;
+        public static final int text1=0x7f070099;
         public static final int textViewActionBar=0x7f070066;
-        public static final int textViewContato=0x7f070094;
+        public static final int textViewContato=0x7f070093;
         public static final int textViewHashTags=0x7f07007c;
-        public static final int textViewLegenda=0x7f070098;
+        public static final int textViewLegenda=0x7f070097;
         public static final int textViewLocalizacao=0x7f070077;
         public static final int textViewPreco=0x7f070078;
-        public static final int textViewSetCidade=0x7f07008f;
-        public static final int textViewSetContato=0x7f070096;
-        public static final int textViewSetHashTags=0x7f070097;
+        public static final int textViewSetContato=0x7f070095;
+        public static final int textViewSetHashTags=0x7f070096;
         public static final int textViewSetHoraPostagem=0x7f07008e;
         public static final int textViewSetNomeUsuario=0x7f07008d;
-        public static final int textViewSetPreco=0x7f070095;
+        public static final int textViewSetPreco=0x7f070094;
         public static final int textViewTelefone=0x7f07007a;
-        public static final int textViewValor=0x7f070099;
+        public static final int textViewValor=0x7f070098;
         public static final int twitter_login=0x7f07005e;
         public static final int undobar=0x7f070035;
         public static final int undobar_button=0x7f070037;
         public static final int undobar_message=0x7f070036;
         public static final int usernameProfileTextView=0x7f07007f;
-        public static final int viewLike=0x7f070093;
+        public static final int viewLike=0x7f070092;
         public static final int wrap_content=0x7f07000d;
     }
     public static final class integer {

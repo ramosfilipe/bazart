@@ -417,7 +417,7 @@ public class Feed extends Activity {
                         Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
                         if (myLoc == null) {
                             Toast.makeText(getActivity(),
-                                    "Please try again after your location appears on the map.",
+                                    "O GPS está ativo? Se sim, aguarde um pouco",
                                     Toast.LENGTH_LONG).show();
                             return;
                         }

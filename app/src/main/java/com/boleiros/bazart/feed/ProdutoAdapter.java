@@ -179,8 +179,8 @@ public class ProdutoAdapter extends BaseAdapter {
                     .LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.list_element_produto, null);
             holderPattern = new ViewHolder();
-            holderPattern.textViewSetCidade = (TextView) convertView.findViewById(R.id
-                    .textViewSetCidade);
+//            holderPattern.textViewSetCidade = (TextView) convertView.findViewById(R.id
+//                    .textViewSetCidade);
             holderPattern.imageViewProfilePic = (ImageView) convertView.findViewById(R.id.imageViewProfilePic);
             holderPattern.textViewSetHoraPostagem = (TextView) convertView.findViewById(R.id
                     .textViewSetHoraPostagem);
@@ -203,7 +203,7 @@ public class ProdutoAdapter extends BaseAdapter {
 
 
         //holderPattern.likeFrame.setVisibility(View.INVISIBLE);
-        holderPattern.textViewSetCidade.setText("  em " + items.get(arg0).getCidade());
+ //       holderPattern.textViewSetCidade.setText("  em " + items.get(arg0).getCidade());
         holderPattern.textViewSetHoraPostagem.setText(formartaStringData(items.get(arg0)
                 .getCreatedAt()));
         String user = items.get(arg0).getAuthor().getUsername();
@@ -466,7 +466,7 @@ public class ProdutoAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        TextView textViewSetCidade;
+//        TextView textViewSetCidade;
         TextView textViewSetHoraPostagem;
         TextView textViewSetNomeUsuario;
         TextView textViewSetPreco;
