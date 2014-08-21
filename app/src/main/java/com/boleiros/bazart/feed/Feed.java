@@ -16,6 +16,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -31,6 +32,7 @@ import com.boleiros.bazart.camera.InfoFragment;
 import com.boleiros.bazart.hashtags.HashtagActivity;
 import com.boleiros.bazart.modelo.Produto;
 import com.boleiros.bazart.profile.ProfileActivity;
+import com.boleiros.bazart.sobre.Sobre;
 import com.boleiros.bazart.util.ActivityStore;
 import com.facebook.Request;
 import com.facebook.Response;
@@ -153,10 +155,19 @@ public class Feed extends Activity {
         getMenuInflater().inflate(R.menu.feed, menu);
         return true;
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.action_sobre){
+            Intent intent = new Intent(this, Sobre.class);
+            startActivity(intent);
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
+        }
+        return true;
+    }
+
+        /**
+         * A placeholder fragment containing a simple view.
+         */
     public static class PlaceholderFragment extends Fragment implements LocationListener,
             GooglePlayServicesClient.ConnectionCallbacks,
             GooglePlayServicesClient.OnConnectionFailedListener {
@@ -406,7 +417,7 @@ public class Feed extends Activity {
                         Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
                         if (myLoc == null) {
                             Toast.makeText(getActivity(),
-                                    "Please try again after your location appears on the map.",
+                                    "O GPS está ativo? Se sim, aguarde um pouco",
                                     Toast.LENGTH_LONG).show();
                             return;
                         }
@@ -629,7 +640,6 @@ public class Feed extends Activity {
                     connectionResult.startResolutionForResult(this.getActivity(),
                             CONNECTION_FAILURE_RESOLUTION_REQUEST);
                 } catch (IntentSender.SendIntentException e) {
-                    System.out.println("erro OnConnectionFailed");
                 }
             }
         }

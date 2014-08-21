@@ -10,6 +10,7 @@ import android.view.MenuItem;
 
 import com.boleiros.bazart.R;
 import com.boleiros.bazart.feed.Feed;
+import com.boleiros.bazart.sobre.Sobre;
 
 public class ProfileActivity extends Activity implements Profile.OnFragmentInteractionListener {
 
@@ -29,7 +30,7 @@ public class ProfileActivity extends Activity implements Profile.OnFragmentInter
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.profile, menu);
+        getMenuInflater().inflate(R.menu.feed, menu);
         return true;
     }
 
@@ -39,7 +40,9 @@ public class ProfileActivity extends Activity implements Profile.OnFragmentInter
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_sobre) {
+            Intent intent = new Intent(this, Sobre.class);
+            startActivity(intent);
             return true;
         }
         if (id == android.R.id.home) {

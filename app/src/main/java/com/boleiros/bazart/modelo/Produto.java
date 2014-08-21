@@ -56,7 +56,6 @@ public class Produto extends ParseObject {
     public String[] getArrayHashtags() {
         Object[] obj = getList("tags").toArray();
         String[] array = Arrays.copyOf(obj, obj.length, String[].class);
-        System.out.println("tamanho" + array.length);
         return array;
     }
 
@@ -174,7 +173,6 @@ public class Produto extends ParseObject {
 
 
             String[] array = Arrays.copyOf(obj, obj.length, String[].class);
-            System.out.println("Size of obj: " + obj.length);
             addLike();
             addAllUnique(LIKES, Arrays.asList(array));
         }

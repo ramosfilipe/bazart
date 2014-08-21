@@ -90,6 +90,11 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="com.boleiros.bazart.sobre.Sobre"
+            android:label="@string/title_activity_sobre"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>

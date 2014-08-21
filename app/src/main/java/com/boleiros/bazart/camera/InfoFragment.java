@@ -426,6 +426,7 @@ public class InfoFragment extends Fragment implements LocationListener,
                  * Return 1 address.
                  */
                 if (loc != null) {
+
                     addresses = geocoder.getFromLocation(loc.getLatitude(),
                             loc.getLongitude(), 1);
                 }
@@ -433,7 +434,7 @@ public class InfoFragment extends Fragment implements LocationListener,
                 Log.e("LocationSampleActivity",
                         "IO Exception in getFromLocation()");
                 e1.printStackTrace();
-                return ("IO Exception trying to get address");
+                return ("Localização obtida!");
             } catch (IllegalArgumentException e2) {
                 // Error message to post in the log
                 String errorString = "Illegal arguments " +
@@ -443,7 +444,7 @@ public class InfoFragment extends Fragment implements LocationListener,
                         " passed to address service";
                 Log.e("LocationSampleActivity", errorString);
                 e2.printStackTrace();
-                return errorString;
+                return "Localização obtida!";
             }
             // If the reverse geocode returned an address
             if (addresses != null && addresses.size() > 0) {
@@ -463,7 +464,7 @@ public class InfoFragment extends Fragment implements LocationListener,
                 // Return the text
                 return addressText;
             } else {
-                return "Endereço não encontrado";
+                return "Localização obtida!";
             }
         }
 
