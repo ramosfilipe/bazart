@@ -78,7 +78,6 @@ public class CameraHostMod extends SimpleCameraHost {
         if (endWidth > bit.getWidth()) {
             endWidth = bit.getWidth();
         }
-        System.out.println("aqui" + initHeight + " " + endHeight);
 
         Bitmap cropped = Bitmap.createBitmap(bit, 0, initHeight, endWidth, endHeight);
         Bitmap bit1 = Bitmap.createScaledBitmap(cropped, 650, 650, false);

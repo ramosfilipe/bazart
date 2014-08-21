@@ -640,7 +640,6 @@ public class Feed extends Activity {
                     connectionResult.startResolutionForResult(this.getActivity(),
                             CONNECTION_FAILURE_RESOLUTION_REQUEST);
                 } catch (IntentSender.SendIntentException e) {
-                    System.out.println("erro OnConnectionFailed");
                 }
             }
         }

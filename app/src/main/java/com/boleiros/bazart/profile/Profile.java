@@ -91,8 +91,9 @@ public class Profile extends Fragment {
                 byte[] byteArray = parseFile.getData();
                 Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
                 profilePic.setImageBitmap(bitmap);
-            } catch (ParseException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
+                profilePic.setImageResource(R.drawable.ic_launcher);
             }
             gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override

@@ -208,7 +208,6 @@ public class ProdutoAdapter extends BaseAdapter {
                 .getCreatedAt()));
         String user = items.get(arg0).getAuthor().getUsername();
 
-        System.out.println("USER " + user);
         SpannableString spannableString = new SpannableString(user);
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
@@ -424,6 +423,8 @@ public class ProdutoAdapter extends BaseAdapter {
         ParseFile parseFileProfilePic = items.get(arg0).getAuthor().getParseFile("profilePic");
         if(parseFileProfilePic!= null) {
             loadBitmap(parseFileProfilePic,holderPattern.imageViewProfilePic);
+        } else {
+            holderPattern.imageViewProfilePic.setImageResource(R.drawable.ic_launcher);
         }
         return convertView;
     }
