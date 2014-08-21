@@ -21,10 +21,10 @@ public class Bazart extends Application {
         Parse.enableLocalDatastore(this);
         ParseObject.registerSubclass(Produto.class);
         // Required - Initialize the Parse SDK
-        Parse.initialize(this, getString(R.string.parse_app_id),
-                getString(R.string.parse_client_key));
+        Parse.initialize(this, getString(R.string.parse_app_id_GOOGLEPLAY),
+                getString(R.string.parse_client_key_GOOGLEPLAY));
 
-        Parse.setLogLevel(Parse.LOG_LEVEL_DEBUG);
+        //Parse.setLogLevel(Parse.LOG_LEVEL_DEBUG);
 
         // Optional - If you don't want to allow Facebook login, you can
         // remove this line (and other related ParseFacebookUtils calls)
