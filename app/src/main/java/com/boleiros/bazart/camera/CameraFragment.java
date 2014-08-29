@@ -93,7 +93,7 @@ public class CameraFragment extends com.commonsware.cwac.camera.CameraFragment {
                         fk2.applyInPlace(fb);
 
                         ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                        fb.toBitmap().compress(Bitmap.CompressFormat.JPEG, 100, bos);
+                        fb.toBitmap().compress(Bitmap.CompressFormat.JPEG, 0, bos);
                         byte[] scaledData = bos.toByteArray();
                         ActivityStore.getInstance(getActivity()).setImage(scaledData);
                         InfoFragment current = new InfoFragment();
@@ -118,7 +118,7 @@ public class CameraFragment extends com.commonsware.cwac.camera.CameraFragment {
                         fk2.applyInPlace(fb);
 
                         ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                        fb.toBitmap().compress(Bitmap.CompressFormat.JPEG, 100, bos);
+                        fb.toBitmap().compress(Bitmap.CompressFormat.JPEG, 0, bos);
                         byte[] scaledData = bos.toByteArray();
                         ActivityStore.getInstance(getActivity()).setImage(scaledData);
                         InfoFragment current = new InfoFragment();
