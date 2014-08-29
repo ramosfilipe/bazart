@@ -59,7 +59,7 @@ public class CameraHostMod extends SimpleCameraHost {
                 650, ScalingUtilities.ScalingLogic.CROP);
         unscaledBitmap.recycle();
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        scaledBitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+        scaledBitmap.compress(Bitmap.CompressFormat.JPEG, 0, bos);
         byte[] scaledData = bos.toByteArray();
         //System.out.println("tamanho 2 :" + scaledData.length );
 
