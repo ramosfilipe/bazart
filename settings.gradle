@@ -1,2 +1,2 @@
-include ':app', ':ParseLoginUI', ':facebook-sdk:facebook'
+include ':app', ':ParseLoginUI', ':facebook-sdk:facebook', ':Catalano.Core', ':Catalano.Android.Image', ':Catalano.Math'
 include ':chipsLibrary'

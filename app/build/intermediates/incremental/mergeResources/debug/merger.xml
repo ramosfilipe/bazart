@@ -12968,6 +12968,11 @@ Password must be at least %d characters long
                 qualifiers=""
                 type="layout" />
             <file
+                name="activity_sobre"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/activity_sobre.xml"
+                qualifiers=""
+                type="layout" />
+            <file
                 name="camera"
                 path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/camera.xml"
                 qualifiers=""
@@ -13000,6 +13005,11 @@ Password must be at least %d characters long
             <file
                 name="list_element_produto"
                 path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/list_element_produto.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="list_element_sobre"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/list_element_sobre.xml"
                 qualifiers=""
                 type="layout" />
             <file
@@ -13057,9 +13067,9 @@ Password must be at least %d characters long
                 </string>
                 <string name="dummy_button" >Dummy Button
                 </string>
-                <string name="action_settings" >Settings
-                </string>
                 <string name="title_activity_my" >MyActivity
+                </string>
+                <string name="action_settings" >Settings
                 </string>
                 <string name="app_name" >Bazar+
                 </string>
@@ -13283,16 +13293,6 @@ true
                 <dimen name="activity_horizontal_margin" >64dp
                 </dimen>
             </file>
-            <file
-                name="activity_sobre"
-                path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/activity_sobre.xml"
-                qualifiers=""
-                type="layout" />
-            <file
-                name="list_element_sobre"
-                path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/list_element_sobre.xml"
-                qualifiers=""
-                type="layout" />
         </source>
         <source path="/Users/Filipe/Desktop/bazart/app/build/generated/res/rs/debug" />
         <source path="/Users/Filipe/Desktop/bazart/app/build/generated/res/generated/debug" />

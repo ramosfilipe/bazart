@@ -52,6 +52,20 @@
                 android:layout_gravity="center"
                 android:background="@null"
                 android:src="@drawable/lenssmall" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AutoFix"
+                android:id="@+id/buttonEdit"
+                android:layout_gravity="right|top"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Envelhecer"
+                android:id="@+id/buttonSepia"
+                android:layout_gravity="right|bottom"/>
         </FrameLayout>
     </LinearLayout>
 </FrameLayout>
