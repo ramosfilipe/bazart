@@ -13063,6 +13063,8 @@ Password must be at least %d characters long
                 qualifiers="" >
                 <string name="hello_world" >Hello world!
                 </string>
+                <string name="title_activity_edicao_camera" >edicaoCamera
+                </string>
                 <string name="title_activity_login" >LoginActivity
                 </string>
                 <string name="dummy_button" >Dummy Button
@@ -13293,6 +13295,16 @@ true
                 <dimen name="activity_horizontal_margin" >64dp
                 </dimen>
             </file>
+            <file
+                name="activity_edicao_camera"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/activity_edicao_camera.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="fragment_camera_edit"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/fragment_camera_edit.xml"
+                qualifiers=""
+                type="layout" />
         </source>
         <source path="/Users/Filipe/Desktop/bazart/app/build/generated/res/rs/debug" />
         <source path="/Users/Filipe/Desktop/bazart/app/build/generated/res/generated/debug" />

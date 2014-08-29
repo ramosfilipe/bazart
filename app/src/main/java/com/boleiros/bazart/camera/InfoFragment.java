@@ -103,6 +103,7 @@ public class InfoFragment extends Fragment implements LocationListener,
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_info, container, false);
+        v.setBackgroundColor(-1);
         ImageView preview = (ImageView) v.findViewById(R.id.previewAntesDeEnviar);
         final EditText telefone = (EditText) v.findViewById(R.id.editTextPhoneNumber);
         telefone.addTextChangedListener(new PhoneNumberFormattingTextWatcher());

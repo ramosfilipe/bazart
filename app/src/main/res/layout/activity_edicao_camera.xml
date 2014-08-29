@@ -1,0 +1,71 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:id="@+id/editCameraId"
+             android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/camerafinal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <FrameLayout
+            android:id="@+id/framealto"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#e50e0003">
+
+            <ImageButton
+                android:id="@+id/buttonEdicaoGo"
+                android:layout_width="57dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right|center_vertical"
+                android:background="@null"
+                android:src="@drawable/rightarrowsmall" />
+
+            <ImageButton
+                android:id="@+id/buttonBackEdicao"
+                android:layout_width="37dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="left|center_vertical"
+                android:background="@null"
+                android:src="@drawable/leftarrowsmall" />
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/imageViewEdicao"
+            android:layout_width="match_parent"
+            android:layout_height="360dp" />
+
+        <FrameLayout
+            android:id="@+id/framebaixoEdicao"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#e50e0003"
+            android:clickable="false">
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Envelhecer"
+                android:id="@+id/buttonSepia"
+                android:layout_gravity="center"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AutoFix"
+                android:id="@+id/buttonEdit"
+                android:layout_gravity="right|center_vertical"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Desfazer"
+                android:id="@+id/buttonDesfazerEdicao"
+                android:layout_gravity="left|center_vertical"/>
+        </FrameLayout>
+    </LinearLayout>
+</FrameLayout>

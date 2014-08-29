@@ -87,7 +87,12 @@
         <activity
             android:name=".sobre.Sobre"
             android:label="@string/title_activity_sobre"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".camera.util.EdicaoCamera"
+            android:label="@string/title_activity_edicao_camera"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

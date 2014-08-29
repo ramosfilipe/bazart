@@ -16,7 +16,7 @@ import java.util.List;
 
 public class Sobre extends Activity {
 
-    private final String VERSAO = "1.0.0";
+    private final String VERSAO = "1.2.0";
     private final String DESENVOLVEDORES = "Filipe Ramos, Diego Coelho, Walter Alves e " +
             "Emilio Farias";
     private final String LICENCA_COD_ABERTO = "1.0";

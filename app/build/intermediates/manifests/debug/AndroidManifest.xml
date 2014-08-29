@@ -95,6 +95,11 @@
             android:label="@string/title_activity_sobre"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="com.boleiros.bazart.camera.util.EdicaoCamera"
+            android:label="@string/title_activity_edicao_camera"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>
