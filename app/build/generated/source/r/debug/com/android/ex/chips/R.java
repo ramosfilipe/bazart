@@ -33,7 +33,7 @@ public final class R {
 		public static final int list_item_font_secondary = 0x7f02007a;
 	}
 	public static final class id {
-		public static final int text1 = 0x7f0700a1;
+		public static final int text1 = 0x7f0700a2;
 	}
 	public static final class integer {
 		public static final int chips_max_lines = 0x7f090000;

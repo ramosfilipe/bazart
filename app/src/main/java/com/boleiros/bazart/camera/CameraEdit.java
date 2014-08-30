@@ -1,6 +1,7 @@
 package com.boleiros.bazart.camera;
 
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -17,9 +18,11 @@ import com.boleiros.bazart.R;
 import com.boleiros.bazart.util.ActivityStore;
 
 import java.io.ByteArrayOutputStream;
+import java.util.Random;
 
 import Catalano.Imaging.FastBitmap;
-import Catalano.Imaging.Filters.ConservativeSmoothing;
+import Catalano.Imaging.Filters.Artistic.PencilSketch;
+import Catalano.Imaging.Filters.BrightnessCorrection;
 import Catalano.Imaging.Filters.ContrastCorrection;
 import Catalano.Imaging.Filters.Sepia;
 
@@ -44,10 +47,11 @@ public class CameraEdit extends Fragment {
                                 ViewGroup container,
                                 Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_edicao_camera, container, false);
-        final Button buttonEdit = (Button) v.findViewById(R.id.buttonEdit);
+        final ImageButton buttonEdit = (ImageButton) v.findViewById(R.id.buttonEdit);
         final Button buttonDesfazer = (Button) v.findViewById(R.id.buttonDesfazerEdicao);
-
-        final Button buttonSepia = (Button) v.findViewById(R.id.buttonSepia);
+        buttonDesfazer.setVisibility(View.GONE);
+        final ImageButton buttonSketch = (ImageButton) v.findViewById(R.id.imageButtonSketch);
+        final ImageButton buttonSepia = (ImageButton) v.findViewById(R.id.buttonSepia);
         final ImageView preview = (ImageView) v.findViewById(R.id.imageViewEdicao);
         ImageButton buttonEdicaoGo = (ImageButton) v.findViewById(R.id.buttonEdicaoGo);
         ImageButton buttonEdicaoBack = (ImageButton) v.findViewById(R.id
@@ -82,20 +86,49 @@ public class CameraEdit extends Fragment {
             public void onClick(View v) {
                 loadBitmap(fotoOriginal,preview);
                 fotoParaEnviarForEditada= false;
+                buttonDesfazer.setVisibility(View.GONE);
 
             }
         });
+        buttonSketch.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+//                Bitmap bit = BitmapFactory.decodeByteArray(fotoOriginal, 0, fotoOriginal.length);
+//                FastBitmap fb = new FastBitmap(bit);
+//                //SaturationCorrection fk = new SaturationCorrection(30);
+//                PencilSketch fk2 = new PencilSketch();
+//                //HistogramStretch fk2 = new HistogramStretch(30);
+//                //ConservativeSmoothing fk1 = new ConservativeSmoothing();
+//                //fk.applyInPlace(fb);
+//                fk2.applyInPlace(fb);
+//
+//                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+//                fb.toBitmap().compress(Bitmap.CompressFormat.JPEG, 100, bos);
+//                byte[] scaledData = bos.toByteArray();
+//                fotoEditada = scaledData;
+//                loadBitmap(scaledData,preview);
+//                fotoParaEnviarForEditada= true;
+//                buttonDesfazer.setVisibility(View.VISIBLE);
+
+                new PencilSketchWorker(preview,buttonDesfazer).execute();
+
+
+            }
+        });
+
         buttonEdit.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 Bitmap bit = BitmapFactory.decodeByteArray(fotoOriginal, 0, fotoOriginal.length);
                 FastBitmap fb = new FastBitmap(bit);
-                //SaturationCorrection fk = new SaturationCorrection();
-                // BrightnessCorrection fk1 = new BrightnessCorrection();
-                ContrastCorrection fk2 = new ContrastCorrection();
-                ConservativeSmoothing fk1 = new ConservativeSmoothing();
-                // fk.applyInPlace(fb);
+                //SaturationCorrection fk = new SaturationCorrection(30);
+                BrightnessCorrection fk1 = new BrightnessCorrection(30);
+                ContrastCorrection fk2 = new ContrastCorrection(30);
+                //HistogramStretch fk2 = new HistogramStretch(30);
+                //ConservativeSmoothing fk1 = new ConservativeSmoothing();
+                //fk.applyInPlace(fb);
                 fk1.applyInPlace(fb);
                 fk2.applyInPlace(fb);
 
@@ -105,6 +138,7 @@ public class CameraEdit extends Fragment {
                 fotoEditada = scaledData;
                 loadBitmap(scaledData,preview);
                 fotoParaEnviarForEditada= true;
+                buttonDesfazer.setVisibility(View.VISIBLE);
 
 
             }
@@ -130,6 +164,7 @@ public class CameraEdit extends Fragment {
 
                 loadBitmap(scaledData,preview);
                 fotoParaEnviarForEditada= true;
+                buttonDesfazer.setVisibility(View.VISIBLE);
 
             }
         });
@@ -140,6 +175,56 @@ public class CameraEdit extends Fragment {
         final BitmapWorker task = new BitmapWorker(imageView);
         task.execute(foto);
     }
+    class PencilSketchWorker extends AsyncTask<Void, Void, byte[]> {
+        private ProgressDialog progressDialog;
+        ImageView preview;
+        Button buttonDesfazer;
+
+        public PencilSketchWorker(ImageView preview, Button desfazer){
+            this.preview = preview;
+            this.buttonDesfazer = desfazer;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            int max = ActivityStore.getInstance(getActivity()).getFrases().size();
+            Random r = new Random();
+            int numeroSorteado = r.nextInt(max);
+            progressDialog = ProgressDialog.show(getActivity(), null,
+                    ActivityStore.getInstance(getActivity()).getFrases().get(numeroSorteado));
+
+        }
+
+        // Decode image in background.
+        @Override
+        protected byte[] doInBackground(Void... params) {
+            Bitmap bit = BitmapFactory.decodeByteArray(fotoOriginal, 0, fotoOriginal.length);
+            FastBitmap fb = new FastBitmap(bit);
+            //SaturationCorrection fk = new SaturationCorrection(30);
+            PencilSketch fk2 = new PencilSketch();
+            //HistogramStretch fk2 = new HistogramStretch(30);
+            //ConservativeSmoothing fk1 = new ConservativeSmoothing();
+            //fk.applyInPlace(fb);
+            fk2.applyInPlace(fb);
+
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            fb.toBitmap().compress(Bitmap.CompressFormat.JPEG, 100, bos);
+            byte[] scaledData = bos.toByteArray();
+            return scaledData;
+
+        }
+
+        @Override
+        protected void onPostExecute(byte[] scaledData) {
+            fotoEditada = scaledData;
+            progressDialog.dismiss();
+            loadBitmap(scaledData,preview);
+            fotoParaEnviarForEditada= true;
+            buttonDesfazer.setVisibility(View.VISIBLE);
+        }
+    }
+
+
 
     class BitmapWorker extends AsyncTask<byte[], Void, Bitmap> {
         private ImageView imageViewReference;
