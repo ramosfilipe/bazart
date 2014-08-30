@@ -37,7 +37,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Desfazer"/>
+                android:background="@null"
+                android:text="Desfazer"
+                android:textStyle="italic|bold"
+                android:textColor="#fffff6f6"/>
         </FrameLayout>
 
         <ImageView
@@ -55,30 +58,30 @@
 
 
             <ImageButton
-                android:id="@+id/buttonEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right|center_vertical"
-                android:background="@null"
-                android:src="@drawable/wand"
-                android:text="AutoFix"/>
-
-            <ImageButton
-                android:id="@+id/buttonSepia"
-                android:layout_width="104dp"
-                android:layout_height="104dp"
-                android:layout_gravity="center"
-                android:background="@null"
-                android:src="@drawable/sepia"
-                android:text="Envelhecer"/>
-
-            <ImageButton
                 android:id="@+id/imageButtonSketch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|center_vertical"
                 android:background="@null"
-                android:src="@drawable/sketch"/>
+                android:src="@drawable/pretoebranco"/>
+
+            <ImageButton
+                android:id="@+id/buttonSepia"
+                android:layout_width="104dp"
+                android:layout_height="104dp"
+                android:layout_gravity="right|center_vertical"
+                android:background="@null"
+                android:src="@drawable/sepiagrande"
+                android:text="Envelhecer"/>
+
+            <ImageButton
+                android:id="@+id/buttonEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:src="@drawable/ligth"
+                android:text="AutoFix"/>
         </FrameLayout>
     </LinearLayout>
 </FrameLayout>

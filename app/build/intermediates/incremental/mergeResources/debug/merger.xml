@@ -12763,6 +12763,11 @@ Password must be at least %d characters long
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
+                name="ligth"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/ligth.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
                 name="like_disable"
                 path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/like_disable.png"
                 qualifiers="hdpi-v4"
@@ -12818,6 +12823,11 @@ Password must be at least %d characters long
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
+                name="pretoebranco"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/pretoebranco.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
                 name="profile_icon__pressed"
                 path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/profile_icon__pressed.png"
                 qualifiers="hdpi-v4"
@@ -12855,6 +12865,11 @@ Password must be at least %d characters long
             <file
                 name="sepia"
                 path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/sepia.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="sepiagrande"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/sepiagrande.png"
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
@@ -13000,6 +13015,11 @@ Password must be at least %d characters long
             <file
                 name="custom_actionbar"
                 path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/custom_actionbar.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="dialog_phone_options"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/dialog_phone_options.xml"
                 qualifiers=""
                 type="layout" />
             <file

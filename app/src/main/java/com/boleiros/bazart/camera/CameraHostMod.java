@@ -9,11 +9,11 @@ import android.hardware.Camera;
 import com.boleiros.bazart.R;
 import com.boleiros.bazart.util.ActivityStore;
 import com.boleiros.bazart.util.ScalingUtilities;
+import com.commonsware.cwac.camera.CameraUtils;
 import com.commonsware.cwac.camera.PictureTransaction;
 import com.commonsware.cwac.camera.SimpleCameraHost;
 
 import java.io.ByteArrayOutputStream;
-import java.util.List;
 
 /**
  * Created by Filipe on 08/07/14.
@@ -105,30 +105,30 @@ public class CameraHostMod extends SimpleCameraHost {
     public Camera.Size getPictureSize(PictureTransaction xact,
                                       Camera.Parameters parameters) {
 
-        //return (CameraUtils.getLargestPictureSize(this,parameters));
+        return (CameraUtils.getLargestPictureSize(this, parameters));
         //return(CameraUtils.getSmallestPictureSize(parameters));
-        List<Camera.Size> list = parameters.getSupportedPictureSizes();
-        int targetWidth = 2048;
-        int width;
-        Camera.Size optimalSize = null;
-        for (Camera.Size size : list) {
-            width = size.width;
-            if (width == targetWidth) {
-                //System.out.println("IF1 :"+width );
-                optimalSize = size;
-                return optimalSize;
-            } else if (width < targetWidth) {
-                //System.out.println("IF2 :"+width );
-
-                optimalSize = size;
-                return optimalSize;
-            } else if (width > targetWidth) {
-                //  System.out.println("IF3 :"+width );
-
-                optimalSize = size;
-            }
-        }
-
-        return optimalSize;
+//        List<Camera.Size> list = parameters.getSupportedPictureSizes();
+//        int targetWidth = 2048;
+//        int width;
+//        Camera.Size optimalSize = null;
+//        for (Camera.Size size : list) {
+//            width = size.width;
+//            if (width == targetWidth) {
+//                //System.out.println("IF1 :"+width );
+//                optimalSize = size;
+//                return optimalSize;
+//            } else if (width < targetWidth) {
+//                //System.out.println("IF2 :"+width );
+//
+//                optimalSize = size;
+//                return optimalSize;
+//            } else if (width > targetWidth) {
+//                //  System.out.println("IF3 :"+width );
+//
+//                optimalSize = size;
+//            }
+//        }
+//
+//        return optimalSize;
     }
 }

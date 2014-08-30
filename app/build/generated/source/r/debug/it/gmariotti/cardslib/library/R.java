@@ -102,12 +102,12 @@ public final class R {
 		public static final int ic_menu_overflow_card_rounded_dark_normal = 0x7f020067;
 		public static final int ic_menu_overflow_card_rounded_dark_pressed = 0x7f020068;
 		public static final int ic_undobar_undo = 0x7f02006d;
-		public static final int pressed_background_card = 0x7f020085;
-		public static final int pressed_background_kitkat_card = 0x7f020086;
-		public static final int undobar = 0x7f020096;
-		public static final int undobar_button_focused = 0x7f020097;
-		public static final int undobar_button_pressed = 0x7f020098;
-		public static final int undobar_divider = 0x7f020099;
+		public static final int pressed_background_card = 0x7f020086;
+		public static final int pressed_background_kitkat_card = 0x7f020087;
+		public static final int undobar = 0x7f020099;
+		public static final int undobar_button_focused = 0x7f02009a;
+		public static final int undobar_button_pressed = 0x7f02009b;
+		public static final int undobar_divider = 0x7f02009c;
 	}
 	public static final class id {
 		public static final int card_base_empty_cardwithlist_text = 0x7f070030;
