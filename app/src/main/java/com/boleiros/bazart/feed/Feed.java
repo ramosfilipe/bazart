@@ -116,12 +116,13 @@ public class Feed extends Activity {
         startActivity(intent);
 
     }
-    public void changeActProfile(ParseUser user){
+
+    public void changeActProfile(ParseUser user) {
         Intent intent = new Intent(this, ProfileActivity.class);
-        intent.putExtra("name",user.getUsername());
-        intent.putExtra("id",user.getObjectId());
+        intent.putExtra("name", user.getUsername());
+        intent.putExtra("id", user.getObjectId());
         try {
-            intent.putExtra("pic",user.getParseFile("profilePic").getData());
+            intent.putExtra("pic", user.getParseFile("profilePic").getData());
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -155,9 +156,10 @@ public class Feed extends Activity {
         getMenuInflater().inflate(R.menu.feed, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.action_sobre){
+        if (item.getItemId() == R.id.action_sobre) {
             Intent intent = new Intent(this, Sobre.class);
             startActivity(intent);
 
@@ -165,12 +167,14 @@ public class Feed extends Activity {
         return true;
     }
 
-        /**
-         * A placeholder fragment containing a simple view.
-         */
+    /**
+     * A placeholder fragment containing a simple view.
+     */
     public static class PlaceholderFragment extends Fragment implements LocationListener,
             GooglePlayServicesClient.ConnectionCallbacks,
             GooglePlayServicesClient.OnConnectionFailedListener {
+        public static final String PRODUTO = "Produto";
+        public static final String IS_SOLD = "isSold";
         /*
              * Define a request code to send to Google Play services This code is returned in
              * Activity.onActivityResult
@@ -192,14 +196,9 @@ public class Feed extends Activity {
         private static final long FAST_INTERVAL_CEILING_IN_MILLISECONDS = MILLISECONDS_PER_SECOND
                 * FAST_CEILING_IN_SECONDS;
         private static final String ARG_SECTION_NUMBER = "section_number";
-
         private static final int BOTAO_GPS_ATIVADO = 1;
         private static final int BOTAO_HOME_ATIVADO = 2;
         private static final int BOTAO_RECOMENDACAO_ATIVADO = 3;
-        public static final String PRODUTO = "Produto";
-        public static final String IS_SOLD = "isSold";
-
-
         private int botaoSelecionado = BOTAO_HOME_ATIVADO;
         private Location lastLocation = null;
         private Location currentLocation = null;
@@ -400,7 +399,8 @@ public class Feed extends Activity {
 
             final ImageButton busca = (ImageButton) getActivity().findViewById(R.id
                     .botaoBuscaActionBar);
-            final TextView actionBarText = (TextView) getActivity().findViewById(R.id.textViewActionBar);
+            final TextView actionBarText = (TextView) getActivity().findViewById(R.id
+                    .textViewActionBar);
 
             gps.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -640,6 +640,7 @@ public class Feed extends Activity {
                     connectionResult.startResolutionForResult(this.getActivity(),
                             CONNECTION_FAILURE_RESOLUTION_REQUEST);
                 } catch (IntentSender.SendIntentException e) {
+                    System.out.println("aqui");
                 }
             }
         }

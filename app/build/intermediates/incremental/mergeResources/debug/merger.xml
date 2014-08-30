@@ -12853,6 +12853,21 @@ Password must be at least %d characters long
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
+                name="sepia"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/sepia.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="sketch"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/sketch.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="wand"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/wand.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
                 name="ic_launcher"
                 path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-mdpi/ic_launcher.png"
                 qualifiers="mdpi-v4"
@@ -12953,6 +12968,11 @@ Password must be at least %d characters long
                 qualifiers=""
                 type="layout" />
             <file
+                name="activity_edicao_camera"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/activity_edicao_camera.xml"
+                qualifiers=""
+                type="layout" />
+            <file
                 name="activity_feed"
                 path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/activity_feed.xml"
                 qualifiers=""
@@ -12980,6 +13000,11 @@ Password must be at least %d characters long
             <file
                 name="custom_actionbar"
                 path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/custom_actionbar.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="fragment_camera_edit"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/fragment_camera_edit.xml"
                 qualifiers=""
                 type="layout" />
             <file
@@ -13295,31 +13320,6 @@ true
                 <dimen name="activity_horizontal_margin" >64dp
                 </dimen>
             </file>
-            <file
-                name="activity_edicao_camera"
-                path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/activity_edicao_camera.xml"
-                qualifiers=""
-                type="layout" />
-            <file
-                name="fragment_camera_edit"
-                path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/fragment_camera_edit.xml"
-                qualifiers=""
-                type="layout" />
-            <file
-                name="sketch"
-                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/sketch.png"
-                qualifiers="hdpi-v4"
-                type="drawable" />
-            <file
-                name="sepia"
-                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/sepia.png"
-                qualifiers="hdpi-v4"
-                type="drawable" />
-            <file
-                name="wand"
-                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/wand.png"
-                qualifiers="hdpi-v4"
-                type="drawable" />
         </source>
         <source path="/Users/Filipe/Desktop/bazart/app/build/generated/res/rs/debug" />
         <source path="/Users/Filipe/Desktop/bazart/app/build/generated/res/generated/debug" />

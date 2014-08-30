@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/edit_name"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:orientation="vertical">
+<LinearLayout android:id="@+id/edit_name"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_gravity="center"
+              android:orientation="vertical">
 
     <Button
         android:id="@+id/buttonMarcarVendido"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Vendido" />
+        android:text="Vendido"/>
 
     <Button
         android:id="@+id/buttonRemover"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Remover" />
+        android:text="Remover"/>
 
 
 </LinearLayout>

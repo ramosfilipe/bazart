@@ -59,11 +59,6 @@ public class EdicaoCamera extends Activity {
     }
 
 
-
-
-
-
-
     void loadBitmap(byte[] foto, ImageView imageView) {
         final BitmapWorker task = new BitmapWorker(imageView);
         task.execute(foto);
@@ -90,10 +85,6 @@ public class EdicaoCamera extends Activity {
             }
         }
     }
-
-
-
-
 
 
 }

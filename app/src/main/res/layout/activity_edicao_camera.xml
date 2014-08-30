@@ -1,6 +1,6 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout android:id="@+id/editCameraId"
+             xmlns:android="http://schemas.android.com/apk/res/android"
              android:layout_width="match_parent"
-             android:id="@+id/editCameraId"
              android:layout_height="match_parent">
 
     <LinearLayout
@@ -22,7 +22,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="right|center_vertical"
                 android:background="@null"
-                android:src="@drawable/rightarrowsmall" />
+                android:src="@drawable/rightarrowsmall"/>
 
             <ImageButton
                 android:id="@+id/buttonBackEdicao"
@@ -30,14 +30,14 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="left|center_vertical"
                 android:background="@null"
-                android:src="@drawable/leftarrowsmall" />
+                android:src="@drawable/leftarrowsmall"/>
 
             <Button
+                android:id="@+id/buttonDesfazerEdicao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Desfazer"
-                android:id="@+id/buttonDesfazerEdicao"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:text="Desfazer"/>
         </FrameLayout>
 
         <ImageView
@@ -55,30 +55,30 @@
 
 
             <ImageButton
+                android:id="@+id/buttonEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="AutoFix"
-                android:src="@drawable/wand"
+                android:layout_gravity="right|center_vertical"
                 android:background="@null"
-                android:id="@+id/buttonEdit"
-                android:layout_gravity="right|center_vertical"/>
+                android:src="@drawable/wand"
+                android:text="AutoFix"/>
 
             <ImageButton
+                android:id="@+id/buttonSepia"
                 android:layout_width="104dp"
                 android:layout_height="104dp"
-                android:text="Envelhecer"
+                android:layout_gravity="center"
                 android:background="@null"
                 android:src="@drawable/sepia"
-                android:id="@+id/buttonSepia"
-                android:layout_gravity="center"/>
+                android:text="Envelhecer"/>
 
             <ImageButton
+                android:id="@+id/imageButtonSketch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageButtonSketch"
-                android:src="@drawable/sketch"
+                android:layout_gravity="left|center_vertical"
                 android:background="@null"
-                android:layout_gravity="left|center_vertical"/>
+                android:src="@drawable/sketch"/>
         </FrameLayout>
     </LinearLayout>
 </FrameLayout>

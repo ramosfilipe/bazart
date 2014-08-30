@@ -1,13 +1,13 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fragmentInfo"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:divider="@drawable/list_divider"
-    android:orientation="vertical"
-    android:showDividers="middle"
-    android:weightSum="1"
-    tools:context=".camera.InfoFragment">
+<LinearLayout android:id="@+id/fragmentInfo"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:divider="@drawable/list_divider"
+              android:orientation="vertical"
+              android:showDividers="middle"
+              android:weightSum="1"
+              tools:context=".camera.InfoFragment">
 
     <FrameLayout
         android:id="@+id/frameemcima"
@@ -21,7 +21,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="right|center_vertical"
             android:background="@null"
-            android:src="@drawable/rightarrowsmall" />
+            android:src="@drawable/rightarrowsmall"/>
 
         <ImageButton
             android:id="@+id/imageButtonBack"
@@ -29,7 +29,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="left|center_vertical"
             android:background="@null"
-            android:src="@drawable/leftarrowsmall" />
+            android:src="@drawable/leftarrowsmall"/>
 
         <TextView
             android:id="@+id/textViewLocalizacao"
@@ -39,7 +39,7 @@
             android:text="Localizando..."
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="#FFFFFF"
-            android:textStyle="italic" />
+            android:textStyle="italic"/>
     </FrameLayout>
 
     <FrameLayout
@@ -56,7 +56,7 @@
             android:layout_gravity="left|center_vertical"
             android:text="  Preço:"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold|italic" />
+            android:textStyle="bold|italic"/>
 
         <EditText
             android:id="@+id/editTextPreco"
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right|center_vertical"
             android:ems="10"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"/>
     </FrameLayout>
 
     <FrameLayout
@@ -79,7 +79,7 @@
             android:layout_gravity="left|center_vertical"
             android:text="  Telefone:"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold|italic" />
+            android:textStyle="bold|italic"/>
 
         <EditText
             android:id="@+id/editTextPhoneNumber"
@@ -88,7 +88,7 @@
             android:layout_gravity="right|center_vertical"
             android:layout_weight="1"
             android:inputType="phone"
-            android:maxLength="13" />
+            android:maxLength="13"/>
     </FrameLayout>
 
     <FrameLayout
@@ -105,13 +105,13 @@
             android:layout_gravity="left|center_vertical"
             android:text="  Hashtags:"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold|italic" />
+            android:textStyle="bold|italic"/>
 
         <com.boleiros.bazart.hashtags.CustomRecipients
             android:id="@+id/editTextHashtags"
             android:layout_width="214dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="right|center_vertical" />
+            android:layout_gravity="right|center_vertical"/>
     </FrameLayout>
 
     <FrameLayout
@@ -122,6 +122,6 @@
             android:id="@+id/previewAntesDeEnviar"
             android:layout_width="match_parent"
             android:layout_height="360dp"
-            android:scaleType="fitXY" />
+            android:scaleType="fitXY"/>
     </FrameLayout>
 </LinearLayout>

@@ -5,7 +5,6 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -72,18 +71,18 @@ public class Profile extends Fragment {
         String id;
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
         TextView name = (TextView) v.findViewById(R.id.usernameProfileTextView);
-        ImageView profilePic = (ImageView)v.findViewById(R.id.profileProfilePic);
+        ImageView profilePic = (ImageView) v.findViewById(R.id.profileProfilePic);
         ParseFile parseFile = ParseUser.getCurrentUser().getParseFile("profilePic");
         Bundle args = getArguments();
-        if(args != null && !args.getString("id").equals(ParseUser.getCurrentUser().getObjectId())){
+        if (args != null && !args.getString("id").equals(ParseUser.getCurrentUser().getObjectId()
+        )) {
             name.setText(getArguments().getString("name"));
             byte[] pic = getArguments().getByteArray("pic");
-            Bitmap bit = BitmapFactory.decodeByteArray(pic,0,pic.length);
+            Bitmap bit = BitmapFactory.decodeByteArray(pic, 0, pic.length);
             profilePic.setImageBitmap(bit);
             id = getArguments().getString("id");
 
-        }
-        else {
+        } else {
             GridView gridView = (GridView) v.findViewById(R.id.gridProfile);
             name.setText(ParseUser.getCurrentUser().getUsername());
             id = ParseUser.getCurrentUser().getObjectId();
@@ -116,7 +115,7 @@ public class Profile extends Fragment {
 
 
         //consultaAoParse();
-        new ConsultaAoParseTask(v.getContext(),id).execute();
+        new ConsultaAoParseTask(v.getContext(), id).execute();
 
         return v;
     }
@@ -137,7 +136,6 @@ public class Profile extends Fragment {
                     + " must implement OnFragmentInteractionListener");
         }
     }
-
 
 
     @Override
@@ -171,7 +169,7 @@ public class Profile extends Fragment {
         private ProgressDialog progressDialog;
 
 
-        public ConsultaAoParseTask(Context ctx,String id) {
+        public ConsultaAoParseTask(Context ctx, String id) {
             context = ctx;
             userId = id;
         }

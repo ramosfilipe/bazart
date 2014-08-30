@@ -100,12 +100,12 @@ public class HashtagActivity extends Activity implements OnFragmentInteractionLi
 
     }
 
-    public void changeActProfile(ParseUser user){
+    public void changeActProfile(ParseUser user) {
         Intent intent = new Intent(this, ProfileActivity.class);
-        intent.putExtra("name",user.getUsername());
-        intent.putExtra("id",user.getObjectId());
+        intent.putExtra("name", user.getUsername());
+        intent.putExtra("id", user.getObjectId());
         try {
-            intent.putExtra("pic",user.getParseFile("profilePic").getData());
+            intent.putExtra("pic", user.getParseFile("profilePic").getData());
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -139,7 +139,7 @@ public class HashtagActivity extends Activity implements OnFragmentInteractionLi
                         Toast.makeText(getBaseContext(), "Não foi encontrado nenhum produto",
                                 Toast.LENGTH_SHORT).show();
                     }
-                }else{
+                } else {
                     pDialog.dismiss();
                     Toast.makeText(getBaseContext(), "Verifique sua conexão com a internet",
                             Toast.LENGTH_SHORT).show();

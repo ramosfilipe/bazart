@@ -168,7 +168,8 @@ public class InfoFragment extends Fragment implements LocationListener,
                     Random r = new Random();
                     int numeroSorteado = r.nextInt(max);
                     final ProgressDialog pDialog = ProgressDialog.show(getActivity(), null,
-                            ActivityStore.getInstance(getActivity()).getFrases().get(numeroSorteado));
+                            ActivityStore.getInstance(getActivity()).getFrases().get
+                                    (numeroSorteado));
                     ParseFile photoFile = new ParseFile("fotoProduto.jpg",
                             ActivityStore.getInstance(getActivity()).
                                     getImage()

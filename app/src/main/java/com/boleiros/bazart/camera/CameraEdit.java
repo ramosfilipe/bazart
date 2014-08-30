@@ -32,20 +32,19 @@ import Catalano.Imaging.Filters.Sepia;
  * {@link CameraEdit.OnFragmentInteractionListener} interface
  * to handle interaction events.
  * create an instance of this fragment.
- *
  */
 public class CameraEdit extends Fragment {
 
-    private byte[] fotoOriginal=null;
-    private byte[] fotoEditada=null;
+    private byte[] fotoOriginal = null;
+    private byte[] fotoEditada = null;
 
     private OnFragmentInteractionListener mListener;
     private boolean fotoParaEnviarForEditada = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
-                                ViewGroup container,
-                                Bundle savedInstanceState) {
+                             ViewGroup container,
+                             Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_edicao_camera, container, false);
         final ImageButton buttonEdit = (ImageButton) v.findViewById(R.id.buttonEdit);
         final Button buttonDesfazer = (Button) v.findViewById(R.id.buttonDesfazerEdicao);
@@ -57,7 +56,7 @@ public class CameraEdit extends Fragment {
         ImageButton buttonEdicaoBack = (ImageButton) v.findViewById(R.id
                 .buttonBackEdicao);
         fotoOriginal = ActivityStore.getInstance(this.getActivity()).getImage();
-        loadBitmap(fotoOriginal,preview);
+        loadBitmap(fotoOriginal, preview);
 
         buttonEdicaoBack.setOnClickListener(new View.OnClickListener() {
 
@@ -73,8 +72,9 @@ public class CameraEdit extends Fragment {
 
             @Override
             public void onClick(View v) {
-                if(fotoParaEnviarForEditada){
-                ActivityStore.getInstance(getActivity()).setImage(fotoEditada);}
+                if (fotoParaEnviarForEditada) {
+                    ActivityStore.getInstance(getActivity()).setImage(fotoEditada);
+                }
                 InfoFragment current = new InfoFragment();
                 getFragmentManager().beginTransaction()
                         .replace(R.id.editCameraId, current).commit();
@@ -84,8 +84,8 @@ public class CameraEdit extends Fragment {
 
             @Override
             public void onClick(View v) {
-                loadBitmap(fotoOriginal,preview);
-                fotoParaEnviarForEditada= false;
+                loadBitmap(fotoOriginal, preview);
+                fotoParaEnviarForEditada = false;
                 buttonDesfazer.setVisibility(View.GONE);
 
             }
@@ -111,7 +111,7 @@ public class CameraEdit extends Fragment {
 //                fotoParaEnviarForEditada= true;
 //                buttonDesfazer.setVisibility(View.VISIBLE);
 
-                new PencilSketchWorker(preview,buttonDesfazer).execute();
+                new PencilSketchWorker(preview, buttonDesfazer).execute();
 
 
             }
@@ -136,8 +136,8 @@ public class CameraEdit extends Fragment {
                 fb.toBitmap().compress(Bitmap.CompressFormat.JPEG, 100, bos);
                 byte[] scaledData = bos.toByteArray();
                 fotoEditada = scaledData;
-                loadBitmap(scaledData,preview);
-                fotoParaEnviarForEditada= true;
+                loadBitmap(scaledData, preview);
+                fotoParaEnviarForEditada = true;
                 buttonDesfazer.setVisibility(View.VISIBLE);
 
 
@@ -147,7 +147,7 @@ public class CameraEdit extends Fragment {
 
             @Override
             public void onClick(View v) {
-                Bitmap bit = BitmapFactory.decodeByteArray(fotoOriginal, 0,fotoOriginal.length);
+                Bitmap bit = BitmapFactory.decodeByteArray(fotoOriginal, 0, fotoOriginal.length);
                 FastBitmap fb = new FastBitmap(bit);
                 //SaturationCorrection fk = new SaturationCorrection();
                 // BrightnessCorrection fk1 = new BrightnessCorrection();
@@ -162,8 +162,8 @@ public class CameraEdit extends Fragment {
                 byte[] scaledData = bos.toByteArray();
                 fotoEditada = scaledData;
 
-                loadBitmap(scaledData,preview);
-                fotoParaEnviarForEditada= true;
+                loadBitmap(scaledData, preview);
+                fotoParaEnviarForEditada = true;
                 buttonDesfazer.setVisibility(View.VISIBLE);
 
             }
@@ -175,12 +175,18 @@ public class CameraEdit extends Fragment {
         final BitmapWorker task = new BitmapWorker(imageView);
         task.execute(foto);
     }
+
+    public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        public void onFragmentInteraction(Uri uri);
+    }
+
     class PencilSketchWorker extends AsyncTask<Void, Void, byte[]> {
-        private ProgressDialog progressDialog;
         ImageView preview;
         Button buttonDesfazer;
+        private ProgressDialog progressDialog;
 
-        public PencilSketchWorker(ImageView preview, Button desfazer){
+        public PencilSketchWorker(ImageView preview, Button desfazer) {
             this.preview = preview;
             this.buttonDesfazer = desfazer;
         }
@@ -218,13 +224,11 @@ public class CameraEdit extends Fragment {
         protected void onPostExecute(byte[] scaledData) {
             fotoEditada = scaledData;
             progressDialog.dismiss();
-            loadBitmap(scaledData,preview);
-            fotoParaEnviarForEditada= true;
+            loadBitmap(scaledData, preview);
+            fotoParaEnviarForEditada = true;
             buttonDesfazer.setVisibility(View.VISIBLE);
         }
     }
-
-
 
     class BitmapWorker extends AsyncTask<byte[], Void, Bitmap> {
         private ImageView imageViewReference;
@@ -247,10 +251,6 @@ public class CameraEdit extends Fragment {
                 imageViewReference.setImageBitmap(bitmap);
             }
         }
-    }
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
     }
 
 }

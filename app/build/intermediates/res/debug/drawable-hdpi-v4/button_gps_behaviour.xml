@@ -1,6 +1,6 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/gpspressed" android:state_focused="true" />
-    <item android:drawable="@drawable/gpspressed" android:state_pressed="true" />
-    <item android:drawable="@drawable/gps" />
+    <item android:drawable="@drawable/gpspressed" android:state_focused="true"/>
+    <item android:drawable="@drawable/gpspressed" android:state_pressed="true"/>
+    <item android:drawable="@drawable/gps"/>
     //means normal
 </selector><!-- From: file:/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/button_gps_behaviour.xml -->

@@ -24,7 +24,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.boleiros.bazart.R;
-import com.boleiros.bazart.hashtags.HashtagActivity;
 import com.boleiros.bazart.modelo.Produto;
 import com.boleiros.bazart.util.CustomToast;
 import com.boleiros.bazart.util.DoubleClickListener;
@@ -181,7 +180,8 @@ public class ProdutoAdapter extends BaseAdapter {
             holderPattern = new ViewHolder();
 //            holderPattern.textViewSetCidade = (TextView) convertView.findViewById(R.id
 //                    .textViewSetCidade);
-            holderPattern.imageViewProfilePic = (ImageView) convertView.findViewById(R.id.imageViewProfilePic);
+            holderPattern.imageViewProfilePic = (ImageView) convertView.findViewById(R.id
+                    .imageViewProfilePic);
             holderPattern.textViewSetHoraPostagem = (TextView) convertView.findViewById(R.id
                     .textViewSetHoraPostagem);
             holderPattern.textViewSetNomeUsuario = (TextView) convertView.findViewById(R.id
@@ -203,7 +203,7 @@ public class ProdutoAdapter extends BaseAdapter {
 
 
         //holderPattern.likeFrame.setVisibility(View.INVISIBLE);
- //       holderPattern.textViewSetCidade.setText("  em " + items.get(arg0).getCidade());
+        //       holderPattern.textViewSetCidade.setText("  em " + items.get(arg0).getCidade());
         holderPattern.textViewSetHoraPostagem.setText(formartaStringData(items.get(arg0)
                 .getCreatedAt()));
         String user = items.get(arg0).getAuthor().getUsername();
@@ -212,12 +212,13 @@ public class ProdutoAdapter extends BaseAdapter {
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View widget) {
-                if(context instanceof Feed) {
+                if (context instanceof Feed) {
                     ((Feed) context).changeActProfile(items.get(aux).getAuthor());
                 }
             }
         };
-        spannableString.setSpan(clickableSpan,0,spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(clickableSpan, 0, spannableString.length(),
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         holderPattern.textViewSetNomeUsuario.setText(spannableString);
         holderPattern.textViewSetNomeUsuario.setMovementMethod(LinkMovementMethod.getInstance());
 
@@ -421,8 +422,8 @@ public class ProdutoAdapter extends BaseAdapter {
         ParseFile pf = items.get(arg0).getPhotoFile();
         loadBitmap(pf, holderPattern.fotoProduto);
         ParseFile parseFileProfilePic = items.get(arg0).getAuthor().getParseFile("profilePic");
-        if(parseFileProfilePic!= null) {
-            loadBitmap(parseFileProfilePic,holderPattern.imageViewProfilePic);
+        if (parseFileProfilePic != null) {
+            loadBitmap(parseFileProfilePic, holderPattern.imageViewProfilePic);
         } else {
             holderPattern.imageViewProfilePic.setImageResource(R.drawable.ic_launcher);
         }
@@ -467,7 +468,7 @@ public class ProdutoAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-//        TextView textViewSetCidade;
+        //        TextView textViewSetCidade;
         TextView textViewSetHoraPostagem;
         TextView textViewSetNomeUsuario;
         TextView textViewSetPreco;

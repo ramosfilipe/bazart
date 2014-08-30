@@ -27,6 +27,7 @@ public class CameraHostMod extends SimpleCameraHost {
         super(_ctxt);
         context = _ctxt;
     }
+
     public CameraHostMod(Context _ctxt, Activity act) {
 
         super(_ctxt);
@@ -52,7 +53,8 @@ public class CameraHostMod extends SimpleCameraHost {
         ActivityStore.getInstance(context).setImage(cropButtonPressed(image));
         CameraEdit current = new CameraEdit();
         act.getFragmentManager().beginTransaction()
-                .replace(R.id.container, current).commit();//        Intent intent = new Intent(context, EdicaoCamera.class);
+                .replace(R.id.container, current).commit();//        Intent intent = new Intent
+                // (context, EdicaoCamera.class);
 //        context.startActivity(intent);
 
 

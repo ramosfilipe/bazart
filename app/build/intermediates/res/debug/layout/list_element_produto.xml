@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="1">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:weightSum="1">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="50dp">
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="336dp"
             android:layout_height="match_parent"
+            android:orientation="horizontal"
             android:weightSum="1">
 
             <FrameLayout
@@ -25,12 +25,12 @@
                 android:layout_height="fill_parent">
 
                 <ImageView
+                    android:id="@+id/imageViewProfilePic"
                     android:layout_width="47dp"
                     android:layout_height="match_parent"
-                    android:id="@+id/imageViewProfilePic"
-                    android:focusableInTouchMode="false"
+                    android:layout_gravity="center"
                     android:layout_weight="0"
-                    android:layout_gravity="center" />
+                    android:focusableInTouchMode="false"/>
             </FrameLayout>
 
             <FrameLayout
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|center_vertical"
                 android:maxLines="1"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
 
         </LinearLayout>
 
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right|center_vertical"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textStyle="italic" />
+            android:textStyle="italic"/>
 
 
     </FrameLayout>
@@ -70,7 +70,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"/>
 
     </FrameLayout>
 
@@ -92,7 +92,7 @@
             android:layout_alignRight="@+id/textViewPreco"
             android:layout_alignWithParentIfMissing="false"
             android:background="@null"
-            android:src="@drawable/like_disable" />
+            android:src="@drawable/like_disable"/>
 
         <TextView
             android:id="@+id/viewLike"
@@ -107,7 +107,7 @@
             android:gravity="center_vertical"
             android:text="Pessoas"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="33px" />
+            android:textSize="33px"/>
 
 
     </FrameLayout>
@@ -128,7 +128,7 @@
             android:text="  Preço:"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textStyle="bold"
-            android:typeface="sans" />
+            android:typeface="sans"/>
 
         <TextView
             android:id="@+id/textViewSetPreco"
@@ -138,7 +138,7 @@
             android:layout_alignRight="@+id/textViewSetContato"
             android:layout_below="@+id/viewLike"
             android:layout_gravity="center"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
     </FrameLayout>
 
     <FrameLayout
@@ -157,7 +157,7 @@
             android:text="  Contato:"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textStyle="bold"
-            android:typeface="sans" />
+            android:typeface="sans"/>
 
         <TextView
             android:id="@+id/textViewSetContato"
@@ -166,7 +166,7 @@
             android:layout_alignTop="@+id/textViewContato"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
     </FrameLayout>
 
     <FrameLayout
@@ -182,14 +182,14 @@
             android:text="  HashTags:"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textStyle="bold"
-            android:typeface="sans" />
+            android:typeface="sans"/>
 
         <TextView
             android:id="@+id/textViewSetHashTags"
             android:layout_width="239dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|right"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
     </FrameLayout>
 
 </LinearLayout><!-- From: file:/Users/Filipe/Desktop/bazart/app/src/main/res/layout/list_element_produto.xml -->

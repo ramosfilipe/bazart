@@ -1,14 +1,14 @@
-<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fragmentFeed"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#f1f1f1"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".Feed$PlaceholderFragment">
+<android.support.v4.widget.SwipeRefreshLayout android:id="@+id/fragmentFeed"
+                                              xmlns:android="http://schemas.android.com/apk/res/android"
+                                              xmlns:tools="http://schemas.android.com/tools"
+                                              android:layout_width="match_parent"
+                                              android:layout_height="match_parent"
+                                              android:background="#f1f1f1"
+                                              android:paddingBottom="@dimen/activity_vertical_margin"
+                                              android:paddingLeft="@dimen/activity_horizontal_margin"
+                                              android:paddingRight="@dimen/activity_horizontal_margin"
+                                              android:paddingTop="@dimen/activity_vertical_margin"
+                                              tools:context=".Feed$PlaceholderFragment">
 
     <LinearLayout
         android:id="@+id/linearLayoutFragmentFeed"
@@ -20,6 +20,7 @@
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.1">
+
             <ListView
                 android:id="@+id/listaCards"
                 android:layout_width="fill_parent"
@@ -36,11 +37,11 @@
             android:id="@+id/framebaixofeed"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.9"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_gravity="bottom"
+            android:layout_weight="0.9"
             android:background="#ff0000">
 
             <ImageButton
@@ -52,7 +53,7 @@
 
                 android:layout_gravity="center"
                 android:background="@null"
-                android:src="@drawable/camerabranca" />
+                android:src="@drawable/camerabranca"/>
 
             <ImageButton
                 android:id="@+id/gpsButton"
@@ -62,7 +63,7 @@
                 android:layout_gravity="left|center_vertical"
                 android:layout_toRightOf="@+id/homeButton"
                 android:background="@null"
-                android:src="@drawable/gps" />
+                android:src="@drawable/gps"/>
 
             <ImageButton
                 android:id="@+id/homeButton"
@@ -73,7 +74,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
                 android:background="@null"
-                android:src="@drawable/homefeedpressed" />
+                android:src="@drawable/homefeedpressed"/>
 
             <ImageButton
                 android:id="@+id/profileImageButton"
@@ -83,7 +84,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:background="@null"
-                android:src="@drawable/profile_icon_white" />
+                android:src="@drawable/profile_icon_white"/>
 
             <ImageButton
                 android:id="@+id/recomendacaoImageButton"
@@ -92,7 +93,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_toLeftOf="@+id/profileImageButton"
                 android:background="@null"
-                android:src="@drawable/recom" />
+                android:src="@drawable/recom"/>
         </RelativeLayout>
     </LinearLayout>
 </android.support.v4.widget.SwipeRefreshLayout>

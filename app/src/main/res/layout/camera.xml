@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/camerafinal"
@@ -22,7 +22,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="right|center_vertical"
                 android:background="@null"
-                android:src="@drawable/rightarrowsmall" />
+                android:src="@drawable/rightarrowsmall"/>
 
             <ImageButton
                 android:id="@+id/buttonphotorestart"
@@ -30,13 +30,13 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="left|center_vertical"
                 android:background="@null"
-                android:src="@drawable/restartarrowgrey" />
+                android:src="@drawable/restartarrowgrey"/>
         </FrameLayout>
 
         <com.commonsware.cwac.camera.CameraView
             android:id="@+id/camera"
             android:layout_width="match_parent"
-            android:layout_height="360dp" />
+            android:layout_height="360dp"/>
 
         <FrameLayout
             android:id="@+id/framebaixo"
@@ -51,7 +51,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:background="@null"
-                android:src="@drawable/lenssmall" />
+                android:src="@drawable/lenssmall"/>
 
         </FrameLayout>
     </LinearLayout>
