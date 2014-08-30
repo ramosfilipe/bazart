@@ -1,5 +1,6 @@
 package com.boleiros.bazart.feed;
 
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -25,6 +26,7 @@ import android.widget.Toast;
 
 import com.boleiros.bazart.R;
 import com.boleiros.bazart.modelo.Produto;
+import com.boleiros.bazart.profile.DialogGrid;
 import com.boleiros.bazart.util.CustomToast;
 import com.boleiros.bazart.util.DoubleClickListener;
 import com.parse.ParseException;
@@ -207,6 +209,25 @@ public class ProdutoAdapter extends BaseAdapter {
         holderPattern.textViewSetHoraPostagem.setText(formartaStringData(items.get(arg0)
                 .getCreatedAt()));
         String user = items.get(arg0).getAuthor().getUsername();
+        final String usernumberFb = items.get(arg0).getAuthor().getString("facebookId");
+        final String phone = items.get(arg0).getPhoneNumber();
+
+
+        SpannableString span = new SpannableString(phone);
+        ClickableSpan clickPhone = new ClickableSpan() {
+            @Override
+            public void onClick(View widget) {
+                System.out.println("AQUI 1");
+                if (context instanceof Feed) {
+                    System.out.println("AQUI");
+                    ((Feed) context).showPhoneOptions(phone,usernumberFb);
+                }
+            }
+        };
+        span.setSpan(clickPhone,0,span.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        holderPattern.textViewSetContato.setText(span);
+        holderPattern.textViewSetContato.setMovementMethod(LinkMovementMethod.getInstance());
+
 
         SpannableString spannableString = new SpannableString(user);
         ClickableSpan clickableSpan = new ClickableSpan() {
@@ -217,13 +238,12 @@ public class ProdutoAdapter extends BaseAdapter {
                 }
             }
         };
-        spannableString.setSpan(clickableSpan, 0, spannableString.length(),
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(clickableSpan, 0, spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         holderPattern.textViewSetNomeUsuario.setText(spannableString);
         holderPattern.textViewSetNomeUsuario.setMovementMethod(LinkMovementMethod.getInstance());
 
-        holderPattern.textViewSetContato.setText(items.get(arg0).getPhoneNumber());
         holderPattern.textViewSetPreco.setText(items.get(arg0).getPrice());
+
 
 
         final Flag like = new Flag();
@@ -235,6 +255,18 @@ public class ProdutoAdapter extends BaseAdapter {
         final int arg = arg0;
         holderPattern.likeButton.setImageResource(like.isLiked ? R.drawable.like_enable : R
                 .drawable.like_disable);
+
+
+
+        holderPattern.imageViewProfilePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (context instanceof Feed) {
+                    ((Feed) context).changeActProfile(items.get(aux).getAuthor());
+                }
+            }
+        });
+
 
         holderPattern.likeButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout android:id="@+id/edit_name"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/buttonLigarNumero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ligar"/>
+
+    <Button
+        android:id="@+id/buttonMandarSMS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mandar SMS"/>
+
+    <Button
+        android:id="@+id/buttonAbrirFacebook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Abrir Facebook do anunciante"/>
+
+</LinearLayout>

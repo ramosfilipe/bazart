@@ -127,8 +127,19 @@ public class Feed extends Activity {
             e.printStackTrace();
         }
         startActivity(intent);
+
     }
 
+
+    public void showPhoneOptions(String phone, String userFb){
+        FragmentManager fm = getFragmentManager();
+        DialogPhoneOptions dialogGrid = new DialogPhoneOptions();
+        Bundle bundle = new Bundle();
+        bundle.putString("phone", phone);
+        bundle.putString("userFb", userFb);
+        dialogGrid.setArguments(bundle);
+        dialogGrid.show(fm, "dialog_phone_options");
+    }
 
     private void makeMeRequest() {
         Request request = Request.newMeRequest(ParseFacebookUtils.getSession(),

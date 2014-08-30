@@ -276,7 +276,7 @@ public class ParseLoginFragment extends ParseLoginFragmentBase {
                                             new Request.GraphUserCallback() {
                                                 @Override
                                                 public void onCompleted(final GraphUser fbUser,
-                                                                        Response response) {
+                                                                        final Response response) {
                       /*
                         If we were able to successfully retrieve the Facebook
                         user's name, let's set it on the fullName field.
@@ -311,7 +311,10 @@ public class ParseLoginFragment extends ParseLoginFragmentBase {
                                                                 bm.compress(Bitmap.CompressFormat.PNG, 100, stream);
                                                                 byte[] byteArray = stream.toByteArray();
                                                                 ParseFile profilePic = new ParseFile("profilePic.jpg",byteArray);
-                                                                parseUser.put("profilePic",profilePic);
+                                                                parseUser.put("facebookId", fbUser.getId());
+                                                                System.out.println("LINK" + fbUser.getLink());
+                                                                 parseUser.put("profilePic", profilePic);
+
                                                                 parseUser.saveInBackground(new SaveCallback() {
                                                                     @Override
                                                                     public void done(ParseException e) {

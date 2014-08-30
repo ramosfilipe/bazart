@@ -1,5 +1,6 @@
 package com.boleiros.bazart.camera;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,7 @@ public class CameraFragment extends com.commonsware.cwac.camera.CameraFragment {
         View content = inflater.inflate(R.layout.camera, container, false);
         CameraView cameraView = (CameraView) content.findViewById(R.id.camera);
         setCameraView(cameraView);
+//        content.setBackgroundColor(Color.BLACK);
 //        final Button buttonEdit = (Button) content.findViewById(R.id.buttonEdit);
 //        final Button buttonSepia = (Button) content.findViewById(R.id.buttonSepia);
 
