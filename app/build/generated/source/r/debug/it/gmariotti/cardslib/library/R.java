@@ -95,19 +95,19 @@ public final class R {
 		public static final int card_selector = 0x7f02000f;
 		public static final int card_shadow = 0x7f020010;
 		public static final int card_undo = 0x7f020011;
-		public static final int ic_menu_expand_card_dark_normal = 0x7f020066;
-		public static final int ic_menu_expand_card_dark_pressed = 0x7f020067;
-		public static final int ic_menu_overflow_card_dark_normal = 0x7f020068;
-		public static final int ic_menu_overflow_card_dark_pressed = 0x7f020069;
-		public static final int ic_menu_overflow_card_rounded_dark_normal = 0x7f02006a;
-		public static final int ic_menu_overflow_card_rounded_dark_pressed = 0x7f02006b;
-		public static final int ic_undobar_undo = 0x7f020070;
-		public static final int pressed_background_card = 0x7f020089;
-		public static final int pressed_background_kitkat_card = 0x7f02008a;
-		public static final int undobar = 0x7f02009e;
-		public static final int undobar_button_focused = 0x7f02009f;
-		public static final int undobar_button_pressed = 0x7f0200a0;
-		public static final int undobar_divider = 0x7f0200a1;
+		public static final int ic_menu_expand_card_dark_normal = 0x7f020068;
+		public static final int ic_menu_expand_card_dark_pressed = 0x7f020069;
+		public static final int ic_menu_overflow_card_dark_normal = 0x7f02006a;
+		public static final int ic_menu_overflow_card_dark_pressed = 0x7f02006b;
+		public static final int ic_menu_overflow_card_rounded_dark_normal = 0x7f02006c;
+		public static final int ic_menu_overflow_card_rounded_dark_pressed = 0x7f02006d;
+		public static final int ic_undobar_undo = 0x7f020072;
+		public static final int pressed_background_card = 0x7f02008d;
+		public static final int pressed_background_kitkat_card = 0x7f02008e;
+		public static final int undobar = 0x7f0200a4;
+		public static final int undobar_button_focused = 0x7f0200a5;
+		public static final int undobar_button_pressed = 0x7f0200a6;
+		public static final int undobar_divider = 0x7f0200a7;
 	}
 	public static final class id {
 		public static final int card_base_empty_cardwithlist_text = 0x7f070030;

@@ -28,9 +28,9 @@ public final class R {
 		public static final int chip_background_invalid = 0x7f020015;
 		public static final int chip_background_selected = 0x7f020016;
 		public static final int chip_delete = 0x7f020017;
-		public static final int ic_contact_picture = 0x7f020064;
-		public static final int list_item_font_primary = 0x7f02007d;
-		public static final int list_item_font_secondary = 0x7f02007e;
+		public static final int ic_contact_picture = 0x7f020066;
+		public static final int list_item_font_primary = 0x7f02007f;
+		public static final int list_item_font_secondary = 0x7f020080;
 	}
 	public static final class id {
 		public static final int text1 = 0x7f0700ad;

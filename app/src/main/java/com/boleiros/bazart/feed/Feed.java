@@ -92,11 +92,11 @@ public class Feed extends Activity {
 
         actionBar.setDisplayShowCustomEnabled(true);
 
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
+//        // Create the adapter that will return a fragment for each of the three
+//        // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
-
-        // Set up the ViewPager with the sections adapter.
+//
+//        // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         TextView actionBarText = (TextView) findViewById(R.id.textViewActionBar);
         actionBarText.setText("Mais recentes");
@@ -419,9 +419,9 @@ public class Feed extends Activity {
                         swipeRefreshLayout.setRefreshing(true);
                         botaoSelecionado = BOTAO_GPS_ATIVADO;
                         actionBarText.setText("Mais próximos");
-                        gps.setImageResource(R.drawable.gpspressed);
-                        home.setImageResource(R.drawable.homefeed);
-                        recomendacao.setImageResource(R.drawable.recom);
+                        gps.setImageResource(R.drawable.local1);
+                        home.setImageResource(R.drawable.home0);
+                        recomendacao.setImageResource(R.drawable.recomend0);
 
 
                         Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
@@ -454,9 +454,9 @@ public class Feed extends Activity {
                         actionBarText.setText("Mais recomendados");
                         swipeRefreshLayout.setRefreshing(true);
                         botaoSelecionado = BOTAO_RECOMENDACAO_ATIVADO;
-                        gps.setImageResource(R.drawable.gps);
-                        home.setImageResource(R.drawable.homefeed);
-                        recomendacao.setImageResource(R.drawable.recompressed);
+                        gps.setImageResource(R.drawable.local0);
+                        home.setImageResource(R.drawable.home0);
+                        recomendacao.setImageResource(R.drawable.recomend1);
                         consultaAoParseComRecomendacao();
                         listaDeExibicao.smoothScrollToPosition(0);
                     }
@@ -472,9 +472,9 @@ public class Feed extends Activity {
                         swipeRefreshLayout.setRefreshing(true);
                         actionBarText.setText("Mais recentes");
                         botaoSelecionado = BOTAO_HOME_ATIVADO;
-                        gps.setImageResource(R.drawable.gps);
-                        home.setImageResource(R.drawable.homefeedpressed);
-                        recomendacao.setImageResource(R.drawable.recom);
+                        gps.setImageResource(R.drawable.local0);
+                        home.setImageResource(R.drawable.home1);
+                        recomendacao.setImageResource(R.drawable.recomend0);
                         consultaAoParse();
                         listaDeExibicao.smoothScrollToPosition(0);
 
