@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.boleiros.bazart.R;
@@ -45,10 +46,9 @@ public class DialogPhoneOptions extends DialogFragment {
         Bundle bundle = getArguments();
         final String phone = bundle.getString("phone");
         final String id = bundle.getString("userFb");
-        Button ligar = (Button) view.findViewById(R.id.buttonLigarNumero);
-        Button sms = (Button) view.findViewById(R.id.buttonMandarSMS);
-        Button abrirFace = (Button) view.findViewById(R.id.buttonAbrirFacebook);
-
+        RelativeLayout ligar = (RelativeLayout) view.findViewById(R.id.relativeLayoutLigar);
+        RelativeLayout sms = (RelativeLayout) view.findViewById(R.id.relativeLayoutSms);
+        RelativeLayout abrirFace = (RelativeLayout) view.findViewById(R.id.relativeLayoutFacebook);
 
         ligar.setOnClickListener(new View.OnClickListener() {
             @Override
