@@ -8,7 +8,7 @@
               android:orientation="vertical">
 
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal">
@@ -22,7 +22,10 @@
             android:clickable="false"
             android:focusable="false"
             android:longClickable="false"
-            android:src="@drawable/searchicon"/>
+            android:src="@drawable/searchicon"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
         <TextView
             android:id="@+id/textViewActionBar"
@@ -30,9 +33,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#FFFFFF"/>
+            android:textColor="#FFFFFF"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
 
 
-    </FrameLayout>
+    </RelativeLayout>
 
 </LinearLayout>

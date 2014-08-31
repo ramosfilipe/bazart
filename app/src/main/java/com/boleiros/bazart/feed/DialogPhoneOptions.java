@@ -3,8 +3,10 @@ package com.boleiros.bazart.feed;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +39,7 @@ public class DialogPhoneOptions extends DialogFragment {
                     Uri.parse("https://www.facebook.com/sentiapps")); //catches and opens a url to the desired page
         }
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -75,7 +78,6 @@ public class DialogPhoneOptions extends DialogFragment {
                 startActivity(facebook);
             }
         });
-
 
         return view;
     }

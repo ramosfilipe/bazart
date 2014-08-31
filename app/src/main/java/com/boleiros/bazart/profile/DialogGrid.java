@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.boleiros.bazart.R;
@@ -141,8 +142,8 @@ public class DialogGrid extends DialogFragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_grid_item, container);
         getDialog().setTitle("Opções");
-        Button remover = (Button) view.findViewById(R.id.buttonRemover);
-        Button vendido = (Button) view.findViewById(R.id.buttonMarcarVendido);
+        RelativeLayout remover = (RelativeLayout) view.findViewById(R.id.relativeRemover);
+        RelativeLayout vendido = (RelativeLayout) view.findViewById(R.id.relativeVendido);
 
         if (getArguments().getBoolean("vendido")) {
             vendido.setEnabled(false);
