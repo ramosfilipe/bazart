@@ -10,6 +10,7 @@ public class ActivityStore {
     private boolean terminou = false;
     private ArrayList<String> frases;
     private Context mContext;
+    private boolean removeu = false;
 
     private ActivityStore(Context ctx) {
         mContext = ctx;
@@ -34,6 +35,12 @@ public class ActivityStore {
         return frases;
     }
 
+    public void setRemoveu(boolean bol){
+        this.removeu = bol;
+    }
+    public boolean getRemoveu(){
+        return this.removeu;
+    }
     public void setFrases(ArrayList<String> frases) {
         this.frases = frases;
     }

@@ -2,6 +2,7 @@ package com.boleiros.bazart.profile;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import com.boleiros.bazart.R;
 import com.boleiros.bazart.feed.Feed;
 import com.boleiros.bazart.sobre.Sobre;
+import com.boleiros.bazart.util.ActivityStore;
 
 public class ProfileActivity extends Activity implements Profile.OnFragmentInteractionListener {
 
@@ -52,11 +54,17 @@ public class ProfileActivity extends Activity implements Profile.OnFragmentInter
     }
 
 
-//    @Override
-//    public void onBackPressed() {
-//        Intent intent = new Intent(this, Feed.class);
-//        startActivity(intent);
-//    }
+    @Override
+    public void onBackPressed() {
+        System.out.println("OAI "+ActivityStore.getInstance(this).getRemoveu());
+        if( ActivityStore.getInstance(this).getRemoveu()){
+            ActivityStore.getInstance(this).setRemoveu(false);
+            Intent intent = new Intent(this, Feed.class);
+            startActivity(intent);
+        } else {
+            super.onBackPressed();
+        }
+    }
 
     @Override
     public void onFragmentInteraction(Uri uri) {

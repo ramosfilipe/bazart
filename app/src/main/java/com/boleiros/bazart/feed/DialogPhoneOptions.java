@@ -3,6 +3,7 @@ package com.boleiros.bazart.feed;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -45,9 +46,9 @@ public class DialogPhoneOptions extends DialogFragment {
         Bundle bundle = getArguments();
         final String phone = bundle.getString("phone");
         final String id = bundle.getString("userFb");
-        RelativeLayout ligar = (RelativeLayout) view.findViewById(R.id.relativeLayoutLigar);
-        RelativeLayout sms = (RelativeLayout) view.findViewById(R.id.relativeLayoutSms);
-        RelativeLayout abrirFace = (RelativeLayout) view.findViewById(R.id.relativeLayoutFacebook);
+        final RelativeLayout ligar = (RelativeLayout) view.findViewById(R.id.relativeLayoutLigar);
+        final RelativeLayout sms = (RelativeLayout) view.findViewById(R.id.relativeLayoutSms);
+        final RelativeLayout abrirFace = (RelativeLayout) view.findViewById(R.id.relativeLayoutFacebook);
 
         ligar.setOnClickListener(new View.OnClickListener() {
             @Override

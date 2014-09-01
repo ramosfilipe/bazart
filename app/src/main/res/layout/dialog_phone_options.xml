@@ -9,7 +9,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_height="2dp"
         android:layout_gravity="center_horizontal"></RelativeLayout>
 
     <RelativeLayout
@@ -40,7 +40,14 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="5dp"></RelativeLayout>
+        android:layout_height="6dp">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:background="@color/wallet_holo_blue_light"
+            android:layout_height="2dp"
+            android:layout_centerVertical="true"></RelativeLayout>
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -73,7 +80,14 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="5dp"></RelativeLayout>
+        android:layout_height="6dp">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:background="@color/wallet_holo_blue_light"
+            android:layout_height="2dp"
+            android:layout_centerVertical="true"></RelativeLayout>
+        </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -101,7 +115,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_height="2dp"
         android:layout_gravity="center_horizontal"
         android:id="@+id/relativespaceeee"></RelativeLayout>
 

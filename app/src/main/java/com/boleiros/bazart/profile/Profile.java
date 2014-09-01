@@ -6,11 +6,13 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,12 +25,15 @@ import android.widget.Toast;
 import com.boleiros.bazart.R;
 import com.boleiros.bazart.modelo.Produto;
 import com.boleiros.bazart.util.ActivityStore;
+import com.facebook.Session;
+import com.facebook.SessionState;
+import com.facebook.UiLifecycleHelper;
+import com.facebook.widget.FacebookDialog;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
-import com.parse.codec.binary.StringUtils;
 
 import java.util.List;
 import java.util.Random;
@@ -48,7 +53,6 @@ public class Profile extends Fragment {
     public Profile() {
         // Required empty public constructor
     }
-
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -64,6 +68,8 @@ public class Profile extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
+
 
 
     @Override
@@ -111,7 +117,7 @@ public class Profile extends Fragment {
                     bundle.putString("hashtags", hasht);
                     produtoVendido.setArguments(bundle);
                     fragmentTransaction.replace(R.id.profileActivityLayout,produtoVendido);
-                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.addToBackStack("Grid");
                     fragmentTransaction.commit();
                 }
             });
