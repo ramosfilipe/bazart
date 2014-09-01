@@ -3,6 +3,7 @@ package com.boleiros.bazart.profile;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -27,6 +28,7 @@ import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.codec.binary.StringUtils;
 
 import java.util.List;
 import java.util.Random;
@@ -77,10 +79,42 @@ public class Profile extends Fragment {
         if (args != null && !args.getString("id").equals(ParseUser.getCurrentUser().getObjectId()
         )) {
             name.setText(getArguments().getString("name"));
-            byte[] pic = getArguments().getByteArray("pic");
-            Bitmap bit = BitmapFactory.decodeByteArray(pic, 0, pic.length);
-            profilePic.setImageBitmap(bit);
+            GridView gridView = (GridView)v.findViewById(R.id.gridProfile);
+            try {
+                byte[] pic = getArguments().getByteArray("pic");
+                Bitmap bit = BitmapFactory.decodeByteArray(pic, 0, pic.length);
+                profilePic.setImageBitmap(bit);
+            } catch (Exception e){
+                profilePic.setImageResource(R.drawable.ic_launcher);
+            }
             id = getArguments().getString("id");
+
+            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Produto produto = ((Produto) adapt.getItem(position));
+                    FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                    ProdutoVendido produtoVendido = new ProdutoVendido();
+                    Bundle bundle = new Bundle();
+                    try{
+                        bundle.putByteArray("pic",produto.getPhotoFile().getData());
+                    }catch(Exception e){
+                        Toast.makeText(getActivity(),"Desculpe, ocorreu um erro.",Toast.LENGTH_SHORT).show();
+                    }
+                    bundle.putString("preco",produto.getPrice());
+                    bundle.putString("contato",produto.getPhoneNumber());
+                    String[] hashtags = produto.getArrayHashtags();
+                    String hasht = "";
+                    for (int i = 0; i < hashtags.length; i++) {
+                        hasht += hashtags[i] + " ";
+                    }
+                    bundle.putString("hashtags", hasht);
+                    produtoVendido.setArguments(bundle);
+                    fragmentTransaction.replace(R.id.profileActivityLayout,produtoVendido);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                }
+            });
 
         } else {
             GridView gridView = (GridView) v.findViewById(R.id.gridProfile);
@@ -182,6 +216,8 @@ public class Profile extends Fragment {
             progressDialog = ProgressDialog.show(getActivity(), null,
                     ActivityStore.getInstance(getActivity()).getFrases().get(i1));
         }
+
+
 
         @Override
         protected Void doInBackground(Void... params) {

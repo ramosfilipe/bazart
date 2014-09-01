@@ -60,11 +60,11 @@
                 android:id="@+id/gpsButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_alignParentTop="true"
                 android:layout_gravity="left|center_vertical"
-                android:layout_toRightOf="@+id/homeButton"
                 android:background="@null"
-                android:src="@drawable/local0"/>
+                android:src="@drawable/local0"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/homeButton" />
 
             <ImageButton
                 android:id="@+id/homeButton"

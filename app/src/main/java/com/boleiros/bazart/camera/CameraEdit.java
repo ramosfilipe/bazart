@@ -52,8 +52,8 @@ public class CameraEdit extends Fragment {
         final ImageButton buttonSketch = (ImageButton) v.findViewById(R.id.imageButtonSketch);
         final ImageButton buttonSepia = (ImageButton) v.findViewById(R.id.buttonSepia);
         final ImageView preview = (ImageView) v.findViewById(R.id.imageViewEdicao);
-        ImageButton buttonEdicaoGo = (ImageButton) v.findViewById(R.id.buttonEdicaoGo);
-        ImageButton buttonEdicaoBack = (ImageButton) v.findViewById(R.id
+        final ImageButton buttonEdicaoGo = (ImageButton) v.findViewById(R.id.buttonEdicaoGo);
+        final ImageButton buttonEdicaoBack = (ImageButton) v.findViewById(R.id
                 .buttonBackEdicao);
         fotoOriginal = ActivityStore.getInstance(this.getActivity()).getImage();
         loadBitmap(fotoOriginal, preview);
@@ -65,6 +65,12 @@ public class CameraEdit extends Fragment {
                 com.commonsware.cwac.camera.CameraFragment current = new CameraFragment();
                 getFragmentManager().beginTransaction()
                         .replace(R.id.editCameraId, current).commit();
+                buttonDesfazer.setVisibility(View.GONE);
+                buttonEdicaoBack.setVisibility(View.GONE);
+                buttonEdicaoGo.setVisibility(View.GONE);
+                buttonEdit.setVisibility(View.GONE);
+                buttonSepia.setVisibility(View.GONE);
+                buttonSketch.setVisibility(View.GONE);
 
             }
         });

@@ -6,31 +6,32 @@
               tools:context=".profile.Profile">
 
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="65dp"
         android:layout_gravity="center_horizontal|top">
+
+        <ImageView
+            android:id="@+id/profileProfilePic"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="46dp" />
 
         <TextView
             android:id="@+id/usernameProfileTextView"
             android:layout_width="156dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_marginLeft="25dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/profileProfilePic" />
 
-        <FrameLayout
-            android:layout_width="114dp"
-            android:layout_height="fill_parent"
-            android:layout_gravity="left|center_vertical">
-
-            <ImageView
-                android:id="@+id/profileProfilePic"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"/>
-        </FrameLayout>
-
-    </FrameLayout>
+    </RelativeLayout>
 
     <FrameLayout
         android:layout_width="fill_parent"

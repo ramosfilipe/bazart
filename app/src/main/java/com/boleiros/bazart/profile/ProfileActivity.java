@@ -46,19 +46,17 @@ public class ProfileActivity extends Activity implements Profile.OnFragmentInter
             return true;
         }
         if (id == android.R.id.home) {
-            Intent intent = new Intent(this, Feed.class);
-            startActivity(intent);
+            onBackPressed();
         }
         return super.onOptionsItemSelected(item);
     }
 
 
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(this, Feed.class);
-        startActivity(intent);
-
-    }
+//    @Override
+//    public void onBackPressed() {
+//        Intent intent = new Intent(this, Feed.class);
+//        startActivity(intent);
+//    }
 
     @Override
     public void onFragmentInteraction(Uri uri) {
