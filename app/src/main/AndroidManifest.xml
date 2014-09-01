@@ -33,6 +33,12 @@
             android:name="com.parse.ui.ParseLoginActivity"
             android:label="bazart"
             android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="bazart"/>
+            </intent-filter>
+
             <meta-data
                 android:name="com.parse.ui.ParseLoginActivity.FACEBOOK_LOGIN_BUTTON_TEXT"
                 android:value="Entre com o Facebook"/>
@@ -65,9 +71,9 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+
         </activity>
         <activity
             android:name=".camera.CameraActivity"
