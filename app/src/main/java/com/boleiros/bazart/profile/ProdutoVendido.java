@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.boleiros.bazart.R;
 import com.boleiros.bazart.modelo.Produto;
+import com.boleiros.bazart.util.ActivityStore;
 
 import org.w3c.dom.Text;
 
@@ -73,6 +74,8 @@ public class ProdutoVendido extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_produto_vendidoo, container, false);
         Bundle args = getArguments();
+        ActivityStore.getInstance(getActivity()).setQualFragment("PRODUTO");
+
         ImageView imgProduto = (ImageView)v.findViewById(R.id.imageViewProdutoVendido);
         TextView precoProduto = (TextView)v.findViewById(R.id.textviewVendidoPor);
         TextView contatoProduto = (TextView)v.findViewById(R.id.textViewContatoVendido);

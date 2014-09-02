@@ -234,7 +234,7 @@ public class ProdutoAdapter extends BaseAdapter {
             @Override
             public void onClick(View widget) {
                 if (context instanceof Feed) {
-                    ((Feed) context).changeActProfile(items.get(aux).getAuthor());
+                    ((Feed) context).changeActProfile(items.get(aux).getAuthor(),"",false);
                 }
             }
         };
@@ -262,7 +262,7 @@ public class ProdutoAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 if (context instanceof Feed) {
-                    ((Feed) context).changeActProfile(items.get(aux).getAuthor());
+                    ((Feed) context).changeActProfile(items.get(aux).getAuthor(),"",false);
                 }
             }
         });

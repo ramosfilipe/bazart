@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.ActivityInfo;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -96,6 +97,15 @@ public class Feed extends Activity {
 //        // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
 //
+        Intent intent = getIntent();
+        String action = intent.getAction();
+        Uri data = intent.getData();
+        String produto = "";
+        if(data!= null){
+            String aux = data.getPath();
+            produto = aux.substring(1,aux.length());
+            changeActProfile(null,produto,true);
+        }
 //        // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         TextView actionBarText = (TextView) findViewById(R.id.textViewActionBar);
@@ -116,19 +126,35 @@ public class Feed extends Activity {
 
     }
 
-    public void changeActProfile(ParseUser user) {
+    public void changeActProfile(ParseUser user,String produto, final boolean bool) {
+        final String product = produto;
         Intent intent = new Intent(this, ProfileActivity.class);
-        intent.putExtra("name", user.getUsername());
-        intent.putExtra("id", user.getObjectId());
-        try {
-            intent.putExtra("pic", user.getParseFile("profilePic").getData());
-        } catch (ParseException e) {
-            e.printStackTrace();
+        if (user == null) {
+            ParseQuery<Produto> query = ParseQuery.getQuery("Produto");
+            query.include("author");
+            query.whereEqualTo("objectId", produto);
+            query.findInBackground(new FindCallback<Produto>() {
+                @Override
+                public void done(List<Produto> parseObjects, com.parse.ParseException e) {
+                    if (e == null) {
+                        ParseUser user1 = parseObjects.get(0).getAuthor();
+                        changeActProfile(user1,product, bool);
+                    }
+                }
+            });
+        } else {
+            intent.putExtra("name", user.getUsername());
+            intent.putExtra("id", user.getObjectId());
+            intent.putExtra("produto", produto);
+            intent.putExtra("web",bool);
+            try {
+                intent.putExtra("pic", user.getParseFile("profilePic").getData());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            startActivity(intent);
         }
-        startActivity(intent);
-
     }
-
 
     public void showPhoneOptions(String phone, String userFb){
         FragmentManager fm = getFragmentManager();

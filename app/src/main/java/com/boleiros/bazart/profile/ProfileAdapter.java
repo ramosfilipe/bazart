@@ -128,6 +128,17 @@ public class ProfileAdapter extends BaseAdapter {
         return items.get(arg0);
     }
 
+
+    public int getPosicaoProduto(String id){
+        for (int i = 0; i < items.size(); i++) {
+            System.out.println(items.get(i).getObjectId());
+            if(items.get(i).getObjectId().equals(id)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
     @Override
     public long getItemId(int arg0) {
         return arg0;

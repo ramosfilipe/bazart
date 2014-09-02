@@ -70,6 +70,73 @@ public class Profile extends Fragment {
     }
 
 
+    public void clicarNoProduto(int posicao){
+        Produto produto = ((Produto) adapt.getItem(posicao));
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        ProdutoVendido produtoVendido = new ProdutoVendido();
+        Bundle bundle = new Bundle();
+        try{
+            bundle.putByteArray("pic",produto.getPhotoFile().getData());
+        }catch(Exception e){
+            Toast.makeText(getActivity(),"Desculpe, ocorreu um erro.",Toast.LENGTH_SHORT).show();
+        }
+        bundle.putString("preco",produto.getPrice());
+        bundle.putString("contato",produto.getPhoneNumber());
+        String[] hashtags = produto.getArrayHashtags();
+        String hasht = "";
+        for (int i = 0; i < hashtags.length; i++) {
+            hasht += hashtags[i] + " ";
+        }
+        bundle.putString("hashtags", hasht);
+        produtoVendido.setArguments(bundle);
+        fragmentTransaction.replace(R.id.profileActivityLayout,produtoVendido);
+        fragmentTransaction.addToBackStack("Grid");
+        fragmentTransaction.commit();
+    }
+
+    public void clicarNoProduto(byte[] photo,String preco, String phone, String[] hashs){
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        ProdutoVendido produtoVendido = new ProdutoVendido();
+        Bundle bundle = new Bundle();
+        try{
+            bundle.putByteArray("pic",photo);
+        }catch(Exception e){
+            Toast.makeText(getActivity(),"Desculpe, ocorreu um erro.",Toast.LENGTH_SHORT).show();
+        }
+        bundle.putString("preco",preco);
+        bundle.putString("contato",phone);
+        String[] hashtags = hashs;
+        String hasht = "";
+        for (int i = 0; i < hashtags.length; i++) {
+            hasht += hashtags[i] + " ";
+        }
+        bundle.putString("hashtags", hasht);
+        produtoVendido.setArguments(bundle);
+        fragmentTransaction.replace(R.id.profileActivityLayout,produtoVendido);
+        fragmentTransaction.addToBackStack("Grid");
+        fragmentTransaction.commit();
+    }
+
+
+    public void consultaEClica(String idProduto){
+        ParseQuery<Produto> query = ParseQuery.getQuery("Produto");
+        query.include("author");
+        query.whereEqualTo("objectId", idProduto);
+        query.findInBackground(new FindCallback<Produto>() {
+            @Override
+            public void done(List<Produto> parseObjects, com.parse.ParseException e) {
+                if (e == null) {
+                    Produto produto = parseObjects.get(0);
+                    try {
+                        ActivityStore.getInstance(getActivity()).setUser(produto.getAuthor());
+                        clicarNoProduto(produto.getPhotoFile().getData(),produto.getPrice(),produto.getPhoneNumber(),produto.getArrayHashtags());
+                    } catch (ParseException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
 
 
     @Override
@@ -82,6 +149,14 @@ public class Profile extends Fragment {
         ImageView profilePic = (ImageView) v.findViewById(R.id.profileProfilePic);
         ParseFile parseFile = ParseUser.getCurrentUser().getParseFile("profilePic");
         Bundle args = getArguments();
+        ActivityStore.getInstance(getActivity()).setQualFragment("PROFILE");
+
+        if (args!= null && !args.getString("produto").equals("")){
+
+            String st = args.getString("produto");
+            System.out.println(st);
+            consultaEClica(st);
+        }
         if (args != null && !args.getString("id").equals(ParseUser.getCurrentUser().getObjectId()
         )) {
             name.setText(getArguments().getString("name"));
@@ -98,27 +173,7 @@ public class Profile extends Fragment {
             gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Produto produto = ((Produto) adapt.getItem(position));
-                    FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                    ProdutoVendido produtoVendido = new ProdutoVendido();
-                    Bundle bundle = new Bundle();
-                    try{
-                        bundle.putByteArray("pic",produto.getPhotoFile().getData());
-                    }catch(Exception e){
-                        Toast.makeText(getActivity(),"Desculpe, ocorreu um erro.",Toast.LENGTH_SHORT).show();
-                    }
-                    bundle.putString("preco",produto.getPrice());
-                    bundle.putString("contato",produto.getPhoneNumber());
-                    String[] hashtags = produto.getArrayHashtags();
-                    String hasht = "";
-                    for (int i = 0; i < hashtags.length; i++) {
-                        hasht += hashtags[i] + " ";
-                    }
-                    bundle.putString("hashtags", hasht);
-                    produtoVendido.setArguments(bundle);
-                    fragmentTransaction.replace(R.id.profileActivityLayout,produtoVendido);
-                    fragmentTransaction.addToBackStack("Grid");
-                    fragmentTransaction.commit();
+                    clicarNoProduto(position);
                 }
             });
 
@@ -152,10 +207,10 @@ public class Profile extends Fragment {
                 }
             });
         }
-
+        new ConsultaAoParseTask(v.getContext(), id).execute();
 
         //consultaAoParse();
-        new ConsultaAoParseTask(v.getContext(), id).execute();
+
 
         return v;
     }

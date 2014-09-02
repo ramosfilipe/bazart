@@ -33,11 +33,6 @@
             android:name="com.parse.ui.ParseLoginActivity"
             android:label="bazart"
             android:launchMode="singleTop">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:scheme="bazart"/>
-            </intent-filter>
 
             <meta-data
                 android:name="com.parse.ui.ParseLoginActivity.FACEBOOK_LOGIN_BUTTON_TEXT"
@@ -69,6 +64,22 @@
             android:name=".feed.Feed"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="bazart"/>
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http"
+                    android:host="produto.bazarplus.com.br"
+                    android:pathPrefix="/"/>
+            </intent-filter>
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

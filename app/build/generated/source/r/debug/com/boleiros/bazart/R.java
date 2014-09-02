@@ -734,7 +734,7 @@ containing a value of this type.
         public static final int com_facebook_list_section_header_background=0x7f020026;
         public static final int com_facebook_loginbutton_silver=0x7f020027;
         public static final int com_facebook_logo=0x7f020028;
-        public static final int com_facebook_picker_default_separator_color=0x7f0200ab;
+        public static final int com_facebook_picker_default_separator_color=0x7f0200ac;
         public static final int com_facebook_picker_item_background=0x7f020029;
         public static final int com_facebook_picker_list_focused=0x7f02002a;
         public static final int com_facebook_picker_list_longpressed=0x7f02002b;
@@ -859,12 +859,13 @@ containing a value of this type.
         public static final int sepiagrande=0x7f0200a2;
         public static final int sketch=0x7f0200a3;
         public static final int sms=0x7f0200a4;
-        public static final int undobar=0x7f0200a5;
-        public static final int undobar_button_focused=0x7f0200a6;
-        public static final int undobar_button_pressed=0x7f0200a7;
-        public static final int undobar_divider=0x7f0200a8;
-        public static final int user0=0x7f0200a9;
-        public static final int wand=0x7f0200aa;
+        public static final int sunwhite=0x7f0200a5;
+        public static final int undobar=0x7f0200a6;
+        public static final int undobar_button_focused=0x7f0200a7;
+        public static final int undobar_button_pressed=0x7f0200a8;
+        public static final int undobar_divider=0x7f0200a9;
+        public static final int user0=0x7f0200aa;
+        public static final int wand=0x7f0200ab;
     }
     public static final class id {
         public static final int action_settings=0x7f0700bc;
