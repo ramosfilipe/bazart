@@ -217,9 +217,7 @@ public class ProdutoAdapter extends BaseAdapter {
         ClickableSpan clickPhone = new ClickableSpan() {
             @Override
             public void onClick(View widget) {
-                System.out.println("AQUI 1");
                 if (context instanceof Feed) {
-                    System.out.println("AQUI");
                     ((Feed) context).showPhoneOptions(phone,usernumberFb);
                 }
             }

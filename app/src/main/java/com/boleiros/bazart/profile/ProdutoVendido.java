@@ -1,10 +1,15 @@
 package com.boleiros.bazart.profile;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.boleiros.bazart.R;
+import com.boleiros.bazart.feed.DialogPhoneOptions;
+import com.boleiros.bazart.feed.Feed;
 import com.boleiros.bazart.modelo.Produto;
 import com.boleiros.bazart.util.ActivityStore;
 
@@ -67,6 +74,14 @@ public class ProdutoVendido extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+    public void showPhoneOptions(String phone){
+        FragmentManager fm = getFragmentManager();
+        DialogPhoneOptionsProfile dialogGrid = new DialogPhoneOptionsProfile();
+        Bundle bundle = new Bundle();
+        bundle.putString("phone", phone);
+        dialogGrid.setArguments(bundle);
+        dialogGrid.show(fm, "fragment_dialog_phone_options_profile");
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -81,9 +96,22 @@ public class ProdutoVendido extends Fragment {
         TextView contatoProduto = (TextView)v.findViewById(R.id.textViewContatoVendido);
         TextView hashtagsProduto = (TextView)v.findViewById(R.id.textViewHashtagsVendido);
         byte[] img = args.getByteArray("pic");
+
+        final String contato = args.getString("contato");
+        SpannableString span = new SpannableString(contato);
+        ClickableSpan clickPhone = new ClickableSpan() {
+            @Override
+            public void onClick(View widget) {
+                showPhoneOptions(contato);
+            }
+        };
+        span.setSpan(clickPhone,0,span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        contatoProduto.setText(span);
+        contatoProduto.setMovementMethod(LinkMovementMethod.getInstance());
+
+
         imgProduto.setImageBitmap(BitmapFactory.decodeByteArray(img,0,img.length));
         precoProduto.setText(args.getString("preco"));
-        contatoProduto.setText(args.getString("contato"));
         hashtagsProduto.setText(args.getString("hashtags"));
 
         return v ;

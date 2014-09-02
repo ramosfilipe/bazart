@@ -33,7 +33,7 @@ public final class R {
 		public static final int list_item_font_secondary = 0x7f020081;
 	}
 	public static final class id {
-		public static final int text1 = 0x7f0700b8;
+		public static final int text1 = 0x7f0700c0;
 	}
 	public static final class integer {
 		public static final int chips_max_lines = 0x7f090000;
@@ -42,7 +42,7 @@ public final class R {
 		public static final int chips_alternate_item = 0x7f030014;
 		public static final int chips_recipient_dropdown_item = 0x7f030015;
 		public static final int copy_chip_dialog_layout = 0x7f03002d;
-		public static final int more_item = 0x7f03003f;
+		public static final int more_item = 0x7f030040;
 	}
 	public static final class string {
 		public static final int copy_email = 0x7f0b006a;

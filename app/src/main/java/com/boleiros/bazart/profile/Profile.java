@@ -152,10 +152,8 @@ public class Profile extends Fragment {
         ActivityStore.getInstance(getActivity()).setQualFragment("PROFILE");
 
         if (args!= null && !args.getString("produto").equals("")){
-
             String st = args.getString("produto");
-            System.out.println(st);
-            consultaEClica(st);
+                consultaEClica(st);
         }
         if (args != null && !args.getString("id").equals(ParseUser.getCurrentUser().getObjectId()
         )) {
