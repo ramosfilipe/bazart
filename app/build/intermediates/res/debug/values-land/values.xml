@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <!-- From: file:/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/bazart/chipsLibrary/unspecified/res/values-land/values.xml -->
-    <eat-comment />
-
-    <dimen name="chip_height">26dip</dimen>
-
-</resources>
