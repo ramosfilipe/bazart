@@ -40,11 +40,16 @@ public class BoleirosTestCase  extends ActivityInstrumentationTestCase2<Feed>{
             assertTrue("Não apareceu o 'Loading...'", solo.waitForText("Loading..."));
             assertTrue("Não apareceu o 'Loading...'", solo.waitForText("Loading..."));
 
+            assertTrue(solo.waitForView(R.id.pager));
+            assertTrue(solo.waitForView(R.id.textViewActionBar));
+            assertTrue(solo.waitForText("Mais recentes", 1, 10000));
+
         }else {
-                      assertTrue(solo.waitForView(R.id.pager));
+
+            assertTrue(solo.waitForView(R.id.pager));
             assertTrue(solo.waitForView(R.id.textViewActionBar));
 
-            TextView text = (TextView) solo.getView(R.id.textViewActionBar);
+
             assertTrue(solo.waitForText("Mais recentes", 1, 10000));
         }
 
@@ -57,10 +62,10 @@ public class BoleirosTestCase  extends ActivityInstrumentationTestCase2<Feed>{
     }
 
 
-    public void testBotaoGPS(){
+    public void testBotaoAGPS(){
         assertTrue(solo.waitForView(R.id.gpsButton));
         solo.clickOnView(solo.getView(R.id.gpsButton));
-
+        assertTrue(solo.waitForView(R.id.textViewActionBar));
         assertTrue(solo.waitForText("Mais próximos",1,10000));
     }
 
@@ -77,7 +82,7 @@ public class BoleirosTestCase  extends ActivityInstrumentationTestCase2<Feed>{
     public void testBotaoLike(){
         assertTrue(solo.waitForView(R.id.recomendacaoImageButton));
         solo.clickOnView(solo.getView(R.id.recomendacaoImageButton));
-
+        assertTrue(solo.waitForView(R.id.textViewActionBar));
         assertTrue(solo.waitForText("Mais recomendados",1,10000));
     }
 
