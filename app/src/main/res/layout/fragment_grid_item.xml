@@ -1,23 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/edit_name"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:orientation="vertical">
+<LinearLayout android:id="@+id/edit_name"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_gravity="center"
+              android:orientation="vertical">
 
-    <Button
-        android:id="@+id/buttonMarcarVendido"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Vendido" />
+        android:layout_height="2dp"
+        android:layout_gravity="center_horizontal">
 
-    <Button
-        android:id="@+id/buttonRemover"
+        </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Remover" />
+        android:layout_height="47dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/relativeVendido">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/checked"
+            android:id="@+id/imageView"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Vendido"
+            android:id="@+id/textView"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/imageView" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="6dp">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:background="@color/wallet_holo_blue_light"
+            android:layout_height="2dp"
+            android:layout_centerVertical="true">
+
+            </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/relativeRemover">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:src="@drawable/removeic"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Remover"
+            android:id="@+id/textView2"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/imageView2" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:layout_gravity="center_horizontal">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:background="@color/wallet_holo_blue_light"
+        android:layout_height="2dp"
+        android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/relativeCompartilharProduto">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView3"
+            android:src="@drawable/fbicon"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Compartilhar produto"
+            android:id="@+id/textView6"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/imageView3" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_gravity="center_horizontal"></RelativeLayout>
 
 
 </LinearLayout>

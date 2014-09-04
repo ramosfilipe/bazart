@@ -64,6 +64,7 @@
             android:name=".feed.Feed"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -87,7 +88,35 @@
         <activity
             android:name=".sobre.Sobre"
             android:label="@string/title_activity_sobre"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".camera.util.EdicaoCamera"
+            android:label="@string/title_activity_edicao_camera"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".profile.ProdutoClicado"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="bazart" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="produto.bazarplus.com.br"
+                    android:pathPrefix="/"
+                    android:scheme="http" />
+            </intent-filter>
         </activity>
     </application>
 

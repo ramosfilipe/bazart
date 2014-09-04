@@ -19,12 +19,10 @@ public class SobreAdapter extends BaseAdapter {
     private final List<String[]> itens;
     private final Context ctx;
 
-    public SobreAdapter(Context ctx, List<String[]> itens){
+    public SobreAdapter(Context ctx, List<String[]> itens) {
         this.ctx = ctx;
         this.itens = itens;
     }
-
-
 
 
     /**

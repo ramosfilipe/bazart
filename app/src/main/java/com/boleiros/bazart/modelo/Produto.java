@@ -49,7 +49,7 @@ public class Produto extends ParseObject {
     }
 
 
-    public void setAuthorStr(String authorStr){
+    public void setAuthorStr(String authorStr) {
         put("authorStr", authorStr);
     }
 

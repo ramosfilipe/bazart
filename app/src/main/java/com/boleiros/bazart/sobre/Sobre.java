@@ -16,7 +16,7 @@ import java.util.List;
 
 public class Sobre extends Activity {
 
-    private final String VERSAO = "1.0.0";
+    private final String VERSAO = "1.2.0";
     private final String DESENVOLVEDORES = "Filipe Ramos, Diego Coelho, Walter Alves e " +
             "Emilio Farias";
     private final String LICENCA_COD_ABERTO = "1.0";
@@ -34,17 +34,18 @@ public class Sobre extends Activity {
 //        elementos.add(VERSAO);
 //        elementos.add(DESENVOLVEDORES);
 //        elementos.add(LICENCA_COD_ABERTO);
-//        ArrayAdapter<String> aaSobre = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,elementos);
+//        ArrayAdapter<String> aaSobre = new ArrayAdapter<String>(this,
+// android.R.layout.simple_list_item_1,elementos);
 //        lvSobre.setAdapter(aaSobre);
         itens = new ArrayList<String[]>();
-        String[] temp = {"Versão:",VERSAO};
-        String[] temp1 = {"Produzido por:",DESENVOLVEDORES};
+        String[] temp = {"Versão:", VERSAO};
+        String[] temp1 = {"Produzido por:", DESENVOLVEDORES};
 
         itens.add(temp);
         itens.add(temp1);
 
 
-        SobreAdapter sbAdapter = new SobreAdapter(this,itens);
+        SobreAdapter sbAdapter = new SobreAdapter(this, itens);
         lvSobre.setAdapter(sbAdapter);
     }
 
@@ -55,6 +56,7 @@ public class Sobre extends Activity {
         // getMenuInflater().inflate(R.menu.sobre, menu);
         return true;
     }
+
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(this, Feed.class);
@@ -73,7 +75,8 @@ public class Sobre extends Activity {
         }
         if (id == android.R.id.home) {
             Intent intent = new Intent(this, Feed.class);
-            startActivity(intent);}
+            startActivity(intent);
+        }
         return super.onOptionsItemSelected(item);
     }
 }

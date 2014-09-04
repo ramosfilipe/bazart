@@ -2,6 +2,8 @@ package com.boleiros.bazart.util;
 
 import android.content.Context;
 
+import com.parse.ParseUser;
+
 import java.util.ArrayList;
 
 public class ActivityStore {
@@ -10,6 +12,9 @@ public class ActivityStore {
     private boolean terminou = false;
     private ArrayList<String> frases;
     private Context mContext;
+    private boolean removeu = false;
+    private ParseUser user;
+    private String qualFragm = "";
 
     private ActivityStore(Context ctx) {
         mContext = ctx;
@@ -24,7 +29,6 @@ public class ActivityStore {
 
     public ArrayList<String> getFrases() {
         if (frases == null) {
-            System.out.println("teste121212");
             frases = new ArrayList<String>();
         }
         if (frases.size() == 0) {
@@ -34,6 +38,25 @@ public class ActivityStore {
         return frases;
     }
 
+    public void setUser(ParseUser user){
+        this.user = user;
+    }
+    public void setQualFragment(String frag){
+        this.qualFragm = frag;
+    }
+    public String getQualFragm(){
+        return this.qualFragm;
+    }
+
+    public ParseUser getUser(){
+        return this.user;
+    }
+    public void setRemoveu(boolean bol){
+        this.removeu = bol;
+    }
+    public boolean getRemoveu(){
+        return this.removeu;
+    }
     public void setFrases(ArrayList<String> frases) {
         this.frases = frases;
     }

@@ -26,7 +26,7 @@ public class CameraActivity extends Activity implements CameraHostProvider,
 
     @Override
     public CameraHost getCameraHost() {
-        return (new CameraHostMod(this));
+        return (new CameraHostMod(this, this));
     }
 
 //    @Override
