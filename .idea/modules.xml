@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Catalano.Android.Image/Catalano.Android.Image.iml" filepath="$PROJECT_DIR$/Catalano.Android.Image/Catalano.Android.Image.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Catalano.Core/Catalano.Core.iml" filepath="$PROJECT_DIR$/Catalano.Core/Catalano.Core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Catalano.Math/Catalano.Math.iml" filepath="$PROJECT_DIR$/Catalano.Math/Catalano.Math.iml" />
       <module fileurl="file://$PROJECT_DIR$/ParseLoginUI/ParseLoginUI.iml" filepath="$PROJECT_DIR$/ParseLoginUI/ParseLoginUI.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/bazart.iml" filepath="$PROJECT_DIR$/bazart.iml" />

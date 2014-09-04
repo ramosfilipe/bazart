@@ -73,7 +73,6 @@ public class Feed extends Activity {
      * The {@link ViewPager} that will host the section contents.
      */
     ViewPager mViewPager;
-
     private ParseUser currentUser;
 
     @Override
@@ -93,11 +92,11 @@ public class Feed extends Activity {
 
         actionBar.setDisplayShowCustomEnabled(true);
 
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
+//        // Create the adapter that will return a fragment for each of the three
+//        // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
-
-        // Set up the ViewPager with the sections adapter.
+//
+//        // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         TextView actionBarText = (TextView) findViewById(R.id.textViewActionBar);
         actionBarText.setText("Mais recentes");
@@ -116,18 +115,30 @@ public class Feed extends Activity {
         startActivity(intent);
 
     }
-    public void changeActProfile(ParseUser user){
+
+    public void changeActProfile(ParseUser user) {
         Intent intent = new Intent(this, ProfileActivity.class);
-        intent.putExtra("name",user.getUsername());
-        intent.putExtra("id",user.getObjectId());
+        intent.putExtra("name", user.getUsername());
+        intent.putExtra("id", user.getObjectId());
         try {
-            intent.putExtra("pic",user.getParseFile("profilePic").getData());
+            intent.putExtra("pic", user.getParseFile("profilePic").getData());
         } catch (ParseException e) {
             e.printStackTrace();
         }
         startActivity(intent);
+
     }
 
+
+    public void showPhoneOptions(String phone, String userFb){
+        FragmentManager fm = getFragmentManager();
+        DialogPhoneOptions dialogGrid = new DialogPhoneOptions();
+        Bundle bundle = new Bundle();
+        bundle.putString("phone", phone);
+        bundle.putString("userFb", userFb);
+        dialogGrid.setArguments(bundle);
+        dialogGrid.show(fm, "dialog_phone_options");
+    }
 
     private void makeMeRequest() {
         Request request = Request.newMeRequest(ParseFacebookUtils.getSession(),
@@ -155,9 +166,10 @@ public class Feed extends Activity {
         getMenuInflater().inflate(R.menu.feed, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.action_sobre){
+        if (item.getItemId() == R.id.action_sobre) {
             Intent intent = new Intent(this, Sobre.class);
             startActivity(intent);
 
@@ -165,12 +177,14 @@ public class Feed extends Activity {
         return true;
     }
 
-        /**
-         * A placeholder fragment containing a simple view.
-         */
+    /**
+     * A placeholder fragment containing a simple view.
+     */
     public static class PlaceholderFragment extends Fragment implements LocationListener,
             GooglePlayServicesClient.ConnectionCallbacks,
             GooglePlayServicesClient.OnConnectionFailedListener {
+        public static final String PRODUTO = "Produto";
+        public static final String IS_SOLD = "isSold";
         /*
              * Define a request code to send to Google Play services This code is returned in
              * Activity.onActivityResult
@@ -192,14 +206,9 @@ public class Feed extends Activity {
         private static final long FAST_INTERVAL_CEILING_IN_MILLISECONDS = MILLISECONDS_PER_SECOND
                 * FAST_CEILING_IN_SECONDS;
         private static final String ARG_SECTION_NUMBER = "section_number";
-
         private static final int BOTAO_GPS_ATIVADO = 1;
         private static final int BOTAO_HOME_ATIVADO = 2;
         private static final int BOTAO_RECOMENDACAO_ATIVADO = 3;
-        public static final String PRODUTO = "Produto";
-        public static final String IS_SOLD = "isSold";
-
-
         private int botaoSelecionado = BOTAO_HOME_ATIVADO;
         private Location lastLocation = null;
         private Location currentLocation = null;
@@ -400,7 +409,8 @@ public class Feed extends Activity {
 
             final ImageButton busca = (ImageButton) getActivity().findViewById(R.id
                     .botaoBuscaActionBar);
-            final TextView actionBarText = (TextView) getActivity().findViewById(R.id.textViewActionBar);
+            final TextView actionBarText = (TextView) getActivity().findViewById(R.id
+                    .textViewActionBar);
 
             gps.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -409,9 +419,9 @@ public class Feed extends Activity {
                         swipeRefreshLayout.setRefreshing(true);
                         botaoSelecionado = BOTAO_GPS_ATIVADO;
                         actionBarText.setText("Mais próximos");
-                        gps.setImageResource(R.drawable.gpspressed);
-                        home.setImageResource(R.drawable.homefeed);
-                        recomendacao.setImageResource(R.drawable.recom);
+                        gps.setImageResource(R.drawable.local1);
+                        home.setImageResource(R.drawable.home0);
+                        recomendacao.setImageResource(R.drawable.recomend0);
 
 
                         Location myLoc = (currentLocation == null) ? lastLocation : currentLocation;
@@ -444,9 +454,9 @@ public class Feed extends Activity {
                         actionBarText.setText("Mais recomendados");
                         swipeRefreshLayout.setRefreshing(true);
                         botaoSelecionado = BOTAO_RECOMENDACAO_ATIVADO;
-                        gps.setImageResource(R.drawable.gps);
-                        home.setImageResource(R.drawable.homefeed);
-                        recomendacao.setImageResource(R.drawable.recompressed);
+                        gps.setImageResource(R.drawable.local0);
+                        home.setImageResource(R.drawable.home0);
+                        recomendacao.setImageResource(R.drawable.recomend1);
                         consultaAoParseComRecomendacao();
                         listaDeExibicao.smoothScrollToPosition(0);
                     }
@@ -462,9 +472,9 @@ public class Feed extends Activity {
                         swipeRefreshLayout.setRefreshing(true);
                         actionBarText.setText("Mais recentes");
                         botaoSelecionado = BOTAO_HOME_ATIVADO;
-                        gps.setImageResource(R.drawable.gps);
-                        home.setImageResource(R.drawable.homefeedpressed);
-                        recomendacao.setImageResource(R.drawable.recom);
+                        gps.setImageResource(R.drawable.local0);
+                        home.setImageResource(R.drawable.home1);
+                        recomendacao.setImageResource(R.drawable.recomend0);
                         consultaAoParse();
                         listaDeExibicao.smoothScrollToPosition(0);
 
@@ -640,6 +650,7 @@ public class Feed extends Activity {
                     connectionResult.startResolutionForResult(this.getActivity(),
                             CONNECTION_FAILURE_RESOLUTION_REQUEST);
                 } catch (IntentSender.SendIntentException e) {
+                    System.out.println("aqui");
                 }
             }
         }
@@ -704,6 +715,3 @@ public class Feed extends Activity {
 
     }
 }
-
-
-

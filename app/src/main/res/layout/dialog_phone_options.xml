@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout android:id="@+id/edit_name"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_gravity="center_horizontal"></RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/relativeLayoutLigar">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:src="@drawable/dialer"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Ligar"
+            android:id="@+id/textView2"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/imageView" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="6dp">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:background="@color/wallet_holo_blue_light"
+            android:layout_height="2dp"
+            android:layout_centerVertical="true"></RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/relativeLayoutSms">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageViewSms"
+            android:src="@drawable/sms"
+            android:focusableInTouchMode="false"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Mandar SMS"
+            android:id="@+id/textViewSms"
+            android:layout_marginLeft="98dp"
+            android:layout_centerVertical="true"
+            android:layout_alignLeft="@+id/imageViewSms"
+            android:layout_alignStart="@+id/imageViewSms" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="6dp">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:background="@color/wallet_holo_blue_light"
+            android:layout_height="2dp"
+            android:layout_centerVertical="true"></RelativeLayout>
+        </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:id="@+id/relativeLayoutFacebook">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:src="@drawable/fbicon"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageViewFb"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Abrir perfil"
+            android:id="@+id/textViewAbrirPerfil"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/imageViewFb" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/relativespaceeee"></RelativeLayout>
+
+
+</LinearLayout>

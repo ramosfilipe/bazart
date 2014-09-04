@@ -1,0 +1,87 @@
+<FrameLayout android:id="@+id/editCameraId"
+             xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/camerafinal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <FrameLayout
+            android:id="@+id/framealto"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#e50e0003">
+
+            <ImageButton
+                android:id="@+id/buttonEdicaoGo"
+                android:layout_width="57dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right|center_vertical"
+                android:background="@null"
+                android:src="@drawable/rightarrowsmall"/>
+
+            <ImageButton
+                android:id="@+id/buttonBackEdicao"
+                android:layout_width="37dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="left|center_vertical"
+                android:background="@null"
+                android:src="@drawable/leftarrowsmall"/>
+
+            <Button
+                android:id="@+id/buttonDesfazerEdicao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:text="Desfazer"
+                android:textStyle="italic|bold"
+                android:textColor="#fffff6f6"/>
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/imageViewEdicao"
+            android:layout_width="match_parent"
+            android:layout_height="360dp"
+            android:adjustViewBounds="true"/>
+
+        <FrameLayout
+            android:id="@+id/framebaixoEdicao"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#e50e0003"
+            android:clickable="false">
+
+
+            <ImageButton
+                android:id="@+id/imageButtonSketch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:background="@null"
+                android:src="@drawable/pretoebranco"/>
+
+            <ImageButton
+                android:id="@+id/buttonSepia"
+                android:layout_width="104dp"
+                android:layout_height="104dp"
+                android:layout_gravity="right|center_vertical"
+                android:background="@null"
+                android:src="@drawable/sepiagrande"
+                android:text="Envelhecer"/>
+
+            <ImageButton
+                android:id="@+id/buttonEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:src="@drawable/sunwhite"
+                android:text="AutoFix"/>
+        </FrameLayout>
+    </LinearLayout>
+</FrameLayout>

@@ -21,6 +21,8 @@ public class CameraFragment extends com.commonsware.cwac.camera.CameraFragment {
         View content = inflater.inflate(R.layout.camera, container, false);
         CameraView cameraView = (CameraView) content.findViewById(R.id.camera);
         setCameraView(cameraView);
+//        final Button buttonEdit = (Button) content.findViewById(R.id.buttonEdit);
+//        final Button buttonSepia = (Button) content.findViewById(R.id.buttonSepia);
 
         ImageButton buttonphotook = (ImageButton) content.findViewById(R.id.buttonphotook);
         buttonphotook.setVisibility(View.GONE);
@@ -32,37 +34,41 @@ public class CameraFragment extends com.commonsware.cwac.camera.CameraFragment {
             @Override
             public void onClick(View v) {
                 takePicture();
-                takePictureButton.setVisibility(View.GONE);
-                ImageButton buttonphotook = (ImageButton) getActivity().findViewById(R.id
-                        .buttonphotook);
-                buttonphotook.setVisibility(View.VISIBLE);
-                ImageButton buttonphotorestart = (ImageButton) getActivity().findViewById(R.id
-                        .buttonphotorestart);
-                buttonphotorestart.setVisibility(View.VISIBLE);
+//                CameraEdit current = new CameraEdit();
+//                getFragmentManager().beginTransaction()
+//                        .replace(R.id.container, current).commit();
+//                takePictureButton.setVisibility(View.GONE);
+//                ImageButton buttonphotook = (ImageButton) getActivity().findViewById(R.id
+//                        .buttonphotook);
+//                buttonphotook.setVisibility(View.VISIBLE);
+//                ImageButton buttonphotorestart = (ImageButton) getActivity().findViewById(R.id
+//                        .buttonphotorestart);
+//                buttonphotorestart.setVisibility(View.VISIBLE);
+//
+//                buttonphotorestart.setOnClickListener(new View.OnClickListener() {
+//
+//                    @Override
+//                    public void onClick(View v) {
+//                        restartPreview();
+//                        takePictureButton.setVisibility(View.VISIBLE);
+//                        ImageButton buttonphotook = (ImageButton) getActivity().findViewById(R.id
+//                                .buttonphotook);
+//                        buttonphotook.setVisibility(View.GONE);
+//                        ImageButton buttonphotorestart = (ImageButton) getActivity().findViewById
+//                                (R.id.buttonphotorestart);
+//                        buttonphotorestart.setVisibility(View.GONE);
+//                    }
+//                });
+//                buttonphotook.setOnClickListener(new View.OnClickListener() {
+//
+//                    @Override
+//                    public void onClick(View v) {
+//                        InfoFragment current = new InfoFragment();
+//                        getFragmentManager().beginTransaction()
+//                                .replace(R.id.container, current).commit();
+//                    }
+//                });
 
-                buttonphotorestart.setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View v) {
-                        restartPreview();
-                        takePictureButton.setVisibility(View.VISIBLE);
-                        ImageButton buttonphotook = (ImageButton) getActivity().findViewById(R.id
-                                .buttonphotook);
-                        buttonphotook.setVisibility(View.GONE);
-                        ImageButton buttonphotorestart = (ImageButton) getActivity().findViewById
-                                (R.id.buttonphotorestart);
-                        buttonphotorestart.setVisibility(View.GONE);
-                    }
-                });
-                buttonphotook.setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View v) {
-                        InfoFragment current = new InfoFragment();
-                        getFragmentManager().beginTransaction()
-                                .replace(R.id.container, current).commit();
-                    }
-                });
             }
         });
         return (content);
