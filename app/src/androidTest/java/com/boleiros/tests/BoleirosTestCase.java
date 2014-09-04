@@ -1,11 +1,13 @@
 package com.boleiros.tests;
 
-import android.app.Fragment;
-import android.test.ActivityInstrumentationTestCase2;
-import android.widget.EditText;
 
+import android.app.Activity;
+import android.test.ActivityInstrumentationTestCase2;
+import android.widget.TextView;
+
+
+import com.boleiros.bazart.R;
 import com.boleiros.bazart.feed.Feed;
-import com.parse.ui.ParseLoginFragment;
 import com.robotium.solo.*;
 
 /**
@@ -27,21 +29,64 @@ public class BoleirosTestCase  extends ActivityInstrumentationTestCase2<Feed>{
 
     }
 
-    public void testLogin(){
 
-        assertTrue(solo.searchText("Entre com o Facebook"));//Irá verificar se existe o texto &quot;Usuário&quot; na tela
 
-        solo.clickOnView(solo.getView(com.parse.ui.R.id.facebook_login));
+    public void testAInit() throws Exception {
 
-        assertTrue("Não apareceu o 'Loading...'", solo.waitForText("Loading..."));
-        assertTrue("Não apareceu o 'Loading...'", solo.waitForText("Loading..."));
+        if(solo.searchText("Entre com o Facebook")){
+            assertTrue(solo.searchText("Entre com o Facebook"));
+            solo.clickOnView(solo.getView(com.parse.ui.R.id.facebook_login));
 
-        //assertTrue(solo.waitForActivity("ParseLoginActivity"));
-        //assertTrue(solo.waitForFragmentById(com.parse.ui.R.id.parse_login));
-        //assertTrue(solo.waitForView(com.parse.ui.R.id.parse_login));
+            assertTrue("Não apareceu o 'Loading...'", solo.waitForText("Loading..."));
+            assertTrue("Não apareceu o 'Loading...'", solo.waitForText("Loading..."));
 
-        //assertTrue("Não apareceu a tela de Login", solo.waitForText("Walter"));
+        }else {
+                      assertTrue(solo.waitForView(R.id.pager));
+            assertTrue(solo.waitForView(R.id.textViewActionBar));
 
+            TextView text = (TextView) solo.getView(R.id.textViewActionBar);
+            assertTrue(solo.waitForText("Mais recentes", 1, 10000));
+        }
+
+
+
+
+
+
+        //
+    }
+
+
+    public void testBotaoGPS(){
+        assertTrue(solo.waitForView(R.id.gpsButton));
+        solo.clickOnView(solo.getView(R.id.gpsButton));
+
+        assertTrue(solo.waitForText("Mais próximos",1,10000));
+    }
+
+
+    public void testBotaoCamera(){
+        assertTrue(solo.waitForView(R.id.cameraButton));
+        solo.clickOnView(solo.getView(R.id.cameraButton));
+        assertTrue(solo.waitForActivity("CameraActivity",10000));
+        solo.goBackToActivity("Feed");
+        assertTrue(solo.waitForActivity("Feed",10000));
+    }
+
+
+    public void testBotaoLike(){
+        assertTrue(solo.waitForView(R.id.recomendacaoImageButton));
+        solo.clickOnView(solo.getView(R.id.recomendacaoImageButton));
+
+        assertTrue(solo.waitForText("Mais recomendados",1,10000));
+    }
+
+    public void testBotaoProfile(){
+        assertTrue(solo.waitForView(R.id.profileImageButton));
+        solo.clickOnView(solo.getView(R.id.profileImageButton));
+        assertTrue(solo.waitForActivity("ProfileActivity", 10000));
+        solo.goBackToActivity("Feed");
+        assertTrue(solo.waitForActivity("Feed",10000));
 
     }
 
