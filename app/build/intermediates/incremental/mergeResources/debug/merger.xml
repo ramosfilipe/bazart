@@ -1087,81 +1087,81 @@ sans-serif-condensed
             </file>
         </source>
     </dataSet>
-    <dataSet config="0.6.9" >
-        <source path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.9/res" >
+    <dataSet config="0.6.10" >
+        <source path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.10/res" >
             <file
                 name="cwac_camera_profile_htc_htc_mecha"
-                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.9/res/xml/cwac_camera_profile_htc_htc_mecha.xml"
+                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.10/res/xml/cwac_camera_profile_htc_htc_mecha.xml"
                 qualifiers=""
                 type="xml" />
             <file
                 name="cwac_camera_profile_htc_m7"
-                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.9/res/xml/cwac_camera_profile_htc_m7.xml"
+                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.10/res/xml/cwac_camera_profile_htc_m7.xml"
                 qualifiers=""
                 type="xml" />
             <file
                 name="cwac_camera_profile_motorola_xt910_rtanz"
-                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.9/res/xml/cwac_camera_profile_motorola_xt910_rtanz.xml"
+                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.10/res/xml/cwac_camera_profile_motorola_xt910_rtanz.xml"
                 qualifiers=""
                 type="xml" />
             <file
                 name="cwac_camera_profile_samsung_corsicadd"
-                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.9/res/xml/cwac_camera_profile_samsung_corsicadd.xml"
+                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.10/res/xml/cwac_camera_profile_samsung_corsicadd.xml"
                 qualifiers=""
                 type="xml" />
             <file
                 name="cwac_camera_profile_samsung_d2att"
-                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.9/res/xml/cwac_camera_profile_samsung_d2att.xml"
+                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.10/res/xml/cwac_camera_profile_samsung_d2att.xml"
                 qualifiers=""
                 type="xml" />
             <file
                 name="cwac_camera_profile_samsung_d2spr"
-                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.9/res/xml/cwac_camera_profile_samsung_d2spr.xml"
+                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.10/res/xml/cwac_camera_profile_samsung_d2spr.xml"
                 qualifiers=""
                 type="xml" />
             <file
                 name="cwac_camera_profile_samsung_d2tmo"
-                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.9/res/xml/cwac_camera_profile_samsung_d2tmo.xml"
+                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.10/res/xml/cwac_camera_profile_samsung_d2tmo.xml"
                 qualifiers=""
                 type="xml" />
             <file
                 name="cwac_camera_profile_samsung_d2uc"
-                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.9/res/xml/cwac_camera_profile_samsung_d2uc.xml"
+                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.10/res/xml/cwac_camera_profile_samsung_d2uc.xml"
                 qualifiers=""
                 type="xml" />
             <file
                 name="cwac_camera_profile_samsung_d2vzw"
-                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.9/res/xml/cwac_camera_profile_samsung_d2vzw.xml"
+                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.10/res/xml/cwac_camera_profile_samsung_d2vzw.xml"
                 qualifiers=""
                 type="xml" />
             <file
                 name="cwac_camera_profile_samsung_gd1wifiue"
-                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.9/res/xml/cwac_camera_profile_samsung_gd1wifiue.xml"
+                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.10/res/xml/cwac_camera_profile_samsung_gd1wifiue.xml"
                 qualifiers=""
                 type="xml" />
             <file
                 name="cwac_camera_profile_samsung_ja3gxx"
-                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.9/res/xml/cwac_camera_profile_samsung_ja3gxx.xml"
+                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.10/res/xml/cwac_camera_profile_samsung_ja3gxx.xml"
                 qualifiers=""
                 type="xml" />
             <file
                 name="cwac_camera_profile_samsung_jflteuc"
-                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.9/res/xml/cwac_camera_profile_samsung_jflteuc.xml"
+                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.10/res/xml/cwac_camera_profile_samsung_jflteuc.xml"
                 qualifiers=""
                 type="xml" />
             <file
                 name="cwac_camera_profile_samsung_kyleproxx"
-                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.9/res/xml/cwac_camera_profile_samsung_kyleproxx.xml"
+                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.10/res/xml/cwac_camera_profile_samsung_kyleproxx.xml"
                 qualifiers=""
                 type="xml" />
             <file
                 name="cwac_camera_profile_samsung_nevispxx"
-                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.9/res/xml/cwac_camera_profile_samsung_nevispxx.xml"
+                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.10/res/xml/cwac_camera_profile_samsung_nevispxx.xml"
                 qualifiers=""
                 type="xml" />
             <file
                 name="cwac_camera_profile_samsung_yakju"
-                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.9/res/xml/cwac_camera_profile_samsung_yakju.xml"
+                path="/Users/Filipe/Desktop/bazart/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.10/res/xml/cwac_camera_profile_samsung_yakju.xml"
                 qualifiers=""
                 type="xml" />
         </source>
@@ -12708,6 +12708,11 @@ Password must be at least %d characters long
     <dataSet config="main" >
         <source path="/Users/Filipe/Desktop/bazart/app/src/main/res" >
             <file
+                name="brilho"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/brilho.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
                 name="button_gps_behaviour"
                 path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/button_gps_behaviour.xml"
                 qualifiers="hdpi-v4"
@@ -12728,6 +12733,21 @@ Password must be at least %d characters long
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
+                name="checked"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/checked.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="dialer"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/dialer.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="fbicon"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/fbicon.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
                 name="gps"
                 path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/gps.png"
                 qualifiers="hdpi-v4"
@@ -12735,6 +12755,16 @@ Password must be at least %d characters long
             <file
                 name="gpspressed"
                 path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/gpspressed.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="home0"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/home0.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="home1"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/home1.png"
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
@@ -12760,6 +12790,11 @@ Password must be at least %d characters long
             <file
                 name="leftarrowsmallred"
                 path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/leftarrowsmallred.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ligth"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/ligth.png"
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
@@ -12798,6 +12833,16 @@ Password must be at least %d characters long
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
+                name="local0"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/local0.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="local1"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/local1.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
                 name="loginlogo"
                 path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/loginlogo.png"
                 qualifiers="hdpi-v4"
@@ -12815,6 +12860,11 @@ Password must be at least %d characters long
             <file
                 name="placeholderpicture"
                 path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/placeholderpicture.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="pretoebranco"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/pretoebranco.png"
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
@@ -12838,8 +12888,23 @@ Password must be at least %d characters long
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
+                name="recomend0"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/recomend0.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="recomend1"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/recomend1.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
                 name="recompressed"
                 path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/recompressed.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="removeic"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/removeic.png"
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
@@ -12850,6 +12915,41 @@ Password must be at least %d characters long
             <file
                 name="searchiconred"
                 path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/searchiconred.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="sepia"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/sepia.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="sepiagrande"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/sepiagrande.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="sketch"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/sketch.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="sms"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/sms.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="sunwhite"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/sunwhite.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="user0"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/user0.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="wand"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/wand.png"
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
@@ -12953,6 +13053,11 @@ Password must be at least %d characters long
                 qualifiers=""
                 type="layout" />
             <file
+                name="activity_edicao_camera"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/activity_edicao_camera.xml"
+                qualifiers=""
+                type="layout" />
+            <file
                 name="activity_feed"
                 path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/activity_feed.xml"
                 qualifiers=""
@@ -12963,8 +13068,18 @@ Password must be at least %d characters long
                 qualifiers=""
                 type="layout" />
             <file
+                name="activity_produto_clicado"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/activity_produto_clicado.xml"
+                qualifiers=""
+                type="layout" />
+            <file
                 name="activity_profile"
                 path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/activity_profile.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_sobre"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/activity_sobre.xml"
                 qualifiers=""
                 type="layout" />
             <file
@@ -12975,6 +13090,21 @@ Password must be at least %d characters long
             <file
                 name="custom_actionbar"
                 path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/custom_actionbar.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="dialog_phone_options"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/dialog_phone_options.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="fragment_camera_edit"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/fragment_camera_edit.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="fragment_dialog_phone_options_profile"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/fragment_dialog_phone_options_profile.xml"
                 qualifiers=""
                 type="layout" />
             <file
@@ -13003,18 +13133,23 @@ Password must be at least %d characters long
                 qualifiers=""
                 type="layout" />
             <file
+                name="list_element_sobre"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/list_element_sobre.xml"
+                qualifiers=""
+                type="layout" />
+            <file
                 name="my_toast"
                 path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/my_toast.xml"
                 qualifiers=""
                 type="layout" />
             <file
-                name="buscahashtag"
-                path="/Users/Filipe/Desktop/bazart/app/src/main/res/menu/buscahashtag.xml"
+                name="feed"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/menu/feed.xml"
                 qualifiers=""
                 type="menu" />
             <file
-                name="feed"
-                path="/Users/Filipe/Desktop/bazart/app/src/main/res/menu/feed.xml"
+                name="produto_clicado"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/menu/produto_clicado.xml"
                 qualifiers=""
                 type="menu" />
             <file
@@ -13053,13 +13188,15 @@ Password must be at least %d characters long
                 qualifiers="" >
                 <string name="hello_world" >Hello world!
                 </string>
+                <string name="title_activity_edicao_camera" >edicaoCamera
+                </string>
                 <string name="title_activity_login" >LoginActivity
                 </string>
                 <string name="dummy_button" >Dummy Button
                 </string>
-                <string name="action_settings" >Settings
-                </string>
                 <string name="title_activity_my" >MyActivity
+                </string>
+                <string name="action_settings" >Settings
                 </string>
                 <string name="app_name" >Bazar+
                 </string>
@@ -13072,15 +13209,17 @@ public_profile
 
                 <string name="facebook_app_id" >694582477277699
                 </string>
-                <string name="parse_client_key" >j1GuzdyHFwxkg6yb946pYO4RMq5b0tpNQ1EmfTXP
+                <string name="parse_client_key" >ctYoQywP8TxEFKgMWZeXlKi9cwbJMeuNSqRBVarQ
                 </string>
-                <string name="parse_app_id" >DrWO1B4EeifVi4YOMqm80VResVR8KYJLNyojje2Q
+                <string name="parse_app_id" >3b1bAPvZJovJkbw4E4XeTWnJ0LFe3aCnbMvYjIye
                 </string>
                 <string name="action_sobre" >Sobre
                 </string>
                 <string name="title_activity_sobre" >Sobre
                 </string>
                 <string name="hello_blank_fragment" >Hello blank fragment
+                </string>
+                <string name="title_activity_produto_clicado" >ProdutoClicado
                 </string>
                 <string name="title_activity_camera_demo" >CameraDemo
                 </string>
@@ -13224,7 +13363,7 @@ true
                     name="MyActionBar"
                     parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse" >
                     <item name="android:background">
-#ff0000
+#D91E18
                     </item>
                 </style>
 
@@ -13284,15 +13423,35 @@ true
                 </dimen>
             </file>
             <file
-                name="activity_sobre"
-                path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/activity_sobre.xml"
-                qualifiers=""
-                type="layout" />
+                name="ic_action_search"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-hdpi/ic_action_search.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
             <file
-                name="list_element_sobre"
-                path="/Users/Filipe/Desktop/bazart/app/src/main/res/layout/list_element_sobre.xml"
+                name="feed_activity_actionbar_buttons"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/menu/feed_activity_actionbar_buttons.xml"
                 qualifiers=""
-                type="layout" />
+                type="menu" />
+            <file
+                name="ic_action_search"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-xhdpi/ic_action_search.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_search"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-xxhdpi/ic_action_search.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_search"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/drawable-mdpi/ic_action_search.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="hashtag_activity_actionbar_buttons"
+                path="/Users/Filipe/Desktop/bazart/app/src/main/res/menu/hashtag_activity_actionbar_buttons.xml"
+                qualifiers=""
+                type="menu" />
         </source>
         <source path="/Users/Filipe/Desktop/bazart/app/build/generated/res/rs/debug" />
         <source path="/Users/Filipe/Desktop/bazart/app/build/generated/res/generated/debug" />

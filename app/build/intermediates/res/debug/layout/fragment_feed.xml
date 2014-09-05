@@ -1,6 +1,7 @@
-<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.v4.widget.SwipeRefreshLayout
     android:id="@+id/fragmentFeed"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f1f1f1"
@@ -12,28 +13,37 @@
 
     <LinearLayout
         android:id="@+id/linearLayoutFragmentFeed"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:orientation="vertical">
 
-        <ListView
-            android:id="@+id/listaCards"
-            android:layout_width="match_parent"
-            android:layout_height="457dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentStart="true"></ListView>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1">
+
+            <ListView
+                android:id="@+id/listaCards"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"></ListView>
+
+        </LinearLayout>
+
 
         <RelativeLayout
             android:id="@+id/framebaixofeed"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_gravity="bottom"
-            android:background="#ff0000">
+            android:layout_weight="0.9"
+            android:background="#D91E18">
 
             <ImageButton
                 android:id="@+id/cameraButton"
@@ -44,17 +54,17 @@
 
                 android:layout_gravity="center"
                 android:background="@null"
-                android:src="@drawable/camerabranca" />
+                android:src="@drawable/camerabranca"/>
 
             <ImageButton
                 android:id="@+id/gpsButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_alignParentTop="true"
                 android:layout_gravity="left|center_vertical"
-                android:layout_toRightOf="@+id/homeButton"
                 android:background="@null"
-                android:src="@drawable/gps" />
+                android:src="@drawable/local0"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/homeButton" />
 
             <ImageButton
                 android:id="@+id/homeButton"
@@ -65,7 +75,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
                 android:background="@null"
-                android:src="@drawable/homefeedpressed" />
+                android:src="@drawable/home1"/>
 
             <ImageButton
                 android:id="@+id/profileImageButton"
@@ -75,7 +85,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:background="@null"
-                android:src="@drawable/profile_icon_white" />
+                android:src="@drawable/user0"/>
 
             <ImageButton
                 android:id="@+id/recomendacaoImageButton"
@@ -84,7 +94,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_toLeftOf="@+id/profileImageButton"
                 android:background="@null"
-                android:src="@drawable/recom" />
+                android:src="@drawable/recomend0"/>
         </RelativeLayout>
     </LinearLayout>
 </android.support.v4.widget.SwipeRefreshLayout>

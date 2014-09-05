@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="1">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:weightSum="1">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="50dp">
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="336dp"
             android:layout_height="match_parent"
+            android:orientation="horizontal"
             android:weightSum="1">
 
             <FrameLayout
@@ -25,12 +25,12 @@
                 android:layout_height="fill_parent">
 
                 <ImageView
+                    android:id="@+id/imageViewProfilePic"
                     android:layout_width="47dp"
                     android:layout_height="match_parent"
-                    android:id="@+id/imageViewProfilePic"
-                    android:focusableInTouchMode="false"
+                    android:layout_gravity="center"
                     android:layout_weight="0"
-                    android:layout_gravity="center" />
+                    android:focusableInTouchMode="false"/>
             </FrameLayout>
 
             <FrameLayout
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|center_vertical"
                 android:maxLines="1"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
 
         </LinearLayout>
 
@@ -53,16 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right|center_vertical"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textStyle="italic" />
-
-        <TextView
-            android:id="@+id/textViewSetCidade"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|bottom"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-
-            android:textStyle="italic" />
+            android:textStyle="italic"/>
 
 
     </FrameLayout>
@@ -79,11 +70,11 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"/>
 
     </FrameLayout>
 
-    <FrameLayout
+    <RelativeLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -93,33 +84,28 @@
             android:id="@+id/likeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/textViewPreco"
-            android:layout_alignEnd="@+id/textViewPreco"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignRight="@+id/textViewPreco"
             android:layout_alignWithParentIfMissing="false"
             android:background="@null"
-            android:src="@drawable/like_disable" />
+            android:src="@drawable/like_disable"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:id="@+id/viewLike"
-            android:layout_width="251dp"
+            android:layout_width="230dp"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/likeButton"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
             android:layout_gravity="center"
-            android:layout_toRightOf="@+id/textViewContato"
             android:gravity="center_vertical"
             android:text="Pessoas"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="33px" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="33px"
+            android:layout_marginLeft="30dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/likeButton" />
 
 
-    </FrameLayout>
+    </RelativeLayout>
 
     <FrameLayout
         android:layout_width="fill_parent"
@@ -137,9 +123,9 @@
             android:text="  Preço:"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textStyle="bold"
-            android:typeface="sans" />
+            android:typeface="sans"/>
 
-        <TextView
+         <TextView
             android:id="@+id/textViewSetPreco"
             android:layout_width="166dp"
             android:layout_height="wrap_content"
@@ -147,7 +133,7 @@
             android:layout_alignRight="@+id/textViewSetContato"
             android:layout_below="@+id/viewLike"
             android:layout_gravity="center"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
     </FrameLayout>
 
     <FrameLayout
@@ -166,7 +152,7 @@
             android:text="  Contato:"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textStyle="bold"
-            android:typeface="sans" />
+            android:typeface="sans"/>
 
         <TextView
             android:id="@+id/textViewSetContato"
@@ -175,10 +161,10 @@
             android:layout_alignTop="@+id/textViewContato"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
     </FrameLayout>
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="59dp"
         android:background="#ffffffff">
@@ -191,14 +177,22 @@
             android:text="  HashTags:"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textStyle="bold"
-            android:typeface="sans" />
+            android:typeface="sans"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:id="@+id/textViewSetHashTags"
-            android:layout_width="276dp"
+            android:layout_width="239dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|right"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-    </FrameLayout>
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_marginLeft="26dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/textViewHashTags"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
 
 </LinearLayout><!-- From: file:/Users/Filipe/Desktop/bazart/app/src/main/res/layout/list_element_produto.xml -->

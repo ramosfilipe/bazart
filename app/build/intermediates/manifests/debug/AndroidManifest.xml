@@ -95,6 +95,34 @@
             android:label="@string/title_activity_sobre"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="com.boleiros.bazart.camera.util.EdicaoCamera"
+            android:label="@string/title_activity_edicao_camera"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.boleiros.bazart.profile.ProdutoClicado"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="bazart" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="produto.bazarplus.com.br"
+                    android:pathPrefix="/"
+                    android:scheme="http" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

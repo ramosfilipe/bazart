@@ -88,9 +88,10 @@ public class Feed extends Activity {
 
 
         final ActionBar actionBar = getActionBar();
-        actionBar.setCustomView(R.layout.custom_actionbar);
+        actionBar.setTitle("Mais recentes");
+        //actionBar.setCustomView(R.layout.custom_actionbar);
 
-        actionBar.setDisplayShowCustomEnabled(true);
+       // actionBar.setDisplayShowCustomEnabled(true);
 
 //        // Create the adapter that will return a fragment for each of the three
 //        // primary sections of the activity.
@@ -99,7 +100,7 @@ public class Feed extends Activity {
 //        // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         TextView actionBarText = (TextView) findViewById(R.id.textViewActionBar);
-        actionBarText.setText("Mais recentes");
+//        actionBarText.setText("Mais recentes");
         mViewPager.setAdapter(mSectionsPagerAdapter);
         Session session = ParseFacebookUtils.getSession();
         if (session != null && session.isOpened()) {
@@ -163,7 +164,7 @@ public class Feed extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.feed, menu);
+        getMenuInflater().inflate(R.menu.feed_activity_actionbar_buttons, menu);
         return true;
     }
 
@@ -173,6 +174,10 @@ public class Feed extends Activity {
             Intent intent = new Intent(this, Sobre.class);
             startActivity(intent);
 
+        }
+        if(item.getItemId() == R.id.menu_search){
+            Intent intent = new Intent(this, HashtagActivity.class);
+            startActivity(intent);
         }
         return true;
     }
@@ -363,21 +368,6 @@ public class Feed extends Activity {
                     }
                 }
             });
-//            ParseQuery<ParseObject> query2 = new ParseQuery("user");
-//            query.countInBackground(new CountCallback() {
-//                @Override
-//                public void done(int count, ParseException e) {
-//                    if (e == null) {
-//                        frases.add("Temos "+ count+" usuários no bazar+");
-//                        ActivityStore.getInstance(getActivity()).setFrases(frases);
-//                    } else {
-//                        Toast.makeText(getActivity(),
-//                                "Ops... Verifique sua conexão com a Internet",
-//                                Toast.LENGTH_LONG).show();
-//                    }
-//                }
-//            });
-
 
         }
 
@@ -411,14 +401,14 @@ public class Feed extends Activity {
                     .botaoBuscaActionBar);
             final TextView actionBarText = (TextView) getActivity().findViewById(R.id
                     .textViewActionBar);
-
+            final ActionBar actionBar = getActivity().getActionBar();
             gps.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (botaoSelecionado != BOTAO_GPS_ATIVADO) {
                         swipeRefreshLayout.setRefreshing(true);
                         botaoSelecionado = BOTAO_GPS_ATIVADO;
-                        actionBarText.setText("Mais próximos");
+                        actionBar.setTitle("Mais próximos");
                         gps.setImageResource(R.drawable.local1);
                         home.setImageResource(R.drawable.home0);
                         recomendacao.setImageResource(R.drawable.recomend0);
@@ -451,7 +441,8 @@ public class Feed extends Activity {
                 @Override
                 public void onClick(View v) {
                     if (botaoSelecionado != BOTAO_RECOMENDACAO_ATIVADO) {
-                        actionBarText.setText("Mais recomendados");
+                        actionBar.setTitle("Mais recomendados");
+
                         swipeRefreshLayout.setRefreshing(true);
                         botaoSelecionado = BOTAO_RECOMENDACAO_ATIVADO;
                         gps.setImageResource(R.drawable.local0);
@@ -470,7 +461,7 @@ public class Feed extends Activity {
 
                     if (botaoSelecionado != BOTAO_HOME_ATIVADO) {
                         swipeRefreshLayout.setRefreshing(true);
-                        actionBarText.setText("Mais recentes");
+                        actionBar.setTitle("Mais recentes");
                         botaoSelecionado = BOTAO_HOME_ATIVADO;
                         gps.setImageResource(R.drawable.local0);
                         home.setImageResource(R.drawable.home1);
@@ -483,13 +474,13 @@ public class Feed extends Activity {
             });
 
 
-            busca.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(getActivity(), HashtagActivity.class);
-                    startActivity(intent);
-                }
-            });
+//            busca.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Intent intent = new Intent(getActivity(), HashtagActivity.class);
+//                    startActivity(intent);
+//                }
+//            });
 
 
             camera.setOnClickListener(new View.OnClickListener() {

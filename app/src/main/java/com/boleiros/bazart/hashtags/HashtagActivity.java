@@ -45,10 +45,8 @@ public class HashtagActivity extends Activity implements OnFragmentInteractionLi
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.buscahashtag, menu);
-
-
-        MenuItem searchViewItem = menu.findItem(R.id.menu_search);
+        getMenuInflater().inflate(R.menu.hashtag_activity_actionbar_buttons, menu);
+        MenuItem searchViewItem = menu.findItem(R.id.menu_search_hash);
         final SearchView searchView = (SearchView) searchViewItem.getActionView();
         searchView.setIconifiedByDefault(false);
         Intent intent = getIntent();
