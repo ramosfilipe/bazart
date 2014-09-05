@@ -15,21 +15,21 @@
             android:id="@+id/profileProfilePic"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginLeft="46dp" />
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="46dp"/>
 
         <TextView
             android:id="@+id/usernameProfileTextView"
             android:layout_width="156dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_marginLeft="25dp"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/profileProfilePic" />
+            android:layout_gravity="center"
+            android:layout_marginLeft="25dp"
+            android:layout_toRightOf="@+id/profileProfilePic"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     </RelativeLayout>
 

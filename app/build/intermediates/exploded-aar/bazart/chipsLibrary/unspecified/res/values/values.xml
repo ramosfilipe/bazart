@@ -2,20 +2,20 @@
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- From: file:/Users/Filipe/Desktop/bazart/chipsLibrary/src/main/res/values/attrs.xml -->
-    <eat-comment />
+    <eat-comment/>
 
     <declare-styleable name="RecipientEditTextView">
-        <attr name="invalidChipBackground" format="reference" />
-        <attr name="chipBackground" format="reference" />
-        <attr name="chipBackgroundPressed" format="reference" />
-        <attr name="chipDelete" format="reference" />
-        <attr name="chipAlternatesLayout" format="reference" />
-        <attr name="chipPadding" format="reference" />
-        <attr name="chipHeight" format="reference" />
-        <attr name="chipFontSize" format="reference" />
+        <attr name="invalidChipBackground" format="reference"/>
+        <attr name="chipBackground" format="reference"/>
+        <attr name="chipBackgroundPressed" format="reference"/>
+        <attr name="chipDelete" format="reference"/>
+        <attr name="chipAlternatesLayout" format="reference"/>
+        <attr name="chipPadding" format="reference"/>
+        <attr name="chipHeight" format="reference"/>
+        <attr name="chipFontSize" format="reference"/>
     </declare-styleable>
     <!-- From: file:/Users/Filipe/Desktop/bazart/chipsLibrary/src/main/res/values/dimen.xml -->
-    <eat-comment />
+    <eat-comment/>
 
     <dimen name="chip_height">32dip</dimen>
     <dimen name="chip_padding">8dip</dimen>
@@ -24,14 +24,14 @@
 
     <integer name="chips_max_lines">-1</integer>
     <!-- From: file:/Users/Filipe/Desktop/bazart/chipsLibrary/src/main/res/values/strings.xml -->
-    <eat-comment />
+    <eat-comment/>
 
     <string name="copy_email">Copy email address</string>
     <string name="copy_number">Copy phone number</string>
     <string name="done">Return</string>
     <string name="more_string">\u002B<ns1:g id="count">%1$s</ns1:g></string>
     <!-- From: file:/Users/Filipe/Desktop/bazart/chipsLibrary/src/main/res/values/styles.xml -->
-    <eat-comment />
+    <eat-comment/>
 
     <style name="RecipientEditTextView" parent="@android:attr/autoCompleteTextViewStyle">
         <item name="android:inputType">textEmailAddress|textMultiLine</item>

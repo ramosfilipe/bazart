@@ -17,6 +17,6 @@
     <gradient
         android:angle="270"
         android:endColor="#2d4984"
-        android:startColor="#3f5b96" />
+        android:startColor="#3f5b96"/>
 </shape>
-<!-- From: file:/Users/Filipe/Desktop/bazart/facebook-sdk/facebook/res/drawable/com_facebook_picker_top_button.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/facebook-sdk/facebook/res/drawable/com_facebook_picker_top_button.xml -->

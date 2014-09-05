@@ -30,15 +30,15 @@
              pressed and focused states of the button. The value can be a specific height, e.g.
              "48dp", or special values "match_parent" and "wrap_content". -->
         <attr name="buyButtonHeight" format="dimension">
-            <enum name="match_parent" value="-1" />
-            <enum name="wrap_content" value="-2" />
+            <enum name="match_parent" value="-1"/>
+            <enum name="wrap_content" value="-2"/>
         </attr>
         <!-- Width of the buy button. This includes an 8dp padding (4dp on each side) used for
              pressed and focused states of the button. The value can be a specific width, e.g.
              "300dp", or special values "match_parent" and "wrap_content". -->
         <attr name="buyButtonWidth" format="dimension">
-            <enum name="match_parent" value="-1" />
-            <enum name="wrap_content" value="-2" />
+            <enum name="match_parent" value="-1"/>
+            <enum name="wrap_content" value="-2"/>
         </attr>
         <!-- Text on the buy button. Must be one of "buy_with_google", "buy_now" and "book_now" -->
         <attr name="buyButtonText" format="enum">

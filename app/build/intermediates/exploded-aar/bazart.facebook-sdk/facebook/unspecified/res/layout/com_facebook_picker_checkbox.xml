@@ -14,11 +14,11 @@
     limitations under the License.
 -->
 
-<CheckBox xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/com_facebook_picker_checkbox"
-    android:layout_width="23dip"
-    android:layout_height="23dip"
-    android:button="@drawable/com_facebook_button_check"
-    android:clickable="false"
-    android:focusable="false" />
-<!-- From: file:/Users/Filipe/Desktop/bazart/facebook-sdk/facebook/res/layout/com_facebook_picker_checkbox.xml -->
+<CheckBox android:id="@+id/com_facebook_picker_checkbox"
+          xmlns:android="http://schemas.android.com/apk/res/android"
+          android:layout_width="23dip"
+          android:layout_height="23dip"
+          android:button="@drawable/com_facebook_button_check"
+          android:clickable="false"
+          android:focusable="false"/>
+    <!-- From: file:/Users/Filipe/Desktop/bazart/facebook-sdk/facebook/res/layout/com_facebook_picker_checkbox.xml -->

@@ -84,25 +84,25 @@
             android:id="@+id/likeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:layout_alignWithParentIfMissing="false"
             android:background="@null"
-            android:src="@drawable/like_disable"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:src="@drawable/like_disable"/>
 
         <TextView
             android:id="@+id/viewLike"
             android:layout_width="230dp"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_gravity="center"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@+id/likeButton"
             android:gravity="center_vertical"
             android:text="Pessoas"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="33px"
-            android:layout_marginLeft="30dp"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/likeButton" />
+            android:textSize="33px"/>
 
 
     </RelativeLayout>
@@ -125,7 +125,7 @@
             android:textStyle="bold"
             android:typeface="sans"/>
 
-         <TextView
+        <TextView
             android:id="@+id/textViewSetPreco"
             android:layout_width="166dp"
             android:layout_height="wrap_content"
@@ -173,26 +173,26 @@
             android:id="@+id/textViewHashTags"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
             android:layout_gravity="center_vertical|left"
             android:text="  HashTags:"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textStyle="bold"
-            android:typeface="sans"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:typeface="sans"/>
 
         <TextView
             android:id="@+id/textViewSetHashTags"
             android:layout_width="239dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|right"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_marginLeft="26dp"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/textViewHashTags"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical|right"
+            android:layout_marginLeft="26dp"
+            android:layout_toRightOf="@+id/textViewHashTags"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
     </RelativeLayout>
 
 </LinearLayout>

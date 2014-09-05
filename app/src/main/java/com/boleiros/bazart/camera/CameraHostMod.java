@@ -54,7 +54,7 @@ public class CameraHostMod extends SimpleCameraHost {
         CameraEdit current = new CameraEdit();
         act.getFragmentManager().beginTransaction()
                 .replace(R.id.container, current).commit();//        Intent intent = new Intent
-                // (context, EdicaoCamera.class);
+        // (context, EdicaoCamera.class);
 //        context.startActivity(intent);
 
 

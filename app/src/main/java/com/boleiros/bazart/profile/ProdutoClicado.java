@@ -3,9 +3,7 @@ package com.boleiros.bazart.profile;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.FragmentManager;
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,12 +15,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.boleiros.bazart.R;
-import com.boleiros.bazart.feed.ProdutoAdapter;
 import com.boleiros.bazart.modelo.Produto;
 import com.boleiros.bazart.util.ActivityStore;
 import com.parse.FindCallback;
@@ -53,17 +48,17 @@ public class ProdutoClicado extends Activity {
         String action = intent.getAction();
         Uri data = intent.getData();
         String idProduto;
-        if(data!= null){
+        if (data != null) {
             String aux = data.getPath();
             idProduto = aux.substring(1, aux.length());
-        }else {
+        } else {
             idProduto = bundle.getString("idProduto");
         }
         consultaAoParse(idProduto);
         return true;
     }
 
-    public void showPhoneOptions(String phone){
+    public void showPhoneOptions(String phone) {
         FragmentManager fm = getFragmentManager();
         DialogPhoneOptionsProfile dialogGrid = new DialogPhoneOptionsProfile();
         Bundle bundle = new Bundle();
@@ -73,16 +68,16 @@ public class ProdutoClicado extends Activity {
     }
 
 
-    public void povoarLayout(Produto produto){
+    public void povoarLayout(Produto produto) {
         ParseUser autor = produto.getAuthor();
 
-        ImageView imgProduto = (ImageView)findViewById(R.id.imageViewProdutoVendido);
-       // ImageView imgPerfil = (ImageView)findViewById(R.id.profilePicPerfilUnico);
+        ImageView imgProduto = (ImageView) findViewById(R.id.imageViewProdutoVendido);
+        // ImageView imgPerfil = (ImageView)findViewById(R.id.profilePicPerfilUnico);
 
- //       TextView nomeAutor = (TextView) findViewById(R.id.nomeDoPerfilUnico);
-        TextView precoProduto = (TextView)findViewById(R.id.textviewVendidoPor);
-        TextView contatoProduto = (TextView)findViewById(R.id.textViewContatoVendido);
-        TextView hashtagsProduto = (TextView)findViewById(R.id.textViewHashtagsVendido);
+        //       TextView nomeAutor = (TextView) findViewById(R.id.nomeDoPerfilUnico);
+        TextView precoProduto = (TextView) findViewById(R.id.textviewVendidoPor);
+        TextView contatoProduto = (TextView) findViewById(R.id.textViewContatoVendido);
+        TextView hashtagsProduto = (TextView) findViewById(R.id.textViewHashtagsVendido);
 //        try {
 //            byte[] byteArray = autor.getParseFile("profilePic").getData();
 //            Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
@@ -95,7 +90,8 @@ public class ProdutoClicado extends Activity {
 //        nomeAutor.setText(autor.getString("name"));
         try {
             byte[] fotoProduto = produto.getPhotoFile().getData();
-            imgProduto.setImageBitmap(BitmapFactory.decodeByteArray(fotoProduto,0,fotoProduto.length));
+            imgProduto.setImageBitmap(BitmapFactory.decodeByteArray(fotoProduto, 0,
+                    fotoProduto.length));
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -114,7 +110,7 @@ public class ProdutoClicado extends Activity {
                 showPhoneOptions(contato);
             }
         };
-        span.setSpan(clickPhone,0,span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        span.setSpan(clickPhone, 0, span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         contatoProduto.setText(span);
         contatoProduto.setMovementMethod(LinkMovementMethod.getInstance());
     }
@@ -135,6 +131,7 @@ public class ProdutoClicado extends Activity {
             }
         });
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -144,7 +141,7 @@ public class ProdutoClicado extends Activity {
         if (id == R.id.action_settings) {
             return true;
         }
-        if(id == android.R.id.home){
+        if (id == android.R.id.home) {
             onBackPressed();
         }
         return super.onOptionsItemSelected(item);

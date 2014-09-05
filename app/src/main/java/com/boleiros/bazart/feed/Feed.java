@@ -91,7 +91,7 @@ public class Feed extends Activity {
         actionBar.setTitle("Mais recentes");
         //actionBar.setCustomView(R.layout.custom_actionbar);
 
-       // actionBar.setDisplayShowCustomEnabled(true);
+        // actionBar.setDisplayShowCustomEnabled(true);
 
 //        // Create the adapter that will return a fragment for each of the three
 //        // primary sections of the activity.
@@ -131,7 +131,7 @@ public class Feed extends Activity {
     }
 
 
-    public void showPhoneOptions(String phone, String userFb){
+    public void showPhoneOptions(String phone, String userFb) {
         FragmentManager fm = getFragmentManager();
         DialogPhoneOptions dialogGrid = new DialogPhoneOptions();
         Bundle bundle = new Bundle();
@@ -175,7 +175,7 @@ public class Feed extends Activity {
             startActivity(intent);
 
         }
-        if(item.getItemId() == R.id.menu_search){
+        if (item.getItemId() == R.id.menu_search) {
             Intent intent = new Intent(this, HashtagActivity.class);
             startActivity(intent);
         }

@@ -2,7 +2,7 @@
 <resources>
 
     <!-- From: file:/Users/Filipe/Desktop/bazart/chipsLibrary/src/main/res/values-sw600dp-land/dimen.xml -->
-    <eat-comment />
+    <eat-comment/>
 
     <dimen name="chip_height">32dip</dimen>
     <dimen name="chip_padding">8dip</dimen>

@@ -14,10 +14,10 @@
 -->
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content">
 
-    <include layout="@layout/chips_recipient_dropdown_item" />
+    <include layout="@layout/chips_recipient_dropdown_item"/>
 
 </FrameLayout>
-<!-- From: file:/Users/Filipe/Desktop/bazart/chipsLibrary/src/main/res/layout/chips_alternate_item.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/chipsLibrary/src/main/res/layout/chips_alternate_item.xml -->

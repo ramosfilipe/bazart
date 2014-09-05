@@ -3,7 +3,6 @@ package com.boleiros.bazart.profile;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +11,6 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,10 +23,6 @@ import android.widget.Toast;
 import com.boleiros.bazart.R;
 import com.boleiros.bazart.modelo.Produto;
 import com.boleiros.bazart.util.ActivityStore;
-import com.facebook.Session;
-import com.facebook.SessionState;
-import com.facebook.UiLifecycleHelper;
-import com.facebook.widget.FacebookDialog;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -53,6 +47,7 @@ public class Profile extends Fragment {
     public Profile() {
         // Required empty public constructor
     }
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -70,8 +65,6 @@ public class Profile extends Fragment {
     }
 
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -85,12 +78,12 @@ public class Profile extends Fragment {
         if (args != null && !args.getString("id").equals(ParseUser.getCurrentUser().getObjectId()
         )) {
             name.setText(getArguments().getString("name"));
-            GridView gridView = (GridView)v.findViewById(R.id.gridProfile);
+            GridView gridView = (GridView) v.findViewById(R.id.gridProfile);
             try {
                 byte[] pic = getArguments().getByteArray("pic");
                 Bitmap bit = BitmapFactory.decodeByteArray(pic, 0, pic.length);
                 profilePic.setImageBitmap(bit);
-            } catch (Exception e){
+            } catch (Exception e) {
                 profilePic.setImageResource(R.drawable.ic_launcher);
             }
             id = getArguments().getString("id");
@@ -99,8 +92,8 @@ public class Profile extends Fragment {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Produto produto = ((Produto) adapt.getItem(position));
-                    Intent intent = new Intent(getActivity(),ProdutoClicado.class);
-                    intent.putExtra("idProduto",produto.getObjectId());
+                    Intent intent = new Intent(getActivity(), ProdutoClicado.class);
+                    intent.putExtra("idProduto", produto.getObjectId());
                     startActivity(intent);
                 }
             });
@@ -205,7 +198,6 @@ public class Profile extends Fragment {
             progressDialog = ProgressDialog.show(getActivity(), null,
                     ActivityStore.getInstance(getActivity()).getFrases().get(i1));
         }
-
 
 
         @Override

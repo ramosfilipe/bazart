@@ -2,7 +2,7 @@
 <resources>
 
     <!-- From: file:/home/gabriele/Lavoro/Android/AndroidStudioProjects/wrks/cardslib/library/src/main/res/values-de/strings.xml -->
-    <eat-comment />
+    <eat-comment/>
 
     <plurals name="card_selected_items">
         <item quantity="one">1 Element gewählt</item>

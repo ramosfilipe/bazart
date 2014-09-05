@@ -1158,12 +1158,12 @@ containing a value of this type.
         public static final int action_settings=0x7f0b0000;
         public static final int action_sobre=0x7f0b0001;
         public static final int app_name=0x7f0b0002;
-        public static final int auth_client_needs_enabling_title=0x7f0b0080;
-        public static final int auth_client_needs_installation_title=0x7f0b0081;
-        public static final int auth_client_needs_update_title=0x7f0b0082;
-        public static final int auth_client_play_services_err_notification_msg=0x7f0b0083;
-        public static final int auth_client_requested_by_msg=0x7f0b0084;
-        public static final int auth_client_using_bad_version_title=0x7f0b0085;
+        public static final int auth_client_needs_enabling_title=0x7f0b0082;
+        public static final int auth_client_needs_installation_title=0x7f0b0083;
+        public static final int auth_client_needs_update_title=0x7f0b0084;
+        public static final int auth_client_play_services_err_notification_msg=0x7f0b0085;
+        public static final int auth_client_requested_by_msg=0x7f0b0086;
+        public static final int auth_client_using_bad_version_title=0x7f0b0087;
         public static final int card_empty_cardwithlist_text=0x7f0b0003;
         public static final int card_progressbar_cardwithlist_text=0x7f0b0004;
         public static final int com_facebook_choose_friends=0x7f0b0005;
@@ -1278,17 +1278,19 @@ containing a value of this type.
         public static final int list_card_undo_title=0x7f0b0072;
         public static final int more_string=0x7f0b0073;
         public static final int parse_app_id=0x7f0b0074;
-        public static final int parse_client_key=0x7f0b0075;
-        public static final int title_activity_camera_demo=0x7f0b0076;
-        public static final int title_activity_edicao_camera=0x7f0b0077;
-        public static final int title_activity_login=0x7f0b0078;
-        public static final int title_activity_my=0x7f0b0079;
-        public static final int title_activity_produto_clicado=0x7f0b007a;
-        public static final int title_activity_sobre=0x7f0b007b;
-        public static final int title_section1=0x7f0b007c;
-        public static final int title_section2=0x7f0b007d;
-        public static final int title_section3=0x7f0b007e;
-        public static final int wallet_buy_button_place_holder=0x7f0b007f;
+        public static final int parse_app_id_google=0x7f0b0075;
+        public static final int parse_client_key=0x7f0b0076;
+        public static final int parse_client_key_google=0x7f0b0077;
+        public static final int title_activity_camera_demo=0x7f0b0078;
+        public static final int title_activity_edicao_camera=0x7f0b0079;
+        public static final int title_activity_login=0x7f0b007a;
+        public static final int title_activity_my=0x7f0b007b;
+        public static final int title_activity_produto_clicado=0x7f0b007c;
+        public static final int title_activity_sobre=0x7f0b007d;
+        public static final int title_section1=0x7f0b007e;
+        public static final int title_section2=0x7f0b007f;
+        public static final int title_section3=0x7f0b0080;
+        public static final int wallet_buy_button_place_holder=0x7f0b0081;
     }
     public static final class style {
         /**  Customize your theme here. 

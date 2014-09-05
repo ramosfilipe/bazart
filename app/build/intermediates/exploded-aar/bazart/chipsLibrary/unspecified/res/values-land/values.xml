@@ -2,7 +2,7 @@
 <resources>
 
     <!-- From: file:/Users/Filipe/Desktop/bazart/chipsLibrary/src/main/res/values-land/dimen.xml -->
-    <eat-comment />
+    <eat-comment/>
 
     <dimen name="chip_height">26dip</dimen>
 

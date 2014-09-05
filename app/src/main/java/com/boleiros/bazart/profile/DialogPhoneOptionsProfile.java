@@ -1,9 +1,7 @@
 package com.boleiros.bazart.profile;
 
 import android.app.DialogFragment;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -25,12 +23,15 @@ public class DialogPhoneOptionsProfile extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_dialog_phone_options_profile, container);
+        final View view = inflater.inflate(R.layout.fragment_dialog_phone_options_profile,
+                container);
         getDialog().setTitle("Opções");
         Bundle bundle = getArguments();
         final String phone = bundle.getString("phone");
-        final RelativeLayout ligar = (RelativeLayout) view.findViewById(R.id.relativeLayoutLigarProfile);
-        final RelativeLayout sms = (RelativeLayout) view.findViewById(R.id.relativeLayoutSmsProfile);
+        final RelativeLayout ligar = (RelativeLayout) view.findViewById(R.id
+                .relativeLayoutLigarProfile);
+        final RelativeLayout sms = (RelativeLayout) view.findViewById(R.id
+                .relativeLayoutSmsProfile);
 
         ligar.setOnClickListener(new View.OnClickListener() {
             @Override

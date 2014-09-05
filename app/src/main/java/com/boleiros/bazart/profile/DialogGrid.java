@@ -15,7 +15,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -44,24 +43,8 @@ import java.util.Random;
  * Created by diego on 8/4/14.
  */
 public class DialogGrid extends DialogFragment {
-    public DialogGrid() {
-        // Empty constructor required for DialogFragment
-    }
-
-    private UiLifecycleHelper uiHelper;
     public Produto product;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        uiHelper = new UiLifecycleHelper(getActivity(), callback);
-        uiHelper.onCreate(savedInstanceState);
-    }
-
-
-
-
+    private UiLifecycleHelper uiHelper;
     private Session.StatusCallback callback = new Session.StatusCallback() {
 
 
@@ -71,46 +54,8 @@ public class DialogGrid extends DialogFragment {
         }
     };
 
-
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        uiHelper.onActivityResult(requestCode, resultCode, data, new FacebookDialog.Callback() {
-            @Override
-            public void onError(FacebookDialog.PendingCall pendingCall, Exception error, Bundle data) {
-                Log.e("Activity", String.format("Error: %s", error.toString()));
-            }
-
-            @Override
-            public void onComplete(FacebookDialog.PendingCall pendingCall, Bundle data) {
-                Log.i("Activity", "Success!");
-            }
-        });
-    }
-    @Override
-    public void onResume() {
-        super.onResume();
-        uiHelper.onResume();
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        uiHelper.onSaveInstanceState(outState);
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        uiHelper.onPause();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        uiHelper.onDestroy();
+    public DialogGrid() {
+        // Empty constructor required for DialogFragment
     }
 
     public static Bitmap mark(Bitmap src) {
@@ -134,6 +79,56 @@ public class DialogGrid extends DialogFragment {
         canvas.rotate(45);
         canvas.drawText("V E N D I D O", location.x, location.y, paint);
         return result;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        uiHelper = new UiLifecycleHelper(getActivity(), callback);
+        uiHelper.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        uiHelper.onActivityResult(requestCode, resultCode, data, new FacebookDialog.Callback() {
+            @Override
+            public void onError(FacebookDialog.PendingCall pendingCall, Exception error,
+                                Bundle data) {
+                Log.e("Activity", String.format("Error: %s", error.toString()));
+            }
+
+            @Override
+            public void onComplete(FacebookDialog.PendingCall pendingCall, Bundle data) {
+                Log.i("Activity", "Success!");
+            }
+        });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        uiHelper.onResume();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        uiHelper.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        uiHelper.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        uiHelper.onDestroy();
     }
 
     public void removeDoParse(final String id) {
@@ -166,9 +161,10 @@ public class DialogGrid extends DialogFragment {
         });
     }
 
-    public void salvarProduto(Produto produto){
+    public void salvarProduto(Produto produto) {
         this.product = produto;
     }
+
     public void marcarVendido(final String id) {
         ParseQuery<Produto> query = ParseQuery.getQuery("Produto");
 
@@ -238,7 +234,8 @@ public class DialogGrid extends DialogFragment {
         getDialog().setTitle("Opções");
         RelativeLayout remover = (RelativeLayout) view.findViewById(R.id.relativeRemover);
         RelativeLayout vendido = (RelativeLayout) view.findViewById(R.id.relativeVendido);
-        RelativeLayout shareFb = (RelativeLayout) view.findViewById(R.id.relativeCompartilharProduto);
+        RelativeLayout shareFb = (RelativeLayout) view.findViewById(R.id
+                .relativeCompartilharProduto);
         pegarProduto(getArguments().getString("id"));
         if (getArguments().getBoolean("vendido")) {
             vendido.setEnabled(false);
@@ -248,11 +245,13 @@ public class DialogGrid extends DialogFragment {
         shareFb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(product != null) {
-                    OpenGraphObject produto = OpenGraphObject.Factory.createForPost("boleirosbazar:anunciou");
+                if (product != null) {
+                    OpenGraphObject produto = OpenGraphObject.Factory.createForPost
+                            ("boleirosbazar:anunciou");
                     produto.setProperty("title", "Estou vendendo um produto!");
                     produto.setProperty("image", product.getPhotoFile().getUrl());
-                    produto.setProperty("url", "http://produto.bazarplus.com.br/" + product.getObjectId());
+                    produto.setProperty("url", "http://produto.bazarplus.com.br/" + product
+                            .getObjectId());
                     String[] hashtags = product.getArrayHashtags();
                     String hashs = "";
                     for (int i = 0; i < hashtags.length; i++) {
@@ -263,7 +262,8 @@ public class DialogGrid extends DialogFragment {
                     OpenGraphAction action = GraphObject.Factory.create(OpenGraphAction.class);
                     action.setProperty("produto", produto);
 
-                    FacebookDialog shareDialog = new FacebookDialog.OpenGraphActionDialogBuilder(getActivity(), action, "boleirosbazar:anunciou", "produto")
+                    FacebookDialog shareDialog = new FacebookDialog.OpenGraphActionDialogBuilder
+                            (getActivity(), action, "boleirosbazar:anunciou", "produto")
                             .build();
                     uiHelper.trackPendingDialogCall(shareDialog.present());
                 }

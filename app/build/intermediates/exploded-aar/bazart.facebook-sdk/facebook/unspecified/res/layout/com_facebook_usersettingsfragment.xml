@@ -15,10 +15,10 @@
 -->
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:loginView="http://schemas.android.com/apk/res-auto"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@drawable/com_facebook_usersettingsfragment_background_gradient">
+            xmlns:loginView="http://schemas.android.com/apk/res-auto"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/com_facebook_usersettingsfragment_background_gradient">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -32,7 +32,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="35dp"
             android:contentDescription="@string/com_facebook_logo_content_description"
-            android:src="@drawable/com_facebook_logo" />
+            android:src="@drawable/com_facebook_logo"/>
 
         <TextView
             android:id="@+id/com_facebook_usersettingsfragment_profile_name"
@@ -42,7 +42,7 @@
             android:gravity="center"
             android:lines="1"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
         <com.facebook.widget.LoginButton
             android:id="@+id/com_facebook_usersettingsfragment_login_button"
@@ -52,8 +52,8 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="35dp"
             android:layout_marginTop="35dp"
-            loginView:login_text="@string/com_facebook_usersettingsfragment_log_in_button" />
+            loginView:login_text="@string/com_facebook_usersettingsfragment_log_in_button"/>
 
     </LinearLayout>
 </ScrollView>
-<!-- From: file:/Users/Filipe/Desktop/bazart/facebook-sdk/facebook/res/layout/com_facebook_usersettingsfragment.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/facebook-sdk/facebook/res/layout/com_facebook_usersettingsfragment.xml -->

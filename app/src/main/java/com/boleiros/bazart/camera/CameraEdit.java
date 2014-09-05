@@ -1,30 +1,30 @@
 package com.boleiros.bazart.camera;
 
-        import android.app.Fragment;
-        import android.app.ProgressDialog;
-        import android.graphics.Bitmap;
-        import android.graphics.BitmapFactory;
-        import android.net.Uri;
-        import android.os.AsyncTask;
-        import android.os.Bundle;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.Button;
-        import android.widget.ImageButton;
-        import android.widget.ImageView;
+import android.app.Fragment;
+import android.app.ProgressDialog;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
-        import com.boleiros.bazart.R;
-        import com.boleiros.bazart.util.ActivityStore;
+import com.boleiros.bazart.R;
+import com.boleiros.bazart.util.ActivityStore;
 
-        import java.io.ByteArrayOutputStream;
-        import java.util.Random;
+import java.io.ByteArrayOutputStream;
+import java.util.Random;
 
-        import Catalano.Imaging.Filters.Grayscale;
-        import Catalano.Imaging.FastBitmap;
-        import Catalano.Imaging.Filters.BrightnessCorrection;
-        import Catalano.Imaging.Filters.ContrastCorrection;
-        import Catalano.Imaging.Filters.Sepia;
+import Catalano.Imaging.FastBitmap;
+import Catalano.Imaging.Filters.BrightnessCorrection;
+import Catalano.Imaging.Filters.ContrastCorrection;
+import Catalano.Imaging.Filters.Grayscale;
+import Catalano.Imaging.Filters.Sepia;
 
 /**
  * A simple {@link Fragment} subclass.

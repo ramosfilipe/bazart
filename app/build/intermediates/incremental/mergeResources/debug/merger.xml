@@ -13190,6 +13190,8 @@ Password must be at least %d characters long
                 </string>
                 <string name="title_activity_edicao_camera" >edicaoCamera
                 </string>
+                <string name="parse_app_id_google" >3b1bAPvZJovJkbw4E4XeTWnJ0LFe3aCnbMvYjIye
+                </string>
                 <string name="title_activity_login" >LoginActivity
                 </string>
                 <string name="dummy_button" >Dummy Button
@@ -13197,6 +13199,8 @@ Password must be at least %d characters long
                 <string name="title_activity_my" >MyActivity
                 </string>
                 <string name="action_settings" >Settings
+                </string>
+                <string name="parse_client_key_google" >ctYoQywP8TxEFKgMWZeXlKi9cwbJMeuNSqRBVarQ
                 </string>
                 <string name="app_name" >Bazar+
                 </string>
@@ -13209,9 +13213,9 @@ public_profile
 
                 <string name="facebook_app_id" >694582477277699
                 </string>
-                <string name="parse_client_key" >ctYoQywP8TxEFKgMWZeXlKi9cwbJMeuNSqRBVarQ
+                <string name="parse_client_key" >j1GuzdyHFwxkg6yb946pYO4RMq5b0tpNQ1EmfTXP
                 </string>
-                <string name="parse_app_id" >3b1bAPvZJovJkbw4E4XeTWnJ0LFe3aCnbMvYjIye
+                <string name="parse_app_id" >DrWO1B4EeifVi4YOMqm80VResVR8KYJLNyojje2Q
                 </string>
                 <string name="action_sobre" >Sobre
                 </string>

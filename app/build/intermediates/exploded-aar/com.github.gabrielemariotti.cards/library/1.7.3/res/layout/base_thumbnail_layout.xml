@@ -18,9 +18,9 @@
   -->
 
 <ImageView
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/card_thumbnail_image"
-    style="@style/card_thumbnail_image"/>
+    style="@style/card_thumbnail_image"
+    xmlns:android="http://schemas.android.com/apk/res/android"/>
 
 
-<!-- From: file:/home/gabriele/Lavoro/Android/AndroidStudioProjects/wrks/cardslib/library/src/main/res/layout/base_thumbnail_layout.xml -->
+    <!-- From: file:/home/gabriele/Lavoro/Android/AndroidStudioProjects/wrks/cardslib/library/src/main/res/layout/base_thumbnail_layout.xml -->

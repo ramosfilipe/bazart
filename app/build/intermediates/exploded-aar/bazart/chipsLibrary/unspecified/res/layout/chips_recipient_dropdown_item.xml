@@ -14,12 +14,12 @@
 -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="?android:attr/activatedBackgroundIndicator"
-    android:gravity="center_vertical"
-    android:minHeight="48dip"
-    android:orientation="horizontal">
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="?android:attr/activatedBackgroundIndicator"
+              android:gravity="center_vertical"
+              android:minHeight="48dip"
+              android:orientation="horizontal">
 
     <LinearLayout
         android:layout_width="0dip"
@@ -36,7 +36,7 @@
             android:paddingLeft="8dip"
             android:singleLine="true"
             android:textColor="@drawable/list_item_font_primary"
-            android:textSize="18sp" />
+            android:textSize="18sp"/>
 
         <TextView
             android:id="@android:id/text1"
@@ -47,7 +47,7 @@
             android:paddingLeft="16dip"
             android:singleLine="true"
             android:textColor="@drawable/list_item_font_secondary"
-            android:textSize="14sp" />
+            android:textSize="14sp"/>
     </LinearLayout>
 
     <ImageView
@@ -57,6 +57,6 @@
         android:layout_marginLeft="12dip"
         android:cropToPadding="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/ic_contact_picture" />
+        android:src="@drawable/ic_contact_picture"/>
 </LinearLayout>
-<!-- From: file:/Users/Filipe/Desktop/bazart/chipsLibrary/src/main/res/layout/chips_recipient_dropdown_item.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/chipsLibrary/src/main/res/layout/chips_recipient_dropdown_item.xml -->

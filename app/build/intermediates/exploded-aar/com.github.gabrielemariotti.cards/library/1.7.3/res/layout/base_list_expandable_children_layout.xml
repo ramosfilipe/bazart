@@ -25,7 +25,7 @@
               android:clickable="true"
               android:orientation="vertical"
               android:paddingLeft="40dp"
-              tools:context=".MainActivity" >
+              tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/card_children_simple_title"
@@ -34,7 +34,7 @@
         android:drawablePadding="5dp"
         android:gravity="center_vertical"
         android:textSize="14sp"
-        android:textStyle="bold" >
+        android:textStyle="bold">
     </TextView>
 
 </LinearLayout><!-- From: file:/home/gabriele/Lavoro/Android/AndroidStudioProjects/wrks/cardslib/library/src/main/res/layout/base_list_expandable_children_layout.xml -->

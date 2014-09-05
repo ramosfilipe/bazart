@@ -15,9 +15,9 @@
 -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:focusable="false">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,7 +35,7 @@
                 android:layout_height="@dimen/com_facebook_picker_place_image_size"
                 android:layout_gravity="left|center_vertical"
                 android:inflatedId="@+id/com_facebook_picker_image"
-                android:layout="@layout/com_facebook_picker_image" />
+                android:layout="@layout/com_facebook_picker_image"/>
         </FrameLayout>
 
         <LinearLayout
@@ -58,7 +58,7 @@
                 android:singleLine="true"
                 android:textColor="#000000"
                 android:textSize="16sp"
-                android:typeface="sans" />
+                android:typeface="sans"/>
 
             <TextView
                 android:id="@+id/picker_subtitle"
@@ -71,7 +71,7 @@
                 android:singleLine="true"
                 android:textColor="#666666"
                 android:textSize="12sp"
-                android:typeface="sans" />
+                android:typeface="sans"/>
         </LinearLayout>
         <!--ViewStub
                 android:id="@+id/checkbox_stub"
@@ -88,6 +88,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:background="@drawable/com_facebook_picker_default_separator_color" />
+        android:background="@drawable/com_facebook_picker_default_separator_color"/>
 </RelativeLayout>
-<!-- From: file:/Users/Filipe/Desktop/bazart/facebook-sdk/facebook/res/layout/com_facebook_placepickerfragment_list_row.xml -->
+    <!-- From: file:/Users/Filipe/Desktop/bazart/facebook-sdk/facebook/res/layout/com_facebook_placepickerfragment_list_row.xml -->

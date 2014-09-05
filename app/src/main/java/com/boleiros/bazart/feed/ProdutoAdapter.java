@@ -1,6 +1,5 @@
 package com.boleiros.bazart.feed;
 
-import android.app.FragmentManager;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -26,7 +25,6 @@ import android.widget.Toast;
 
 import com.boleiros.bazart.R;
 import com.boleiros.bazart.modelo.Produto;
-import com.boleiros.bazart.profile.DialogGrid;
 import com.boleiros.bazart.util.CustomToast;
 import com.boleiros.bazart.util.DoubleClickListener;
 import com.parse.ParseException;
@@ -220,11 +218,11 @@ public class ProdutoAdapter extends BaseAdapter {
                 System.out.println("AQUI 1");
                 if (context instanceof Feed) {
                     System.out.println("AQUI");
-                    ((Feed) context).showPhoneOptions(phone,usernumberFb);
+                    ((Feed) context).showPhoneOptions(phone, usernumberFb);
                 }
             }
         };
-        span.setSpan(clickPhone,0,span.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        span.setSpan(clickPhone, 0, span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         holderPattern.textViewSetContato.setText(span);
         holderPattern.textViewSetContato.setMovementMethod(LinkMovementMethod.getInstance());
 
@@ -238,12 +236,12 @@ public class ProdutoAdapter extends BaseAdapter {
                 }
             }
         };
-        spannableString.setSpan(clickableSpan, 0, spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(clickableSpan, 0, spannableString.length(),
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         holderPattern.textViewSetNomeUsuario.setText(spannableString);
         holderPattern.textViewSetNomeUsuario.setMovementMethod(LinkMovementMethod.getInstance());
 
         holderPattern.textViewSetPreco.setText(items.get(arg0).getPrice());
-
 
 
         final Flag like = new Flag();
@@ -255,7 +253,6 @@ public class ProdutoAdapter extends BaseAdapter {
         final int arg = arg0;
         holderPattern.likeButton.setImageResource(like.isLiked ? R.drawable.like_enable : R
                 .drawable.like_disable);
-
 
 
         holderPattern.imageViewProfilePic.setOnClickListener(new View.OnClickListener() {
